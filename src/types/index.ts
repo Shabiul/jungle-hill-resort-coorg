@@ -1,0 +1,119 @@
+export interface NavItem {
+  label: string;
+  href: string;
+}
+
+export interface ImageAsset {
+  src: string;
+  alt: string;
+  width: number;
+  height: number;
+  /** Tiny base64 placeholder for next/image blur. */
+  blurDataURL?: string;
+}
+
+export interface Room {
+  slug: string;
+  /** Display number, e.g. "01". */
+  number: string;
+  name: string;
+  /** One-line summary for lists. */
+  summary: string;
+  description: string;
+  sizeSqFt: number;
+  bed: string;
+  /** Who the room suits, as stated by the resort. */
+  occupancy: string;
+  /** Extra-mattress and similar guest notes. */
+  guestNotes: string[];
+  amenities: string[];
+  /** Floor and room-number notes, only where known. */
+  locations: string[];
+  /** Always "Enquire for rates" until pricing is supplied. */
+  rateNote: string;
+  /** Price per night in INR; null until pricing is supplied. */
+  price: number | null;
+  imageFolder: string;
+  images: ImageAsset[];
+}
+
+export interface Experience {
+  slug: string;
+  title: string;
+  label: string;
+  summary: string;
+  facts: string[];
+  image?: ImageAsset;
+}
+
+export interface MealTime {
+  name: string;
+  time: string;
+}
+
+export interface DiningInfo {
+  cuisines: string[];
+  hours: string;
+  meals: MealTime[];
+  guidelines: string[];
+  images: ImageAsset[];
+}
+
+export type GalleryCategory =
+  "Rooms" | "Pool" | "Dining" | "Kids Park" | "Games" | "Grounds";
+
+export interface GalleryImage extends ImageAsset {
+  category: GalleryCategory;
+}
+
+export interface Testimonial {
+  id: string;
+  name: string;
+  /** 1 to 5 */
+  rating: number;
+  timeAgo: string;
+  tripType?: string;
+  text: string;
+  source: "Google";
+  profileUrl?: string;
+}
+
+export interface Faq {
+  id: string;
+  question: string;
+  answer: string;
+}
+
+export interface PolicyItem {
+  title: string;
+  text: string;
+}
+
+export interface SocialLink {
+  label: string;
+  href: string;
+}
+
+export interface SiteConfig {
+  name: string;
+  shortName: string;
+  tagline: string;
+  description: string;
+  url: string;
+  locale: string;
+  owners: string;
+  manager: { name: string; phoneDisplay: string; phoneTel: string };
+  contact: {
+    email: string;
+    phoneDisplay: string;
+    phoneTel: string;
+    /** Digits only with country code, used for wa.me links. */
+    whatsapp: string;
+    addressLines: string[];
+    addressOneLine: string;
+    mapsUrl: string;
+  };
+  stay: { checkIn: string; checkOut: string };
+  socials: SocialLink[];
+  developer: { name: string; url: string };
+}
