@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
+import { Intro } from "@/components/animations/Intro";
 import { SmoothScroll } from "@/components/animations/SmoothScroll";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
@@ -15,7 +16,7 @@ const fraunces = Fraunces({
   subsets: ["latin"],
   variable: "--font-fraunces",
   style: ["normal", "italic"],
-  axes: ["opsz"],
+  axes: ["opsz", "SOFT", "WONK"],
   display: "swap",
 });
 const hanken = Hanken_Grotesk({
@@ -46,7 +47,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#0b2e22",
+  themeColor: "#0c2e21",
   width: "device-width",
   initialScale: 1,
 };
@@ -58,13 +59,17 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
       className={`${fraunces.variable} ${hanken.variable} ${jetbrains.variable}`}
     >
       <body>
+        <noscript>
+          <style>{`[data-reveal]{transform:none!important;opacity:1!important}[data-reveal-img]{clip-path:none!important;opacity:1!important}`}</style>
+        </noscript>
         <a
           href="#main"
-          className="label-mono fixed top-2 left-2 z-[100] -translate-y-20 bg-paper px-4 py-3 text-forest-950 focus:translate-y-0"
+          className="label-mono fixed top-2 left-2 z-[100] -translate-y-20 bg-ivory px-4 py-3 text-ink focus:translate-y-0"
         >
           Skip to content
         </a>
         <SmoothScroll>
+          <Intro />
           <Header />
           <main id="main">{children}</main>
           <Footer />

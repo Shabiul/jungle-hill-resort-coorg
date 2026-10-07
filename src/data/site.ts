@@ -18,6 +18,10 @@ export const glanceFacts = [
 export const heroPoster =
   compact([
     photo(
+      "/images/gallery/grounds-cottages-garden.jpg",
+      "Tiled-roof cottages among the garden and plantation, with the valley beyond",
+    ),
+    photo(
       "/images/gallery/grounds-misty-valley.jpg",
       "Mist rising over the valley beyond the tiled roofs of the resort",
     ),
