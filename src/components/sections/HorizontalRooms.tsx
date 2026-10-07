@@ -52,7 +52,7 @@ export function HorizontalRooms({ rooms }: HorizontalRoomsProps) {
   return (
     <div
       ref={sectionRef}
-      className="bg-mist lg:flex lg:h-screen lg:items-center lg:overflow-hidden"
+      className="bg-linen lg:flex lg:h-screen lg:items-center lg:overflow-hidden"
     >
       <div
         ref={trackRef}
@@ -74,17 +74,17 @@ export function HorizontalRooms({ rooms }: HorizontalRoomsProps) {
                   imgClassName="transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-105"
                 />
               </div>
-              <div className="mt-5 flex items-baseline justify-between border-t border-forest-950 pt-4">
+              <div className="mt-5 flex items-baseline justify-between border-t border-ink pt-4">
                 <span className="font-display text-5xl leading-none">{room.number}</span>
-                <span className="label-mono text-forest-700">
+                <span className="label-mono text-emerald">
                   {room.sizeSqFt} sq ft · {room.bed}
                 </span>
               </div>
               <h3 className="mt-4 text-3xl decoration-1 underline-offset-4 group-hover:underline sm:text-4xl">
                 {room.name}
               </h3>
-              <p className="mt-3 max-w-md text-forest-950/80">{room.summary}</p>
-              <p className="label-mono mt-4 flex items-center gap-2 text-terracotta-600">
+              <p className="mt-3 max-w-md text-ink/80">{room.summary}</p>
+              <p className="label-mono mt-4 flex items-center gap-2 text-brass-deep">
                 {room.rateNote}
                 <ArrowUpRight size={14} strokeWidth={1.5} aria-hidden="true" />
               </p>

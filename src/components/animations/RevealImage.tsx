@@ -17,6 +17,7 @@ export function RevealImage({ children, className, delay = 0 }: RevealImageProps
 
   return (
     <motion.div
+      data-reveal-img
       className={className}
       initial={reduced ? false : { clipPath: "inset(14% 0% 0% 0%)", opacity: 0 }}
       whileInView={{ clipPath: "inset(0% 0% 0% 0%)", opacity: 1 }}

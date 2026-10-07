@@ -21,10 +21,8 @@ export function Location() {
           <SectionHeader
             label="08 / Find us"
             lines={[
-              "Five kilometres",
-              <>
-                from <em>Madikeri.</em>
-              </>,
+              { text: "Five kilometres" },
+              { text: "from ", emphasis: "Madikeri." },
             ]}
           />
           <Reveal className="mt-10 max-w-lg space-y-5">
@@ -33,7 +31,7 @@ export function Location() {
               The access road is narrow, so drive slowly.
             </p>
             <address className="not-italic">
-              <span className="label-mono block text-forest-700">Address</span>
+              <span className="label-mono block text-emerald">Address</span>
               {siteConfig.contact.addressLines.map((line) => (
                 <span key={line} className="block font-display text-2xl">
                   {line}

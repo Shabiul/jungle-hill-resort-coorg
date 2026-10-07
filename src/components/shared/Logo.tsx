@@ -7,11 +7,12 @@ interface LogoProps {
   layout?: "inline" | "stacked";
   showTagline?: boolean;
   className?: string;
-  /** Render without a link (e.g. inside the footer wordmark). */
+  /** Render without a link (e.g. inside the intro). */
   asLink?: boolean;
 }
 
-function Mark({ className }: { className?: string }) {
+/** The peak mark from the logo. Fills with the current text colour. */
+export function LogoMark({ className }: { className?: string }) {
   return (
     <svg viewBox="0 0 64 40" className={className} aria-hidden="true" fill="currentColor">
       <path d="M0 40 L22 5 L31 19 L38 10 L64 40 Z" />
@@ -31,7 +32,7 @@ export function Logo({
   className,
   asLink = true,
 }: LogoProps) {
-  const color = variant === "dark" ? "text-forest-900" : "text-paper";
+  const light = variant === "light";
   const stacked = layout === "stacked";
 
   const content = (
@@ -39,11 +40,11 @@ export function Logo({
       className={cn(
         "inline-flex",
         stacked ? "flex-col items-center gap-2" : "items-center gap-3",
-        color,
+        light ? "text-ivory" : "text-forest",
         className,
       )}
     >
-      <Mark className={stacked ? "h-10 w-16" : "h-7 w-11"} />
+      <LogoMark className={stacked ? "h-10 w-16" : "h-7 w-11"} />
       <span className={cn("flex flex-col", stacked ? "items-center" : "items-start")}>
         <span
           className={cn(
@@ -57,7 +58,10 @@ export function Logo({
           <>
             <span
               aria-hidden="true"
-              className="mt-1.5 block h-px w-full bg-current opacity-60"
+              className={cn(
+                "mt-1.5 block h-px w-full",
+                light ? "bg-brass-soft" : "bg-brass",
+              )}
             />
             <span className="label-mono mt-1.5 text-[0.62rem] tracking-[0.22em]">
               {siteConfig.tagline}

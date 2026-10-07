@@ -21,17 +21,12 @@ export function GalleryPreview() {
   const items = picks.length >= 4 ? picks : gallery.slice(0, 4);
 
   return (
-    <section id="gallery" aria-label="Gallery" className="section-space bg-mist">
+    <section id="gallery" aria-label="Gallery" className="section-space bg-linen">
       <div className="page-container">
         <div className="flex flex-col justify-between gap-6 sm:flex-row sm:items-end">
           <SectionHeader
             label="07 / Gallery"
-            lines={[
-              "The property,",
-              <>
-                as it <em>is.</em>
-              </>,
-            ]}
+            lines={[{ text: "The property," }, { text: "as it ", emphasis: "is." }]}
           />
           <Link href="/gallery" className="btn btn-outline self-start sm:self-end">
             All photographs
@@ -44,7 +39,7 @@ export function GalleryPreview() {
               <RevealImage className="h-full" delay={index * 0.06}>
                 <div className="relative h-full w-full overflow-hidden">
                   <Photo image={image} fill sizes="(min-width: 1024px) 50vw, 90vw" />
-                  <span className="label-mono absolute bottom-0 left-0 bg-paper px-3 py-2 text-[0.65rem] text-forest-950">
+                  <span className="label-mono absolute bottom-0 left-0 bg-ivory px-3 py-2 text-[0.65rem] text-ink">
                     {image.category}
                   </span>
                 </div>

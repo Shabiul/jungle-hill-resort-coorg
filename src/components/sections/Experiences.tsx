@@ -14,10 +14,10 @@ const tileLayout = [
 ];
 
 const panelTone = [
-  "bg-forest-900 text-paper",
-  "bg-bark-900 text-paper",
-  "bg-forest-800 text-paper",
-  "bg-mist text-forest-950",
+  "dark-surface bg-forest text-ivory",
+  "dark-surface bg-ink text-ivory",
+  "dark-surface bg-emerald text-ivory",
+  "bg-linen text-ink",
 ];
 
 export function Experiences() {
@@ -27,10 +27,8 @@ export function Experiences() {
         <SectionHeader
           label="03 / On the property"
           lines={[
-            "Water, swings,",
-            <>
-              and <em>slow</em> games.
-            </>,
+            { text: "Water, swings," },
+            { text: "and ", emphasis: "slow", after: " games." },
           ]}
         />
 
@@ -64,7 +62,7 @@ export function Experiences() {
                           sizes="(min-width: 1024px) 50vw, 100vw"
                         />
                       </div>
-                      <div className="absolute inset-x-0 bottom-0 border border-forest-950 bg-paper p-4 text-forest-950 sm:inset-x-auto sm:bottom-4 sm:left-4 sm:max-w-sm">
+                      <div className="absolute inset-x-0 bottom-0 border border-ink bg-ivory p-4 text-ink sm:inset-x-auto sm:bottom-4 sm:left-4 sm:max-w-sm">
                         {caption}
                       </div>
                     </>

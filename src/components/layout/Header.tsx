@@ -10,7 +10,7 @@ import { cn } from "@/lib/utils";
 
 /**
  * Transparent over the hero on the home page, then glass once the page scrolls.
- * On inner pages the bar starts transparent over the paper background with dark text.
+ * On inner pages the bar starts transparent over the ivory background with dark text.
  */
 export function Header() {
   const pathname = usePathname();
@@ -23,8 +23,9 @@ export function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-300",
         scrolled
-          ? "glass border-x-0 border-t-0 bg-forest-950/80"
+          ? "glass border-x-0 border-t-0 bg-ink/80"
           : "border-b border-transparent",
+        light && "dark-surface",
       )}
     >
       <div className="page-container flex h-[4.5rem] items-center justify-between gap-6">
@@ -42,8 +43,8 @@ export function Header() {
                     aria-current={active ? "page" : undefined}
                     className={cn(
                       "label-mono link-underline py-2",
-                      light ? "text-paper" : "text-forest-950",
-                      active && "text-terracotta-500",
+                      light ? "text-ivory" : "text-ink",
+                      active && (light ? "text-brass-soft" : "text-brass-deep"),
                       overHero && "drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)]",
                     )}
                   >

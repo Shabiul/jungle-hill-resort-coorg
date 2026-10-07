@@ -11,12 +11,7 @@ export function About() {
         <div className="lg:col-span-6">
           <SectionHeader
             label="01 / Welcome"
-            lines={[
-              "Coffee, pepper",
-              <>
-                and <em>quiet.</em>
-              </>,
-            ]}
+            lines={[{ text: "Coffee, pepper" }, { text: "and ", emphasis: "quiet." }]}
           />
           <Reveal className="mt-10 max-w-xl space-y-5">
             <p>
@@ -34,7 +29,7 @@ export function About() {
 
           <Reveal className="mt-12 max-w-md">
             <div className="brutal-card p-6">
-              <p className="label-mono text-terracotta-600">Quiet by design</p>
+              <p className="label-mono text-brass-deep">Quiet by design</p>
               <p className="mt-3 font-display text-2xl leading-tight">
                 Loud sounds, high-volume music and parties are strictly prohibited.
               </p>
@@ -43,9 +38,7 @@ export function About() {
         </div>
 
         <div className="relative lg:col-span-6">
-          <p className="label-mono mb-4 text-forest-700 lg:text-right">
-            13 rooms · 4 stays
-          </p>
+          <p className="label-mono mb-4 text-emerald lg:text-right">13 rooms · 4 stays</p>
           <div className="grid grid-cols-12 items-start gap-4">
             <RevealImage className="col-span-8">
               <div className="relative aspect-[4/5] overflow-hidden">
@@ -57,7 +50,7 @@ export function About() {
               </div>
             </RevealImage>
             <RevealImage className="col-span-5 col-start-8 -mt-8 sm:-mt-16" delay={0.12}>
-              <div className="relative aspect-square overflow-hidden border-8 border-paper">
+              <div className="relative aspect-square overflow-hidden border-8 border-ivory">
                 <Photo
                   image={homeImages.welcomeB}
                   fill

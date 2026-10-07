@@ -13,19 +13,14 @@ export function Dining() {
     <section
       id="dining"
       aria-label="Dining"
-      className="section-space bg-bark-900 text-paper"
+      className="dark-surface section-space bg-ink text-ivory"
     >
       <div className="page-container grid gap-14 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-6">
           <SectionHeader
             tone="light"
             label="04 / Restaurant"
-            lines={[
-              "A table",
-              <>
-                in the <em>estate.</em>
-              </>,
-            ]}
+            lines={[{ text: "A table" }, { text: "in the ", emphasis: "estate." }]}
             description={
               <p>
                 The in-house restaurant serves through the day. Orders are cooked fresh,
@@ -36,7 +31,7 @@ export function Dining() {
 
           <ul className="mt-8 flex flex-wrap gap-2" aria-label="Cuisines">
             {dining.cuisines.map((cuisine) => (
-              <li key={cuisine} className="label-mono border border-paper/40 px-3 py-2">
+              <li key={cuisine} className="label-mono border border-ivory/40 px-3 py-2">
                 {cuisine}
               </li>
             ))}
@@ -54,12 +49,12 @@ export function Dining() {
             </div>
           </RevealImage>
 
-          <h3 className="label-mono mt-10 !font-mono text-paper/75">
+          <h3 className="label-mono mt-10 !font-mono text-ivory/75">
             Ordering guidelines
           </h3>
           <ul className="mt-4 space-y-3">
             {dining.guidelines.map((guideline) => (
-              <li key={guideline} className="border-t border-paper/20 pt-3">
+              <li key={guideline} className="border-t border-ivory/20 pt-3">
                 {guideline}
               </li>
             ))}

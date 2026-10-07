@@ -50,7 +50,7 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
         onClick={() => setOpen((value) => !value)}
         className={cn(
           "label-mono relative z-[60] min-h-11 px-2",
-          open || light ? "text-paper" : "text-forest-950",
+          open || light ? "text-ivory" : "text-ink",
         )}
       >
         {open ? "Close" : "Menu"}
@@ -62,20 +62,20 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
           role="dialog"
           aria-modal="true"
           aria-label="Site menu"
-          className="glass fixed inset-0 z-[55] flex flex-col overflow-y-auto bg-forest-950/85 px-[var(--spacing-gutter)] pt-24 pb-10"
+          className="glass dark-surface fixed inset-0 z-[55] flex flex-col overflow-y-auto bg-ink/85 px-[var(--spacing-gutter)] pt-24 pb-10"
         >
           <nav aria-label="Mobile">
             <ul className="flex flex-col">
               {items.map((item, index) => (
-                <li key={item.href} className="border-b border-paper/15">
+                <li key={item.href} className="border-b border-ivory/15">
                   <Link
                     ref={index === 0 ? firstLink : undefined}
                     href={item.href}
                     onClick={() => setOpen(false)}
                     aria-current={pathname === item.href ? "page" : undefined}
-                    className="flex items-baseline gap-4 py-4 font-display text-3xl text-paper"
+                    className="flex items-baseline gap-4 py-4 font-display text-3xl text-ivory"
                   >
-                    <span className="label-mono w-6 text-paper/70">
+                    <span className="label-mono w-6 text-ivory/70">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     {item.label}
@@ -105,7 +105,7 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
                 <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" /> WhatsApp
               </a>
             </div>
-            <p className="label-mono pt-4 text-paper/70">
+            <p className="label-mono pt-4 text-ivory/70">
               {siteConfig.contact.phoneDisplay}
             </p>
           </div>

@@ -28,7 +28,6 @@ export function Photo({
     priority,
     placeholder: image.blurDataURL ? ("blur" as const) : ("empty" as const),
     blurDataURL: image.blurDataURL,
-    quality: 78,
   };
 
   if (fill) {

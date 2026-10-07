@@ -6,19 +6,18 @@ import { telLink, whatsappLink } from "@/lib/contact";
 
 export function CTA() {
   return (
-    <section aria-label="Enquire" className="section-space bg-forest-900 text-paper">
+    <section
+      aria-label="Enquire"
+      className="dark-surface section-space bg-forest text-ivory"
+    >
       <div className="page-container">
-        <p className="label-mono text-paper/75">09 / Enquire</p>
+        <p className="label-mono text-ivory/75">09 / Enquire</p>
         <RevealText
-          lines={[
-            "Ask us about",
-            <>
-              your <em className="font-light italic">dates.</em>
-            </>,
-          ]}
+          onDark
+          lines={[{ text: "Ask us about" }, { text: "your ", emphasis: "dates." }]}
           className="mt-5 text-[clamp(2.75rem,8vw,7rem)]"
         />
-        <p className="mt-6 max-w-xl text-paper/85">
+        <p className="mt-6 max-w-xl text-ivory/85">
           There is no booking engine yet. Tell us when you would like to come and who is
           coming, and we will reply with availability and rates.
         </p>

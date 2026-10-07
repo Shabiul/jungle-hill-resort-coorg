@@ -1,12 +1,12 @@
 import type { ReactNode } from "react";
-import { RevealText } from "@/components/animations/RevealText";
+import { RevealText, type HeadingLine } from "@/components/animations/RevealText";
 import { cn } from "@/lib/utils";
 
 interface SectionHeaderProps {
   /** e.g. "01 / Rooms" */
   label: string;
-  /** Headline lines, masked in one by one. Wrap emphasis words in <em>. */
-  lines: ReactNode[];
+  /** Headline lines, masked in one by one. Use `emphasis` for the italic brass word. */
+  lines: HeadingLine[];
   description?: ReactNode;
   tone?: "light" | "dark";
   as?: "h1" | "h2";
@@ -23,24 +23,20 @@ export function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div className={cn("max-w-3xl", className)}>
-      <p
-        className={cn(
-          "label-mono",
-          tone === "dark" ? "text-forest-700" : "text-paper/75",
-        )}
-      >
+      <p className={cn("label-mono", tone === "dark" ? "text-emerald" : "text-ivory/75")}>
         {label}
       </p>
       <RevealText
         as={as}
         lines={lines}
-        className="mt-5 text-[clamp(2.5rem,6.5vw,5.5rem)] [&_em]:font-light [&_em]:italic"
+        onDark={tone === "light"}
+        className="mt-5 text-[clamp(2.5rem,6.5vw,5.5rem)]"
       />
       {description && (
         <div
           className={cn(
             "mt-6 max-w-xl",
-            tone === "dark" ? "text-forest-950/80" : "text-paper/80",
+            tone === "dark" ? "text-ink/80" : "text-ivory/80",
           )}
         >
           {description}
