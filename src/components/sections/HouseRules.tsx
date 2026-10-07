@@ -1,0 +1,54 @@
+import { Reveal } from "@/components/animations/Reveal";
+import { SectionHeader } from "@/components/shared/SectionHeader";
+import { checkTimes, houseRules } from "@/data/policies";
+
+export function HouseRules() {
+  return (
+    <section
+      id="house-rules"
+      aria-label="Slow stay rules"
+      className="section-space bg-mist"
+    >
+      <div className="page-container">
+        <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
+          <SectionHeader
+            label="05 / Slow stay rules"
+            lines={[
+              "A few things",
+              <>
+                we <em>ask.</em>
+              </>,
+            ]}
+            description={
+              <p>The resort is built for rest. These keep it that way for everyone.</p>
+            }
+          />
+          <div className="label-mono lg:text-right">
+            <p>Check-in {checkTimes.checkIn}</p>
+            <p>Check-out {checkTimes.checkOut}</p>
+            <p className="mt-2 max-w-xs tracking-normal text-forest-950/70 normal-case lg:ml-auto">
+              {checkTimes.note}
+            </p>
+          </div>
+        </div>
+
+        <ol className="mt-14 grid border-t border-forest-950 sm:grid-cols-2 lg:grid-cols-3">
+          {houseRules.map((rule, index) => (
+            <li
+              key={rule.title}
+              className="border-b border-forest-950/25 p-6 sm:odd:border-r lg:border-r lg:[&:nth-child(3n)]:border-r-0"
+            >
+              <Reveal>
+                <p className="label-mono text-terracotta-600">
+                  {String(index + 1).padStart(2, "0")}
+                </p>
+                <h3 className="mt-3 text-2xl">{rule.title}</h3>
+                <p className="mt-2 text-forest-950/80">{rule.text}</p>
+              </Reveal>
+            </li>
+          ))}
+        </ol>
+      </div>
+    </section>
+  );
+}
