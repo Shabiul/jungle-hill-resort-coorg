@@ -4,7 +4,7 @@ import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { Logo } from "@/components/shared/Logo";
-import { bookingNav, headerNav, mainNav } from "@/data/navigation";
+import { bookingNav, headerNav, mainNav, xlOnlyHrefs } from "@/data/navigation";
 import { useScrollPosition } from "@/hooks/useScrollPosition";
 import { cn } from "@/lib/utils";
 
@@ -32,12 +32,17 @@ export function Header() {
         <Logo variant={light ? "light" : "dark"} showTagline={!scrolled} />
 
         <nav aria-label="Main" className="hidden lg:block">
-          <ul className="flex items-center gap-8">
+          <ul className="flex items-center gap-6 xl:gap-8">
             {headerNav.map((item) => {
               const active =
                 pathname === item.href || pathname.startsWith(`${item.href}/`);
               return (
-                <li key={item.href}>
+                <li
+                  key={item.href}
+                  className={
+                    xlOnlyHrefs.includes(item.href) ? "hidden xl:block" : undefined
+                  }
+                >
                   <Link
                     href={item.href}
                     aria-current={active ? "page" : undefined}

@@ -62,6 +62,7 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
           role="dialog"
           aria-modal="true"
           aria-label="Site menu"
+          data-lenis-prevent
           className="glass dark-surface fixed inset-0 z-[55] flex flex-col overflow-y-auto bg-ink/85 px-[var(--spacing-gutter)] pt-24 pb-10"
         >
           <nav aria-label="Mobile">

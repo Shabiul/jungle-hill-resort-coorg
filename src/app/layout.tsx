@@ -2,6 +2,7 @@ import type { Metadata, Viewport } from "next";
 import { Fraunces, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
 import { Intro } from "@/components/animations/Intro";
 import { SmoothScroll } from "@/components/animations/SmoothScroll";
+import { NavProgress } from "@/components/layout/NavProgress";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
 import { JsonLd } from "@/components/shared/JsonLd";
@@ -70,6 +71,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </a>
         <SmoothScroll>
           <Intro />
+          <NavProgress />
           <Header />
           <main id="main">{children}</main>
           <Footer />
