@@ -1,11 +1,153 @@
-import { PagePlaceholder } from "@/components/shared/PagePlaceholder";
+import { MapPin, Phone } from "lucide-react";
+import { CTA } from "@/components/sections/CTA";
+import { PageHero } from "@/components/shared/PageHero";
+import { siteConfig } from "@/config/site.config";
+import { faqs } from "@/data/faqs";
+import { checkTimes } from "@/data/policies";
+import { mapsHref, telLink } from "@/lib/contact";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
-  title: "Plan Your Stay",
+  title: "Plan your stay",
+  description:
+    "How to reach Jungle Hill Resort, 5 km from Madikeri on the way to Virajpet, plus check-in times, house rules and answers to common questions.",
   path: "/plan-your-stay",
 });
 
-export default function Page() {
-  return <PagePlaceholder title="Plan Your Stay" />;
+const steps = [
+  "Head for Madikeri, the main town of Coorg.",
+  "From Madikeri take the road towards Virajpet. The resort is about 5 km along it.",
+  "The address is Mekeri Village, Madikeri. Open the map link below for the exact pin.",
+  "The access road is narrow and two vehicles cannot pass easily. Please drive slowly and give way.",
+];
+
+export default function PlanYourStayPage() {
+  const embed = `https://www.google.com/maps?q=${encodeURIComponent(siteConfig.contact.addressOneLine)}&output=embed`;
+
+  return (
+    <>
+      <PageHero
+        label="08 — Plan your stay"
+        lines={[{ text: "Getting here," }, { text: "and ", emphasis: "staying." }]}
+        description={
+          <p>
+            Five kilometres from Madikeri on the way to Virajpet, surrounded by coffee and
+            pepper plantations.
+          </p>
+        }
+      />
+
+      <section aria-label="Location and directions" className="pb-24">
+        <div className="page-container grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-5">
+            <h2 className="label-mono !font-mono text-xs text-emerald">Address</h2>
+            <address className="mt-3 font-display text-3xl not-italic">
+              {siteConfig.contact.addressLines.map((line) => (
+                <span key={line} className="block">
+                  {line}
+                </span>
+              ))}
+            </address>
+            <div className="mt-6 flex flex-wrap gap-3">
+              <a
+                href={mapsHref()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary gap-2"
+              >
+                <MapPin size={16} strokeWidth={1.5} aria-hidden="true" /> Open in Google
+                Maps
+              </a>
+              <a href={telLink} className="btn btn-outline gap-2">
+                <Phone size={16} strokeWidth={1.5} aria-hidden="true" />{" "}
+                {siteConfig.contact.phoneDisplay}
+              </a>
+            </div>
+
+            <h2 className="label-mono mt-12 !font-mono text-xs text-emerald">
+              How to reach
+            </h2>
+            <ol className="mt-4 border-t border-ink">
+              {steps.map((step, index) => (
+                <li
+                  key={step}
+                  className="grid grid-cols-[2.5rem_1fr] gap-2 border-b border-ink/20 py-4"
+                >
+                  <span className="label-mono pt-1 text-brass-deep">
+                    {String(index + 1).padStart(2, "0")}
+                  </span>
+                  <span>{step}</span>
+                </li>
+              ))}
+            </ol>
+            {/* TODO: nearby Coorg ideas, only once the resort confirms what to recommend */}
+          </div>
+
+          <div className="lg:col-span-7">
+            <div className="aspect-[4/3] w-full overflow-hidden border border-ink/20 bg-linen">
+              <iframe
+                title="Map showing Jungle Hill Resort"
+                src={embed}
+                loading="lazy"
+                referrerPolicy="no-referrer-when-downgrade"
+                className="h-full w-full border-0"
+              />
+            </div>
+            <p className="mt-3 text-sm text-stone">
+              The map searches for the address. If the pin looks off, use the Google Maps
+              button or call us.
+            </p>
+          </div>
+        </div>
+      </section>
+
+      <section aria-label="Check-in and check-out" className="section-space bg-linen">
+        <div className="page-container grid gap-10 sm:grid-cols-3">
+          <div>
+            <p className="label-mono text-emerald">Check-in</p>
+            <p className="mt-2 font-display text-5xl">{checkTimes.checkIn}</p>
+          </div>
+          <div>
+            <p className="label-mono text-emerald">Check-out</p>
+            <p className="mt-2 font-display text-5xl">{checkTimes.checkOut}</p>
+          </div>
+          <p className="text-stone">
+            {checkTimes.note} ID proof is mandatory, and visitors are not allowed.
+          </p>
+        </div>
+      </section>
+
+      <section aria-label="Frequently asked questions" className="section-space">
+        <div className="page-container grid gap-12 lg:grid-cols-12">
+          <div className="lg:col-span-4">
+            <p className="label-mono text-emerald">Questions</p>
+            <h2 className="mt-4 text-4xl sm:text-5xl">
+              Things people <em className="font-light text-brass-deep">ask.</em>
+            </h2>
+          </div>
+          <div className="lg:col-span-8">
+            {faqs.map((faq) => (
+              <details
+                key={faq.id}
+                className="group border-t border-ink/25 py-5 last:border-b"
+              >
+                <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-6 font-display text-2xl">
+                  {faq.question}
+                  <span
+                    aria-hidden="true"
+                    className="label-mono text-brass-deep transition-transform group-open:rotate-45"
+                  >
+                    +
+                  </span>
+                </summary>
+                <p className="mt-3 max-w-2xl text-stone">{faq.answer}</p>
+              </details>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <CTA />
+    </>
+  );
 }

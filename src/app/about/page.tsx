@@ -1,8 +1,115 @@
-import { PagePlaceholder } from "@/components/shared/PagePlaceholder";
+import Link from "next/link";
+import { RevealImage } from "@/components/animations/RevealImage";
+import { CTA } from "@/components/sections/CTA";
+import { PageHero } from "@/components/shared/PageHero";
+import { Photo } from "@/components/shared/Photo";
+import { siteConfig } from "@/config/site.config";
+import { homeImages } from "@/data/site";
 import { buildMetadata } from "@/lib/metadata";
 
-export const metadata = buildMetadata({ title: "About", path: "/about" });
+export const metadata = buildMetadata({
+  title: "About",
+  description:
+    "Jungle Hill Resort is a nature retreat in the coffee and pepper plantations of Coorg, 5 km from Madikeri. Owned by T L Pavithra Kumar & Punith D.",
+  path: "/about",
+});
 
-export default function Page() {
-  return <PagePlaceholder title="About" />;
+const facts = [
+  ["5 km", "from Madikeri, on the way to Virajpet"],
+  ["13", "rooms in Standard Non-AC, Deluxe AC and Family AC categories"],
+  ["7 AM – 10 PM", "restaurant: South Indian, North Indian and Chinese"],
+  [
+    "Pool · Play · Games",
+    "swimming pool, kids play area, indoor games and shuttle badminton",
+  ],
+];
+
+export default function AboutPage() {
+  return (
+    <>
+      <PageHero
+        label="01 — About"
+        lines={[{ text: "Coffee, pepper" }, { text: "and ", emphasis: "quiet." }]}
+        description={
+          <p>
+            Jungle Hill Resort is a nature retreat surrounded by lush coffee and pepper
+            plantations, just 5 km from Madikeri on the way to Virajpet.
+          </p>
+        }
+      />
+
+      <section aria-label="The resort" className="pb-24">
+        <div className="page-container grid gap-12 lg:grid-cols-12">
+          <div className="space-y-5 lg:col-span-5">
+            <p>
+              There are 13 well-maintained rooms across Standard Non-AC, Deluxe AC and
+              Family AC categories. A swimming pool, a kids play area, indoor games
+              (carrom, chess, table tennis, foosball) and outdoor shuttle badminton fill
+              the day.
+            </p>
+            <p>
+              The in-house restaurant serves South Indian, North Indian and Chinese
+              cuisine through the day.
+            </p>
+            <p>
+              It is designed for relaxation and a peaceful stay in nature. Loud sounds,
+              high-volume music and parties are strictly prohibited.
+            </p>
+          </div>
+          <div className="grid grid-cols-12 items-start gap-4 lg:col-span-7">
+            <RevealImage className="col-span-7">
+              <div className="relative aspect-[4/5] overflow-hidden">
+                <Photo
+                  image={homeImages.welcomeA}
+                  fill
+                  sizes="(min-width: 1024px) 28vw, 58vw"
+                />
+              </div>
+            </RevealImage>
+            <RevealImage className="col-span-5 mt-16" delay={0.1}>
+              <div className="relative aspect-square overflow-hidden">
+                <Photo
+                  image={homeImages.welcomeB}
+                  fill
+                  sizes="(min-width: 1024px) 20vw, 42vw"
+                />
+              </div>
+            </RevealImage>
+          </div>
+        </div>
+      </section>
+
+      <section aria-label="At a glance" className="section-space bg-linen">
+        <dl className="page-container grid gap-px bg-ink/20 sm:grid-cols-2 lg:grid-cols-4">
+          {facts.map(([value, label]) => (
+            <div key={value} className="bg-linen p-6 first:pl-0 lg:py-2">
+              <dt className="font-display text-3xl">{value}</dt>
+              <dd className="mt-2 text-sm text-stone">{label}</dd>
+            </div>
+          ))}
+        </dl>
+      </section>
+
+      <section aria-label="The people" className="section-space">
+        <div className="page-container grid gap-10 sm:grid-cols-2">
+          <div className="border-t border-ink pt-5">
+            <p className="label-mono text-emerald">Owners</p>
+            <p className="mt-2 font-display text-3xl">{siteConfig.owners}</p>
+          </div>
+          <div className="border-t border-ink pt-5">
+            <p className="label-mono text-emerald">Manager</p>
+            <p className="mt-2 font-display text-3xl">{siteConfig.manager.name}</p>
+            <p className="mt-1 text-stone">{siteConfig.manager.phoneDisplay}</p>
+          </div>
+        </div>
+        <p className="page-container mt-10">
+          <Link href="/rooms" className="label-mono link-underline">
+            See the stays
+          </Link>
+        </p>
+      </section>
+
+      <CTA />
+    </>
+  );
 }

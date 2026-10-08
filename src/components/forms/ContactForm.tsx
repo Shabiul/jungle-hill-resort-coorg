@@ -3,7 +3,6 @@
 import { useState } from "react";
 import { useForm } from "react-hook-form";
 import { zodResolver } from "@hookform/resolvers/zod";
-import { Button } from "@/components/ui/Button";
 import { Input } from "@/components/ui/Input";
 import { Textarea } from "@/components/ui/Textarea";
 import { contactSchema, type ContactValues } from "@/lib/validations";
@@ -18,13 +17,14 @@ export function ContactForm() {
   } = useForm<ContactValues>({ resolver: zodResolver(contactSchema) });
 
   async function onSubmit(values: ContactValues) {
+    setStatus("idle");
     try {
-      const res = await fetch("/api/contact", {
+      const response = await fetch("/api/contact", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(values),
       });
-      if (!res.ok) throw new Error("Request failed");
+      if (!response.ok) throw new Error("Request failed");
       setStatus("sent");
       reset();
     } catch {
@@ -32,26 +32,59 @@ export function ContactForm() {
     }
   }
 
-  // TODO: design, remaining fields and success/error states
   return (
-    <form onSubmit={handleSubmit(onSubmit)} noValidate>
-      <Input label="Name" error={errors.name?.message} {...register("name")} />
+    <form
+      onSubmit={handleSubmit(onSubmit)}
+      noValidate
+      className="grid gap-8"
+      aria-label="Contact us"
+    >
+      <div className="grid gap-8 sm:grid-cols-2">
+        <Input
+          label="Name"
+          autoComplete="name"
+          error={errors.name?.message}
+          {...register("name")}
+        />
+        <Input
+          label="Email"
+          type="email"
+          autoComplete="email"
+          error={errors.email?.message}
+          {...register("email")}
+        />
+      </div>
       <Input
-        label="Email"
-        type="email"
-        error={errors.email?.message}
-        {...register("email")}
+        label="Phone (optional)"
+        type="tel"
+        autoComplete="tel"
+        error={errors.phone?.message}
+        {...register("phone")}
       />
       <Textarea
         label="Message"
         error={errors.message?.message}
         {...register("message")}
       />
-      <Button type="submit" disabled={isSubmitting}>
-        Submit
-      </Button>
-      {status === "sent" && <p role="status">Sent.</p>}
-      {status === "error" && <p role="alert">Something went wrong.</p>}
+      <div>
+        <button
+          type="submit"
+          disabled={isSubmitting}
+          className="btn btn-primary disabled:opacity-60"
+        >
+          {isSubmitting ? "Sending" : "Send message"}
+        </button>
+      </div>
+      <div aria-live="polite">
+        {status === "sent" && (
+          <p className="border-l-2 border-brass pl-4">Thank you. We will be in touch.</p>
+        )}
+        {status === "error" && (
+          <p role="alert" className="border-l-2 border-ink pl-4">
+            That did not go through. Please try again or call us.
+          </p>
+        )}
+      </div>
     </form>
   );
 }

@@ -1,9 +1,10 @@
 import { NextResponse } from "next/server";
-import { enquirySchema } from "@/lib/validations";
+import { bookingSchema, enquirySchema } from "@/lib/validations";
 
 export async function POST(request: Request) {
   const body: unknown = await request.json().catch(() => null);
-  const parsed = enquirySchema.safeParse(body);
+  const booking = bookingSchema.safeParse(body);
+  const parsed = booking.success ? booking : enquirySchema.safeParse(body);
 
   if (!parsed.success) {
     return NextResponse.json(
@@ -12,6 +13,6 @@ export async function POST(request: Request) {
     );
   }
 
-  // TODO: deliver the enquiry (email / CRM) and add spam protection
+  // TODO: deliver the enquiry (email / WhatsApp Business API / CRM) and add spam protection.
   return NextResponse.json({ ok: true });
 }
