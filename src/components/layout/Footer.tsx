@@ -13,7 +13,10 @@ export function Footer() {
         <div className="grid gap-14 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <p className="label-mono text-ivory/70">{siteConfig.tagline}</p>
-            <p className="mt-4 font-display text-[clamp(3rem,9vw,7rem)] leading-[0.9] font-bold tracking-[0.04em]">
+            <p
+              aria-label="Jungle Hill"
+              className="mt-4 font-display text-[clamp(3rem,9vw,7rem)] leading-[0.9] font-bold tracking-[0.04em] text-transparent [-webkit-text-stroke:1.5px_var(--color-brass-soft)]"
+            >
               JUNGLE
               <br />
               HILL

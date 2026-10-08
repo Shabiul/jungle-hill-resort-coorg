@@ -20,28 +20,41 @@ function ReviewCard({ review }: { review: Testimonial }) {
       <blockquote className="mt-4 flex-1">
         <p>{review.text}</p>
       </blockquote>
-      <figcaption className="mt-6 border-t border-ink/25 pt-4">
-        <p className="font-display text-xl">
-          {review.profileUrl ? (
-            <a
-              href={review.profileUrl}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="link-underline"
-            >
-              {review.name}
-            </a>
-          ) : (
-            review.name
-          )}
-        </p>
-        <p className="label-mono mt-1 text-ink/75">
-          {[review.tripType, review.timeAgo].filter(Boolean).join(" · ")}
-        </p>
-        <p className="label-mono mt-3 flex items-center gap-3 text-[0.68rem]">
-          <span className="border border-ink/40 px-2 py-1">Google</span>
-          <span>{review.rating}/5</span>
-        </p>
+      <figcaption className="mt-6 flex items-start gap-3 border-t border-ink/25 pt-4">
+        <span
+          aria-hidden="true"
+          className="label-mono grid h-10 w-10 shrink-0 place-items-center rounded-full border border-brass-deep text-brass-deep"
+        >
+          {review.name
+            .split(" ")
+            .map((part) => part[0])
+            .slice(0, 2)
+            .join("")
+            .toUpperCase()}
+        </span>
+        <div>
+          <p className="font-display text-xl">
+            {review.profileUrl ? (
+              <a
+                href={review.profileUrl}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="link-underline"
+              >
+                {review.name}
+              </a>
+            ) : (
+              review.name
+            )}
+          </p>
+          <p className="label-mono mt-1 text-ink/75">
+            {[review.tripType, review.timeAgo].filter(Boolean).join(" · ")}
+          </p>
+          <p className="label-mono mt-3 flex items-center gap-3 text-[0.68rem]">
+            <span className="border border-ink/40 px-2 py-1">Google</span>
+            <span>{review.rating}/5</span>
+          </p>
+        </div>
       </figcaption>
     </figure>
   );

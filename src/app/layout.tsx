@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Fraunces, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
+import { CustomCursor } from "@/components/animations/CustomCursor";
 import { Intro } from "@/components/animations/Intro";
 import { SmoothScroll } from "@/components/animations/SmoothScroll";
 import { NavProgress } from "@/components/layout/NavProgress";
@@ -72,6 +73,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SmoothScroll>
           <Intro />
           <NavProgress />
+          <CustomCursor />
           <Header />
           <main id="main">{children}</main>
           <Footer />

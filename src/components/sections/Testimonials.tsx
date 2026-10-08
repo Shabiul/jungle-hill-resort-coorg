@@ -1,3 +1,4 @@
+import { FeaturedReview } from "@/components/sections/FeaturedReview";
 import { ReviewsRow } from "@/components/sections/ReviewsRow";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { testimonials } from "@/data/testimonials";
@@ -20,7 +21,10 @@ export function Testimonials() {
           }
         />
       </div>
-      <div className="mt-12">
+      <div className="page-container mt-12">
+        <FeaturedReview reviews={testimonials} />
+      </div>
+      <div className="mt-16">
         <ReviewsRow reviews={testimonials} />
       </div>
     </section>
