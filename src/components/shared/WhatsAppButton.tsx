@@ -5,7 +5,7 @@ import Link from "next/link";
 import { MessageCircle, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site.config";
 import { useScrollPosition } from "@/hooks/useScrollPosition";
-import { defaultEnquiryMessage, telLink, whatsappLink } from "@/lib/contact";
+import { defaultEnquiryMessage, whatsappLink } from "@/lib/contact";
 import { cn } from "@/lib/utils";
 
 interface FloatingContactProps {
@@ -13,7 +13,8 @@ interface FloatingContactProps {
 }
 
 const pill =
-  "floating-pill inline-flex h-11 items-center justify-center gap-2 rounded-full border border-champagne/70 bg-slate/85 px-4 text-pearl backdrop-blur-xl transition-colors hover:bg-storm";
+  "floating-pill pointer-events-none inline-flex items-center justify-center border border-champagne/70 bg-slate text-pearl transition-colors hover:border-champagne-soft hover:bg-storm";
+const round = "h-12 w-12 rounded-full";
 
 /**
  * Floating Enquire Now, Call and WhatsApp, stacked bottom right. Shown after the first screen,
@@ -45,7 +46,7 @@ export function WhatsAppButton({
   return (
     <div
       className={cn(
-        "floating-contact pointer-events-none fixed right-4 bottom-4 z-[91] flex flex-col items-end gap-2 transition-all duration-300 sm:right-6 sm:bottom-6",
+        "floating-contact pointer-events-none fixed right-4 bottom-4 z-[91] flex flex-col items-end gap-3 transition-all duration-300 sm:right-6 sm:bottom-6",
         visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
       )}
       aria-hidden={visible ? undefined : true}
@@ -53,43 +54,31 @@ export function WhatsAppButton({
       <Link
         href="/booking"
         tabIndex={tabIndex}
-        className={cn(pill, "label-mono px-6", visible && "pointer-events-auto")}
+        className={cn(
+          pill,
+          "label-mono h-11 rounded-full px-6",
+          visible && "pointer-events-auto",
+        )}
       >
         Enquire Now
       </Link>
       <a
-        href={telLink}
+        href={`tel:${siteConfig.floatingContact.phoneTel}`}
         tabIndex={tabIndex}
         aria-label="Call Jungle Hill Resort"
-        className={cn(
-          pill,
-          "w-11 px-0 sm:w-auto sm:px-5",
-          visible && "pointer-events-auto",
-        )}
+        className={cn(pill, round, visible && "pointer-events-auto")}
       >
-        <Phone size={18} strokeWidth={1.5} aria-hidden="true" />
-        <span className="label-mono hidden sm:inline">Call</span>
-        <span className="hidden text-small sm:inline">
-          {siteConfig.contact.phoneDisplay}
-        </span>
+        <Phone size={20} strokeWidth={1.5} aria-hidden="true" />
       </a>
       <a
-        href={whatsappLink(message)}
+        href={whatsappLink(message, siteConfig.floatingContact.whatsapp)}
         target="_blank"
         rel="noopener noreferrer"
         tabIndex={tabIndex}
         aria-label="Chat on WhatsApp"
-        className={cn(
-          pill,
-          "w-11 px-0 sm:w-auto sm:px-5",
-          visible && "pointer-events-auto",
-        )}
+        className={cn(pill, round, visible && "pointer-events-auto")}
       >
-        <MessageCircle size={18} strokeWidth={1.5} aria-hidden="true" />
-        <span className="label-mono hidden sm:inline">WhatsApp</span>
-        <span className="hidden text-small sm:inline">
-          {siteConfig.contact.phoneDisplay}
-        </span>
+        <MessageCircle size={20} strokeWidth={1.5} aria-hidden="true" />
       </a>
     </div>
   );

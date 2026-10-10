@@ -1,8 +1,11 @@
 import { siteConfig } from "@/config/site.config";
 
-export function whatsappLink(message?: string) {
+export function whatsappLink(
+  message?: string,
+  number: string = siteConfig.contact.whatsapp,
+) {
   const query = message ? `?text=${encodeURIComponent(message)}` : "";
-  return `https://wa.me/${siteConfig.contact.whatsapp}${query}`;
+  return `https://wa.me/${number}${query}`;
 }
 
 export const telLink = `tel:${siteConfig.contact.phoneTel}`;

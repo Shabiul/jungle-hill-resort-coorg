@@ -124,6 +124,8 @@ export interface SiteConfig {
     addressOneLine: string;
     mapsUrl: string;
   };
+  /** Number behind the floating Call and WhatsApp buttons. */
+  floatingContact: { phoneDisplay: string; phoneTel: string; whatsapp: string };
   stay: { checkIn: string; checkOut: string };
   socials: SocialLink[];
   developer: { name: string; url: string };

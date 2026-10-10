@@ -23,6 +23,11 @@ export const siteConfig: SiteConfig = {
     addressOneLine: "Mekeri Village, Madikeri, Coorg, Karnataka 571201",
     mapsUrl: "", // TODO: Google Maps link for the property
   },
+  floatingContact: {
+    phoneDisplay: "+91 96115 24368",
+    phoneTel: "+919611524368",
+    whatsapp: "919611524368",
+  },
   stay: { checkIn: "12:00 PM", checkOut: "11:00 AM" },
   socials: [], // TODO: Instagram, Facebook, etc.
   developer: {
