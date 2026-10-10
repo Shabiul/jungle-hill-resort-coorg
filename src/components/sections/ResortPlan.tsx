@@ -22,6 +22,17 @@ const buildings: { x: number; y: number; w: number; h: number }[] = [
   { x: 676, y: 318, w: 58, h: 34 },
 ];
 
+/** Keeps the tooltip inside the plan: flips to the left of the marker on the right-hand side. */
+function tooltipStyle(x: number, y: number): React.CSSProperties {
+  const top = Math.min(66, Math.max(2, (y / PLAN_VIEWBOX.height) * 100 - 20));
+  return x > 600
+    ? {
+        right: `${Math.max(2, 100 - (x / PLAN_VIEWBOX.width) * 100 + 3)}%`,
+        top: `${top}%`,
+      }
+    : { left: `${Math.min(70, (x / PLAN_VIEWBOX.width) * 100 + 3)}%`, top: `${top}%` };
+}
+
 /**
  * Original illustrative site plan. Markers and the legend are linked: hover, focus or tap either
  * one to highlight the other and see a photo. Marker data lives in src/data/resortPlan.ts.
@@ -148,8 +159,9 @@ export function ResortPlan({ className }: { className?: string }) {
             })}
 
             <text
-              x="20"
+              x="980"
               y="605"
+              textAnchor="end"
               fontSize="11"
               letterSpacing="2.2"
               fill="#D9C29A"
@@ -164,10 +176,7 @@ export function ResortPlan({ className }: { className?: string }) {
             <GlassPanel
               role="status"
               className="pointer-events-none absolute z-10 flex w-52 gap-3 bg-ink/70 p-2 text-ivory"
-              style={{
-                left: `${Math.min(78, Math.max(2, (current.x / PLAN_VIEWBOX.width) * 100 + 2))}%`,
-                top: `${Math.min(70, Math.max(2, (current.y / PLAN_VIEWBOX.height) * 100 - 14))}%`,
-              }}
+              style={tooltipStyle(current.x, current.y)}
             >
               {current.image && (
                 <span className="relative block h-14 w-16 shrink-0 overflow-hidden">

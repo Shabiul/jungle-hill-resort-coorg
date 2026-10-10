@@ -132,7 +132,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
   const today = useToday();
   const [step, setStep] = useState(0);
   const [sent, setSent] = useState<null | { summary: string }>(null);
-  const [error, setError] = useState(false);
+  const [failed, setFailed] = useState(false);
   const heading = useRef<HTMLHeadingElement>(null);
 
   const guestsParam = Number(params.get("guests"));
@@ -144,6 +144,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
     handleSubmit,
     trigger,
     control,
+    setError,
     getValues,
     reset,
     formState: { errors, isSubmitting },
@@ -189,12 +190,29 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
   }
 
   async function next() {
-    const valid = await trigger(STEP_FIELDS[step], { shouldFocus: true });
+    let valid = await trigger(STEP_FIELDS[step], { shouldFocus: true });
+    // Cross-field rules live in schema refinements, which only run once every other field is valid,
+    // so they are checked here as well so that each step blocks on its own.
+    if (step === 0) {
+      const current = getValues();
+      if (current.checkIn && current.checkOut && current.checkOut <= current.checkIn) {
+        setError("checkOut", { message: "Check-out must be after check-in" });
+        valid = false;
+      }
+      const ages = (current.childAges ?? []).slice(0, Number(current.children) || 0);
+      const complete =
+        ages.length === (Number(current.children) || 0) &&
+        ages.every((age) => age !== "" && Number(age) >= 0 && Number(age) <= 17);
+      if (!complete) {
+        setError("childAges", { message: "Please enter each child's age (0 to 17)" });
+        valid = false;
+      }
+    }
     if (valid) goTo(step + 1);
   }
 
   async function onSubmit(values: EnquiryValuesV2) {
-    setError(false);
+    setFailed(false);
     const payload = { ...values, childAges: values.childAges.slice(0, values.children) };
     try {
       const response = await fetch("/api/enquiry", {
@@ -206,7 +224,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
       setSent({ summary: buildSummary(payload) });
       reset();
     } catch {
-      setError(true);
+      setFailed(true);
     }
   }
 
@@ -574,7 +592,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
           </span>
         </div>
 
-        {error && (
+        {failed && (
           <p role="alert" className="mt-4 border-l-2 border-brass-soft pl-3 text-small">
             That did not go through. Please try again, or call or WhatsApp us.
           </p>
