@@ -1,8 +1,7 @@
 "use client";
 
 import { useEffect, useState } from "react";
-import Link from "next/link";
-import { CalendarCheck, MessageCircle, Phone } from "lucide-react";
+import { MessageCircle, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site.config";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { defaultEnquiryMessage, whatsappLink } from "@/lib/contact";
@@ -21,7 +20,7 @@ const pill =
 const round = "h-12 w-12 rounded-full";
 
 /**
- * Floating Enquire Now, Call and WhatsApp, stacked bottom right. They pop up in sequence as soon
+ * Floating Call and WhatsApp icon buttons, stacked bottom right. They pop up in sequence as soon
  * as the landing experience has finished (preloader dismissed or skipped, or never shown), with a
  * 3 s fallback, and then stay on every page. They hide only while the footer is on screen.
  */
@@ -80,24 +79,10 @@ export function WhatsAppButton({
       className="floating-contact pointer-events-none fixed right-[max(1rem,env(safe-area-inset-right))] bottom-[max(1rem,env(safe-area-inset-bottom))] z-[91] flex flex-col items-end gap-3 sm:right-6 sm:bottom-6"
       aria-hidden={visible ? undefined : true}
     >
-      <Link
-        href="/booking"
-        tabIndex={tabIndex}
-        style={motionStyle(0)}
-        className={cn(pill, "group label-mono h-11 gap-2 rounded-full px-5")}
-      >
-        <CalendarCheck
-          size={16}
-          strokeWidth={1.5}
-          aria-hidden="true"
-          className="shrink-0 transition-transform duration-300 group-hover:translate-x-[2px]"
-        />
-        Enquire Now
-      </Link>
       <a
         href={`tel:${siteConfig.floatingContact.phoneTel}`}
         tabIndex={tabIndex}
-        style={motionStyle(1)}
+        style={motionStyle(0)}
         aria-label="Call Jungle Hill Resort"
         className={cn(pill, round)}
       >
@@ -108,7 +93,7 @@ export function WhatsAppButton({
         target="_blank"
         rel="noopener noreferrer"
         tabIndex={tabIndex}
-        style={motionStyle(2)}
+        style={motionStyle(1)}
         aria-label="Chat on WhatsApp"
         className={cn(pill, round)}
       >

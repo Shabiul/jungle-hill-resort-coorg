@@ -36,7 +36,7 @@ export function Hero() {
       {/* Optional side label, wide screens only */}
       <p
         aria-hidden="true"
-        className="label-mono absolute top-1/2 right-6 hidden origin-center -translate-y-1/2 text-pearl/70 [writing-mode:vertical-rl] xl:block"
+        className="hero-side-label label-mono absolute top-1/2 right-6 origin-center -translate-y-1/2 text-pearl/70 [writing-mode:vertical-rl]"
       >
         Est. in the coffee estate · Madikeri
       </p>

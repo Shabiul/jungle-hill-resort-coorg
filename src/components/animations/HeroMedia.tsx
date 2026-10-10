@@ -8,9 +8,8 @@ import { useReducedMotion } from "@/hooks/useReducedMotion";
 import type { ResolvedHeroSlide } from "@/data/hero";
 import { cn } from "@/lib/utils";
 
-const IMAGE_MS = 6500;
-const VIDEO_CAP_MS = 10000;
-const FADE_MS = 1200;
+const FADE_MS = 800;
+const NOT_READY_MS = 600; // a video that is not buffered when its turn comes is skipped quickly
 
 type NetworkInfo = { connection?: { saveData?: boolean; effectiveType?: string } };
 
@@ -26,7 +25,7 @@ function videoAllowed() {
 }
 
 /**
- * Hero background: a slow sequence of photo A, photo B and a video, with 1.2 s crossfades and a
+ * Hero background: a slow sequence of photo A, photo B and a video, with 0.8 s crossfades and a
  * gentle Ken Burns zoom on the photos. Reduced motion shows the first photo only.
  */
 export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
@@ -59,20 +58,40 @@ export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
     [total],
   );
 
-  // Preload the next slide shortly after the first paint, so photo B is never in the critical path.
+  // Photo B is preloaded once photo A has loaded (onLoad below), or when the browser is idle.
+  const preloadNext = useCallback(() => setFurthest((value) => Math.max(value, 1)), []);
   useEffect(() => {
     if (reduced || total < 2) return;
-    const id = window.setTimeout(() => setFurthest((value) => Math.max(value, 1)), 1500);
-    return () => window.clearTimeout(id);
-  }, [reduced, total]);
+    const hasIdle = "requestIdleCallback" in window;
+    const handle = hasIdle
+      ? window.requestIdleCallback(preloadNext, { timeout: 2500 })
+      : window.setTimeout(preloadNext, 2000);
+    return () => {
+      if (hasIdle) window.cancelIdleCallback(handle);
+      else window.clearTimeout(handle);
+    };
+  }, [reduced, total, preloadNext]);
 
-  // Advance: images after IMAGE_MS; the video when it ends (or at the cap).
+  // The video starts buffering when photo B becomes active, so it is ready for its own slide.
+  useEffect(() => {
+    playable.forEach((slide, i) => {
+      if (slide.type === "video" && i === index + 1) {
+        const video = videos.current[i];
+        if (video) video.preload = "auto";
+      }
+    });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [index, furthest, canPlayVideo]);
+
+  // Advance after each slide's duration (a video that is not ready is skipped after 0.6 s).
   useEffect(() => {
     if (reduced || paused || total < 2) return;
     const slide = playable[index];
     if (!slide) return;
-    const isVideo = slide.type === "video";
-    const wait = isVideo ? (videoFailed.current ? 800 : VIDEO_CAP_MS) : IMAGE_MS;
+    const video = videos.current[index];
+    const unready =
+      slide.type === "video" && (videoFailed.current || !video || video.readyState < 2);
+    const wait = unready ? NOT_READY_MS : slide.duration;
     const id = window.setTimeout(() => goTo(index + 1), wait);
     return () => window.clearTimeout(id);
     // playable is derived from stable props and canPlayVideo
@@ -106,6 +125,26 @@ export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [index, previous, paused, reduced, furthest, canPlayVideo]);
 
+  // Tell the preloader the first photo is in, and start preloading the next slide.
+  const onFirstPhotoLoaded = useCallback(() => {
+    (window as Window & { __heroReady?: boolean }).__heroReady = true;
+    window.dispatchEvent(new Event("jhr-hero-ready"));
+    preloadNext();
+  }, [preloadNext]);
+
+  // The first photo may already have finished loading before React attached onLoad.
+  useEffect(() => {
+    const first = document.querySelector<HTMLImageElement>(
+      "section[aria-label=Welcome] img",
+    );
+    if (first && first.complete && first.naturalWidth > 0) {
+      (window as Window & { __heroReady?: boolean }).__heroReady = true;
+      window.dispatchEvent(new Event("jhr-hero-ready"));
+      const id = window.setTimeout(preloadNext, 0);
+      return () => window.clearTimeout(id);
+    }
+  }, [preloadNext]);
+
   const visibleSlides = reduced ? playable.slice(0, 1) : playable;
 
   return (
@@ -135,8 +174,9 @@ export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
                   alt={slide.alt}
                   fill
                   sizes="100vw"
-                  quality={80}
+                  quality={75}
                   priority={i === 0}
+                  onLoad={i === 0 ? onFirstPhotoLoaded : undefined}
                   placeholder={slide.blurDataURL ? "blur" : "empty"}
                   blurDataURL={slide.blurDataURL}
                   className={cn("object-cover", showing && !reduced && "hero-kb")}

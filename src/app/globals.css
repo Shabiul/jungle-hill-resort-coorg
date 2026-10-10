@@ -356,7 +356,7 @@
 }
 .intro-logo {
   clip-path: inset(100% 0 0 0);
-  animation: intro-wipe 1.3s var(--ease-out-expo) 0.15s forwards;
+  animation: intro-wipe 0.8s var(--ease-out-expo) 0.1s forwards;
 }
 
 /* Form fields on dark panels (unlayered so they win over the utility classes on the fields) */
@@ -387,17 +387,17 @@
   color: color-mix(in oklab, var(--color-pearl) 70%, transparent);
 }
 
-/* Hero photo slides: slow Ken Burns zoom, scale 1 to 1.06 */
+/* Hero photo slides: slow Ken Burns zoom, scale 1 to 1.04 */
 @keyframes hero-kb {
   from {
     transform: scale(1);
   }
   to {
-    transform: scale(1.06);
+    transform: scale(1.04);
   }
 }
 .hero-kb {
-  animation: hero-kb 9s ease-out forwards;
+  animation: hero-kb 5s ease-out forwards;
   will-change: transform;
 }
 
@@ -434,4 +434,48 @@
 body:has(#mobile-menu) .floating-contact,
 body:has([aria-label="Photo viewer"]) .floating-contact {
   display: none;
+}
+
+/* Vertical side label in the hero: only where there is room, clear of the floating buttons */
+.hero-side-label {
+  display: none;
+}
+@media (min-width: 1280px) and (min-height: 820px) {
+  .hero-side-label {
+    display: block;
+  }
+}
+
+/* Hero entrance: CSS only, so the text and booking bar never wait for scripts or media */
+@keyframes hero-line-up {
+  from {
+    transform: translateY(110%);
+  }
+  to {
+    transform: translateY(0);
+  }
+}
+@keyframes hero-fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(18px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.hero-line {
+  animation: hero-line-up 0.8s var(--ease-out-expo) var(--d, 0s) both;
+}
+.hero-fade {
+  animation: hero-fade-up 0.8s var(--ease-out-expo) var(--d, 0s) both;
+}
+html[data-hero="hidden"] .hero-line {
+  animation: none;
+  transform: translateY(110%);
+}
+html[data-hero="hidden"] .hero-fade {
+  animation: none;
+  opacity: 0;
 }

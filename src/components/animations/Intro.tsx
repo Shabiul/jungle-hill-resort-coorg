@@ -5,28 +5,37 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { setIntroStatus } from "@/lib/intro-store";
 
 const SESSION_KEY = "jhr-intro-seen";
-const LIFT_AT = 2000; // ms: curtain starts lifting
-const LIFT_FOR = 700; // ms: curtain duration
-const HERO_AT = LIFT_AT + 350; // ms: hero entrance starts as the curtain clears
+const LIFT_AT = 1200; // ms: curtain starts lifting (total 1.8 s with the lift)
+const LIFT_FOR = 600; // ms: curtain duration
+const HERO_AT = LIFT_AT + 300; // ms: hero entrance starts as the curtain clears
+const MIN_SHOW = 900; // ms: shortest the logo stays (its reveal takes 0.8 s), even if the first photo is in
 
 type Phase = "play" | "lift" | "done";
 
+/** Decided once per page load, so it cannot flip while the intro is running. */
+let decision: boolean | null = null;
+
 function readEligible() {
+  if (decision !== null) return decision;
   try {
-    return (
+    const eligible =
       window.location.pathname === "/" &&
       !window.sessionStorage.getItem(SESSION_KEY) &&
-      !window.matchMedia("(prefers-reduced-motion: reduce)").matches
-    );
+      !window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    // On a very slow connection scripts arrive late and the hero has long been on screen, so a
+    // preloader would only get in the way.
+    const scriptsLate = performance.now() > 2500;
+    decision = eligible && !scriptsLate;
   } catch {
-    return false;
+    decision = false;
   }
+  return decision;
 }
 
 const noopSubscribe = () => () => {};
 
 /**
- * Cinematic entry, once per session, home page only. Skipped for reduced motion, repeat visits
+ * Cinematic entry (1.8 s at most), once per session, home page only. Skipped for reduced motion, repeat visits
  * and crawlers (it renders nothing on the server). The hero waits for it via the intro store.
  */
 export function Intro() {
@@ -80,6 +89,14 @@ export function Intro() {
     };
 
     timers.push(window.setTimeout(() => lift(false), LIFT_AT));
+
+    // Dismiss early once the first hero photo has loaded, after a short minimum so it never flickers.
+    const onHeroReady = () => {
+      const remaining = Math.max(0, MIN_SHOW - (performance.now() - start));
+      timers.push(window.setTimeout(() => lift(true), remaining));
+    };
+    window.addEventListener("jhr-hero-ready", onHeroReady);
+    if ((window as Window & { __heroReady?: boolean }).__heroReady) onHeroReady();
     const onSkip = () => lift(true);
     window.addEventListener("jhr-intro-skip", onSkip);
     const onKey = (event: KeyboardEvent) => {
@@ -91,6 +108,7 @@ export function Intro() {
       cancelAnimationFrame(raf);
       timers.forEach((id) => window.clearTimeout(id));
       window.removeEventListener("jhr-intro-skip", onSkip);
+      window.removeEventListener("jhr-hero-ready", onHeroReady);
       window.removeEventListener("keydown", onKey);
       document.body.style.overflow = previousOverflow;
     };

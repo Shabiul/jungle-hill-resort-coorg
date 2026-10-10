@@ -10,6 +10,11 @@ const listeners = new Set<() => void>();
 export function setIntroStatus(next: IntroStatus) {
   if (status === next) return;
   status = next;
+  // While the preloader plays, hold back the hero entrance; releasing it replays the CSS animation.
+  if (typeof document !== "undefined") {
+    if (next === "playing") document.documentElement.dataset.hero = "hidden";
+    else delete document.documentElement.dataset.hero;
+  }
   listeners.forEach((listener) => listener());
 }
 

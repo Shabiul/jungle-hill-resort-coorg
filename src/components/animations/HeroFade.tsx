@@ -1,10 +1,4 @@
-"use client";
-
-import type { ReactNode } from "react";
-import { motion } from "motion/react";
-import { easeOut } from "@/lib/animations";
-import { useIntroReady } from "@/lib/intro-store";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
+import type { CSSProperties, ReactNode } from "react";
 
 interface HeroFadeProps {
   children: ReactNode;
@@ -12,20 +6,18 @@ interface HeroFadeProps {
   className?: string;
 }
 
-/** Fade-up used for hero content; starts once the intro curtain has cleared. */
+/**
+ * Fade-up for hero content. Pure CSS (see .hero-fade), so it is in the server HTML and animates
+ * on first paint without waiting for scripts. While the preloader plays, <html data-hero="hidden">
+ * holds it back and removing that attribute replays the entrance as the curtain clears.
+ */
 export function HeroFade({ children, delay = 0, className }: HeroFadeProps) {
-  const ready = useIntroReady();
-  const reduced = useReducedMotion();
-
   return (
-    <motion.div
-      data-reveal
-      className={className}
-      initial={reduced ? false : { opacity: 0, y: 18 }}
-      animate={ready || reduced ? { opacity: 1, y: 0 } : { opacity: 0, y: 18 }}
-      transition={{ duration: 0.8, ease: easeOut, delay }}
+    <div
+      className={`hero-fade ${className ?? ""}`}
+      style={{ "--d": `${delay}s` } as CSSProperties}
     >
       {children}
-    </motion.div>
+    </div>
   );
 }

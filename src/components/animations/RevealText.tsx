@@ -1,8 +1,8 @@
 "use client";
 
+import type { CSSProperties } from "react";
 import { motion } from "motion/react";
 import { easeOut } from "@/lib/animations";
-import { useIntroReady } from "@/lib/intro-store";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { cn } from "@/lib/utils";
 
@@ -35,11 +35,46 @@ export function RevealText({
   onDark = false,
 }: RevealTextProps) {
   const reduced = useReducedMotion();
-  const introReady = useIntroReady();
 
-  const trigger = immediate
-    ? { animate: introReady ? { y: "0%" } : { y: "110%" } }
-    : { whileInView: { y: "0%" }, viewport: { once: true, margin: "-10% 0px" } };
+  const trigger = {
+    whileInView: { y: "0%" },
+    viewport: { once: true, margin: "-10% 0px" },
+  };
+
+  const content = (line: HeadingLine) => (
+    <>
+      {line.text}
+      {line.emphasis && (
+        <em
+          className={cn(
+            "font-light italic",
+            onDark ? "text-champagne-soft" : "text-steel",
+          )}
+        >
+          {line.emphasis}
+        </em>
+      )}
+      {line.after}
+    </>
+  );
+
+  // Above-the-fold headings are pure CSS: visible in the server HTML, animated on first paint.
+  if (immediate) {
+    return (
+      <Tag className={className}>
+        {lines.map((line, index) => (
+          <span key={index} className="-mb-[0.14em] block overflow-hidden pb-[0.14em]">
+            <span
+              className="hero-line block"
+              style={{ "--d": `${delay + index * 0.09}s` } as CSSProperties}
+            >
+              {content(line)}
+            </span>
+          </span>
+        ))}
+      </Tag>
+    );
+  }
 
   return (
     <Tag className={className}>
