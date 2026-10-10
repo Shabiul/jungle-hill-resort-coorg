@@ -14,7 +14,7 @@ export function Textarea({ label, error, className, id, ...props }: TextareaProp
   return (
     <div>
       {label && (
-        <label htmlFor={fieldId} className="label-mono block text-ink">
+        <label htmlFor={fieldId} className="label-mono field-label block text-ink">
           {label}
         </label>
       )}
@@ -23,14 +23,14 @@ export function Textarea({ label, error, className, id, ...props }: TextareaProp
         rows={4}
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? `${fieldId}-error` : undefined}
-        className={cn(fieldBase, "resize-y", className)}
+        className={cn(fieldBase, "field-control resize-y", className)}
         {...props}
       />
       {error && (
         <p
           id={`${fieldId}-error`}
           role="alert"
-          className="mt-1 text-sm font-medium text-ink"
+          className="field-error mt-1 text-sm font-medium text-ink"
         >
           {error}
         </p>

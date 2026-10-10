@@ -1,10 +1,17 @@
 import { NextResponse } from "next/server";
+import { enquirySchemaV2 } from "@/lib/enquiry-schema";
 import { bookingSchema, enquirySchema } from "@/lib/validations";
 
 export async function POST(request: Request) {
   const body: unknown = await request.json().catch(() => null);
-  const booking = bookingSchema.safeParse(body);
-  const parsed = booking.success ? booking : enquirySchema.safeParse(body);
+  const wizard = enquirySchemaV2.safeParse(body);
+  const parsed = wizard.success
+    ? wizard
+    : bookingSchema.safeParse(body).success
+      ? bookingSchema.safeParse(body)
+      : enquirySchema.safeParse(body).success
+        ? enquirySchema.safeParse(body)
+        : wizard;
 
   if (!parsed.success) {
     return NextResponse.json(
@@ -13,6 +20,7 @@ export async function POST(request: Request) {
     );
   }
 
-  // TODO: send each enquiry to reservations@junglehillresort.co.in (and/or WhatsApp). Deliver the enquiry (email / WhatsApp Business API / CRM) and add spam protection.
+  // TODO: send each enquiry to reservations@junglehillresort.co.in (and/or WhatsApp). Deliver it via an
+  // email provider (API key in .env.local) and add spam protection.
   return NextResponse.json({ ok: true });
 }

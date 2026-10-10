@@ -14,7 +14,7 @@ export function Select({ label, error, className, id, children, ...props }: Sele
   return (
     <div>
       {label && (
-        <label htmlFor={fieldId} className="label-mono block text-ink">
+        <label htmlFor={fieldId} className="label-mono field-label block text-ink">
           {label}
         </label>
       )}
@@ -22,7 +22,7 @@ export function Select({ label, error, className, id, children, ...props }: Sele
         id={fieldId}
         aria-invalid={error ? true : undefined}
         aria-describedby={error ? `${fieldId}-error` : undefined}
-        className={cn(fieldBase, className)}
+        className={cn(fieldBase, "field-control", className)}
         {...props}
       >
         {children}
@@ -31,7 +31,7 @@ export function Select({ label, error, className, id, children, ...props }: Sele
         <p
           id={`${fieldId}-error`}
           role="alert"
-          className="mt-1 text-sm font-medium text-ink"
+          className="field-error mt-1 text-sm font-medium text-ink"
         >
           {error}
         </p>

@@ -412,3 +412,28 @@
     opacity: 1;
   }
 }
+
+/* Form fields on dark panels (unlayered so they win over the utility classes on the fields) */
+.dark-surface .field-label {
+  color: var(--color-ivory);
+}
+.dark-surface .field-control {
+  color: var(--color-ivory);
+  border-color: color-mix(in oklab, var(--color-ivory) 45%, transparent);
+  color-scheme: dark;
+}
+.dark-surface .field-control:focus {
+  border-color: var(--color-brass-soft);
+}
+.dark-surface .field-control[aria-invalid="true"] {
+  border-color: var(--color-brass-soft);
+}
+.dark-surface .field-control option {
+  color: var(--color-ink);
+}
+.dark-surface .field-error {
+  color: var(--color-brass-soft);
+}
+.dark-surface .field-hint {
+  color: color-mix(in oklab, var(--color-ivory) 70%, transparent);
+}

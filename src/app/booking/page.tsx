@@ -1,5 +1,5 @@
 import { Suspense } from "react";
-import { BookingForm } from "@/components/forms/BookingForm";
+import { EnquiryWizard } from "@/components/forms/EnquiryWizard";
 import { PageHero } from "@/components/shared/PageHero";
 import { siteConfig } from "@/config/site.config";
 import { mailLink, telLink } from "@/lib/contact";
@@ -20,32 +20,32 @@ export default function BookingPage() {
         lines={[{ text: "Tell us" }, { text: "your ", emphasis: "dates." }]}
         description={
           <p>
-            There is no booking engine yet. Send your dates and who is travelling, and we
-            reply with availability and rates.
+            Three short steps. We reply with availability and rates; nothing is booked
+            until we confirm.
           </p>
         }
       />
-      <section aria-label="Enquiry form" className="pb-12">
+      <section aria-label="Enquiry form" className="pb-[var(--space-section)]">
         <div className="page-container grid gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-7">
+          <div className="lg:col-span-8">
             <Suspense fallback={<p className="text-stone">Loading the form…</p>}>
-              <BookingForm />
+              <EnquiryWizard />
             </Suspense>
           </div>
-          <aside className="lg:col-span-4 lg:col-start-9">
-            <div className="brutal-card p-6">
+          <aside className="lg:col-span-4">
+            <div className="brutal-card p-5">
               <p className="label-mono text-brass-deep">Prefer to talk?</p>
               <a
                 href={telLink}
-                className="link-underline mt-3 block font-display text-3xl"
+                className="link-underline mt-2 block font-display text-h4"
               >
                 {siteConfig.contact.phoneDisplay}
               </a>
-              <p className="mt-3 text-sm text-stone">
+              <p className="mt-2 text-small text-stone">
                 Also on WhatsApp. Check-in 12 PM, check-out 11 AM.
               </p>
               <p className="mt-3 text-small">
-                <a href={mailLink} className="link-underline">
+                <a href={mailLink} className="link-underline break-all">
                   {siteConfig.contact.email}
                 </a>
               </p>

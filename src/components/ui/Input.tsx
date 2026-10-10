@@ -20,7 +20,7 @@ export function Input({ label, error, hint, className, id, ...props }: InputProp
   return (
     <div>
       {label && (
-        <label htmlFor={inputId} className="label-mono block text-ink">
+        <label htmlFor={inputId} className="label-mono field-label block text-ink">
           {label}
         </label>
       )}
@@ -28,7 +28,7 @@ export function Input({ label, error, hint, className, id, ...props }: InputProp
         id={inputId}
         aria-invalid={error ? true : undefined}
         aria-describedby={describedBy || undefined}
-        className={cn(fieldBase, className)}
+        className={cn(fieldBase, "field-control", className)}
         {...props}
       />
       {hint && !error && (
@@ -40,7 +40,7 @@ export function Input({ label, error, hint, className, id, ...props }: InputProp
         <p
           id={`${inputId}-error`}
           role="alert"
-          className="mt-1 text-sm font-medium text-ink"
+          className="field-error mt-1 text-sm font-medium text-ink"
         >
           {error}
         </p>
