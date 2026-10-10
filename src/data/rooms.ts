@@ -9,6 +9,7 @@ export const rooms: Room[] = [
     slug: "deluxe-ac-rooms",
     number: "01",
     name: "The Cloudline Suite",
+    highlights: ["King bed", "Private balcony", "Air conditioned"],
     category: "Deluxe AC Room",
     categoryShort: "Deluxe AC",
     summary: "A 250 sq ft AC room with a king bed and a private balcony onto the estate.",
@@ -65,6 +66,7 @@ export const rooms: Room[] = [
     slug: "family-ac-room",
     number: "02",
     name: "The Estate House",
+    highlights: ["Up to 4 guests", "Two washrooms", "Ground and first floor"],
     category: "Family AC Room",
     categoryShort: "Family AC",
     summary:
@@ -121,6 +123,7 @@ export const rooms: Room[] = [
     slug: "standard-non-ac-cottage",
     number: "03",
     name: "The Pepper Vine Cottage",
+    highlights: ["Queen bed", "Separate balcony", "2 adults + infant"],
     category: "Standard Non-AC Cottage",
     categoryShort: "Standard Non-AC Cottage",
     summary:
@@ -182,6 +185,7 @@ export const rooms: Room[] = [
     slug: "standard-non-ac-room",
     number: "04",
     name: "The Coffee Leaf Nook",
+    highlights: ["Queen bed", "Rooms A2 A3 A5 A6", "2 adults + infant"],
     category: "Standard Non-AC Room",
     categoryShort: "Standard Non-AC",
     summary:

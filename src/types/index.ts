@@ -22,6 +22,8 @@ export interface Room {
   category: string;
   /** Short category for forms, e.g. "Deluxe AC". */
   categoryShort: string;
+  /** Three short facts for the stay cards. */
+  highlights: [string, string, string];
   /** One-line summary for lists. */
   summary: string;
   description: string;
