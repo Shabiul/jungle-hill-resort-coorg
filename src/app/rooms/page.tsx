@@ -1,5 +1,5 @@
 import { CTA } from "@/components/sections/CTA";
-import { StaysList } from "@/components/sections/StaysList";
+import { StayCards } from "@/components/sections/StayCards";
 import { PageHero } from "@/components/shared/PageHero";
 import { checkTimes } from "@/data/policies";
 import { rooms } from "@/data/rooms";
@@ -35,7 +35,7 @@ export default function RoomsPage() {
 
       <section aria-label="All stays" className="pb-12">
         <div className="page-container">
-          <StaysList rooms={rooms} />
+          <StayCards rooms={rooms} />
         </div>
       </section>
 

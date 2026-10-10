@@ -20,7 +20,7 @@ export function CTA() {
       <VideoBackground poster={poster} sources={estateVideoSources} />
       <div aria-hidden="true" className="absolute inset-0 bg-ink/70" />
       <div className="page-container relative">
-        <p className="label-mono text-brass-soft">06 — Enquire</p>
+        <p className="label-mono text-brass-soft">05 — Enquire</p>
         <RevealText
           onDark
           lines={[{ text: "Ask us about" }, { text: "your ", emphasis: "dates." }]}

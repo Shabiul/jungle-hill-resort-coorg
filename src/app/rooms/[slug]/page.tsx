@@ -1,10 +1,11 @@
+import { Suspense } from "react";
 import Link from "next/link";
 import { notFound } from "next/navigation";
 import { ArrowLeft, ArrowRight, MessageCircle } from "lucide-react";
 import { RevealText } from "@/components/animations/RevealText";
-import { CTA } from "@/components/sections/CTA";
-import { Photo } from "@/components/shared/Photo";
-import { PhotoCarousel } from "@/components/shared/PhotoCarousel";
+import { EnquiryWizard } from "@/components/forms/EnquiryWizard";
+import { BentoGallery } from "@/components/shared/BentoGallery";
+import { GlassPanel } from "@/components/ui/GlassPanel";
 import { checkTimes } from "@/data/policies";
 import { getRoomBySlug, rooms } from "@/data/rooms";
 import { whatsappLink } from "@/lib/contact";
@@ -22,7 +23,7 @@ export async function generateMetadata({ params }: RoomPageProps) {
   const { slug } = await params;
   const room = getRoomBySlug(slug);
   return buildMetadata({
-    title: room?.name ?? "Room",
+    title: room ? `${room.name}, ${room.category}` : "Stay",
     description: room?.summary,
     path: `/rooms/${slug}`,
     image: room?.images[0]?.src,
@@ -57,80 +58,64 @@ export default async function RoomPage({ params }: RoomPageProps) {
             <Link href="/rooms" className="link-underline">
               Stays
             </Link>{" "}
-            / {room.number}
+            — {room.number}
           </p>
           <RevealText
             as="h1"
             immediate
             lines={[{ text: room.name }]}
-            className="mt-5 text-h1"
+            className="mt-4 text-h1"
           />
-          <p className="label-mono mt-4 text-stone">
+          <p className="label-mono mt-3 text-stone">
             {room.category} · {room.sizeSqFt} sq ft
           </p>
-        </div>
 
-        <div className="page-container mt-6">
-          <div className="dark-surface relative aspect-[4/3] overflow-hidden bg-ink sm:aspect-[16/8]">
-            <Photo
-              image={room.images[0]}
-              fill
-              priority
-              sizes="(min-width: 1344px) 1280px, 100vw"
+          <div className="mt-6">
+            <BentoGallery
+              images={room.images}
+              overlay={
+                <GlassPanel className="dark-surface pointer-events-auto grid max-w-md gap-x-6 gap-y-2 bg-ink/55 p-4 sm:grid-cols-2">
+                  {facts.map((fact) => (
+                    <div key={fact.label}>
+                      <p className="label-mono text-[0.6rem] text-ivory/75">
+                        {fact.label}
+                      </p>
+                      <p className="font-display text-lg leading-tight">{fact.value}</p>
+                    </div>
+                  ))}
+                </GlassPanel>
+              }
             />
-            <dl className="glass absolute right-3 bottom-3 left-3 grid gap-x-8 gap-y-3 p-4 sm:right-auto sm:bottom-6 sm:left-6 sm:grid-cols-2 sm:p-6">
-              {facts.map((fact) => (
-                <div key={fact.label}>
-                  <dt className="label-mono text-[0.65rem] text-ivory/80">
-                    {fact.label}
-                  </dt>
-                  <dd className="font-display text-lg">{fact.value}</dd>
-                </div>
-              ))}
-            </dl>
           </div>
         </div>
       </section>
 
       <section aria-label="About this stay" className="section-space">
-        <div className="page-container grid gap-8 lg:grid-cols-12">
-          <div className="lg:col-span-6">
+        <div className="page-container grid gap-8 lg:grid-cols-12 lg:gap-10">
+          <div className="lg:col-span-7">
             <p className="label-mono text-emerald">About this stay</p>
-            <p className="mt-4 font-display text-h3">{room.summary}</p>
-            <p className="mt-4 max-w-xl text-stone">{room.description}</p>
+            <p className="mt-3 font-display text-h3">{room.summary}</p>
+            <p className="mt-4 max-w-[58ch] text-stone">{room.description}</p>
             {room.guestNotes.map((note) => (
-              <p key={note} className="mt-4 max-w-xl border-l-2 border-brass pl-4">
+              <p key={note} className="mt-3 max-w-[58ch] border-l-2 border-brass pl-4">
                 {note}
               </p>
             ))}
-            <div className="mt-6 flex flex-wrap gap-3">
-              <Link href={`/booking?room=${room.slug}`} className="btn btn-primary">
-                Enquire about this room
-              </Link>
-              <a
-                href={whatsappLink(enquiry)}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-outline gap-2"
-              >
-                <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" /> WhatsApp
-              </a>
-            </div>
-          </div>
 
-          <div className="lg:col-span-5 lg:col-start-8">
-            <h2 className="label-mono !font-mono text-xs text-emerald">In the room</h2>
-            <ul className="mt-4 border-t border-ink">
+            <h2 className="label-mono mt-8 text-emerald">In the stay</h2>
+            <ul className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
               {room.amenities.map((amenity) => (
-                <li key={amenity} className="border-b border-ink/20 py-3">
+                <li
+                  key={amenity}
+                  className="rounded-[2px] border border-ink/20 px-3 py-3 text-small"
+                >
                   {amenity}
                 </li>
               ))}
             </ul>
-            <h2 className="label-mono mt-6 !font-mono text-xs text-emerald">
-              House policies
-            </h2>
-            <ul className="mt-4 space-y-2 text-sm text-stone">
+
+            <h2 className="label-mono mt-8 text-emerald">House policies</h2>
+            <ul className="mt-3 space-y-2 text-small text-stone">
               <li>
                 Check-in {checkTimes.checkIn} · Check-out {checkTimes.checkOut}.{" "}
                 {checkTimes.note}
@@ -139,46 +124,73 @@ export default async function RoomPage({ params }: RoomPageProps) {
               <li>No loud music or parties. Outside food is not permitted.</li>
             </ul>
           </div>
+
+          <aside className="lg:col-span-4 lg:col-start-9">
+            <div className="dark-surface rounded-[2px] border border-brass/30 bg-forest p-5 text-ivory lg:sticky lg:top-24">
+              <p className="label-mono text-brass-soft">{room.rateNote}</p>
+              <p className="mt-2 font-display text-h4">{room.name}</p>
+              <div className="mt-4 flex flex-col gap-3">
+                <a href="#enquire" className="btn btn-primary">
+                  Enquire about this stay
+                </a>
+                <a
+                  href={whatsappLink(enquiry)}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="btn btn-outline gap-2"
+                >
+                  <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" />{" "}
+                  WhatsApp
+                </a>
+              </div>
+            </div>
+          </aside>
         </div>
       </section>
 
-      <section aria-label="Photographs" className="section-space bg-linen">
+      <section
+        id="enquire"
+        aria-label={`Enquire about ${room.name}`}
+        className="section-space scroll-mt-20 bg-linen"
+      >
         <div className="page-container">
-          <p className="label-mono text-emerald">Photographs</p>
-          <h2 className="mt-4 mb-10 text-h3">Every photograph</h2>
-          <PhotoCarousel images={room.images} />
+          <p className="label-mono text-emerald">Enquire</p>
+          <h2 className="mt-3 mb-6 text-h2">
+            Ask about <em className="font-light text-brass-deep">{room.name}.</em>
+          </h2>
+          <Suspense fallback={<p className="text-stone">Loading the form…</p>}>
+            <EnquiryWizard defaultStay={room.slug} />
+          </Suspense>
         </div>
       </section>
 
       <nav
         aria-label="Other stays"
-        className="page-container section-space grid gap-6 sm:grid-cols-2"
+        className="page-container grid gap-6 py-[var(--space-section)] sm:grid-cols-2"
       >
         <Link
           href={`/rooms/${previous.slug}`}
-          className="group border-t border-ink/25 pt-6"
+          className="group border-t border-ink/25 pt-5"
         >
           <span className="label-mono flex items-center gap-2 text-stone">
             <ArrowLeft size={14} strokeWidth={1.5} aria-hidden="true" /> Previous
           </span>
-          <span className="mt-2 block font-display text-3xl group-hover:underline">
+          <span className="mt-2 block font-display text-h4 group-hover:underline">
             {previous.name}
           </span>
         </Link>
         <Link
           href={`/rooms/${next.slug}`}
-          className="group border-t border-ink/25 pt-6 sm:text-right"
+          className="group border-t border-ink/25 pt-5 sm:text-right"
         >
           <span className="label-mono flex items-center gap-2 text-stone sm:justify-end">
             Next <ArrowRight size={14} strokeWidth={1.5} aria-hidden="true" />
           </span>
-          <span className="mt-2 block font-display text-3xl group-hover:underline">
+          <span className="mt-2 block font-display text-h4 group-hover:underline">
             {next.name}
           </span>
         </Link>
       </nav>
-
-      <CTA />
     </>
   );
 }

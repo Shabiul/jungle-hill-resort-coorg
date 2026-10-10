@@ -1,5 +1,6 @@
 import { Mail, MapPin, Phone } from "lucide-react";
 import { CTA } from "@/components/sections/CTA";
+import { ResortPlanSection } from "@/components/sections/ResortPlanSection";
 import { PageHero } from "@/components/shared/PageHero";
 import { siteConfig } from "@/config/site.config";
 import { faqs } from "@/data/faqs";
@@ -36,6 +37,8 @@ export default function PlanYourStayPage() {
           </p>
         }
       />
+
+      <ResortPlanSection id="plan" heading={false} />
 
       <section aria-label="Location and directions" className="pb-12">
         <div className="page-container grid gap-8 lg:grid-cols-12">
