@@ -29,7 +29,7 @@ export function PhotoCarousel({ images }: PhotoCarouselProps) {
         if (event.key === "ArrowLeft") go(-1);
       }}
     >
-      <div className="relative aspect-[4/3] overflow-hidden bg-ink sm:aspect-[16/9]">
+      <div className="relative aspect-[4/3] overflow-hidden bg-night sm:aspect-[16/9]">
         <button
           type="button"
           onClick={() => setOpen(index)}
@@ -45,7 +45,7 @@ export function PhotoCarousel({ images }: PhotoCarouselProps) {
           />
         </button>
         <div className="pointer-events-none absolute inset-x-0 bottom-0 flex items-center justify-between gap-3 p-3 sm:p-4">
-          <span className="label-mono bg-ivory px-3 py-2 text-[0.7rem] text-ink">
+          <span className="label-mono bg-pearl px-3 py-2 text-[0.7rem] text-night">
             {index + 1} / {total}
           </span>
           <span className="pointer-events-auto flex gap-2">
@@ -77,7 +77,7 @@ export function PhotoCarousel({ images }: PhotoCarouselProps) {
         </div>
       </div>
 
-      <p className="mt-3 text-sm text-stone" aria-live="polite">
+      <p className="mt-3 text-sm text-steel" aria-live="polite">
         {current.alt}
       </p>
 
@@ -92,7 +92,7 @@ export function PhotoCarousel({ images }: PhotoCarouselProps) {
               className={cn(
                 "relative block aspect-square w-full overflow-hidden border-2 transition-opacity",
                 thumbIndex === index
-                  ? "border-brass-deep"
+                  ? "border-steel"
                   : "border-transparent opacity-70 hover:opacity-100",
               )}
             >

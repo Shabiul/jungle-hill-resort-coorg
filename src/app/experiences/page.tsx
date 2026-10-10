@@ -37,17 +37,17 @@ export default function ExperiencesPage() {
             <li
               key={item.slug}
               id={item.slug}
-              className="grid scroll-mt-28 gap-8 border-t border-ink/25 py-12 lg:grid-cols-12"
+              className="grid scroll-mt-28 gap-8 border-t border-night/25 py-12 lg:grid-cols-12"
             >
               <div className="lg:col-span-5">
-                <p className="label-mono text-brass-deep">
+                <p className="label-mono text-steel">
                   {String(index + 1).padStart(2, "0")} · {item.label}
                 </p>
                 <h2 className="mt-3 text-h2">{item.title}</h2>
-                <p className="mt-5 max-w-md text-stone">{item.summary}</p>
-                <ul className="mt-6 border-t border-ink/20">
+                <p className="mt-5 max-w-md text-steel">{item.summary}</p>
+                <ul className="mt-6 border-t border-night/20">
                   {item.facts.map((fact) => (
-                    <li key={fact} className="label-mono border-b border-ink/20 py-3">
+                    <li key={fact} className="label-mono border-b border-night/20 py-3">
                       {fact}
                     </li>
                   ))}
@@ -67,7 +67,7 @@ export default function ExperiencesPage() {
                     </div>
                   </RevealImage>
                 ) : (
-                  <div className="label-mono flex aspect-[4/3] items-end bg-linen p-6 text-stone">
+                  <div className="label-mono flex aspect-[4/3] items-end bg-vapour p-6 text-steel">
                     {/* TODO: add a photo to public/images/experiences and reference it in data/experiences.ts */}
                     Photograph to come
                   </div>

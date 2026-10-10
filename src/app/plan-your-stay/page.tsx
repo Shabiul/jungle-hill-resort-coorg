@@ -43,7 +43,7 @@ export default function PlanYourStayPage() {
       <section aria-label="Location and directions" className="pb-12">
         <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <h2 className="label-mono !font-mono text-xs text-emerald">Address</h2>
+            <h2 className="label-mono !font-mono text-xs text-steel">Address</h2>
             <address className="mt-3 font-display text-3xl not-italic">
               {siteConfig.contact.addressLines.map((line) => (
                 <span key={line} className="block">
@@ -70,16 +70,16 @@ export default function PlanYourStayPage() {
               </a>
             </div>
 
-            <h2 className="label-mono mt-8 !font-mono text-xs text-emerald">
+            <h2 className="label-mono mt-8 !font-mono text-xs text-steel">
               How to reach
             </h2>
-            <ol className="mt-4 border-t border-ink">
+            <ol className="mt-4 border-t border-night">
               {steps.map((step, index) => (
                 <li
                   key={step}
-                  className="grid grid-cols-[2.5rem_1fr] gap-2 border-b border-ink/20 py-4"
+                  className="grid grid-cols-[2.5rem_1fr] gap-2 border-b border-night/20 py-4"
                 >
-                  <span className="label-mono pt-1 text-brass-deep">
+                  <span className="label-mono pt-1 text-steel">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <span>{step}</span>
@@ -90,7 +90,7 @@ export default function PlanYourStayPage() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="aspect-[4/3] w-full overflow-hidden border border-ink/20 bg-linen">
+            <div className="aspect-[4/3] w-full overflow-hidden border border-night/20 bg-vapour">
               <iframe
                 title="Map showing Jungle Hill Resort"
                 src={embed}
@@ -99,7 +99,7 @@ export default function PlanYourStayPage() {
                 className="h-full w-full border-0"
               />
             </div>
-            <p className="mt-3 text-sm text-stone">
+            <p className="mt-3 text-sm text-steel">
               The map searches for the address. If the pin looks off, use the Google Maps
               button or call us.
             </p>
@@ -107,17 +107,17 @@ export default function PlanYourStayPage() {
         </div>
       </section>
 
-      <section aria-label="Check-in and check-out" className="section-space bg-linen">
+      <section aria-label="Check-in and check-out" className="section-space bg-vapour">
         <div className="page-container grid gap-6 sm:grid-cols-3">
           <div>
-            <p className="label-mono text-emerald">Check-in</p>
+            <p className="label-mono text-steel">Check-in</p>
             <p className="mt-2 font-display text-5xl">{checkTimes.checkIn}</p>
           </div>
           <div>
-            <p className="label-mono text-emerald">Check-out</p>
+            <p className="label-mono text-steel">Check-out</p>
             <p className="mt-2 font-display text-5xl">{checkTimes.checkOut}</p>
           </div>
-          <p className="text-stone">
+          <p className="text-steel">
             {checkTimes.note} ID proof is mandatory, and visitors are not allowed.
           </p>
         </div>
@@ -126,27 +126,27 @@ export default function PlanYourStayPage() {
       <section aria-label="Frequently asked questions" className="section-space">
         <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <p className="label-mono text-emerald">Questions</p>
+            <p className="label-mono text-steel">Questions</p>
             <h2 className="mt-4 text-h3">
-              Things people <em className="font-light text-brass-deep">ask.</em>
+              Things people <em className="font-light text-steel">ask.</em>
             </h2>
           </div>
           <div className="lg:col-span-8">
             {faqs.map((faq) => (
               <details
                 key={faq.id}
-                className="group border-t border-ink/25 py-5 last:border-b"
+                className="group border-t border-night/25 py-5 last:border-b"
               >
                 <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-6 font-display text-2xl">
                   {faq.question}
                   <span
                     aria-hidden="true"
-                    className="label-mono text-brass-deep transition-transform group-open:rotate-45"
+                    className="label-mono text-steel transition-transform group-open:rotate-45"
                   >
                     +
                   </span>
                 </summary>
-                <p className="mt-3 max-w-2xl text-stone">{faq.answer}</p>
+                <p className="mt-3 max-w-2xl text-steel">{faq.answer}</p>
               </details>
             ))}
           </div>

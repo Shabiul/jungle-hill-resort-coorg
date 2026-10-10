@@ -128,7 +128,7 @@ export function BookingForm() {
         />
       </div>
       <fieldset>
-        <legend className="label-mono text-ink">Guests</legend>
+        <legend className="label-mono text-night">Guests</legend>
         <div className="mt-1 grid gap-8 sm:grid-cols-3">
           <Input
             label="Adults"
@@ -155,7 +155,7 @@ export function BookingForm() {
             {...register("infants", { valueAsNumber: true })}
           />
         </div>
-        <p className="mt-3 text-sm text-stone">
+        <p className="mt-3 text-sm text-steel">
           Standard rooms and cottages take two adults and an infant. In Deluxe and Family
           rooms an extra mattress can be arranged on request for one additional guest.
         </p>
@@ -190,13 +190,13 @@ export function BookingForm() {
 
       <div aria-live="polite">
         {status === "sent" && (
-          <p className="border-l-2 border-brass pl-4">
+          <p className="border-l-2 border-champagne pl-4">
             Thank you. Your enquiry is in. We will reply with availability and rates. For
             a faster answer, send the same details on WhatsApp.
           </p>
         )}
         {status === "error" && (
-          <p role="alert" className="border-l-2 border-ink pl-4">
+          <p role="alert" className="border-l-2 border-night pl-4">
             That did not go through. Please try again, or use WhatsApp or call us.
           </p>
         )}

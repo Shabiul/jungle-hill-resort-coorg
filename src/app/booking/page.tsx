@@ -28,20 +28,20 @@ export default function BookingPage() {
       <section aria-label="Enquiry form" className="pb-[var(--space-section)]">
         <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-8">
-            <Suspense fallback={<p className="text-stone">Loading the form…</p>}>
+            <Suspense fallback={<p className="text-steel">Loading the form…</p>}>
               <EnquiryWizard />
             </Suspense>
           </div>
           <aside className="lg:col-span-4">
             <div className="brutal-card p-5">
-              <p className="label-mono text-brass-deep">Prefer to talk?</p>
+              <p className="label-mono text-steel">Prefer to talk?</p>
               <a
                 href={telLink}
                 className="link-underline mt-2 block font-display text-h4"
               >
                 {siteConfig.contact.phoneDisplay}
               </a>
-              <p className="mt-2 text-small text-stone">
+              <p className="mt-2 text-small text-steel">
                 Also on WhatsApp. Check-in 12 PM, check-out 11 AM.
               </p>
               <p className="mt-3 text-small">

@@ -54,7 +54,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
     <>
       <section aria-label={room.name} className="pt-28 sm:pt-32">
         <div className="page-container">
-          <p className="label-mono text-emerald">
+          <p className="label-mono text-steel">
             <Link href="/rooms" className="link-underline">
               Stays
             </Link>{" "}
@@ -66,7 +66,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
             lines={[{ text: room.name }]}
             className="mt-4 text-h1"
           />
-          <p className="label-mono mt-3 text-stone">
+          <p className="label-mono mt-3 text-steel">
             {room.category} · {room.sizeSqFt} sq ft
           </p>
 
@@ -74,10 +74,10 @@ export default async function RoomPage({ params }: RoomPageProps) {
             <BentoGallery
               images={room.images}
               overlay={
-                <GlassPanel className="dark-surface pointer-events-auto grid max-w-md gap-x-6 gap-y-2 bg-ink/55 p-4 sm:grid-cols-2">
+                <GlassPanel className="dark-surface pointer-events-auto grid max-w-md gap-x-6 gap-y-2 bg-night/55 p-4 sm:grid-cols-2">
                   {facts.map((fact) => (
                     <div key={fact.label}>
-                      <p className="label-mono text-[0.6rem] text-ivory/75">
+                      <p className="label-mono text-[0.6rem] text-pearl/75">
                         {fact.label}
                       </p>
                       <p className="font-display text-lg leading-tight">{fact.value}</p>
@@ -93,29 +93,32 @@ export default async function RoomPage({ params }: RoomPageProps) {
       <section aria-label="About this stay" className="section-space">
         <div className="page-container grid gap-8 lg:grid-cols-12 lg:gap-10">
           <div className="lg:col-span-7">
-            <p className="label-mono text-emerald">About this stay</p>
+            <p className="label-mono text-steel">About this stay</p>
             <p className="mt-3 font-display text-h3">{room.summary}</p>
-            <p className="mt-4 max-w-[58ch] text-stone">{room.description}</p>
+            <p className="mt-4 max-w-[58ch] text-steel">{room.description}</p>
             {room.guestNotes.map((note) => (
-              <p key={note} className="mt-3 max-w-[58ch] border-l-2 border-brass pl-4">
+              <p
+                key={note}
+                className="mt-3 max-w-[58ch] border-l-2 border-champagne pl-4"
+              >
                 {note}
               </p>
             ))}
 
-            <h2 className="label-mono mt-8 text-emerald">In the stay</h2>
+            <h2 className="label-mono mt-8 text-steel">In the stay</h2>
             <ul className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
               {room.amenities.map((amenity) => (
                 <li
                   key={amenity}
-                  className="rounded-[2px] border border-ink/20 px-3 py-3 text-small"
+                  className="rounded-[2px] border border-night/20 px-3 py-3 text-small"
                 >
                   {amenity}
                 </li>
               ))}
             </ul>
 
-            <h2 className="label-mono mt-8 text-emerald">House policies</h2>
-            <ul className="mt-3 space-y-2 text-small text-stone">
+            <h2 className="label-mono mt-8 text-steel">House policies</h2>
+            <ul className="mt-3 space-y-2 text-small text-steel">
               <li>
                 Check-in {checkTimes.checkIn} · Check-out {checkTimes.checkOut}.{" "}
                 {checkTimes.note}
@@ -126,8 +129,8 @@ export default async function RoomPage({ params }: RoomPageProps) {
           </div>
 
           <aside className="lg:col-span-4 lg:col-start-9">
-            <div className="dark-surface rounded-[2px] border border-brass/30 bg-forest p-5 text-ivory lg:sticky lg:top-24">
-              <p className="label-mono text-brass-soft">{room.rateNote}</p>
+            <div className="dark-surface rounded-[2px] border border-champagne/30 bg-slate p-5 text-pearl lg:sticky lg:top-24">
+              <p className="label-mono text-champagne-soft">{room.rateNote}</p>
               <p className="mt-2 font-display text-h4">{room.name}</p>
               <div className="mt-4 flex flex-col gap-3">
                 <a href="#enquire" className="btn btn-primary">
@@ -151,14 +154,14 @@ export default async function RoomPage({ params }: RoomPageProps) {
       <section
         id="enquire"
         aria-label={`Enquire about ${room.name}`}
-        className="section-space scroll-mt-20 bg-linen"
+        className="section-space scroll-mt-20 bg-vapour"
       >
         <div className="page-container">
-          <p className="label-mono text-emerald">Enquire</p>
+          <p className="label-mono text-steel">Enquire</p>
           <h2 className="mt-3 mb-6 text-h2">
-            Ask about <em className="font-light text-brass-deep">{room.name}.</em>
+            Ask about <em className="font-light text-steel">{room.name}.</em>
           </h2>
-          <Suspense fallback={<p className="text-stone">Loading the form…</p>}>
+          <Suspense fallback={<p className="text-steel">Loading the form…</p>}>
             <EnquiryWizard defaultStay={room.slug} />
           </Suspense>
         </div>
@@ -170,9 +173,9 @@ export default async function RoomPage({ params }: RoomPageProps) {
       >
         <Link
           href={`/rooms/${previous.slug}`}
-          className="group border-t border-ink/25 pt-5"
+          className="group border-t border-night/25 pt-5"
         >
-          <span className="label-mono flex items-center gap-2 text-stone">
+          <span className="label-mono flex items-center gap-2 text-steel">
             <ArrowLeft size={14} strokeWidth={1.5} aria-hidden="true" /> Previous
           </span>
           <span className="mt-2 block font-display text-h4 group-hover:underline">
@@ -181,9 +184,9 @@ export default async function RoomPage({ params }: RoomPageProps) {
         </Link>
         <Link
           href={`/rooms/${next.slug}`}
-          className="group border-t border-ink/25 pt-5 sm:text-right"
+          className="group border-t border-night/25 pt-5 sm:text-right"
         >
-          <span className="label-mono flex items-center gap-2 text-stone sm:justify-end">
+          <span className="label-mono flex items-center gap-2 text-steel sm:justify-end">
             Next <ArrowRight size={14} strokeWidth={1.5} aria-hidden="true" />
           </span>
           <span className="mt-2 block font-display text-h4 group-hover:underline">

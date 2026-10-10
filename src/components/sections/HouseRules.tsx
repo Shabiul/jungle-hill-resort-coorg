@@ -7,7 +7,7 @@ export function HouseRules() {
     <section
       id="house-rules"
       aria-label="Slow stay rules"
-      className="section-space bg-linen"
+      className="section-space bg-vapour"
     >
       <div className="page-container">
         <div className="flex flex-col justify-between gap-8 lg:flex-row lg:items-end">
@@ -21,24 +21,24 @@ export function HouseRules() {
           <div className="label-mono lg:text-right">
             <p>Check-in {checkTimes.checkIn}</p>
             <p>Check-out {checkTimes.checkOut}</p>
-            <p className="mt-2 max-w-xs tracking-normal text-ink/70 normal-case lg:ml-auto">
+            <p className="mt-2 max-w-xs tracking-normal text-night/70 normal-case lg:ml-auto">
               {checkTimes.note}
             </p>
           </div>
         </div>
 
-        <ol className="mt-8 grid border-t border-ink sm:grid-cols-2 lg:grid-cols-3">
+        <ol className="mt-8 grid border-t border-night sm:grid-cols-2 lg:grid-cols-3">
           {houseRules.map((rule, index) => (
             <li
               key={rule.title}
-              className="border-b border-ink/25 p-6 sm:odd:border-r lg:border-r lg:[&:nth-child(3n)]:border-r-0"
+              className="border-b border-night/25 p-6 sm:odd:border-r lg:border-r lg:[&:nth-child(3n)]:border-r-0"
             >
               <Reveal>
-                <p className="label-mono text-brass-deep">
+                <p className="label-mono text-steel">
                   {String(index + 1).padStart(2, "0")}
                 </p>
                 <h3 className="mt-3 text-2xl">{rule.title}</h3>
-                <p className="mt-2 text-ink/80">{rule.text}</p>
+                <p className="mt-2 text-night/80">{rule.text}</p>
               </Reveal>
             </li>
           ))}

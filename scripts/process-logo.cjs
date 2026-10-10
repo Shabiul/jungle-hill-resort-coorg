@@ -1,6 +1,6 @@
 // Turns the supplied logo JPEG (dark artwork on white) into transparent PNGs:
-//   jungle-hill-logo-dark.png  original colours on transparent (for ivory backgrounds)
-//   jungle-hill-logo-light.png ivory artwork on transparent (for dark backgrounds)
+//   jungle-hill-logo-dark.png  graphite on transparent (for pearl and vapour backgrounds)
+//   jungle-hill-logo-light.png pearl artwork on transparent (for dark backgrounds)
 //   jungle-hill-mark-dark.png / -light.png  the peak only (favicon, compact uses)
 // Usage: node scripts/process-logo.cjs "<logo.jpg>"
 const sharp = require("sharp");
@@ -9,7 +9,8 @@ const path = require("path");
 
 const src = process.argv[2];
 const outDir = path.join(process.cwd(), "public", "images", "logo");
-const IVORY = [245, 241, 232];
+const PEARL = [244, 242, 238];
+const GRAPHITE = [43, 54, 64];
 
 (async () => {
   fs.mkdirSync(outDir, { recursive: true });
@@ -22,8 +23,9 @@ const IVORY = [245, 241, 232];
     let a = 1 - Math.min(r, g, b) / 255;
     a = a < 0.04 ? 0 : Math.min(1, a * 1.08);
     const un = (c) => (a > 0 ? Math.max(0, Math.min(255, Math.round((c - 255 * (1 - a)) / a))) : 0);
-    dark.set([un(r), un(g), un(b), Math.round(a * 255)], i * 4);
-    light.set([...IVORY, Math.round(a * 255)], i * 4);
+    void un;
+    dark.set([...GRAPHITE, Math.round(a * 255)], i * 4);
+    light.set([...PEARL, Math.round(a * 255)], i * 4);
   }
   // bounding box + the gap between the peak and the wordmark
   const rowSum = new Array(h).fill(0);

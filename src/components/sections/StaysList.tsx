@@ -32,9 +32,9 @@ export function StaysList({ rooms }: { rooms: Room[] }) {
       }}
       onMouseLeave={() => setHovered(null)}
     >
-      <ol className="border-t border-ink">
+      <ol className="border-t border-night">
         {rooms.map((room, index) => (
-          <li key={room.slug} className="border-b border-ink/25">
+          <li key={room.slug} className="border-b border-night/25">
             <Link
               href={`/rooms/${room.slug}`}
               onMouseEnter={() => setHovered(index)}
@@ -42,15 +42,15 @@ export function StaysList({ rooms }: { rooms: Room[] }) {
               onBlur={() => setHovered(null)}
               className="group grid grid-cols-12 items-baseline gap-x-4 gap-y-3 py-5 sm:py-6"
             >
-              <span className="col-span-3 font-display text-5xl text-brass-deep sm:col-span-2 sm:text-7xl">
+              <span className="col-span-3 font-display text-5xl text-steel sm:col-span-2 sm:text-7xl">
                 {room.number}
               </span>
               <span className="col-span-9 font-display text-h2 sm:col-span-10 lg:col-span-6">
-                <span className="transition-colors group-hover:text-emerald">
+                <span className="transition-colors group-hover:text-steel">
                   {room.name}
                 </span>
               </span>
-              <span className="label-mono col-span-12 flex flex-wrap items-center gap-x-5 gap-y-1 text-stone lg:col-span-4 lg:justify-end">
+              <span className="label-mono col-span-12 flex flex-wrap items-center gap-x-5 gap-y-1 text-steel lg:col-span-4 lg:justify-end">
                 <span>{room.category}</span>
                 <span>{room.sizeSqFt} sq ft</span>
                 <span>{room.bed}</span>
@@ -59,7 +59,7 @@ export function StaysList({ rooms }: { rooms: Room[] }) {
                   size={16}
                   strokeWidth={1.5}
                   aria-hidden="true"
-                  className="text-ink"
+                  className="text-night"
                 />
               </span>
               <span className="relative col-span-12 mt-2 block aspect-[16/9] overflow-hidden lg:hidden">
@@ -73,7 +73,7 @@ export function StaysList({ rooms }: { rooms: Room[] }) {
       <motion.div
         aria-hidden="true"
         style={{ x: sx, y: sy }}
-        className="pointer-events-none fixed top-0 left-0 z-30 hidden h-52 w-72 overflow-hidden border border-ink lg:block"
+        className="pointer-events-none fixed top-0 left-0 z-30 hidden h-52 w-72 overflow-hidden border border-night lg:block"
         animate={{
           opacity: hovered === null ? 0 : 1,
           scale: hovered === null ? 0.94 : 1,

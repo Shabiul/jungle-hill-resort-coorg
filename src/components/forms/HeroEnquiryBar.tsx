@@ -7,7 +7,7 @@ import { GlassPanel } from "@/components/ui/GlassPanel";
 import { rooms } from "@/data/rooms";
 
 const fieldClass =
-  "mt-1 block w-full min-h-11 border-0 border-b border-ivory/40 bg-transparent px-0 py-1 text-ivory [color-scheme:dark] focus:border-brass-soft focus:outline-none";
+  "mt-1 block w-full min-h-11 border-0 border-b border-pearl/40 bg-transparent px-0 py-1 text-pearl [color-scheme:dark] focus:border-champagne-soft focus:outline-none";
 
 /** Glass booking bar docked in the hero. Sends the values to /contact, prefilled. */
 export function HeroEnquiryBar() {
@@ -58,7 +58,7 @@ export function HeroEnquiryBar() {
           <select
             value={guests}
             onChange={(event) => setGuests(event.target.value)}
-            className={`${fieldClass} [&>option]:text-ink`}
+            className={`${fieldClass} [&>option]:text-night`}
           >
             {Array.from({ length: 8 }, (_, index) => index + 1).map((count) => (
               <option key={count} value={count}>
@@ -72,7 +72,7 @@ export function HeroEnquiryBar() {
           <select
             value={stay}
             onChange={(event) => setStay(event.target.value)}
-            className={`${fieldClass} [&>option]:text-ink`}
+            className={`${fieldClass} [&>option]:text-night`}
           >
             <option value="any">No preference</option>
             {rooms.map((room) => (

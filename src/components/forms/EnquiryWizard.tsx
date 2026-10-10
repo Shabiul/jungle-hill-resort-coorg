@@ -232,13 +232,21 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
     const mail = `mailto:${siteConfig.contact.email}?subject=${encodeURIComponent("Stay enquiry")}&body=${encodeURIComponent(sent.summary)}`;
     return (
       <BoxCard className="p-6 sm:p-8" role="status">
-        <p className="label-mono text-brass-soft">Enquiry received</p>
+        <p className="label-mono flex items-center gap-2 text-cloud">
+          <Check
+            size={16}
+            strokeWidth={2}
+            aria-hidden="true"
+            className="text-champagne"
+          />{" "}
+          Enquiry received
+        </p>
         <h2 className="mt-3 text-h3">Thank you. We will be in touch.</h2>
-        <p className="mt-3 max-w-[52ch] text-ivory/80">
+        <p className="mt-3 max-w-[52ch] text-pearl/80">
           We reply with availability and rates. For a faster answer, send the same details
           on WhatsApp or by email.
         </p>
-        <pre className="mt-5 max-w-full overflow-x-auto border border-brass/25 p-4 text-small whitespace-pre-wrap text-ivory/85">
+        <pre className="mt-5 max-w-full overflow-x-auto border border-champagne/25 p-4 text-small whitespace-pre-wrap text-pearl/85">
           {sent.summary}
         </pre>
         <div className="mt-5 flex flex-wrap gap-3">
@@ -278,8 +286,8 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
             className={cn(
               "border-b pb-1.5",
               index === step
-                ? "border-brass text-ivory"
-                : "border-transparent text-ivory/55",
+                ? "border-champagne text-pearl"
+                : "border-transparent text-pearl/55",
             )}
           >
             {String(index + 1).padStart(2, "0")} {label}
@@ -325,7 +333,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
               />
             </div>
             {nights > 0 && (
-              <p className="label-mono text-brass-soft" aria-live="polite">
+              <p className="label-mono text-champagne-soft" aria-live="polite">
                 {nights} {nights === 1 ? "night" : "nights"}
               </p>
             )}
@@ -402,20 +410,20 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                     className="peer sr-only"
                     {...register("stay")}
                   />
-                  <span className="grid h-full grid-cols-[5.5rem_1fr] gap-3 rounded-[2px] border border-brass/30 p-2 transition-colors peer-checked:border-brass peer-checked:bg-ivory/10 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-brass-soft">
-                    <span className="relative block aspect-square overflow-hidden bg-forest">
+                  <span className="grid h-full grid-cols-[5.5rem_1fr] gap-3 rounded-[2px] border border-champagne/30 p-2 transition-colors peer-checked:border-champagne peer-checked:bg-pearl/10 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-champagne-soft">
+                    <span className="relative block aspect-square overflow-hidden bg-slate">
                       {room && <Photo image={room.images[0]} fill sizes="88px" />}
                     </span>
                     <span className="min-w-0 self-center">
                       <span className="block font-display text-xl leading-tight">
                         {room ? room.name : "No preference"}
                       </span>
-                      <span className="label-mono block text-[0.62rem] text-brass-soft">
+                      <span className="label-mono block text-[0.62rem] text-champagne-soft">
                         {room
                           ? `${room.categoryShort} · ${room.sizeSqFt} sq ft`
                           : "We suggest"}
                       </span>
-                      <span className="mt-0.5 block text-small text-ivory/75">
+                      <span className="mt-0.5 block text-small text-pearl/75">
                         {room
                           ? room.occupancy
                           : "Tell us who is coming; we will suggest a stay."}
@@ -424,7 +432,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                   </span>
                   <span
                     aria-hidden="true"
-                    className="absolute top-2 right-2 hidden h-5 w-5 place-items-center rounded-full bg-brass text-ink peer-checked:grid"
+                    className="absolute top-2 right-2 hidden h-5 w-5 place-items-center rounded-full bg-champagne text-night peer-checked:grid"
                   >
                     <Check size={12} strokeWidth={2} />
                   </span>
@@ -440,7 +448,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
               {notes.map((note) => (
                 <p
                   key={note}
-                  className="border-l-2 border-brass pl-3 text-small text-ivory/85"
+                  className="border-l-2 border-champagne pl-3 text-small text-pearl/85"
                 >
                   {note}
                 </p>
@@ -507,7 +515,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
               <label className="flex items-start gap-3 text-small">
                 <input
                   type="checkbox"
-                  className="mt-1 h-4 w-4 accent-[#B8955A]"
+                  className="mt-1 h-4 w-4 accent-[#c9b58e]"
                   {...register("houseRules")}
                 />
                 <span>
@@ -523,7 +531,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
               <label className="flex items-start gap-3 text-small">
                 <input
                   type="checkbox"
-                  className="mt-1 h-4 w-4 accent-[#B8955A]"
+                  className="mt-1 h-4 w-4 accent-[#c9b58e]"
                   {...register("consent")}
                 />
                 <span>
@@ -537,23 +545,23 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
               )}
             </div>
 
-            <dl className="grid gap-x-8 gap-y-2 border-t border-brass/30 pt-5 text-small sm:grid-cols-2">
+            <dl className="grid gap-x-8 gap-y-2 border-t border-champagne/30 pt-5 text-small sm:grid-cols-2">
               <div>
-                <dt className="label-mono text-[0.62rem] text-brass-soft">Dates</dt>
+                <dt className="label-mono text-[0.62rem] text-champagne-soft">Dates</dt>
                 <dd>
                   {formatDate(values.checkIn)} to {formatDate(values.checkOut)}
                   {nights > 0 ? ` · ${nights} nights` : ""}
                 </dd>
               </div>
               <div>
-                <dt className="label-mono text-[0.62rem] text-brass-soft">Guests</dt>
+                <dt className="label-mono text-[0.62rem] text-champagne-soft">Guests</dt>
                 <dd>
                   {values.adults} adults, {values.children} children, {values.infants}{" "}
                   infants · {values.rooms} {Number(values.rooms) === 1 ? "room" : "rooms"}
                 </dd>
               </div>
               <div className="sm:col-span-2">
-                <dt className="label-mono text-[0.62rem] text-brass-soft">Stay</dt>
+                <dt className="label-mono text-[0.62rem] text-champagne-soft">Stay</dt>
                 <dd>{stayName(values.stay)}</dd>
               </div>
             </dl>
@@ -587,13 +595,16 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
               {isSubmitting ? "Sending" : "Send enquiry"}
             </button>
           )}
-          <span className="label-mono ml-auto text-[0.62rem] text-ivory/55">
+          <span className="label-mono ml-auto text-[0.62rem] text-pearl/55">
             {siteConfig.contact.phoneDisplay}
           </span>
         </div>
 
         {failed && (
-          <p role="alert" className="mt-4 border-l-2 border-brass-soft pl-3 text-small">
+          <p
+            role="alert"
+            className="mt-4 border-l-2 border-champagne-soft pl-3 text-small"
+          >
             That did not go through. Please try again, or call or WhatsApp us.
           </p>
         )}

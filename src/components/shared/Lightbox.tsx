@@ -3,6 +3,7 @@
 import { useEffect, useRef } from "react";
 import Image from "next/image";
 import { ArrowLeft, ArrowRight, X } from "lucide-react";
+import { GradeTint } from "@/components/shared/GradeTint";
 import type { ImageAsset } from "@/types";
 
 interface LightboxProps {
@@ -68,7 +69,7 @@ export function Lightbox({ images, index, onClose, onIndexChange }: LightboxProp
       aria-modal="true"
       aria-label="Photo viewer"
       data-lenis-prevent
-      className="dark-surface fixed inset-0 z-[80] bg-ink/95 text-ivory"
+      className="dark-surface fixed inset-0 z-[80] bg-night/95 text-pearl"
       onPointerDown={(event) => {
         swipeStart.current = event.clientX;
       }}
@@ -87,9 +88,10 @@ export function Lightbox({ images, index, onClose, onIndexChange }: LightboxProp
           alt={image.alt}
           fill
           sizes="100vw"
-          className="object-contain"
+          className="grade-filter object-contain"
           priority
         />
+        <GradeTint />
       </div>
 
       <button

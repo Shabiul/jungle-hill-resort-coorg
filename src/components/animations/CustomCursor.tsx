@@ -51,7 +51,7 @@ export function CustomCursor() {
       <div
         ref={ring}
         data-grow="false"
-        className="-mt-3.5 -ml-3.5 h-7 w-7 rounded-full border border-brass transition-transform duration-300 ease-[var(--ease-out-expo)] data-[grow=true]:scale-[2.2]"
+        className="-mt-3.5 -ml-3.5 h-7 w-7 rounded-full border border-champagne transition-transform duration-300 ease-[var(--ease-out-expo)] data-[grow=true]:scale-[2.2]"
       />
     </motion.div>
   );

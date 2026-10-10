@@ -9,7 +9,7 @@ interface MealTimetableProps {
 
 /** Restaurant timetable: open hours on top, then each meal and its window. */
 export function MealTimetable({ meals, hours, tone = "light" }: MealTimetableProps) {
-  const line = tone === "light" ? "border-ivory/20" : "border-ink/25";
+  const line = tone === "light" ? "border-pearl/20" : "border-night/25";
   return (
     <div>
       <p className="label-mono opacity-75">Open daily</p>

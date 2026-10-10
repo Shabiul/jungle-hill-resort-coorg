@@ -50,7 +50,7 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
         onClick={() => setOpen((value) => !value)}
         className={cn(
           "label-mono relative z-[60] min-h-11 px-2",
-          open || light ? "text-ivory" : "text-ink",
+          open || light ? "text-pearl" : "text-night",
         )}
       >
         {open ? "Close" : "Menu"}
@@ -63,7 +63,7 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
           aria-modal="true"
           aria-label="Site menu"
           data-lenis-prevent
-          className="glass dark-surface fixed inset-0 z-[55] flex flex-col overflow-y-auto bg-ink/85 px-[var(--spacing-gutter)] pt-24 pb-10"
+          className="glass dark-surface fixed inset-0 z-[55] flex flex-col overflow-y-auto bg-night/85 px-[var(--spacing-gutter)] pt-24 pb-10"
         >
           <nav aria-label="Mobile">
             <ul className="flex flex-col">
@@ -74,9 +74,9 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
                     href={item.href}
                     onClick={() => setOpen(false)}
                     aria-current={pathname === item.href ? "page" : undefined}
-                    className="flex items-baseline gap-4 py-4 font-display text-3xl text-ivory"
+                    className="flex items-baseline gap-4 py-4 font-display text-3xl text-pearl"
                   >
-                    <span className="label-mono w-6 text-ivory/70">
+                    <span className="label-mono w-6 text-pearl/70">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     {item.label}
@@ -106,7 +106,7 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
                 <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" /> WhatsApp
               </a>
             </div>
-            <p className="label-mono pt-4 text-ivory/70">
+            <p className="label-mono pt-4 text-pearl/70">
               {siteConfig.contact.phoneDisplay}
             </p>
           </div>

@@ -44,7 +44,7 @@ export function ResortPlan({ className }: { className?: string }) {
   return (
     <div className={cn("grid gap-6 lg:grid-cols-12 lg:gap-8", className)}>
       <div className="lg:col-span-8">
-        <div className="relative overflow-hidden rounded-[2px] border border-brass/30 bg-ink">
+        <div className="relative overflow-hidden rounded-[2px] border border-champagne/30 bg-night">
           <svg
             viewBox={`0 0 ${PLAN_VIEWBOX.width} ${PLAN_VIEWBOX.height}`}
             role="group"
@@ -53,13 +53,13 @@ export function ResortPlan({ className }: { className?: string }) {
           >
             <defs>
               <pattern id="vines" width="14" height="14" patternUnits="userSpaceOnUse">
-                <circle cx="3" cy="3" r="1.4" fill="#5E7A63" fillOpacity="0.55" />
+                <circle cx="3" cy="3" r="1.4" fill="#6f8294" fillOpacity="0.55" />
               </pattern>
             </defs>
-            <rect width="1000" height="620" fill="#0C2E21" />
+            <rect width="1000" height="620" fill="#151e27" />
             {plantation.map((d) => (
               <g key={d}>
-                <path d={d} fill="#14503A" fillOpacity="0.55" />
+                <path d={d} fill="#22303c" fillOpacity="0.55" />
                 <path d={d} fill="url(#vines)" />
               </g>
             ))}
@@ -68,13 +68,13 @@ export function ResortPlan({ className }: { className?: string }) {
             <path
               d="M-10 600 C 120 600 200 560 300 540 C 400 520 440 540 500 500 C 560 460 540 440 560 410"
               fill="none"
-              stroke="#D9C29A"
+              stroke="#a9b8c4"
               strokeOpacity="0.7"
               strokeWidth="2.4"
               strokeDasharray="1 7"
               strokeLinecap="round"
             />
-            <g fill="none" stroke="#B8955A" strokeOpacity="0.55" strokeWidth="1">
+            <g fill="none" stroke="#c9b58e" strokeOpacity="0.55" strokeWidth="1">
               <path d="M560 410 C 500 380 440 330 330 300" />
               <path d="M330 300 C 280 260 250 230 215 195" />
               <path d="M330 300 C 380 260 410 230 440 195" />
@@ -94,9 +94,9 @@ export function ResortPlan({ className }: { className?: string }) {
                 width={b.w}
                 height={b.h}
                 rx="2"
-                fill="#F5F1E8"
+                fill="#f4f2ee"
                 fillOpacity="0.1"
-                stroke="#D9C29A"
+                stroke="#e1d3b4"
                 strokeOpacity="0.6"
               />
             ))}
@@ -107,8 +107,8 @@ export function ResortPlan({ className }: { className?: string }) {
               width="84"
               height="44"
               rx="3"
-              fill="#14503A"
-              stroke="#D9C29A"
+              fill="#22303c"
+              stroke="#e1d3b4"
               strokeOpacity="0.6"
             />
 
@@ -132,14 +132,14 @@ export function ResortPlan({ className }: { className?: string }) {
                       setActive(on ? null : marker.id);
                     }
                   }}
-                  className="cursor-pointer outline-none [&:focus-visible>circle]:stroke-[#F5F1E8] [&:focus-visible>circle]:stroke-[2.5]"
+                  className="cursor-pointer outline-none [&:focus-visible>circle]:stroke-[#f4f2ee] [&:focus-visible>circle]:stroke-[2.5]"
                 >
                   <circle
                     cx={marker.x}
                     cy={marker.y}
                     r={on ? 17 : 14}
-                    fill={on ? "#B8955A" : "#06180F"}
-                    stroke="#B8955A"
+                    fill={on ? "#c9b58e" : "#0d1319"}
+                    stroke="#c9b58e"
                     strokeWidth="1.5"
                     style={{ transition: "r 0.2s, fill 0.2s" }}
                   />
@@ -149,7 +149,7 @@ export function ResortPlan({ className }: { className?: string }) {
                     textAnchor="middle"
                     fontSize="13"
                     fontFamily="var(--font-jost), sans-serif"
-                    fill={on ? "#06180F" : "#F5F1E8"}
+                    fill={on ? "#0d1319" : "#f4f2ee"}
                     style={{ pointerEvents: "none" }}
                   >
                     {marker.id}
@@ -164,7 +164,7 @@ export function ResortPlan({ className }: { className?: string }) {
               textAnchor="end"
               fontSize="11"
               letterSpacing="2.2"
-              fill="#D9C29A"
+              fill="#e1d3b4"
               fillOpacity="0.8"
               fontFamily="var(--font-jost), sans-serif"
             >
@@ -175,7 +175,7 @@ export function ResortPlan({ className }: { className?: string }) {
           {current && (
             <GlassPanel
               role="status"
-              className="pointer-events-none absolute z-10 flex w-52 gap-3 bg-ink/70 p-2 text-ivory"
+              className="pointer-events-none absolute z-10 flex w-52 gap-3 bg-night/70 p-2 text-pearl"
               style={tooltipStyle(current.x, current.y)}
             >
               {current.image && (
@@ -187,7 +187,7 @@ export function ResortPlan({ className }: { className?: string }) {
                 <span className="block font-display text-lg leading-tight">
                   {current.label}
                 </span>
-                <span className="label-mono block text-[0.6rem] text-ivory/80">
+                <span className="label-mono block text-[0.6rem] text-pearl/80">
                   {current.note}
                 </span>
               </span>
@@ -208,14 +208,14 @@ export function ResortPlan({ className }: { className?: string }) {
               onClick={() => setActive(active === marker.id ? null : marker.id)}
               aria-pressed={active === marker.id}
               className={cn(
-                "grid min-h-11 w-full grid-cols-[2rem_1fr] items-center gap-2 border-b border-brass/25 py-2 text-left transition-colors",
-                active === marker.id ? "bg-ivory/10" : "hover:bg-ivory/5",
+                "grid min-h-11 w-full grid-cols-[2rem_1fr] items-center gap-2 border-b border-champagne/25 py-2 text-left transition-colors",
+                active === marker.id ? "bg-pearl/10" : "hover:bg-pearl/5",
               )}
             >
-              <span className="label-mono text-brass-soft">
+              <span className="label-mono text-champagne-soft">
                 {String(marker.id).padStart(2, "0")}
               </span>
-              <span className="text-ivory">{marker.label}</span>
+              <span className="text-pearl">{marker.label}</span>
             </button>
           </li>
         ))}

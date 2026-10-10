@@ -9,7 +9,7 @@ export function Testimonials() {
     <section
       id="reviews"
       aria-label="What guests say on Google"
-      className="section-space overflow-hidden"
+      className="section-space mist-top overflow-hidden"
     >
       <div className="page-container">
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">

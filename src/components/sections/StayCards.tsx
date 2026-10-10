@@ -50,13 +50,13 @@ function StayCard({ room }: { room: Room }) {
                   className={cn(
                     "relative block aspect-square w-full overflow-hidden border transition-opacity",
                     !isMore && index === active
-                      ? "border-brass"
-                      : "border-brass/20 opacity-75 hover:opacity-100",
+                      ? "border-champagne"
+                      : "border-champagne/20 opacity-75 hover:opacity-100",
                   )}
                 >
                   <Photo image={image} fill sizes="12vw" />
                   {isMore && (
-                    <span className="label-mono absolute inset-0 grid place-items-center bg-ink/70 text-ivory">
+                    <span className="label-mono absolute inset-0 grid place-items-center bg-night/70 text-pearl">
                       +{hidden}
                     </span>
                   )}
@@ -68,13 +68,13 @@ function StayCard({ room }: { room: Room }) {
       )}
 
       <div className="flex flex-1 flex-col pt-5">
-        <p className="label-mono text-brass-soft">
+        <p className="label-mono text-champagne-soft">
           {room.categoryShort} · {room.sizeSqFt} sq ft
         </p>
         <h3 className="mt-2 text-h3">{room.name}</h3>
-        <p className="mt-2 max-w-[44ch] text-ivory/80">{room.summary}</p>
+        <p className="mt-2 max-w-[44ch] text-pearl/80">{room.summary}</p>
 
-        <ul className="label-mono mt-4 grid grid-cols-3 divide-x divide-brass/25 border-y border-brass/25 text-[0.66rem] text-ivory/80">
+        <ul className="label-mono mt-4 grid grid-cols-3 divide-x divide-champagne/25 border-y border-champagne/25 text-[0.66rem] text-pearl/80">
           {room.highlights.map((fact) => (
             <li key={fact} className="px-2 py-2.5 first:pl-0">
               {fact}
@@ -89,7 +89,7 @@ function StayCard({ room }: { room: Room }) {
           <Link href={`/booking?room=${room.slug}`} className="label-mono link-underline">
             Enquire
           </Link>
-          <span className="label-mono ml-auto text-ivory/60">{room.rateNote}</span>
+          <span className="label-mono ml-auto text-pearl/60">{room.rateNote}</span>
         </div>
       </div>
 

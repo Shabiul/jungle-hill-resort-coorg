@@ -1,9 +1,7 @@
 import Image from "next/image";
+import { GradeTint } from "@/components/shared/GradeTint";
 import { cn } from "@/lib/utils";
 import type { ImageAsset } from "@/types";
-
-/** One subtle grade for every photograph: slightly deeper contrast and cooler greens. */
-const GRADE = "[filter:contrast(1.06)_saturate(1.02)_hue-rotate(-3deg)_brightness(0.98)]";
 
 interface PhotoProps {
   image: ImageAsset | null | undefined;
@@ -15,7 +13,10 @@ interface PhotoProps {
   priority?: boolean;
 }
 
-/** next/image wrapper: blur placeholder from the manifest and hard-edged crops by default. */
+/**
+ * next/image wrapper with the blur placeholder from the manifest and the shared photo grade
+ * (muted, slightly more contrast, cool slate tint), so every photograph sits in the same palette.
+ */
 export function Photo({
   image,
   sizes,
@@ -35,24 +36,30 @@ export function Photo({
 
   if (fill) {
     return (
-      <Image
-        src={image.src}
-        fill
-        alt={image.alt}
-        className={cn("object-cover", GRADE, imgClassName, className)}
-        {...common}
-      />
+      <>
+        <Image
+          src={image.src}
+          fill
+          alt={image.alt}
+          className={cn("grade-filter object-cover", imgClassName, className)}
+          {...common}
+        />
+        <GradeTint />
+      </>
     );
   }
 
   return (
-    <Image
-      src={image.src}
-      alt={image.alt}
-      width={image.width}
-      height={image.height}
-      className={cn("h-auto w-full", GRADE, imgClassName, className)}
-      {...common}
-    />
+    <span className="relative block">
+      <Image
+        src={image.src}
+        alt={image.alt}
+        width={image.width}
+        height={image.height}
+        className={cn("grade-filter h-auto w-full", imgClassName, className)}
+        {...common}
+      />
+      <GradeTint />
+    </span>
   );
 }

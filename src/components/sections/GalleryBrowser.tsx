@@ -33,14 +33,14 @@ export function GalleryBrowser({ images, categories }: GalleryBrowserProps) {
             className={cn(
               "label-mono min-h-11 border px-4 transition-colors",
               active === category
-                ? "border-forest bg-forest text-ivory"
-                : "border-ink/30 hover:border-brass-deep",
+                ? "border-slate bg-slate text-pearl"
+                : "border-night/30 hover:border-steel",
             )}
           >
             {category}
           </button>
         ))}
-        <p className="label-mono ml-auto self-center text-stone" aria-live="polite">
+        <p className="label-mono ml-auto self-center text-steel" aria-live="polite">
           {visible.length} photos
         </p>
       </div>
@@ -59,7 +59,7 @@ export function GalleryBrowser({ images, categories }: GalleryBrowserProps) {
                 sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
                 imgClassName="transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.03]"
               />
-              <span className="label-mono absolute bottom-0 left-0 bg-ivory px-3 py-2 text-[0.65rem] text-ink">
+              <span className="label-mono absolute bottom-0 left-0 bg-pearl px-3 py-2 text-[0.65rem] text-night">
                 {image.category}
               </span>
             </button>

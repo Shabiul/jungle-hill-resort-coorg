@@ -16,10 +16,10 @@ export function PageHero({ label, lines, description, aside }: PageHeroProps) {
     <section aria-label="Page heading" className="pt-28 pb-6 sm:pt-32 sm:pb-8">
       <div className="page-container grid gap-6 lg:grid-cols-12">
         <div className="lg:col-span-8">
-          <p className="label-mono text-emerald">{label}</p>
+          <p className="label-mono text-steel">{label}</p>
           <RevealText as="h1" immediate lines={lines} className="mt-5 text-h1" />
           {description && (
-            <div className="mt-8 max-w-xl text-lg text-stone">{description}</div>
+            <div className="mt-8 max-w-xl text-lg text-steel">{description}</div>
           )}
         </div>
         {aside && <div className="lg:col-span-4 lg:self-end">{aside}</div>}

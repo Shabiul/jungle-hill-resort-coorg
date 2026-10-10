@@ -79,12 +79,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section aria-label="At a glance" className="section-space bg-linen">
-        <dl className="page-container grid gap-px bg-ink/20 sm:grid-cols-2 lg:grid-cols-4">
+      <section aria-label="At a glance" className="section-space bg-vapour">
+        <dl className="page-container grid gap-px bg-night/20 sm:grid-cols-2 lg:grid-cols-4">
           {facts.map(([value, label]) => (
-            <div key={value} className="bg-linen p-6 first:pl-0 lg:py-2">
+            <div key={value} className="bg-vapour p-6 first:pl-0 lg:py-2">
               <dt className="font-display text-3xl">{value}</dt>
-              <dd className="mt-2 text-sm text-stone">{label}</dd>
+              <dd className="mt-2 text-sm text-steel">{label}</dd>
             </div>
           ))}
         </dl>
@@ -92,14 +92,14 @@ export default function AboutPage() {
 
       <section aria-label="The people" className="section-space">
         <div className="page-container grid gap-6 sm:grid-cols-2">
-          <div className="border-t border-ink pt-5">
-            <p className="label-mono text-emerald">Owners</p>
+          <div className="border-t border-night pt-5">
+            <p className="label-mono text-steel">Owners</p>
             <p className="mt-2 font-display text-3xl">{siteConfig.owners}</p>
           </div>
-          <div className="border-t border-ink pt-5">
-            <p className="label-mono text-emerald">Manager</p>
+          <div className="border-t border-night pt-5">
+            <p className="label-mono text-steel">Manager</p>
             <p className="mt-2 font-display text-3xl">{siteConfig.manager.name}</p>
-            <p className="mt-1 text-stone">{siteConfig.manager.phoneDisplay}</p>
+            <p className="mt-1 text-steel">{siteConfig.manager.phoneDisplay}</p>
           </div>
         </div>
         <p className="page-container mt-6">

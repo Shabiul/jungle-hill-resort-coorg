@@ -3,6 +3,7 @@
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "motion/react";
+import { GradeTint } from "@/components/shared/GradeTint";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import type { ResolvedHeroSlide } from "@/data/hero";
 import { cn } from "@/lib/utils";
@@ -121,7 +122,7 @@ export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
             <div
               key={slide.src + i}
               className={cn(
-                "absolute inset-0 [filter:saturate(0.88)_contrast(1.06)_hue-rotate(-4deg)]",
+                "grade-filter absolute inset-0",
                 "transition-opacity ease-in-out",
                 showing ? "opacity-100" : "opacity-0",
                 active ? "z-10" : "z-0",
@@ -162,6 +163,7 @@ export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
                   <source src={slide.src} type="video/mp4" />
                 </video>
               )}
+              <GradeTint />
             </div>
           );
         })}
@@ -183,7 +185,7 @@ export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
               }}
             >
               <span
-                className="label-mono text-[0.62rem] text-ivory/80"
+                className="label-mono text-[0.62rem] text-pearl/80"
                 aria-hidden="true"
               >
                 {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
@@ -200,8 +202,8 @@ export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
                   >
                     <span
                       className={cn(
-                        "block h-2 w-2 border border-ivory transition-colors",
-                        i === index ? "bg-ivory" : "bg-transparent",
+                        "block h-2 w-2 border border-pearl transition-colors",
+                        i === index ? "bg-pearl" : "bg-transparent",
                       )}
                     />
                   </button>

@@ -77,10 +77,12 @@ export function ContactForm() {
       </div>
       <div aria-live="polite">
         {status === "sent" && (
-          <p className="border-l-2 border-brass pl-4">Thank you. We will be in touch.</p>
+          <p className="border-l-2 border-champagne pl-4">
+            Thank you. We will be in touch.
+          </p>
         )}
         {status === "error" && (
-          <p role="alert" className="border-l-2 border-ink pl-4">
+          <p role="alert" className="border-l-2 border-night pl-4">
             That did not go through. Please try again or call us.
           </p>
         )}

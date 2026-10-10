@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState, useSyncExternalStore } from "react";
+import { GradeTint } from "@/components/shared/GradeTint";
 import { Photo } from "@/components/shared/Photo";
 import { cn } from "@/lib/utils";
 import type { ImageAsset } from "@/types";
@@ -84,7 +85,7 @@ export function VideoBackground({
         <video
           ref={video}
           className={cn(
-            "absolute inset-0 h-full w-full object-cover transition-opacity duration-1000",
+            "grade-filter absolute inset-0 h-full w-full object-cover transition-opacity duration-1000",
             ready ? "opacity-100" : "opacity-0",
           )}
           muted
@@ -102,6 +103,7 @@ export function VideoBackground({
           ))}
         </video>
       )}
+      {showVideo && ready && <GradeTint />}
     </div>
   );
 }

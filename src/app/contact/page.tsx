@@ -36,14 +36,14 @@ export default function ContactPage() {
       >
         <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-8">
-            <Suspense fallback={<p className="text-stone">Loading the form…</p>}>
+            <Suspense fallback={<p className="text-steel">Loading the form…</p>}>
               <EnquiryWizard />
             </Suspense>
           </div>
 
           <aside aria-label="Contact details" className="lg:col-span-4">
-            <div className="dark-surface rounded-[2px] border border-brass/30 bg-forest p-5 text-ivory lg:sticky lg:top-24">
-              <p className="label-mono text-brass-soft">Reservations</p>
+            <div className="dark-surface rounded-[2px] border border-champagne/30 bg-slate p-5 text-pearl lg:sticky lg:top-24">
+              <p className="label-mono text-champagne-soft">Reservations</p>
               <a
                 href={telLink}
                 className="link-underline mt-2 flex items-center gap-2 font-display text-h4"
@@ -62,7 +62,7 @@ export default function ContactPage() {
                   WhatsApp
                 </a>
               </p>
-              <ul className="mt-5 space-y-3 border-t border-brass/25 pt-4 text-small">
+              <ul className="mt-5 space-y-3 border-t border-champagne/25 pt-4 text-small">
                 <li className="flex items-start gap-2">
                   <Mail
                     size={16}

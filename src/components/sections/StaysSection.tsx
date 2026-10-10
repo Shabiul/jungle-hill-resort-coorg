@@ -9,7 +9,7 @@ export function StaysSection() {
     <section
       id="stays"
       aria-label="The stays"
-      className="dark-surface section-space scroll-mt-20 bg-ink text-ivory"
+      className="dark-surface section-space scroll-mt-20 bg-night text-pearl"
     >
       <div className="page-container">
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">

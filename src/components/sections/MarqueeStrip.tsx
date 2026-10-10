@@ -13,7 +13,7 @@ const items = [
 export function MarqueeStrip() {
   const row = [...items, ...items];
   return (
-    <section aria-label="At a glance" className="dark-surface bg-forest text-ivory">
+    <section aria-label="At a glance" className="dark-surface bg-slate text-pearl">
       <Marquee duration={40} className="py-4">
         {row.map((item, index) => (
           <span
@@ -21,7 +21,7 @@ export function MarqueeStrip() {
             className="label-mono flex items-center whitespace-nowrap"
           >
             <span className="px-6">{item}</span>
-            <span aria-hidden="true" className="h-1 w-1 rotate-45 bg-brass" />
+            <span aria-hidden="true" className="h-1 w-1 rotate-45 bg-champagne" />
           </span>
         ))}
       </Marquee>

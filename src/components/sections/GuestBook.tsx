@@ -49,7 +49,7 @@ export function GuestBook({ reviews }: { reviews: Testimonial[] }) {
       <figure className="lg:col-span-8">
         <span
           aria-hidden="true"
-          className="block font-display text-[6rem] leading-[0.5] text-brass sm:text-[8rem]"
+          className="block font-display text-[6rem] leading-[0.5] text-champagne sm:text-[8rem]"
         >
           &ldquo;
         </span>
@@ -72,10 +72,10 @@ export function GuestBook({ reviews }: { reviews: Testimonial[] }) {
               </blockquote>
               <figcaption className="label-mono mt-5 flex flex-wrap items-center gap-x-4 gap-y-2">
                 <span>{review.name}</span>
-                <span className="text-stone">
+                <span className="text-steel">
                   {[review.tripType, review.timeAgo].filter(Boolean).join(" · ")}
                 </span>
-                <span className="border border-ink/40 px-2 py-1 text-[0.68rem]">
+                <span className="border border-night/40 px-2 py-1 text-[0.68rem]">
                   Google
                 </span>
                 <span>{review.rating}/5</span>
@@ -86,17 +86,17 @@ export function GuestBook({ reviews }: { reviews: Testimonial[] }) {
       </figure>
 
       <nav aria-label="Guest reviewers" className="lg:col-span-4">
-        <p className="label-mono mb-3 text-emerald">
+        <p className="label-mono mb-3 text-steel">
           Guest notes · {index + 1} / {total}
         </p>
         <ol
           data-lenis-prevent
-          className="max-h-[26rem] overflow-y-auto border-t border-ink pr-1"
+          className="max-h-[26rem] overflow-y-auto border-t border-night pr-1"
         >
           {reviews.map((item, itemIndex) => {
             const active = itemIndex === index;
             return (
-              <li key={item.id} className="border-b border-ink/20">
+              <li key={item.id} className="border-b border-night/20">
                 <button
                   type="button"
                   aria-current={active ? "true" : undefined}
@@ -106,18 +106,18 @@ export function GuestBook({ reviews }: { reviews: Testimonial[] }) {
                   className={cn(
                     "grid min-h-11 w-full grid-cols-[2rem_1fr] items-baseline gap-2 border-l-2 py-2.5 pl-3 text-left transition-colors",
                     active
-                      ? "border-brass bg-linen"
-                      : "border-transparent hover:bg-linen/60",
+                      ? "border-champagne bg-vapour"
+                      : "border-transparent hover:bg-vapour/60",
                   )}
                 >
-                  <span className="label-mono text-brass-deep">
+                  <span className="label-mono text-steel">
                     {String(itemIndex + 1).padStart(2, "0")}
                   </span>
                   <span>
                     <span className="block font-display text-lg leading-tight">
                       {item.name}
                     </span>
-                    <span className="label-mono block text-[0.68rem] text-stone">
+                    <span className="label-mono block text-[0.68rem] text-steel">
                       {[item.tripType, item.timeAgo].filter(Boolean).join(" · ")}
                     </span>
                   </span>

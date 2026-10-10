@@ -31,7 +31,7 @@ export function Location() {
               The access road is narrow, so drive slowly.
             </p>
             <address className="not-italic">
-              <span className="label-mono block text-emerald">Address</span>
+              <span className="label-mono block text-steel">Address</span>
               {siteConfig.contact.addressLines.map((line) => (
                 <span key={line} className="block font-display text-2xl">
                   {line}

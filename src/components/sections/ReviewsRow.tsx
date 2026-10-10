@@ -10,20 +10,17 @@ interface ReviewsRowProps {
 
 function ReviewCard({ review }: { review: Testimonial }) {
   return (
-    <figure className="flex w-[84vw] shrink-0 flex-col border border-ink bg-ivory p-6 sm:w-[26rem]">
-      <span
-        aria-hidden="true"
-        className="font-display text-7xl leading-[0.6] text-brass-deep"
-      >
+    <figure className="flex w-[84vw] shrink-0 flex-col border border-night bg-pearl p-6 sm:w-[26rem]">
+      <span aria-hidden="true" className="font-display text-7xl leading-[0.6] text-steel">
         &ldquo;
       </span>
       <blockquote className="mt-4 flex-1">
         <p>{review.text}</p>
       </blockquote>
-      <figcaption className="mt-6 flex items-start gap-3 border-t border-ink/25 pt-4">
+      <figcaption className="mt-6 flex items-start gap-3 border-t border-night/25 pt-4">
         <span
           aria-hidden="true"
-          className="label-mono grid h-10 w-10 shrink-0 place-items-center rounded-full border border-brass-deep text-brass-deep"
+          className="label-mono grid h-10 w-10 shrink-0 place-items-center rounded-full border border-steel text-steel"
         >
           {review.name
             .split(" ")
@@ -47,11 +44,11 @@ function ReviewCard({ review }: { review: Testimonial }) {
               review.name
             )}
           </p>
-          <p className="label-mono mt-1 text-ink/75">
+          <p className="label-mono mt-1 text-night/75">
             {[review.tripType, review.timeAgo].filter(Boolean).join(" · ")}
           </p>
           <p className="label-mono mt-3 flex items-center gap-3 text-[0.68rem]">
-            <span className="border border-ink/40 px-2 py-1">Google</span>
+            <span className="border border-night/40 px-2 py-1">Google</span>
             <span>{review.rating}/5</span>
           </p>
         </div>

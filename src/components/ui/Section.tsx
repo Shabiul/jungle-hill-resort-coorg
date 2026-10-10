@@ -6,10 +6,10 @@ type SectionProps = ComponentProps<"section"> & {
 };
 
 const tones = {
-  ivory: "bg-ivory text-ink",
-  linen: "bg-linen text-ink",
-  forest: "dark-surface bg-forest text-ivory",
-  ink: "dark-surface bg-ink text-ivory",
+  ivory: "bg-pearl text-night",
+  linen: "bg-vapour text-night",
+  forest: "dark-surface bg-slate text-pearl",
+  ink: "dark-surface bg-night text-pearl",
 } as const;
 
 /** Page section with the shared vertical padding token and a background tone. */

@@ -16,11 +16,11 @@ export function FeaturedReview({ reviews }: { reviews: Testimonial[] }) {
   const total = reviews.length;
 
   return (
-    <figure className="grid gap-8 border-t border-ink pt-10 lg:grid-cols-12">
+    <figure className="grid gap-8 border-t border-night pt-10 lg:grid-cols-12">
       <div className="lg:col-span-9">
         <span
           aria-hidden="true"
-          className="block font-display text-8xl leading-[0.6] text-brass-deep"
+          className="block font-display text-8xl leading-[0.6] text-steel"
         >
           &ldquo;
         </span>
@@ -32,10 +32,10 @@ export function FeaturedReview({ reviews }: { reviews: Testimonial[] }) {
         </blockquote>
         <figcaption className="label-mono mt-8 flex flex-wrap items-center gap-x-4 gap-y-2">
           <span>{review.name}</span>
-          <span className="text-stone">
+          <span className="text-steel">
             {[review.tripType, review.timeAgo].filter(Boolean).join(" · ")}
           </span>
-          <span className="border border-ink/40 px-2 py-1 text-[0.68rem]">Google</span>
+          <span className="border border-night/40 px-2 py-1 text-[0.68rem]">Google</span>
           <span>{review.rating}/5</span>
         </figcaption>
       </div>
