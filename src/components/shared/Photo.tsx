@@ -2,8 +2,8 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import type { ImageAsset } from "@/types";
 
-/** One subtle grade for every photograph: a touch of contrast and warmth. */
-const GRADE = "[filter:contrast(1.04)_saturate(1.04)_sepia(0.05)]";
+/** One subtle grade for every photograph: slightly deeper contrast and cooler greens. */
+const GRADE = "[filter:contrast(1.06)_saturate(1.02)_hue-rotate(-3deg)_brightness(0.98)]";
 
 interface PhotoProps {
   image: ImageAsset | null | undefined;

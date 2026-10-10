@@ -2,7 +2,7 @@ import type { NavItem } from "@/types";
 
 export const mainNav: NavItem[] = [
   { label: "About", href: "/about" },
-  { label: "Rooms", href: "/rooms" },
+  { label: "Stays", href: "/rooms" },
   { label: "Experiences", href: "/experiences" },
   { label: "Dining", href: "/dining" },
   { label: "Gallery", href: "/gallery" },
@@ -12,10 +12,9 @@ export const mainNav: NavItem[] = [
   { label: "Contact", href: "/contact" },
 ];
 
-/** Desktop header. About, Plan Your Stay and Contact only show from xl up; the menu and footer carry everything. */
+/** Desktop header (xl and up); everything else lives in the menu and footer. */
 export const headerNav: NavItem[] = mainNav.filter((item) =>
   [
-    "/about",
     "/rooms",
     "/experiences",
     "/dining",
@@ -26,6 +25,6 @@ export const headerNav: NavItem[] = mainNav.filter((item) =>
   ].includes(item.href),
 );
 
-export const xlOnlyHrefs = ["/about", "/plan-your-stay", "/contact"];
+export const xlOnlyHrefs: string[] = [];
 
 export const bookingNav: NavItem = { label: "Enquire", href: "/booking" };

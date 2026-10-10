@@ -1,6 +1,5 @@
 import type { Metadata, Viewport } from "next";
-import { Fraunces, Hanken_Grotesk, JetBrains_Mono } from "next/font/google";
-import { CustomCursor } from "@/components/animations/CustomCursor";
+import { Cormorant_Garamond, Jost } from "next/font/google";
 import { Intro } from "@/components/animations/Intro";
 import { SmoothScroll } from "@/components/animations/SmoothScroll";
 import { NavProgress } from "@/components/layout/NavProgress";
@@ -13,24 +12,15 @@ import { SITE_DEFAULT_TITLE, SITE_TITLE_TEMPLATE } from "@/lib/constants";
 import { resortJsonLd } from "@/lib/structured-data";
 import "./globals.css";
 
-// Type: Fraunces (display serif), Hanken Grotesk (body), JetBrains Mono (small labels).
-const fraunces = Fraunces({
+// Type: Cormorant Garamond (display, light, one italic emphasis) and Jost (body and small uppercase labels).
+const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  variable: "--font-fraunces",
+  weight: ["300", "400", "500", "600"],
   style: ["normal", "italic"],
-  axes: ["opsz", "SOFT", "WONK"],
+  variable: "--font-cormorant",
   display: "swap",
 });
-const hanken = Hanken_Grotesk({
-  subsets: ["latin"],
-  variable: "--font-hanken",
-  display: "swap",
-});
-const jetbrains = JetBrains_Mono({
-  subsets: ["latin"],
-  variable: "--font-jetbrains",
-  display: "swap",
-});
+const jost = Jost({ subsets: ["latin"], variable: "--font-jost", display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
@@ -56,10 +46,7 @@ export const viewport: Viewport = {
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
-    <html
-      lang="en"
-      className={`${fraunces.variable} ${hanken.variable} ${jetbrains.variable}`}
-    >
+    <html lang="en" className={`${cormorant.variable} ${jost.variable}`}>
       <body>
         <noscript>
           <style>{`[data-reveal]{transform:none!important;opacity:1!important}[data-reveal-img]{clip-path:none!important;opacity:1!important}`}</style>
@@ -73,7 +60,6 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         <SmoothScroll>
           <Intro />
           <NavProgress />
-          <CustomCursor />
           <Header />
           <main id="main">{children}</main>
           <Footer />

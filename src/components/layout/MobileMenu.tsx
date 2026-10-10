@@ -41,7 +41,7 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
   }, [open]);
 
   return (
-    <div className="lg:hidden">
+    <div className="xl:hidden">
       <button
         ref={toggle}
         type="button"

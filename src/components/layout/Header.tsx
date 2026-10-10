@@ -30,7 +30,7 @@ export function Header() {
     >
       <div
         className={cn(
-          "page-container flex items-center justify-between gap-6 transition-[height] duration-300",
+          "page-container grid grid-cols-[auto_1fr_auto] items-center gap-6 transition-[height] duration-300",
           scrolled ? "h-16" : "h-20",
         )}
       >
@@ -43,7 +43,7 @@ export function Header() {
           )}
         />
 
-        <nav aria-label="Main" className="hidden lg:block">
+        <nav aria-label="Main" className="hidden justify-self-center xl:block">
           <ul className="flex items-center gap-6 xl:gap-8">
             {headerNav.map((item) => {
               const active =
@@ -73,7 +73,7 @@ export function Header() {
           </ul>
         </nav>
 
-        <div className="flex items-center gap-3">
+        <div className="col-start-3 flex items-center gap-3 justify-self-end">
           <Link href={bookingNav.href} className="btn btn-primary hidden sm:inline-flex">
             {bookingNav.label}
           </Link>
