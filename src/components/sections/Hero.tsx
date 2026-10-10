@@ -43,8 +43,7 @@ export function Hero() {
 
       <div className="page-container relative flex flex-1 flex-col justify-end pt-28 pb-6 sm:pb-8">
         <HeroFade>
-          <p className="label-mono flex flex-wrap items-center gap-x-4 gap-y-1 text-pearl [text-shadow:0_1px_14px_rgba(13,19,25,0.9)]">
-            <span className="h-px w-8 bg-champagne-soft" aria-hidden="true" />
+          <p className="label-mono text-pearl [text-shadow:0_1px_14px_rgba(13,19,25,0.9)]">
             Madikeri, Coorg · 5 km towards Virajpet
           </p>
         </HeroFade>
@@ -64,7 +63,7 @@ export function Hero() {
           </p>
         </HeroFade>
 
-        <HeroFade delay={0.45} className="mt-8 flex items-end justify-between gap-6">
+        <HeroFade delay={0.45} className="mt-8">
           <div className="flex flex-wrap gap-3">
             <a
               href={whatsappLink()}
@@ -78,17 +77,6 @@ export function Hero() {
             <Link href="/rooms" className="btn btn-outline">
               Explore stays
             </Link>
-          </div>
-          <div className="hidden items-end gap-3 lg:flex" aria-hidden="true">
-            <span className="label-mono text-pearl/80 [writing-mode:vertical-rl]">
-              Scroll
-            </span>
-            <span className="relative block h-16 w-px overflow-hidden bg-pearl/20">
-              <span
-                className="absolute inset-0 block bg-champagne-soft"
-                style={{ animation: "scroll-line 2.4s var(--ease-out-expo) infinite" }}
-              />
-            </span>
           </div>
         </HeroFade>
 

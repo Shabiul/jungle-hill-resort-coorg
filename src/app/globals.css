@@ -281,24 +281,6 @@
   will-change: transform;
 }
 
-@keyframes scroll-line {
-  0% {
-    transform: scaleY(0);
-    transform-origin: top;
-  }
-  50% {
-    transform: scaleY(1);
-    transform-origin: top;
-  }
-  51% {
-    transform-origin: bottom;
-  }
-  100% {
-    transform: scaleY(0);
-    transform-origin: bottom;
-  }
-}
-
 @media (prefers-reduced-motion: reduce) {
   *,
   *::before,
@@ -484,4 +466,10 @@
     color-mix(in oklab, var(--color-slate) 16%, transparent),
     transparent
   );
+}
+
+/* Hide the floating contact stack while the mobile menu or the photo viewer is open */
+body:has(#mobile-menu) .floating-contact,
+body:has([aria-label="Photo viewer"]) .floating-contact {
+  display: none;
 }

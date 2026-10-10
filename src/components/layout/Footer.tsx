@@ -36,22 +36,26 @@ export function Footer() {
               </address>
 
               <ul className="mt-5 space-y-3">
-                <li className="flex items-center gap-4">
+                <li>
                   <a
                     href={telLink}
+                    aria-label={`Call Jungle Hill Resort on ${contact.phoneDisplay}`}
                     className="inline-flex items-center gap-2 transition-colors hover:text-champagne-soft"
                   >
                     <Phone size={16} strokeWidth={1.5} aria-hidden="true" />
-                    {contact.phoneDisplay}
+                    Call {contact.phoneDisplay}
                   </a>
+                </li>
+                <li>
                   <a
                     href={whatsappLink()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label="WhatsApp"
-                    className="inline-flex h-9 w-9 items-center justify-center border border-champagne/70 transition-colors hover:bg-pearl hover:text-night"
+                    aria-label={`Chat on WhatsApp on ${contact.phoneDisplay}`}
+                    className="inline-flex items-center gap-2 transition-colors hover:text-champagne-soft"
                   >
                     <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" />
+                    WhatsApp {contact.phoneDisplay}
                   </a>
                 </li>
                 <li>
@@ -109,7 +113,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col gap-2 pt-5 text-sm text-pearl/75 sm:flex-row sm:justify-between">
+        <div className="mt-6 flex flex-col items-center gap-1.5 pt-5 text-center text-sm text-pearl/75">
           <p>&copy; {new Date().getFullYear()} Jungle Hill Resort</p>
           <p>
             Designed and developed by{" "}
@@ -118,13 +122,13 @@ export function Footer() {
                 href={developer.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="text-champagne-soft transition-colors hover:text-pearl"
+                className="font-medium text-champagne transition-colors hover:text-champagne-soft"
               >
                 {developer.name}
               </a>
             ) : (
               // TODO: set developer.url in config/site.config.ts so this becomes a link
-              <span className="text-champagne-soft">{developer.name}</span>
+              <span className="font-medium text-champagne">{developer.name}</span>
             )}
           </p>
         </div>

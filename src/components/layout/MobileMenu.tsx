@@ -106,9 +106,9 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
                 <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" /> WhatsApp
               </a>
             </div>
-            <p className="label-mono pt-4 text-pearl/70">
+            <a href={telLink} className="label-mono pt-4 text-pearl/80">
               {siteConfig.contact.phoneDisplay}
-            </p>
+            </a>
           </div>
         </div>
       )}
