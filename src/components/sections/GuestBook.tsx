@@ -49,11 +49,11 @@ export function GuestBook({ reviews }: { reviews: Testimonial[] }) {
       <figure className="lg:col-span-8">
         <span
           aria-hidden="true"
-          className="block font-display text-[8rem] leading-[0.55] text-brass sm:text-[11rem]"
+          className="block font-display text-[6rem] leading-[0.5] text-brass sm:text-[8rem]"
         >
           &ldquo;
         </span>
-        <div aria-live={paused ? "polite" : "off"} className="min-h-[15rem]">
+        <div aria-live={paused ? "polite" : "off"} className="min-h-[12rem]">
           <AnimatePresence mode="wait" initial={false}>
             <motion.div
               key={review.id}
