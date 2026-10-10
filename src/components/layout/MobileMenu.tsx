@@ -68,7 +68,7 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
           <nav aria-label="Mobile">
             <ul className="flex flex-col">
               {items.map((item, index) => (
-                <li key={item.href} className="border-b border-ivory/15">
+                <li key={item.href}>
                   <Link
                     ref={index === 0 ? firstLink : undefined}
                     href={item.href}

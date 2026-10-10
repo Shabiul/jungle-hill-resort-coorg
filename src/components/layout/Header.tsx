@@ -21,10 +21,10 @@ export function Header() {
   return (
     <header
       className={cn(
-        "fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,border-color] duration-300",
+        "fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,box-shadow] duration-300",
         scrolled
-          ? "glass border-x-0 border-t-0 bg-ink/80"
-          : "border-b border-transparent",
+          ? "glass border-0 bg-ink/80 shadow-[0_10px_30px_-14px_rgba(6,24,15,0.55)]"
+          : "shadow-none",
         light && "dark-surface",
       )}
     >
@@ -59,8 +59,10 @@ export function Header() {
                     href={item.href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "label-mono link-underline py-2",
-                      light ? "text-ivory" : "text-ink",
+                      "label-mono py-2 transition-colors",
+                      light
+                        ? "text-ivory/90 hover:text-brass-soft"
+                        : "text-ink/85 hover:text-brass-deep",
                       active && (light ? "text-brass-soft" : "text-brass-deep"),
                       overHero && "drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)]",
                     )}

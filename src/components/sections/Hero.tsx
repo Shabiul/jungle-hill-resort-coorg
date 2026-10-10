@@ -4,7 +4,7 @@ import { HeroFade } from "@/components/animations/HeroFade";
 import { HeroMedia } from "@/components/animations/HeroMedia";
 import { RevealText } from "@/components/animations/RevealText";
 import { HeroEnquiryBar } from "@/components/forms/HeroEnquiryBar";
-import { heroPoster, heroVideoSources } from "@/data/site";
+import { resolveHeroSlides } from "@/data/hero";
 import { whatsappLink } from "@/lib/contact";
 
 export function Hero() {
@@ -13,12 +13,18 @@ export function Hero() {
       aria-label="Welcome"
       className="dark-surface relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-ink text-ivory"
     >
-      <HeroMedia poster={heroPoster} sources={[...heroVideoSources]} />
+      <HeroMedia slides={resolveHeroSlides()} />
       {/* Plain vertical scrim for legibility: no colour, no blobs */}
       <div aria-hidden="true" className="absolute inset-0 bg-ink/35" />
       <div
         aria-hidden="true"
         className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-ink/85 via-ink/40 to-transparent"
+      />
+
+      {/* Soft top scrim so the navigation stays legible over bright photos */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-ink/60 to-transparent"
       />
 
       {/* Optional side label, wide screens only */}

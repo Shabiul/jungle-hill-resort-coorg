@@ -39,7 +39,7 @@ export function Footer() {
                 <li className="flex items-center gap-4">
                   <a
                     href={telLink}
-                    className="link-underline inline-flex items-center gap-2"
+                    className="inline-flex items-center gap-2 transition-colors hover:text-brass-soft"
                   >
                     <Phone size={16} strokeWidth={1.5} aria-hidden="true" />
                     {contact.phoneDisplay}
@@ -57,7 +57,7 @@ export function Footer() {
                 <li>
                   <a
                     href={mailLink}
-                    className="link-underline inline-flex items-center gap-2"
+                    className="inline-flex items-center gap-2 transition-colors hover:text-brass-soft"
                   >
                     <Mail size={16} strokeWidth={1.5} aria-hidden="true" />
                     {contact.email}
@@ -67,7 +67,10 @@ export function Footer() {
 
               <p className="mt-5 text-ivory/80">
                 Manager: {manager.name},{" "}
-                <a href={managerTelLink} className="link-underline">
+                <a
+                  href={managerTelLink}
+                  className="transition-colors hover:text-brass-soft"
+                >
                   {manager.phoneDisplay}
                 </a>
               </p>
@@ -79,13 +82,19 @@ export function Footer() {
               <ul className="mt-3 grid gap-1.5">
                 {mainNav.map((item) => (
                   <li key={item.href}>
-                    <Link href={item.href} className="link-underline">
+                    <Link
+                      href={item.href}
+                      className="transition-colors hover:text-brass-soft"
+                    >
                       {item.label}
                     </Link>
                   </li>
                 ))}
                 <li>
-                  <Link href="/booking" className="link-underline">
+                  <Link
+                    href="/booking"
+                    className="transition-colors hover:text-brass-soft"
+                  >
                     Enquire / Book
                   </Link>
                 </li>
@@ -100,7 +109,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col gap-2 border-t border-ivory/15 pt-5 text-sm text-ivory/75 sm:flex-row sm:justify-between">
+        <div className="mt-6 flex flex-col gap-2 pt-5 text-sm text-ivory/75 sm:flex-row sm:justify-between">
           <p>&copy; {new Date().getFullYear()} Jungle Hill Resort</p>
           <p>
             Designed and developed by{" "}
@@ -109,13 +118,13 @@ export function Footer() {
                 href={developer.url}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="link-underline text-ivory"
+                className="text-brass-soft transition-colors hover:text-ivory"
               >
                 {developer.name}
               </a>
             ) : (
               // TODO: set developer.url in config/site.config.ts so this becomes a link
-              <span className="text-ivory">{developer.name}</span>
+              <span className="text-brass-soft">{developer.name}</span>
             )}
           </p>
         </div>

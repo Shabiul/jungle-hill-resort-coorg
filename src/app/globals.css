@@ -437,3 +437,17 @@
 .dark-surface .field-hint {
   color: color-mix(in oklab, var(--color-ivory) 70%, transparent);
 }
+
+/* Hero photo slides: slow Ken Burns zoom, scale 1 to 1.06 */
+@keyframes hero-kb {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.06);
+  }
+}
+.hero-kb {
+  animation: hero-kb 9s ease-out forwards;
+  will-change: transform;
+}
