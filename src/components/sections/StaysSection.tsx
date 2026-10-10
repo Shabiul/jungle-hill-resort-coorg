@@ -1,0 +1,32 @@
+import Link from "next/link";
+import { StayCards } from "@/components/sections/StayCards";
+import { SectionHeader } from "@/components/shared/SectionHeader";
+import { rooms } from "@/data/rooms";
+
+/** The four stays as boxed cards. Details live on the stay pages. */
+export function StaysSection() {
+  return (
+    <section
+      id="stays"
+      aria-label="The stays"
+      className="dark-surface section-space scroll-mt-20 bg-ink text-ivory"
+    >
+      <div className="page-container">
+        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <SectionHeader
+            tone="light"
+            label="02 — The stays"
+            lines={[{ text: "Four ways" }, { text: "to ", emphasis: "stay." }]}
+            description={<p>Rates are on enquiry, for your dates.</p>}
+          />
+          <Link href="/rooms" className="btn btn-outline self-start sm:self-end">
+            All stays
+          </Link>
+        </div>
+        <div className="mt-8">
+          <StayCards rooms={rooms} />
+        </div>
+      </div>
+    </section>
+  );
+}

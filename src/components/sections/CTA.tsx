@@ -1,41 +1,46 @@
 import Link from "next/link";
-import { MessageCircle, Phone } from "lucide-react";
+import { MessageCircle } from "lucide-react";
+import { VideoBackground } from "@/components/animations/VideoBackground";
 import { RevealText } from "@/components/animations/RevealText";
-import { siteConfig } from "@/config/site.config";
-import { telLink, whatsappLink } from "@/lib/contact";
+import { estateVideoSources } from "@/data/site";
+import { photo } from "@/lib/images";
+import { whatsappLink } from "@/lib/contact";
+
+const poster = photo(
+  "/images/gallery/grounds-valley-path.jpg",
+  "Paver path with the green valley beyond",
+);
 
 export function CTA() {
   return (
     <section
       aria-label="Enquire"
-      className="dark-surface section-space bg-forest text-ivory"
+      className="dark-surface section-space relative isolate overflow-hidden bg-forest text-ivory"
     >
-      <div className="page-container">
-        <p className="label-mono text-ivory/75">09 / Enquire</p>
+      <VideoBackground poster={poster} sources={estateVideoSources} />
+      <div aria-hidden="true" className="absolute inset-0 bg-ink/70" />
+      <div className="page-container relative">
+        <p className="label-mono text-brass-soft">06 — Enquire</p>
         <RevealText
           onDark
           lines={[{ text: "Ask us about" }, { text: "your ", emphasis: "dates." }]}
-          className="mt-5 text-h1"
+          className="mt-4 text-h1"
         />
-        <p className="mt-4 max-w-xl text-ivory/85">
-          There is no booking engine yet. Tell us when you would like to come and who is
-          coming, and we will reply with availability and rates.
+        <p className="mt-4 max-w-[46ch] text-ivory/85">
+          Tell us when you would like to come and who is coming. We reply with
+          availability and rates.
         </p>
         <div className="mt-6 flex flex-wrap gap-3">
-          <Link href="/booking" className="btn btn-primary">
-            Send an enquiry
+          <Link href="/contact" className="btn btn-primary">
+            Enquire Now
           </Link>
           <a
             href={whatsappLink()}
             target="_blank"
             rel="noopener noreferrer"
-            className="btn btn-outline-light gap-2"
+            className="btn btn-outline gap-2"
           >
             <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" /> WhatsApp
-          </a>
-          <a href={telLink} className="btn btn-outline-light gap-2">
-            <Phone size={16} strokeWidth={1.5} aria-hidden="true" />{" "}
-            {siteConfig.contact.phoneDisplay}
           </a>
         </div>
       </div>

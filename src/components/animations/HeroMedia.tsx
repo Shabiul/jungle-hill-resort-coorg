@@ -1,7 +1,7 @@
 "use client";
 
 import { motion, useScroll, useTransform } from "motion/react";
-import { HeroVideo } from "@/components/animations/HeroVideo";
+import { VideoBackground } from "@/components/animations/VideoBackground";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import type { ImageAsset } from "@/types";
 
@@ -21,7 +21,7 @@ export function HeroMedia({ poster, sources }: HeroMediaProps) {
       className="absolute inset-x-0 -top-10 -bottom-10"
       style={reduced ? undefined : { y }}
     >
-      <HeroVideo poster={poster} sources={sources} priority />
+      <VideoBackground poster={poster} sources={sources} priority zoom />
     </motion.div>
   );
 }

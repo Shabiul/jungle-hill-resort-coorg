@@ -31,15 +31,24 @@ export const heroPoster =
     ),
   ])[0] ?? null;
 
-// Only clips that exist in /public/videos are wired up, so the poster photo shows until they do.
-const heroClips = [
-  { src: "/videos/hero-mist.webm", type: "video/webm" },
-  { src: "/videos/hero-mist.mp4", type: "video/mp4" },
-] as const;
+/**
+ * Video slots in /public/videos. Only files that exist are returned, so every section falls back
+ * to its real photo until the clips are added (MP4 and/or WebM, under about 5 MB each).
+ */
+export function videoSources(
+  name: string,
+): { src: string; type: "video/webm" | "video/mp4" }[] {
+  return (
+    [
+      { src: `/videos/${name}.webm`, type: "video/webm" },
+      { src: `/videos/${name}.mp4`, type: "video/mp4" },
+    ] as const
+  ).filter((clip) => existsSync(path.join(process.cwd(), "public", clip.src)));
+}
 
-export const heroVideoSources = heroClips.filter((clip) =>
-  existsSync(path.join(process.cwd(), "public", clip.src)),
-);
+export const heroVideoSources = videoSources("hero-mist");
+export const estateVideoSources = videoSources("coffee-estate");
+export const rainVideoSources = videoSources("rain-leaves");
 
 export const homeImages = {
   welcomeA: photo(

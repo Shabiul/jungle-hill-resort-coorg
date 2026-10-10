@@ -17,13 +17,13 @@ export function ResortPlanSection({
     <section
       id={id}
       aria-label="Resort plan"
-      className="dark-surface section-space scroll-mt-20 bg-ink text-ivory"
+      className="dark-surface section-space scroll-mt-20 bg-forest text-ivory"
     >
       <div className="page-container">
         {heading && (
           <SectionHeader
             tone="light"
-            label="04 — The resort plan"
+            label="03 — The resort plan"
             lines={[
               { text: "Find your way" },
               { text: "around the ", emphasis: "estate." },

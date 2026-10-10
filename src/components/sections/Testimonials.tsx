@@ -14,7 +14,7 @@ export function Testimonials() {
       <div className="page-container">
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <SectionHeader
-            label="06 / Guest notes"
+            label="04 — Guest notes"
             lines={[{ text: "What guests say" }, { text: "on ", emphasis: "Google." }]}
             description={
               <p>
