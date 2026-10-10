@@ -32,7 +32,7 @@ export const siteConfig: SiteConfig = {
   socials: [], // TODO: Instagram, Facebook, etc.
   developer: {
     name: "Naaz Ai Labs",
-    url: "", // TODO: developerUrl, to be supplied
+    url: "https://naazailabs.com", // TODO: replace with the real Naaz Ai Labs website URL
   },
 };
 

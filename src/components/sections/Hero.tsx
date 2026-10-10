@@ -41,7 +41,7 @@ export function Hero() {
         Est. in the coffee estate · Madikeri
       </p>
 
-      <div className="page-container relative flex flex-1 flex-col justify-end pt-28 pb-6 sm:pb-8">
+      <div className="page-container relative flex flex-1 flex-col justify-end pt-28 pb-44 min-[1400px]:pb-8">
         <HeroFade>
           <p className="label-mono text-pearl [text-shadow:0_1px_14px_rgba(13,19,25,0.9)]">
             Madikeri, Coorg · 5 km towards Virajpet

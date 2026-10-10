@@ -1,12 +1,13 @@
 import Link from "next/link";
 import { Mail, MessageCircle, Phone } from "lucide-react";
+import { FooterCredit } from "@/components/layout/FooterCredit";
 import { Logo } from "@/components/shared/Logo";
 import { siteConfig } from "@/config/site.config";
 import { mainNav } from "@/data/navigation";
 import { mailLink, managerTelLink, telLink, whatsappLink } from "@/lib/contact";
 
 export function Footer() {
-  const { contact, manager, owners, developer } = siteConfig;
+  const { contact, manager, owners } = siteConfig;
 
   return (
     <footer className="dark-surface bg-night text-pearl">
@@ -113,25 +114,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-6 flex flex-col items-center gap-1.5 pt-5 text-center text-sm text-pearl/75">
-          <p>&copy; {new Date().getFullYear()} Jungle Hill Resort</p>
-          <p>
-            Designed and developed by{" "}
-            {developer.url ? (
-              <a
-                href={developer.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="font-medium text-champagne transition-colors hover:text-champagne-soft"
-              >
-                {developer.name}
-              </a>
-            ) : (
-              // TODO: set developer.url in config/site.config.ts so this becomes a link
-              <span className="font-medium text-champagne">{developer.name}</span>
-            )}
-          </p>
-        </div>
+        <FooterCredit />
       </div>
     </footer>
   );

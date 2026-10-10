@@ -2,30 +2,52 @@
 
 import { useEffect, useState } from "react";
 import Link from "next/link";
-import { MessageCircle, Phone } from "lucide-react";
+import { CalendarCheck, MessageCircle, Phone } from "lucide-react";
 import { siteConfig } from "@/config/site.config";
-import { useScrollPosition } from "@/hooks/useScrollPosition";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { defaultEnquiryMessage, whatsappLink } from "@/lib/contact";
+import { useIntroReady } from "@/lib/intro-store";
 import { cn } from "@/lib/utils";
 
 interface FloatingContactProps {
   message?: string;
 }
 
+const FALLBACK_MS = 3000;
+const STAGGER_MS = 100;
+
 const pill =
-  "floating-pill pointer-events-none inline-flex items-center justify-center border border-champagne/70 bg-slate text-pearl transition-colors hover:border-champagne-soft hover:bg-storm";
+  "floating-pill inline-flex items-center justify-center border border-champagne/70 bg-slate text-pearl transition-[border-color,background-color] hover:border-champagne-soft hover:bg-storm";
 const round = "h-12 w-12 rounded-full";
 
 /**
- * Floating Enquire Now, Call and WhatsApp, stacked bottom right. Shown after the first screen,
- * hidden while the footer is on screen so they never cover it. Icons only on small screens
- * (44px touch targets); the number shows from sm up.
+ * Floating Enquire Now, Call and WhatsApp, stacked bottom right. They pop up in sequence as soon
+ * as the landing experience has finished (preloader dismissed or skipped, or never shown), with a
+ * 3 s fallback, and then stay on every page. They hide only while the footer is on screen.
  */
 export function WhatsAppButton({
   message = defaultEnquiryMessage,
 }: FloatingContactProps) {
-  const scrolled = useScrollPosition() > 500;
+  const introDone = useIntroReady();
+  const reduced = useReducedMotion();
+  const [fallback, setFallback] = useState(false);
+  const [settled, setSettled] = useState(false);
   const [overFooter, setOverFooter] = useState(false);
+
+  // Always appear, even if the intro signal never arrives.
+  useEffect(() => {
+    const id = window.setTimeout(() => setFallback(true), FALLBACK_MS);
+    return () => window.clearTimeout(id);
+  }, []);
+
+  const shown = introDone || fallback;
+
+  // After the first reveal, later show/hide (footer) happens without the stagger delay.
+  useEffect(() => {
+    if (!shown) return;
+    const id = window.setTimeout(() => setSettled(true), 900);
+    return () => window.clearTimeout(id);
+  }, [shown]);
 
   useEffect(() => {
     const footer = document.querySelector("footer");
@@ -40,33 +62,44 @@ export function WhatsAppButton({
     return () => observer.disconnect();
   }, []);
 
-  const visible = scrolled && !overFooter;
+  const visible = shown && !overFooter;
   const tabIndex = visible ? 0 : -1;
+
+  const motionStyle = (index: number): React.CSSProperties => ({
+    opacity: visible ? 1 : 0,
+    transform: visible ? "none" : "translateY(16px) scale(0.92)",
+    transition: reduced
+      ? "none"
+      : "opacity 500ms ease-out, transform 500ms ease-out, border-color 300ms, background-color 300ms",
+    transitionDelay: reduced || settled ? "0ms" : `${index * STAGGER_MS}ms`,
+    pointerEvents: visible ? "auto" : "none",
+  });
 
   return (
     <div
-      className={cn(
-        "floating-contact pointer-events-none fixed right-4 bottom-4 z-[91] flex flex-col items-end gap-3 transition-all duration-300 sm:right-6 sm:bottom-6",
-        visible ? "translate-y-0 opacity-100" : "translate-y-4 opacity-0",
-      )}
+      className="floating-contact pointer-events-none fixed right-[max(1rem,env(safe-area-inset-right))] bottom-[max(1rem,env(safe-area-inset-bottom))] z-[91] flex flex-col items-end gap-3 sm:right-6 sm:bottom-6"
       aria-hidden={visible ? undefined : true}
     >
       <Link
         href="/booking"
         tabIndex={tabIndex}
-        className={cn(
-          pill,
-          "label-mono h-11 rounded-full px-6",
-          visible && "pointer-events-auto",
-        )}
+        style={motionStyle(0)}
+        className={cn(pill, "group label-mono h-11 gap-2 rounded-full px-5")}
       >
+        <CalendarCheck
+          size={16}
+          strokeWidth={1.5}
+          aria-hidden="true"
+          className="shrink-0 transition-transform duration-300 group-hover:translate-x-[2px]"
+        />
         Enquire Now
       </Link>
       <a
         href={`tel:${siteConfig.floatingContact.phoneTel}`}
         tabIndex={tabIndex}
+        style={motionStyle(1)}
         aria-label="Call Jungle Hill Resort"
-        className={cn(pill, round, visible && "pointer-events-auto")}
+        className={cn(pill, round)}
       >
         <Phone size={20} strokeWidth={1.5} aria-hidden="true" />
       </a>
@@ -75,8 +108,9 @@ export function WhatsAppButton({
         target="_blank"
         rel="noopener noreferrer"
         tabIndex={tabIndex}
+        style={motionStyle(2)}
         aria-label="Chat on WhatsApp"
-        className={cn(pill, round, visible && "pointer-events-auto")}
+        className={cn(pill, round)}
       >
         <MessageCircle size={20} strokeWidth={1.5} aria-hidden="true" />
       </a>
