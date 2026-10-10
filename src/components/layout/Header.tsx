@@ -16,7 +16,8 @@ export function Header() {
   const pathname = usePathname();
   const scrolled = useScrollPosition() > 24;
   const overHero = pathname === "/" && !scrolled;
-  const light = pathname === "/" || scrolled;
+  // The home hero and the dark guest notes page both sit under a transparent header.
+  const light = pathname === "/" || pathname === "/testimonials" || scrolled;
 
   return (
     <header

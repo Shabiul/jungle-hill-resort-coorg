@@ -75,6 +75,8 @@ export interface GalleryImage extends ImageAsset {
 }
 
 export interface Testimonial {
+  /** Verbatim part of a long review, shown on the home page. */
+  excerpt?: string;
   /** Sub-ratings Google showed for this review, where they exist. */
   details?: { rooms: number; service: number; location: number };
   highlights?: string[];

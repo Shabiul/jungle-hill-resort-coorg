@@ -12,6 +12,8 @@ export const testimonials: Testimonial[] = [
     timeAgo: "2 months ago",
     tripType: "Holiday | Friends",
     text: "Stayed at Jungle Hill Resort for two days and one night. We were two women travellers and the place is really safe and secure. The staff were very polite and helped us a lot. The stay was in the middle of a coffee estate so we enjoyed a relaxing, scenic stay. They also have a few indoor games and a small kids play park. Highly recommended place to stay.",
+    excerpt:
+      "We were two women travellers and the place is really safe and secure. The staff were very polite and helped us a lot.",
     source: "Google",
   },
   {
@@ -20,6 +22,8 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     timeAgo: "a month ago",
     text: "The room price was a little high, but there was no shortage of hospitality and care. The caretaker, Thimmanna, was very friendly and took excellent care of us. No complaints about the food. Idli and dosa were not available, but the biryani was very good.",
+    excerpt:
+      "The caretaker, Thimmanna, was very friendly and took excellent care of us. No complaints about the food. Idli and dosa were not available, but the biryani was very good.",
     source: "Google",
   },
   {
@@ -29,6 +33,8 @@ export const testimonials: Testimonial[] = [
     timeAgo: "6 months ago",
     tripType: "Holiday",
     text: "Had an amazing stay at Jungle Hill Resorts! The property is beautifully surrounded by nature, offering a peaceful and refreshing escape from city life. The rooms were clean, comfortable, and well-maintained. What truly stood out was the hospitality: staff were extremely courteous and attentive. The food was delicious and had a homely touch. Perfect place to relax, unwind, and reconnect with nature. Highly recommended!",
+    excerpt:
+      "The property is beautifully surrounded by nature, offering a peaceful and refreshing escape from city life. The rooms were clean, comfortable, and well-maintained.",
     source: "Google",
   },
   {
@@ -47,6 +53,8 @@ export const testimonials: Testimonial[] = [
     timeAgo: "6 months ago",
     tripType: "Holiday | Couple",
     text: "Loved the room, location, services. Everything! Felt underrated honestly. Really liked the whole experience and was in a budget as well. Their restaurant food was okayish but stay was good. Enjoyed swimming pool as well. Games area can be improved by cleaning it frequently.",
+    excerpt:
+      "Loved the room, location, services. Everything! Felt underrated honestly. Really liked the whole experience and was in a budget as well.",
     source: "Google",
   },
   {
@@ -56,6 +64,8 @@ export const testimonials: Testimonial[] = [
     timeAgo: "6 months ago",
     tripType: "Holiday | Family",
     text: "We had an overall pleasant stay at this place. The staff were very friendly and welcoming. The rooms were neat, clean, and spacious. The food quality was good, and the dining area was comfortable. Facilities for kids are also available, making it a great choice for families as well as couples. I would definitely recommend this place.",
+    excerpt:
+      "The staff were very friendly and welcoming. The rooms were neat, clean, and spacious. The food quality was good, and the dining area was comfortable.",
     source: "Google",
   },
   {
@@ -74,6 +84,8 @@ export const testimonials: Testimonial[] = [
     timeAgo: "7 months ago",
     tripType: "Holiday | Friends",
     text: "I had a wonderful stay at the hotel, with a clean, comfortable room and a warm, relaxing ambience that made me feel right at home. The food was delicious with plenty of great options, and the location was very convenient for getting around easily. The staff were extremely polite, helpful, and professional, which truly made my experience even more enjoyable.",
+    excerpt:
+      "I had a wonderful stay at the hotel, with a clean, comfortable room and a warm, relaxing ambience that made me feel right at home.",
     source: "Google",
   },
   {
@@ -83,6 +95,8 @@ export const testimonials: Testimonial[] = [
     timeAgo: "4 months ago",
     tripType: "Holiday | Family",
     text: "The place was really refreshing away from the hustle and bustle of the city. We enjoyed the pool and indoor games area. The food is tasty but the service has to be improved. The breakfast buffet is ok. Overall it's a good experience.",
+    excerpt:
+      "The place was really refreshing away from the hustle and bustle of the city. We enjoyed the pool and indoor games area.",
     source: "Google",
   },
   {
@@ -109,6 +123,8 @@ export const testimonials: Testimonial[] = [
     rating: 5,
     timeAgo: "10 months ago",
     text: "Beautiful views, peaceful ambience. All staff were extremely friendly and hospitable throughout our stay, especially the manager at reception. The food quality and taste was awesome. I enjoyed the variety of breakfast. We even used the pool and it was neatly maintained. Everything else was really mesmerizing. Thank you Jungle Hill Team.",
+    excerpt:
+      "Beautiful views, peaceful ambience. All staff were extremely friendly and hospitable throughout our stay, especially the manager at reception.",
     source: "Google",
   },
   {
@@ -126,37 +142,8 @@ export const testimonials: Testimonial[] = [
     timeAgo: "a year ago",
     tripType: "Holiday | Friends",
     text: "Amazing resort, beautifully surrounded by jungle. Rooms are clean and tidy, service is good. Efficient parking, swimming pool, kids play area and indoor games. A suitable option for travellers who prioritise a tranquil, nature-filled location and friendly staff. A good place for a relaxing getaway, especially for families and couples.",
+    excerpt:
+      "Amazing resort, beautifully surrounded by jungle. Rooms are clean and tidy, service is good.",
     source: "Google",
   },
 ];
-
-/** Short fragments for the drifting ribbon. Each is verbatim from the review it names. */
-export const pullQuotes: { reviewId: string; text: string }[] = [
-  { reviewId: "hasil-md", text: "Beautiful views, peaceful ambience" },
-  { reviewId: "nithinkumar-h-r", text: "Worth every penny" },
-  { reviewId: "nithinkumar-h-r", text: "Very quiet and beautiful place" },
-  {
-    reviewId: "bowya-rathanakumar",
-    text: "The sunrise view from my room is just awesome",
-  },
-  { reviewId: "bowya-rathanakumar", text: "Very well maintained swimming pool" },
-  { reviewId: "bowya-rathanakumar", text: "Kids park area also very neat" },
-  { reviewId: "shivani-s", text: "The staff were very polite and helped us a lot" },
-  { reviewId: "shivani-s", text: "Highly recommended place to stay" },
-  { reviewId: "arshiya-firdose", text: "The food was delicious and had a homely touch" },
-  {
-    reviewId: "arshiya-firdose",
-    text: "Perfect place to relax, unwind, and reconnect with nature",
-  },
-  { reviewId: "arun-kumar-subramaian", text: "Quiet place and service is fantastic" },
-  { reviewId: "suparna-das", text: "The resort is so peaceful" },
-  {
-    reviewId: "faqathfoodiehyd",
-    text: "Amazing resort, beautifully surrounded by jungle",
-  },
-  { reviewId: "sandhiya-r", text: "Entire resort was clean, especially the pool" },
-  { reviewId: "moorthy-l", text: "The caretaker, Thimmanna, was very friendly" },
-];
-
-/** Trip-type groups used for filtering, derived from the real tripType strings. */
-export const tripFilters = ["Family", "Couple", "Friends"] as const;

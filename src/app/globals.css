@@ -359,44 +359,6 @@
   animation: intro-wipe 1.3s var(--ease-out-expo) 0.15s forwards;
 }
 
-/* Pull-quote ribbon */
-@keyframes ribbon {
-  from {
-    transform: translateX(0);
-  }
-  to {
-    transform: translateX(-50%);
-  }
-}
-.ribbon-track {
-  animation: ribbon 110s linear infinite;
-}
-.ribbon:hover .ribbon-track,
-.ribbon:focus-within .ribbon-track {
-  animation-play-state: paused;
-}
-.ribbon-text {
-  color: transparent;
-  -webkit-text-stroke: 1px var(--color-slate);
-}
-@media (prefers-reduced-motion: reduce) {
-  .ribbon {
-    overflow-x: auto;
-  }
-  .ribbon-track {
-    animation: none;
-  }
-}
-
-@keyframes fade-in {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
 /* Form fields on dark panels (unlayered so they win over the utility classes on the fields) */
 .field-error {
   color: #8a3b3b;
