@@ -4,7 +4,7 @@ import { ArrowLeft, ArrowRight, MessageCircle } from "lucide-react";
 import { RevealText } from "@/components/animations/RevealText";
 import { CTA } from "@/components/sections/CTA";
 import { Photo } from "@/components/shared/Photo";
-import { PhotoGrid } from "@/components/shared/PhotoGrid";
+import { PhotoCarousel } from "@/components/shared/PhotoCarousel";
 import { checkTimes } from "@/data/policies";
 import { getRoomBySlug, rooms } from "@/data/rooms";
 import { whatsappLink } from "@/lib/contact";
@@ -37,7 +37,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
   const index = rooms.findIndex((item) => item.slug === slug);
   const previous = rooms[(index - 1 + rooms.length) % rooms.length];
   const next = rooms[(index + 1) % rooms.length];
-  const enquiry = `Hello Jungle Hill Resort, I would like to enquire about the ${room.name}.`;
+  const enquiry = `Hello Jungle Hill Resort, I would like to enquire about ${room.name} (${room.category}).`;
 
   const facts = [
     { label: "Size", value: `${room.sizeSqFt} sq ft` },
@@ -65,6 +65,9 @@ export default async function RoomPage({ params }: RoomPageProps) {
             lines={[{ text: room.name }]}
             className="mt-5 text-[clamp(3rem,8vw,7rem)] leading-[0.95]"
           />
+          <p className="label-mono mt-4 text-stone">
+            {room.category} · {room.sizeSqFt} sq ft
+          </p>
         </div>
 
         <div className="page-container mt-10">
@@ -144,8 +147,8 @@ export default async function RoomPage({ params }: RoomPageProps) {
       <section aria-label="Photographs" className="section-space bg-linen">
         <div className="page-container">
           <p className="label-mono text-emerald">Photographs</p>
-          <h2 className="mt-4 mb-10 text-4xl sm:text-5xl">{room.name}, as it is</h2>
-          <PhotoGrid images={room.images} />
+          <h2 className="mt-4 mb-10 text-4xl sm:text-5xl">Every photograph</h2>
+          <PhotoCarousel images={room.images} />
         </div>
       </section>
 

@@ -51,6 +51,7 @@ export function StaysList({ rooms }: { rooms: Room[] }) {
                 </span>
               </span>
               <span className="label-mono col-span-12 flex flex-wrap items-center gap-x-5 gap-y-1 text-stone lg:col-span-4 lg:justify-end">
+                <span>{room.category}</span>
                 <span>{room.sizeSqFt} sq ft</span>
                 <span>{room.bed}</span>
                 <span>{room.occupancy}</span>

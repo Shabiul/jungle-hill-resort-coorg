@@ -8,15 +8,17 @@ import { MessageCircle } from "lucide-react";
 import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
 import { Textarea } from "@/components/ui/Textarea";
-import { rooms } from "@/data/rooms";
+import { roomLabel, rooms } from "@/data/rooms";
 import { whatsappLink } from "@/lib/contact";
 import { bookingSchema, type BookingValues } from "@/lib/validations";
 
 type Status = "idle" | "sent" | "error";
 
 function summary(values: BookingValues) {
-  const room =
-    rooms.find((item) => item.slug === values.roomType)?.name ?? "No preference";
+  const room = (() => {
+    const match = rooms.find((item) => item.slug === values.roomType);
+    return match ? roomLabel(match) : "No preference";
+  })();
   const lines = ["Hello Jungle Hill Resort, I would like to enquire about a stay."];
   if (values.name) lines.push(`Name: ${values.name}`);
   if (values.phone) lines.push(`Phone: ${values.phone}`);
@@ -166,7 +168,7 @@ export function BookingForm() {
         <option value="any">No preference</option>
         {rooms.map((room) => (
           <option key={room.slug} value={room.slug}>
-            {room.name}
+            {roomLabel(room)}
           </option>
         ))}
       </Select>

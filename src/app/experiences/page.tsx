@@ -3,6 +3,7 @@ import { RevealImage } from "@/components/animations/RevealImage";
 import { CTA } from "@/components/sections/CTA";
 import { PageHero } from "@/components/shared/PageHero";
 import { Photo } from "@/components/shared/Photo";
+import { PhotoGrid } from "@/components/shared/PhotoGrid";
 import { experiences } from "@/data/experiences";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -53,11 +54,13 @@ export default function ExperiencesPage() {
                 </ul>
               </div>
               <div className="lg:col-span-6 lg:col-start-7">
-                {item.image ? (
+                {item.images.length > 1 ? (
+                  <PhotoGrid images={item.images} />
+                ) : item.images[0] ? (
                   <RevealImage>
                     <div className="relative aspect-[4/3] overflow-hidden">
                       <Photo
-                        image={item.image}
+                        image={item.images[0]}
                         fill
                         sizes="(min-width: 1024px) 50vw, 100vw"
                       />

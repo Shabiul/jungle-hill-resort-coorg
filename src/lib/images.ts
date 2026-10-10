@@ -21,3 +21,38 @@ export function photos(
 ): ImageAsset[] {
   return compact(items.map(([file, alt]) => photo(`${folder}/${file}`, alt)));
 }
+
+const SHOT_KINDS: [RegExp, string][] = [
+  [/^bedroom/, "bedroom"],
+  [/^bathroom/, "bathroom"],
+  [/^balcony/, "balcony"],
+  [/^exterior/, "exterior"],
+  [/^seating/, "seating area"],
+  [/^view/, "view from the balcony"],
+  [/^entrance/, "entrance"],
+  [/^coffee-kettle/, "coffee kettle and tray"],
+];
+
+/** Fallback alt text for a room photo that has no hand-written description. */
+export function describeShot(file: string, roomName: string): string {
+  const kind = SHOT_KINDS.find(([pattern]) => pattern.test(file))?.[1] ?? "photograph";
+  return `${roomName}: ${kind}`;
+}
+
+/**
+ * Hand-described photos first (in the given order), then every other photo found in the folder,
+ * so a new file dropped into public/images shows up after `npm run images`.
+ */
+export function photosFromFolder(
+  folder: string,
+  curated: [file: string, alt: string][],
+  fallbackAlt: (file: string) => string,
+): ImageAsset[] {
+  const prefix = `${folder}/`;
+  const listed = new Set(curated.map(([file]) => file));
+  const rest = Object.keys(imageManifest)
+    .filter((key) => key.startsWith(prefix) && !listed.has(key.slice(prefix.length)))
+    .sort((a, b) => a.localeCompare(b, undefined, { numeric: true }))
+    .map((key) => photo(key, fallbackAlt(key.slice(prefix.length))));
+  return [...photos(folder, curated), ...compact(rest)];
+}

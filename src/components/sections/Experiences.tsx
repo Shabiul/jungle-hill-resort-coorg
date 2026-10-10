@@ -53,11 +53,11 @@ export function Experiences() {
                 className={cn("relative flex", tileLayout[index % tileLayout.length])}
               >
                 <RevealImage className="relative flex w-full" delay={index * 0.06}>
-                  {item.image ? (
+                  {item.images[0] ? (
                     <>
                       <div className="relative w-full overflow-hidden">
                         <Photo
-                          image={item.image}
+                          image={item.images[0]}
                           fill
                           sizes="(min-width: 1024px) 50vw, 100vw"
                         />

@@ -77,7 +77,7 @@ export function HorizontalRooms({ rooms }: HorizontalRoomsProps) {
               <div className="mt-5 flex items-baseline justify-between border-t border-ink pt-4">
                 <span className="font-display text-5xl leading-none">{room.number}</span>
                 <span className="label-mono text-emerald">
-                  {room.sizeSqFt} sq ft · {room.bed}
+                  {room.category} · {room.sizeSqFt} sq ft
                 </span>
               </div>
               <h3 className="mt-4 text-3xl decoration-1 underline-offset-4 group-hover:underline sm:text-4xl">

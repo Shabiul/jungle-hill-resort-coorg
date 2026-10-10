@@ -16,7 +16,12 @@ export interface Room {
   slug: string;
   /** Display number, e.g. "01". */
   number: string;
+  /** Distinctive display name, e.g. "The Cloudline Suite". */
   name: string;
+  /** Official category from the brochure, e.g. "Deluxe AC Room". */
+  category: string;
+  /** Short category for forms, e.g. "Deluxe AC". */
+  categoryShort: string;
   /** One-line summary for lists. */
   summary: string;
   description: string;
@@ -43,7 +48,8 @@ export interface Experience {
   label: string;
   summary: string;
   facts: string[];
-  image?: ImageAsset;
+  /** Every real photo of this experience; the first is the lead image. */
+  images: ImageAsset[];
 }
 
 export interface MealTime {
@@ -67,6 +73,9 @@ export interface GalleryImage extends ImageAsset {
 }
 
 export interface Testimonial {
+  /** Sub-ratings Google showed for this review, where they exist. */
+  details?: { rooms: number; service: number; location: number };
+  highlights?: string[];
   id: string;
   name: string;
   /** 1 to 5 */

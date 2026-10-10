@@ -1,7 +1,10 @@
-import { photo } from "@/lib/images";
+import { compact, photo } from "@/lib/images";
 import type { Experience } from "@/types";
 
 const g = "/images/gallery";
+
+const shots = (items: [file: string, alt: string][]) =>
+  compact(items.map(([file, alt]) => photo(`${g}/${file}`, alt)));
 
 export const experiences: Experience[] = [
   {
@@ -17,11 +20,24 @@ export const experiences: Experience[] = [
       "Swimwear or nylon dresses only",
       "No food or drinks in the pool area",
     ],
-    image:
-      photo(
-        `${g}/pool-with-kids-pool.jpg`,
-        "Swimming pool and shallow kids pool with palms behind",
-      ) ?? undefined,
+    images: shots([
+      [
+        "pool-with-kids-pool.jpg",
+        "Swimming pool and shallow kids pool on a tiled deck with chairs",
+      ],
+      ["pool-palms.jpg", "Blue swimming pool with palms and banana plants behind"],
+      ["pool-long-view.jpg", "Long view of the pool and its shallow kids section"],
+      ["pool-deck-kids-pool.jpg", "Pool deck with chairs and the stepped kids pool"],
+      [
+        "pool-kids-pool-float.jpg",
+        "Kids pool with an inflatable ring beside the main pool",
+      ],
+      [
+        "pool-deck-float.jpg",
+        "Pool and tiled deck with an inflatable ring floating in the water",
+      ],
+      ["pool-water-closeup.jpg", "Pool water and blue tiles with palms behind"],
+    ]),
   },
   {
     slug: "kids-park",
@@ -30,6 +46,12 @@ export const experiences: Experience[] = [
     summary:
       "A safe, child-friendly open play area amid the trees: see-saw, giraffe slide, swings and more.",
     facts: ["For children under 10"],
+    images: shots([
+      [
+        "kids-park-sign-play.jpg",
+        "Kids Park sign with climbing frame and slide among the trees",
+      ],
+    ]),
   },
   {
     slug: "indoor-games",
@@ -37,9 +59,11 @@ export const experiences: Experience[] = [
     label: "Indoor",
     summary: "Carrom, table tennis, ludo, chess and foosball.",
     facts: ["Carrom", "Table tennis", "Ludo", "Chess", "Foosball"],
-    image:
-      photo(`${g}/games-foosball.jpg`, "Foosball table with red and blue players") ??
-      undefined,
+    images: shots([
+      ["games-foosball.jpg", "Foosball table with red and blue players"],
+      ["games-table-tennis.jpg", "Blue table-tennis table under a roof among trees"],
+      ["games-carrom.jpg", "Carrom board with coins and a striker"],
+    ]),
   },
   {
     slug: "outdoor-games",
@@ -47,5 +71,6 @@ export const experiences: Experience[] = [
     label: "Outdoor",
     summary: "Shuttle badminton, played within the property premises.",
     facts: ["Shuttle badminton, within the property premises"],
+    images: [],
   },
 ];

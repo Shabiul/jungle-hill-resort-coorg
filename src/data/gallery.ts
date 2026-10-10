@@ -1,148 +1,125 @@
-import { compact, photo } from "@/lib/images";
-import { dining } from "@/data/dining";
+import { imageManifest } from "@/data/generated/image-manifest";
 import { rooms } from "@/data/rooms";
+import { compact, photo } from "@/lib/images";
 import type { GalleryCategory, GalleryImage } from "@/types";
 
-const g = "/images/gallery";
+/**
+ * Every photo in public/images/gallery and public/images/dining is listed automatically.
+ * The category comes from the filename prefix; the alt text from the table below (a generic
+ * fallback is used for any new file, so add a line here when you add a photo).
+ */
+const ALT: Record<string, string> = {
+  "grounds-paver-path-hills":
+    "Red paver path curving through trees with hills in the distance",
+  "grounds-building-garden": "Guest building with a stone base and lawn in front",
+  "grounds-valley-tree-view":
+    "View through the trees over the valley, with a small tiled roof below",
+  "grounds-building-facade":
+    "Front of a guest building with a stone retaining wall and garden",
+  "grounds-driveway-palms": "Red paver driveway with palms and a room block beside it",
+  "pool-palms": "Blue swimming pool with palms and banana plants behind",
+  "pool-with-kids-pool":
+    "Swimming pool and shallow kids pool on a tiled deck with chairs",
+  "pool-kids-pool-float": "Kids pool with an inflatable ring beside the main pool",
+  "pool-deck-kids-pool": "Pool deck with chairs and the stepped kids pool",
+  "grounds-white-building-windows":
+    "Low white building with large windows beside the red paver path",
+  "grounds-paver-court": "Wide red paver court with palms and shrubs",
+  "grounds-cottage-roofs-path": "Tiled cottage roofs along a red paver path",
+  "pool-long-view": "Long view of the pool and its shallow kids section",
+  "grounds-hill-view-green-roof": "Hills beyond palms with a green tiled roof below",
+  "pool-deck-float": "Pool and tiled deck with an inflatable ring floating in the water",
+  "grounds-path-palms-hedge": "Red paver path between a clipped hedge and palms",
+  "grounds-path-blue-sky": "Paver path under tall palms and a bright blue sky",
+  "grounds-sunset-palms": "Setting sun between palms and young conifers",
+  "grounds-paver-court-buildings": "Room buildings at the end of a red paver court",
+  "grounds-valley-green-roof": "Green-roofed cottage above the valley and hills",
+  "grounds-path-balcony-block":
+    "Paver path beside a balconied room block, with trees and blue sky",
+  "grounds-path-trees": "Red paver path winding between tall trees",
+  "grounds-two-storey-modern":
+    "White two-storey block with glass balconies beside the path",
+  "grounds-clouds-palms": "Clouds over the valley seen through palms",
+  "grounds-valley-path": "Paver path with the green valley beyond",
+  "grounds-path-trees-building":
+    "Paver path under tall trees with a room block at the left",
+  "grounds-path-shade": "Shaded paver path with palms and blue sky",
+  "grounds-pavilion-green-roof":
+    "Open pavilion with a green tiled roof beside the paver path",
+  "grounds-misty-valley": "Mist over the valley beyond the resort's tiled roofs",
+  "grounds-tiled-roof-cottages": "Tiled-roof cottages above a red paver driveway",
+  "grounds-two-storey-block-01": "White two-storey room block with a stone staircase",
+  "pool-water-closeup": "Pool water and blue tiles with palms behind",
+  "reception-exterior": "Reception building with a red roof beside the paver drive",
+  "grounds-cottages-garden": "Tiled-roof cottages among the garden and plantation",
+  "grounds-yellow-flowers": "Yellow flowering shrubs against a blue sky",
+  "grounds-two-storey-block-02": "Two-storey room block with a tiled roof and balcony",
+  "kids-park-sign-play": "Kids Park sign with climbing frame and slide among the trees",
+  "grounds-rooms-and-stairs": "Room blocks with a stair and a red paver walkway",
+  "games-table-tennis": "Blue table-tennis table under a roof among trees",
+  "dining-restaurant-entrance": "Restaurant entrance framed by coffee plants",
+  "reception-entrance-path": "Path leading up to the reception entrance",
+  "games-foosball": "Foosball table with red and blue players",
+  "dining-glasses-detail": "Glasses on a restaurant table with the valley blurred behind",
+  "games-carrom": "Carrom board with coins and a striker",
+  "dining-terrace-table":
+    "Restaurant table laid with cutlery and a flower vase, looking out to the trees",
+  "grounds-waterfall": "Small stone waterfall feature among the greenery",
+  "lounge-sofa-seating":
+    "Sitting area with cushioned sofas under a timber-beamed ceiling",
+  "restaurant-hall-01":
+    "Restaurant hall with dark wood tables and a view into the plantation",
+  "restaurant-hall-02": "Restaurant seating under a high timber roof with bamboo blinds",
+};
 
-function entry(
-  file: string,
-  alt: string,
-  category: GalleryCategory,
-): GalleryImage | null {
-  const image = photo(`${g}/${file}`, alt);
-  return image ? { ...image, category } : null;
+function categoryOf(stem: string): GalleryCategory {
+  if (stem.startsWith("pool")) return "Pool";
+  if (stem.startsWith("dining") || stem.startsWith("restaurant")) return "Dining";
+  if (stem.startsWith("kids-park")) return "Kids Park";
+  if (stem.startsWith("games")) return "Games";
+  if (stem.startsWith("lounge")) return "Rooms";
+  return "Grounds";
 }
 
-// Files that are not in public/images/gallery are skipped. Re-run `npm run images` after adding photos.
-const grounds: (GalleryImage | null)[] = [
-  entry(
-    "grounds-building-garden.jpg",
-    "Guest building with a stone base and lawn in front",
-    "Grounds",
-  ),
-  entry(
-    "grounds-paver-driveway.jpg",
-    "Red paver driveway curving past the room blocks",
-    "Grounds",
-  ),
-  entry(
-    "grounds-valley-view.jpg",
-    "View over the valley through palms and plantation",
-    "Grounds",
-  ),
-  entry("grounds-paver-path-01.jpg", "Red paver path winding through trees", "Grounds"),
-  entry(
-    "grounds-paver-path-02.jpg",
-    "Red paver path with hills in the distance",
-    "Grounds",
-  ),
-  entry(
-    "grounds-paver-path-03.jpg",
-    "Paver path beneath tall trees and blue sky",
-    "Grounds",
-  ),
-  entry(
-    "grounds-pavilion-green-roof.jpg",
-    "Open pavilion with a green tiled roof beside the paver path",
-    "Grounds",
-  ),
-  entry(
-    "grounds-misty-valley.jpg",
-    "Mist over the valley beyond the resort's tiled roofs",
-    "Grounds",
-  ),
-  entry(
-    "grounds-tiled-roof-cottages.jpg",
-    "Tiled-roof cottages above a red paver driveway",
-    "Grounds",
-  ),
-  entry(
-    "grounds-two-storey-block-01.jpg",
-    "White two-storey room block with a stone staircase",
-    "Grounds",
-  ),
-  entry(
-    "grounds-cottages-garden.jpg",
-    "Cottages among the garden and plantation",
-    "Grounds",
-  ),
-  entry(
-    "grounds-two-storey-block-02.jpg",
-    "Two-storey room block with a tiled roof and balcony",
-    "Grounds",
-  ),
-  entry(
-    "grounds-rooms-and-stairs.jpg",
-    "Room blocks with a stair and a red paver walkway",
-    "Grounds",
-  ),
-  entry(
-    "reception-exterior.jpg",
-    "Reception building with a red roof beside the paver drive",
-    "Grounds",
-  ),
-  entry(
-    "reception-entrance-path.jpg",
-    "Path leading up to the reception entrance",
-    "Grounds",
-  ),
-];
+function humanise(stem: string) {
+  const text = stem.replace(/-\d+$/, "").replace(/-/g, " ");
+  return text.charAt(0).toUpperCase() + text.slice(1);
+}
 
-const pool: (GalleryImage | null)[] = [
-  entry("pool-main-01.jpg", "Blue swimming pool with palms behind", "Pool"),
-  entry(
-    "pool-with-kids-pool.jpg",
-    "Swimming pool and shallow kids pool on a tiled deck",
-    "Pool",
-  ),
-  entry("pool-deck-kids-pool.jpg", "Pool deck with chairs and the kids pool", "Pool"),
-  entry("pool-water-closeup.jpg", "Pool water and tiles with palms behind", "Pool"),
-];
-
-const diningShots: (GalleryImage | null)[] = [
-  entry(
-    "dining-restaurant-entrance.jpg",
-    "Restaurant entrance framed by coffee plants",
-    "Dining",
-  ),
-  entry(
-    "dining-glasses-detail.jpg",
-    "Glasses on a restaurant table with the valley blurred behind",
-    "Dining",
-  ),
-  ...dining.images.map((image): GalleryImage => ({ ...image, category: "Dining" })),
-];
-
-const games: (GalleryImage | null)[] = [
-  entry(
-    "games-table-tennis.jpg",
-    "Blue table-tennis table under a roof among trees",
-    "Games",
-  ),
-  entry("games-foosball.jpg", "Foosball table with red and blue players", "Games"),
-];
-
-const roomShots: GalleryImage[] = rooms.flatMap((room) =>
-  room.images.slice(0, 5).map((image): GalleryImage => ({ ...image, category: "Rooms" })),
+const fromFolders: GalleryImage[] = compact(
+  Object.keys(imageManifest)
+    .filter(
+      (key) => key.startsWith("/images/gallery/") || key.startsWith("/images/dining/"),
+    )
+    .sort((a, b) => a.localeCompare(b))
+    .map((key): GalleryImage | null => {
+      const stem = key
+        .split("/")
+        .pop()!
+        .replace(/\.[a-z]+$/i, "");
+      const image = photo(key, ALT[stem] ?? humanise(stem));
+      return image ? { ...image, category: categoryOf(stem) } : null;
+    }),
 );
 
-// TODO: no kids-park photos supplied yet; the "Kids Park" filter appears once some exist.
-export const gallery: GalleryImage[] = [
-  ...compact(grounds),
-  ...compact(pool),
-  ...compact(diningShots),
-  ...compact(games),
-  ...roomShots,
-];
+// A taste of every room category (all room photos are on the room pages).
+const roomShots: GalleryImage[] = rooms.flatMap((room) =>
+  room.images.slice(0, 6).map((image): GalleryImage => ({ ...image, category: "Rooms" })),
+);
 
-export const galleryCategories: GalleryCategory[] = [
+const order: GalleryCategory[] = [
   "Rooms",
   "Pool",
   "Dining",
   "Kids Park",
   "Games",
   "Grounds",
-].filter((category) =>
+];
+
+export const gallery: GalleryImage[] = [...fromFolders, ...roomShots].sort(
+  (a, b) => order.indexOf(a.category) - order.indexOf(b.category),
+);
+
+export const galleryCategories: GalleryCategory[] = order.filter((category) =>
   gallery.some((image) => image.category === category),
-) as GalleryCategory[];
+);

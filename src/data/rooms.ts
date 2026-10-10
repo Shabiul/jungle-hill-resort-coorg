@@ -1,4 +1,4 @@
-import { photos } from "@/lib/images";
+import { describeShot, photosFromFolder } from "@/lib/images";
 import type { Room } from "@/types";
 
 const RATE_NOTE = "Enquire for rates";
@@ -8,8 +8,10 @@ export const rooms: Room[] = [
   {
     slug: "deluxe-ac-rooms",
     number: "01",
-    name: "Deluxe AC Room",
-    summary: "Our premium room: king bed, private balcony and a view over the estate.",
+    name: "The Cloudline Suite",
+    category: "Deluxe AC Room",
+    categoryShort: "Deluxe AC",
+    summary: "A 250 sq ft AC room with a king bed and a private balcony onto the estate.",
     description:
       "The Deluxe AC Room is the resort's premium category. A king bed, a private balcony, air conditioning and a refrigerator, with a coffee kettle and supplies on the tray. Ideal for couples or small families.",
     sizeSqFt: 250,
@@ -30,36 +32,43 @@ export const rooms: Room[] = [
     rateNote: RATE_NOTE,
     price: null,
     imageFolder: `${base}/deluxe-ac-rooms`,
-    images: photos(`${base}/deluxe-ac-rooms`, [
-      ["bedroom-03.jpg", "King bed with headboard lights in a Deluxe AC room"],
-      ["bedroom-01.jpg", "Deluxe AC room with king bed, TV unit and sofa"],
-      ["bedroom-02.jpg", "Deluxe AC room bed with curtains drawn back"],
+    images: photosFromFolder(
+      `${base}/deluxe-ac-rooms`,
       [
-        "balcony-01.jpg",
-        "Private balcony of a Deluxe AC room looking over trees and green hills",
+        ["bedroom-03.jpg", "King bed with headboard lights in a Deluxe AC room"],
+        ["bedroom-01.jpg", "Deluxe AC room with king bed, TV unit and sofa"],
+        ["bedroom-02.jpg", "Deluxe AC room bed with curtains drawn back"],
+        [
+          "balcony-01.jpg",
+          "Private balcony of a Deluxe AC room looking over trees and green hills",
+        ],
+        [
+          "coffee-kettle-01.jpg",
+          "Coffee kettle, water and cups on the tray in a Deluxe AC room",
+        ],
+        ["bedroom-04.jpg", "Deluxe AC room with seating and a bed in the background"],
+        ["bathroom-01.jpg", "Tiled shower area in a Deluxe AC room bathroom"],
+        ["bathroom-02.jpg", "Washbasin and toilet in a Deluxe AC room bathroom"],
+        [
+          "exterior-01.jpg",
+          "Two-storey block with balconies and external stairs among tall trees",
+        ],
+        [
+          "exterior-02.jpg",
+          "White two-storey room block with balconies above a stone base",
+        ],
       ],
-      [
-        "coffee-kettle-01.jpg",
-        "Coffee kettle, water and cups on the tray in a Deluxe AC room",
-      ],
-      ["bedroom-04.jpg", "Deluxe AC room with seating and a bed in the background"],
-      ["bathroom-01.jpg", "Tiled shower area in a Deluxe AC room bathroom"],
-      ["bathroom-02.jpg", "Washbasin and toilet in a Deluxe AC room bathroom"],
-      [
-        "exterior-01.jpg",
-        "Two-storey block with balconies and external stairs among tall trees",
-      ],
-      [
-        "exterior-02.jpg",
-        "White two-storey room block with balconies above a stone base",
-      ],
-    ]),
+      (file) => describeShot(file, "The Cloudline Suite"),
+    ),
   },
   {
     slug: "family-ac-room",
     number: "02",
-    name: "Family AC Room",
-    summary: "400 sq ft for up to four guests, with two double beds and two washrooms.",
+    name: "The Estate House",
+    category: "Family AC Room",
+    categoryShort: "Family AC",
+    summary:
+      "400 sq ft for up to four guests: two double beds, two washrooms and a seating area.",
     description:
       "The Family AC Room is the largest on the property. Two double beds, two attached washrooms and a cozy seating area, with air conditioning, a TV and a coffee kettle. Family rooms are available on both the ground floor and the first floor.",
     sizeSqFt: 400,
@@ -79,30 +88,43 @@ export const rooms: Room[] = [
     rateNote: RATE_NOTE,
     price: null,
     imageFolder: `${base}/family-ac-room`,
-    images: photos(`${base}/family-ac-room`, [
+    images: photosFromFolder(
+      `${base}/family-ac-room`,
       [
-        "bedroom-02.jpg",
-        "Family AC room with two double beds and a wood-panelled headboard wall",
+        [
+          "bedroom-02.jpg",
+          "Family AC room with two double beds and a wood-panelled headboard wall",
+        ],
+        ["bedroom-01.jpg", "Two double beds with teal runners in a Family AC room"],
+        [
+          "seating-01.jpg",
+          "Seating area with cushioned wooden sofas in a Family AC room",
+        ],
+        ["bedroom-03.jpg", "Two beds beyond a long sofa in a Family AC room"],
+        ["seating-02.jpg", "Wide seating area in a Family AC room"],
+        [
+          "bedroom-05.jpg",
+          "Family AC room with beds and TV unit on a stone-textured wall",
+        ],
+        ["bedroom-04.jpg", "Spacious Family AC room with two double beds"],
+        ["bedroom-06.jpg", "Family AC room seen from the doorway"],
+        ["bedroom-07.jpg", "Two double beds facing a TV and seating"],
+        ["bedroom-08.jpg", "Twin beds under a wood-panelled ceiling"],
+        ["bathroom-01.jpg", "Bathroom attached to a Family AC room"],
+        ["bathroom-02.jpg", "Second bathroom of a Family AC room"],
+        ["bathroom-03.jpg", "Tiled bathroom with washbasin in a Family AC room"],
       ],
-      ["bedroom-01.jpg", "Two double beds with teal runners in a Family AC room"],
-      ["seating-01.jpg", "Seating area with cushioned wooden sofas in a Family AC room"],
-      ["bedroom-03.jpg", "Two beds beyond a long sofa in a Family AC room"],
-      ["seating-02.jpg", "Wide seating area in a Family AC room"],
-      ["bedroom-05.jpg", "Family AC room with beds and TV unit on a stone-textured wall"],
-      ["bedroom-04.jpg", "Spacious Family AC room with two double beds"],
-      ["bedroom-06.jpg", "Family AC room seen from the doorway"],
-      ["bedroom-07.jpg", "Two double beds facing a TV and seating"],
-      ["bedroom-08.jpg", "Twin beds under a wood-panelled ceiling"],
-      ["bathroom-01.jpg", "Bathroom attached to a Family AC room"],
-      ["bathroom-02.jpg", "Second bathroom of a Family AC room"],
-      ["bathroom-03.jpg", "Tiled bathroom with washbasin in a Family AC room"],
-    ]),
+      (file) => describeShot(file, "The Estate House"),
+    ),
   },
   {
     slug: "standard-non-ac-cottage",
     number: "03",
-    name: "Standard Non-AC Cottage",
-    summary: "A 150 sq ft cottage for couples, with its own balcony into the trees.",
+    name: "The Pepper Vine Cottage",
+    category: "Standard Non-AC Cottage",
+    categoryShort: "Standard Non-AC Cottage",
+    summary:
+      "A 150 sq ft cottage for couples, with a queen bed and a balcony of its own.",
     description:
       "The Standard Non-AC Cottage is a 150 sq ft stay for couples. A queen bed, an attached washroom and a separate balcony, with a TV, fan, coffee kettle and cupboard.",
     sizeSqFt: 150,
@@ -121,39 +143,49 @@ export const rooms: Room[] = [
     rateNote: RATE_NOTE,
     price: null,
     imageFolder: `${base}/standard-non-ac-cottage`,
-    images: photos(`${base}/standard-non-ac-cottage`, [
+    images: photosFromFolder(
+      `${base}/standard-non-ac-cottage`,
       [
-        "bedroom-01.jpg",
-        "Queen bed with teal runner and grey curtains in a Standard Non-AC cottage",
+        [
+          "bedroom-01.jpg",
+          "Queen bed with teal runner and grey curtains in a Standard Non-AC cottage",
+        ],
+        [
+          "balcony-01.jpg",
+          "Wooden balcony of a cottage with two chairs, facing the plantation",
+        ],
+        ["balcony-02.jpg", "Cottage balcony with timber railing and a tiled roof beyond"],
+        [
+          "exterior-01.jpg",
+          "Cottage on stilts with a timber balcony and staircase among bamboo",
+        ],
+        [
+          "bedroom-02.jpg",
+          "Cottage bedroom with a queen bed under a wood-panelled ceiling",
+        ],
+        ["bedroom-03.jpg", "Queen bed in a cottage with curtains drawn"],
+        ["bedroom-05.jpg", "Cottage bedroom with wardrobe and TV"],
+        ["bedroom-07.jpg", "Cottage room showing TV and wardrobe wall"],
+        ["bedroom-09.jpg", "Cottage bedroom seen from the foot of the bed"],
+        ["bedroom-10.jpg", "Cottage bed with teal runner and cushions"],
+        [
+          "exterior-02.jpg",
+          "Cottage with a red tiled roof among bamboo and coffee plants",
+        ],
+        ["bathroom-01.jpg", "Cottage bathroom with washbasin and wall tiles"],
+        ["bathroom-02.jpg", "Second view of the cottage bathroom"],
       ],
-      [
-        "balcony-01.jpg",
-        "Wooden balcony of a cottage with two chairs, facing the plantation",
-      ],
-      ["balcony-02.jpg", "Cottage balcony with timber railing and a tiled roof beyond"],
-      [
-        "exterior-01.jpg",
-        "Cottage on stilts with a timber balcony and staircase among bamboo",
-      ],
-      [
-        "bedroom-02.jpg",
-        "Cottage bedroom with a queen bed under a wood-panelled ceiling",
-      ],
-      ["bedroom-03.jpg", "Queen bed in a cottage with curtains drawn"],
-      ["bedroom-05.jpg", "Cottage bedroom with wardrobe and TV"],
-      ["bedroom-07.jpg", "Cottage room showing TV and wardrobe wall"],
-      ["bedroom-09.jpg", "Cottage bedroom seen from the foot of the bed"],
-      ["bedroom-10.jpg", "Cottage bed with teal runner and cushions"],
-      ["exterior-02.jpg", "Cottage with a red tiled roof among bamboo and coffee plants"],
-      ["bathroom-01.jpg", "Cottage bathroom with washbasin and wall tiles"],
-      ["bathroom-02.jpg", "Second view of the cottage bathroom"],
-    ]),
+      (file) => describeShot(file, "The Pepper Vine Cottage"),
+    ),
   },
   {
     slug: "standard-non-ac-room",
     number: "04",
-    name: "Standard Non-AC Room",
-    summary: "A 150 sq ft room for couples, with a balcony over the coffee estate.",
+    name: "The Coffee Leaf Nook",
+    category: "Standard Non-AC Room",
+    categoryShort: "Standard Non-AC",
+    summary:
+      "A 150 sq ft room for couples with a queen bed. A2, A3 and A5 are upstairs, A6 is on the ground floor.",
     description:
       "The Standard Non-AC Room is 150 sq ft and made for couples. A queen bed, an attached washroom, a TV, a fan, a coffee kettle and a cupboard, with a balcony onto the plantation.",
     sizeSqFt: 150,
@@ -165,32 +197,44 @@ export const rooms: Room[] = [
     rateNote: RATE_NOTE,
     price: null,
     imageFolder: `${base}/standard-non-ac-room`,
-    images: photos(`${base}/standard-non-ac-room`, [
-      ["bedroom-02.jpg", "Standard Non-AC room with a queen bed and cream curtains"],
-      ["bedroom-01.jpg", "Queen bed and TV unit in a Standard Non-AC room"],
-      ["bedroom-03.jpg", "Standard room bed under a wooden ceiling"],
-      ["bedroom-04.jpg", "Queen bed with blue cushions facing the TV"],
-      ["bedroom-05.jpg", "Standard room with wardrobe and bed"],
-      ["bedroom-06.jpg", "Standard room bed beside the TV unit"],
-      ["bedroom-07.jpg", "Standard room with kettle and desk by the window"],
-      ["bedroom-08.jpg", "Standard room in a ground-floor block"],
-      ["view-01.jpg", "Coffee plants and misty hills seen over a balcony railing"],
-      ["balcony-01.jpg", "Balcony with two chairs and a low table"],
-      ["balcony-02.jpg", "Balcony with timber floor looking into the trees"],
-      ["view-02.jpg", "View from a first-floor balcony over tiled roofs and the valley"],
-      ["balcony-03.jpg", "First-floor balcony with a blue parapet and seating"],
-      ["entrance-a2.jpg", "Entrance to room A-2 with a chair outside the door"],
-      ["balcony-04.jpg", "Balcony with two chairs and a table beside the room door"],
-      ["balcony-05.jpg", "Balcony seating with a view of the hills"],
+    images: photosFromFolder(
+      `${base}/standard-non-ac-room`,
       [
-        "entrance-a6.jpg",
-        "Ground-floor entrance to room A-6 with two chairs on a stone floor",
+        ["bedroom-02.jpg", "Standard Non-AC room with a queen bed and cream curtains"],
+        ["bedroom-01.jpg", "Queen bed and TV unit in a Standard Non-AC room"],
+        ["bedroom-03.jpg", "Standard room bed under a wooden ceiling"],
+        ["bedroom-04.jpg", "Queen bed with blue cushions facing the TV"],
+        ["bedroom-05.jpg", "Standard room with wardrobe and bed"],
+        ["bedroom-06.jpg", "Standard room bed beside the TV unit"],
+        ["bedroom-07.jpg", "Standard room with kettle and desk by the window"],
+        ["bedroom-08.jpg", "Standard room in a ground-floor block"],
+        ["view-01.jpg", "Coffee plants and misty hills seen over a balcony railing"],
+        ["balcony-01.jpg", "Balcony with two chairs and a low table"],
+        ["balcony-02.jpg", "Balcony with timber floor looking into the trees"],
+        [
+          "view-02.jpg",
+          "View from a first-floor balcony over tiled roofs and the valley",
+        ],
+        ["balcony-03.jpg", "First-floor balcony with a blue parapet and seating"],
+        ["entrance-a2.jpg", "Entrance to room A-2 with a chair outside the door"],
+        ["balcony-04.jpg", "Balcony with two chairs and a table beside the room door"],
+        ["balcony-05.jpg", "Balcony seating with a view of the hills"],
+        [
+          "entrance-a6.jpg",
+          "Ground-floor entrance to room A-6 with two chairs on a stone floor",
+        ],
+        ["balcony-09.jpg", "Stone-floored verandah with chairs and a bamboo blind"],
+        ["bathroom-01.jpg", "Bathroom with tiled walls in a Standard Non-AC room"],
       ],
-      ["balcony-09.jpg", "Stone-floored verandah with chairs and a bamboo blind"],
-      ["bathroom-01.jpg", "Bathroom with tiled walls in a Standard Non-AC room"],
-    ]),
+      (file) => describeShot(file, "The Coffee Leaf Nook"),
+    ),
   },
 ];
+
+/** "The Cloudline Suite (Deluxe AC)" */
+export function roomLabel(room: Room) {
+  return `${room.name} (${room.categoryShort})`;
+}
 
 export function getRoomBySlug(slug: string) {
   return rooms.find((room) => room.slug === slug);
