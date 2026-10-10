@@ -11,7 +11,7 @@ export default function NotFound() {
         lines={[{ text: "This path" }, { text: "has gone ", emphasis: "quiet." }]}
         description={<p>The page you were looking for is not here. These might help.</p>}
       />
-      <section aria-label="Where to next" className="pb-32">
+      <section aria-label="Where to next" className="pb-16">
         <div className="page-container flex flex-wrap gap-3">
           <Link href="/" className="btn btn-primary">
             Back to home

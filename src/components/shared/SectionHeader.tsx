@@ -30,12 +30,12 @@ export function SectionHeader({
         as={as}
         lines={lines}
         onDark={tone === "light"}
-        className="mt-5 text-[clamp(2.5rem,6.5vw,5.5rem)]"
+        className="mt-5 text-h2"
       />
       {description && (
         <div
           className={cn(
-            "mt-6 max-w-xl",
+            "mt-4 max-w-xl",
             tone === "dark" ? "text-ink/80" : "text-ivory/80",
           )}
         >

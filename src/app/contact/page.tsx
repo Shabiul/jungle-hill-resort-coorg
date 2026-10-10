@@ -1,8 +1,8 @@
-import { MapPin, MessageCircle, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { ContactForm } from "@/components/forms/ContactForm";
 import { PageHero } from "@/components/shared/PageHero";
 import { siteConfig } from "@/config/site.config";
-import { managerTelLink, mapsHref, telLink, whatsappLink } from "@/lib/contact";
+import { mailLink, managerTelLink, mapsHref, telLink, whatsappLink } from "@/lib/contact";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
@@ -23,8 +23,8 @@ export default function ContactPage() {
         description={<p>The quickest way to reach us is a call or a WhatsApp message.</p>}
       />
 
-      <section aria-label="Contact details and form" className="pb-24">
-        <div className="page-container grid gap-14 lg:grid-cols-12">
+      <section aria-label="Contact details and form" className="pb-12">
+        <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <ul className="border-t border-ink">
               <li className="border-b border-ink/20 py-5">
@@ -47,6 +47,15 @@ export default function ContactPage() {
                     Message on WhatsApp
                   </a>
                 </p>
+              </li>
+              <li className="border-b border-ink/20 py-5">
+                <p className="label-mono text-emerald">Email</p>
+                <a
+                  href={mailLink}
+                  className="link-underline mt-1 inline-flex items-center gap-2 text-body-lg"
+                >
+                  <Mail size={18} strokeWidth={1.5} aria-hidden="true" /> {contact.email}
+                </a>
               </li>
               <li className="border-b border-ink/20 py-5">
                 <p className="label-mono text-emerald">Manager</p>
@@ -82,7 +91,7 @@ export default function ContactPage() {
           </div>
 
           <div className="lg:col-span-6 lg:col-start-7">
-            <h2 className="text-4xl sm:text-5xl">Write to us</h2>
+            <h2 className="text-h3">Write to us</h2>
             <div className="mt-8">
               <ContactForm />
             </div>

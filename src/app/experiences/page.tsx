@@ -31,7 +31,7 @@ export default function ExperiencesPage() {
         }
       />
 
-      <section aria-label="Things to do" className="pb-24">
+      <section aria-label="Things to do" className="pb-12">
         <ol className="page-container">
           {experiences.map((item, index) => (
             <li
@@ -43,7 +43,7 @@ export default function ExperiencesPage() {
                 <p className="label-mono text-brass-deep">
                   {String(index + 1).padStart(2, "0")} · {item.label}
                 </p>
-                <h2 className="mt-3 text-4xl sm:text-6xl">{item.title}</h2>
+                <h2 className="mt-3 text-h2">{item.title}</h2>
                 <p className="mt-5 max-w-md text-stone">{item.summary}</p>
                 <ul className="mt-6 border-t border-ink/20">
                   {item.facts.map((fact) => (

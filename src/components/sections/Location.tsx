@@ -16,7 +16,7 @@ const image = photo(
 export function Location() {
   return (
     <section id="location" aria-label="Location" className="section-space">
-      <div className="page-container grid gap-14 lg:grid-cols-12 lg:gap-10">
+      <div className="page-container grid gap-8 lg:grid-cols-12 lg:gap-6">
         <div className="lg:col-span-6">
           <SectionHeader
             label="08 / Find us"
@@ -25,7 +25,7 @@ export function Location() {
               { text: "from ", emphasis: "Madikeri." },
             ]}
           />
-          <Reveal className="mt-10 max-w-lg space-y-5">
+          <Reveal className="mt-6 max-w-lg space-y-5">
             <p>
               The resort sits among coffee and pepper plantations, on the way to Virajpet.
               The access road is narrow, so drive slowly.

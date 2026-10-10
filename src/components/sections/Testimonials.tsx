@@ -1,5 +1,6 @@
-import { FeaturedReview } from "@/components/sections/FeaturedReview";
-import { ReviewsRow } from "@/components/sections/ReviewsRow";
+import Link from "next/link";
+import { GuestBook } from "@/components/sections/GuestBook";
+import { PullQuoteRibbon } from "@/components/sections/PullQuoteRibbon";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { testimonials } from "@/data/testimonials";
 
@@ -11,21 +12,26 @@ export function Testimonials() {
       className="section-space overflow-hidden"
     >
       <div className="page-container">
-        <SectionHeader
-          label="06 / Reviews"
-          lines={[{ text: "What guests say" }, { text: "on ", emphasis: "Google." }]}
-          description={
-            <p>
-              Real reviews, lightly tidied for spelling. The 4-star ones are here too.
-            </p>
-          }
-        />
+        <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
+          <SectionHeader
+            label="06 / Guest notes"
+            lines={[{ text: "What guests say" }, { text: "on ", emphasis: "Google." }]}
+            description={
+              <p>
+                Real reviews, lightly tidied for spelling. The 4-star ones are here too.
+              </p>
+            }
+          />
+          <Link href="/testimonials" className="btn btn-outline self-start sm:self-end">
+            Read all guest notes
+          </Link>
+        </div>
+        <div className="mt-8">
+          <GuestBook reviews={testimonials} />
+        </div>
       </div>
-      <div className="page-container mt-12">
-        <FeaturedReview reviews={testimonials} />
-      </div>
-      <div className="mt-16">
-        <ReviewsRow reviews={testimonials} />
+      <div className="mt-10">
+        <PullQuoteRibbon />
       </div>
     </section>
   );

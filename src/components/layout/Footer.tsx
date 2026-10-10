@@ -1,44 +1,42 @@
 import Link from "next/link";
-import { MessageCircle, Phone } from "lucide-react";
+import { Mail, MessageCircle, Phone } from "lucide-react";
+import { Logo } from "@/components/shared/Logo";
 import { siteConfig } from "@/config/site.config";
 import { mainNav } from "@/data/navigation";
-import { managerTelLink, telLink, whatsappLink } from "@/lib/contact";
+import { mailLink, managerTelLink, telLink, whatsappLink } from "@/lib/contact";
 
 export function Footer() {
   const { contact, manager, owners, developer } = siteConfig;
 
   return (
     <footer className="dark-surface bg-ink text-ivory">
-      <div className="page-container pt-20 pb-8">
-        <div className="grid gap-14 lg:grid-cols-12">
+      <div className="page-container pt-[var(--space-section)] pb-6">
+        <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5">
-            <p className="label-mono text-ivory/70">{siteConfig.tagline}</p>
+            <Logo variant="light" asLink={false} className="h-24" />
             <p
-              aria-label="Jungle Hill"
-              className="mt-4 font-display text-[clamp(3rem,9vw,7rem)] leading-[0.9] font-bold tracking-[0.04em] text-transparent [-webkit-text-stroke:1.5px_var(--color-brass-soft)]"
+              aria-hidden="true"
+              className="mt-6 font-display text-[clamp(3rem,8vw,6.5rem)] leading-[0.92] font-bold tracking-[0.03em] text-transparent [-webkit-text-stroke:1.5px_var(--color-brass-soft)]"
             >
               JUNGLE
               <br />
               HILL
             </p>
-            <p className="mt-6 max-w-sm text-ivory/80">
-              A nature retreat in the coffee and pepper plantations, 5 km from Madikeri on
-              the way to Virajpet.
-            </p>
           </div>
 
-          <div className="grid gap-10 sm:grid-cols-2 lg:col-span-7">
+          <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7">
             <div>
               <h2 className="label-mono text-ivory/70">Visit</h2>
-              <address className="mt-4 not-italic">
+              <address className="mt-3 not-italic">
                 {contact.addressLines.map((line) => (
                   <span key={line} className="block">
                     {line}
                   </span>
                 ))}
               </address>
-              <ul className="mt-6 space-y-3">
-                <li>
+
+              <ul className="mt-5 space-y-3">
+                <li className="flex items-center gap-4">
                   <a
                     href={telLink}
                     className="link-underline inline-flex items-center gap-2"
@@ -46,20 +44,28 @@ export function Footer() {
                     <Phone size={16} strokeWidth={1.5} aria-hidden="true" />
                     {contact.phoneDisplay}
                   </a>
-                </li>
-                <li>
                   <a
                     href={whatsappLink()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="link-underline inline-flex items-center gap-2"
+                    aria-label="WhatsApp"
+                    className="inline-flex h-9 w-9 items-center justify-center border border-brass/70 transition-colors hover:bg-ivory hover:text-ink"
                   >
                     <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" />
-                    WhatsApp, same number
+                  </a>
+                </li>
+                <li>
+                  <a
+                    href={mailLink}
+                    className="link-underline inline-flex items-center gap-2"
+                  >
+                    <Mail size={16} strokeWidth={1.5} aria-hidden="true" />
+                    {contact.email}
                   </a>
                 </li>
               </ul>
-              <p className="mt-6 text-ivory/80">
+
+              <p className="mt-5 text-ivory/80">
                 Manager: {manager.name},{" "}
                 <a href={managerTelLink} className="link-underline">
                   {manager.phoneDisplay}
@@ -70,7 +76,7 @@ export function Footer() {
 
             <div>
               <h2 className="label-mono text-ivory/70">Explore</h2>
-              <ul className="mt-4 grid gap-2">
+              <ul className="mt-3 grid gap-1.5">
                 {mainNav.map((item) => (
                   <li key={item.href}>
                     <Link href={item.href} className="link-underline">
@@ -84,7 +90,7 @@ export function Footer() {
                   </Link>
                 </li>
               </ul>
-              <p className="label-mono mt-8 text-ivory/70">
+              <p className="label-mono mt-6 text-ivory/70">
                 Check-in 12 PM · Check-out 11 AM
               </p>
               <p className="mt-2 text-sm text-ivory/70">
@@ -94,7 +100,7 @@ export function Footer() {
           </div>
         </div>
 
-        <div className="mt-16 flex flex-col gap-2 border-t border-ivory/15 pt-6 text-sm text-ivory/75 sm:flex-row sm:justify-between">
+        <div className="mt-6 flex flex-col gap-2 border-t border-ivory/15 pt-5 text-sm text-ivory/75 sm:flex-row sm:justify-between">
           <p>&copy; {new Date().getFullYear()} Jungle Hill Resort</p>
           <p>
             Designed and developed by{" "}

@@ -5,7 +5,7 @@ import { rooms } from "@/data/rooms";
 export function RoomsPreview() {
   return (
     <section id="rooms" aria-label="Rooms">
-      <div className="section-space bg-linen pb-12 lg:pb-16">
+      <div className="section-space bg-linen pb-6 lg:pb-8">
         <div className="page-container flex flex-col justify-between gap-6 lg:flex-row lg:items-end">
           <SectionHeader
             label="02 / Rooms · 13 rooms · 4 stays"

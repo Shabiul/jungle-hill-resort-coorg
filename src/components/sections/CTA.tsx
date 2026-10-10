@@ -15,13 +15,13 @@ export function CTA() {
         <RevealText
           onDark
           lines={[{ text: "Ask us about" }, { text: "your ", emphasis: "dates." }]}
-          className="mt-5 text-[clamp(2.75rem,8vw,7rem)]"
+          className="mt-5 text-h1"
         />
-        <p className="mt-6 max-w-xl text-ivory/85">
+        <p className="mt-4 max-w-xl text-ivory/85">
           There is no booking engine yet. Tell us when you would like to come and who is
           coming, and we will reply with availability and rates.
         </p>
-        <div className="mt-10 flex flex-wrap gap-3">
+        <div className="mt-6 flex flex-wrap gap-3">
           <Link href="/booking" className="btn btn-primary">
             Send an enquiry
           </Link>

@@ -15,7 +15,7 @@ export function Dining() {
       aria-label="Dining"
       className="dark-surface section-space bg-ink text-ivory"
     >
-      <div className="page-container grid gap-14 lg:grid-cols-12 lg:gap-10">
+      <div className="page-container grid gap-8 lg:grid-cols-12 lg:gap-6">
         <div className="lg:col-span-6">
           <SectionHeader
             tone="light"
@@ -37,7 +37,7 @@ export function Dining() {
             ))}
           </ul>
 
-          <div className="mt-12 max-w-md">
+          <div className="mt-8 max-w-md">
             <MealTimetable meals={dining.meals} hours={dining.hours} />
           </div>
         </div>
@@ -49,7 +49,7 @@ export function Dining() {
             </div>
           </RevealImage>
 
-          <h3 className="label-mono mt-10 !font-mono text-ivory/75">
+          <h3 className="label-mono mt-6 !font-mono text-ivory/75">
             Ordering guidelines
           </h3>
           <ul className="mt-4 space-y-3">

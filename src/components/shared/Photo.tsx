@@ -2,6 +2,9 @@ import Image from "next/image";
 import { cn } from "@/lib/utils";
 import type { ImageAsset } from "@/types";
 
+/** One subtle grade for every photograph: a touch of contrast and warmth. */
+const GRADE = "[filter:contrast(1.04)_saturate(1.04)_sepia(0.05)]";
+
 interface PhotoProps {
   image: ImageAsset | null | undefined;
   sizes: string;
@@ -36,7 +39,7 @@ export function Photo({
         src={image.src}
         fill
         alt={image.alt}
-        className={cn("object-cover", imgClassName, className)}
+        className={cn("object-cover", GRADE, imgClassName, className)}
         {...common}
       />
     );
@@ -48,7 +51,7 @@ export function Photo({
       alt={image.alt}
       width={image.width}
       height={image.height}
-      className={cn("h-auto w-full", imgClassName, className)}
+      className={cn("h-auto w-full", GRADE, imgClassName, className)}
       {...common}
     />
   );

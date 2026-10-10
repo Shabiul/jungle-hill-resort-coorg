@@ -13,6 +13,6 @@ export async function POST(request: Request) {
     );
   }
 
-  // TODO: deliver the enquiry (email / WhatsApp Business API / CRM) and add spam protection.
+  // TODO: send each enquiry to reservations@junglehillresort.co.in (and/or WhatsApp). Deliver the enquiry (email / WhatsApp Business API / CRM) and add spam protection.
   return NextResponse.json({ ok: true });
 }

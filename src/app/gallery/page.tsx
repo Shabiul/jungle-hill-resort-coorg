@@ -23,7 +23,7 @@ export default function GalleryPage() {
           </p>
         }
       />
-      <section aria-label="Photographs" className="pb-24">
+      <section aria-label="Photographs" className="pb-12">
         <div className="page-container">
           <GalleryBrowser images={gallery} categories={galleryCategories} />
         </div>

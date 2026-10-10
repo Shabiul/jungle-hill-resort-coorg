@@ -1,10 +1,10 @@
-import { MapPin, Phone } from "lucide-react";
+import { Mail, MapPin, Phone } from "lucide-react";
 import { CTA } from "@/components/sections/CTA";
 import { PageHero } from "@/components/shared/PageHero";
 import { siteConfig } from "@/config/site.config";
 import { faqs } from "@/data/faqs";
 import { checkTimes } from "@/data/policies";
-import { mapsHref, telLink } from "@/lib/contact";
+import { mailLink, mapsHref, telLink } from "@/lib/contact";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
@@ -37,8 +37,8 @@ export default function PlanYourStayPage() {
         }
       />
 
-      <section aria-label="Location and directions" className="pb-24">
-        <div className="page-container grid gap-12 lg:grid-cols-12">
+      <section aria-label="Location and directions" className="pb-12">
+        <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <h2 className="label-mono !font-mono text-xs text-emerald">Address</h2>
             <address className="mt-3 font-display text-3xl not-italic">
@@ -62,9 +62,12 @@ export default function PlanYourStayPage() {
                 <Phone size={16} strokeWidth={1.5} aria-hidden="true" />{" "}
                 {siteConfig.contact.phoneDisplay}
               </a>
+              <a href={mailLink} className="btn btn-outline gap-2">
+                <Mail size={16} strokeWidth={1.5} aria-hidden="true" /> Email
+              </a>
             </div>
 
-            <h2 className="label-mono mt-12 !font-mono text-xs text-emerald">
+            <h2 className="label-mono mt-8 !font-mono text-xs text-emerald">
               How to reach
             </h2>
             <ol className="mt-4 border-t border-ink">
@@ -102,7 +105,7 @@ export default function PlanYourStayPage() {
       </section>
 
       <section aria-label="Check-in and check-out" className="section-space bg-linen">
-        <div className="page-container grid gap-10 sm:grid-cols-3">
+        <div className="page-container grid gap-6 sm:grid-cols-3">
           <div>
             <p className="label-mono text-emerald">Check-in</p>
             <p className="mt-2 font-display text-5xl">{checkTimes.checkIn}</p>
@@ -118,10 +121,10 @@ export default function PlanYourStayPage() {
       </section>
 
       <section aria-label="Frequently asked questions" className="section-space">
-        <div className="page-container grid gap-12 lg:grid-cols-12">
+        <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p className="label-mono text-emerald">Questions</p>
-            <h2 className="mt-4 text-4xl sm:text-5xl">
+            <h2 className="mt-4 text-h3">
               Things people <em className="font-light text-brass-deep">ask.</em>
             </h2>
           </div>

@@ -18,3 +18,5 @@ export function mapsHref() {
     `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(siteConfig.contact.addressOneLine)}`
   );
 }
+
+export const mailLink = `mailto:${siteConfig.contact.email}`;

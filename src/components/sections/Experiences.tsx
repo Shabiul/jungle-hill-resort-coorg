@@ -32,7 +32,7 @@ export function Experiences() {
           ]}
         />
 
-        <ul className="mt-14 grid gap-4 lg:auto-rows-[15rem] lg:grid-cols-12">
+        <ul className="mt-8 grid gap-4 lg:auto-rows-[15rem] lg:grid-cols-12">
           {experiences.map((item, index) => {
             const caption = (
               <>

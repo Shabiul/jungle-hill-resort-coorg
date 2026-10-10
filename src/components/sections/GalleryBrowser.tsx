@@ -45,7 +45,7 @@ export function GalleryBrowser({ images, categories }: GalleryBrowserProps) {
         </p>
       </div>
 
-      <ul className="mt-10 columns-1 gap-4 sm:columns-2 lg:columns-3">
+      <ul className="mt-6 columns-1 gap-4 sm:columns-2 lg:columns-3">
         {visible.map((image, index) => (
           <li key={image.src} className="mb-4 break-inside-avoid">
             <button

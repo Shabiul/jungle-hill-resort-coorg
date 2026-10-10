@@ -58,7 +58,7 @@ export function HorizontalRooms({ rooms }: HorizontalRoomsProps) {
         ref={trackRef}
         tabIndex={0}
         aria-label="Room categories, scroll sideways"
-        className="flex snap-x snap-mandatory gap-6 overflow-x-auto px-[var(--spacing-gutter)] py-16 lg:w-max lg:snap-none lg:gap-10 lg:overflow-visible lg:py-0"
+        className="flex snap-x snap-mandatory gap-6 overflow-x-auto px-[var(--spacing-gutter)] py-16 lg:w-max lg:snap-none lg:gap-6 lg:overflow-visible lg:py-0"
       >
         {rooms.map((room) => (
           <article

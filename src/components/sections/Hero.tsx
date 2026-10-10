@@ -29,7 +29,7 @@ export function Hero() {
         Est. in the coffee estate · Madikeri
       </p>
 
-      <div className="page-container relative flex flex-1 flex-col justify-end pt-36 pb-8 sm:pb-12">
+      <div className="page-container relative flex flex-1 flex-col justify-end pt-28 pb-6 sm:pb-8">
         <HeroFade>
           <p className="label-mono flex flex-wrap items-center gap-x-4 gap-y-1 text-ivory [text-shadow:0_1px_14px_rgba(6,24,15,0.9)]">
             <span className="h-px w-8 bg-brass-soft" aria-hidden="true" />
@@ -43,7 +43,7 @@ export function Hero() {
           onDark
           delay={0.1}
           lines={[{ text: "Rest above" }, { text: "the ", emphasis: "cloudline." }]}
-          className="mt-6 max-w-5xl text-[clamp(3.5rem,12vw,10.5rem)] leading-[0.9]"
+          className="mt-6 max-w-5xl text-display"
         />
 
         <HeroFade delay={0.35}>
@@ -80,7 +80,7 @@ export function Hero() {
           </div>
         </HeroFade>
 
-        <HeroFade delay={0.6} className="mt-10 max-w-5xl">
+        <HeroFade delay={0.6} className="mt-6 max-w-5xl">
           <HeroEnquiryBar />
         </HeroFade>
       </div>

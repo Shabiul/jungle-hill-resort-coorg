@@ -33,7 +33,7 @@ export function GalleryPreview() {
           </Link>
         </div>
 
-        <ul className="mt-14 grid auto-rows-[15rem] grid-cols-12 gap-3 sm:auto-rows-[20rem] sm:gap-4">
+        <ul className="mt-8 grid auto-rows-[13rem] grid-cols-12 gap-3 sm:auto-rows-[17rem] sm:gap-4">
           {items.map((image, index) => (
             <li key={image.src} className={cn(spans[index % spans.length])}>
               <RevealImage className="h-full" delay={index * 0.06}>

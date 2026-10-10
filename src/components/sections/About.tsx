@@ -7,13 +7,13 @@ import { homeImages } from "@/data/site";
 export function About() {
   return (
     <section id="welcome" aria-label="Welcome" className="section-space">
-      <div className="page-container grid gap-14 lg:grid-cols-12 lg:gap-10">
+      <div className="page-container grid gap-8 lg:grid-cols-12 lg:gap-6">
         <div className="lg:col-span-6">
           <SectionHeader
             label="01 / Welcome"
             lines={[{ text: "Coffee, pepper" }, { text: "and ", emphasis: "quiet." }]}
           />
-          <Reveal className="mt-10 max-w-xl space-y-5">
+          <Reveal className="mt-4 max-w-xl space-y-5">
             <p>
               Jungle Hill Resort is a nature retreat surrounded by lush coffee and pepper
               plantations, just 5 km from Madikeri on the way to Virajpet.
@@ -27,7 +27,7 @@ export function About() {
             <p>It is designed for relaxation and a peaceful stay in nature.</p>
           </Reveal>
 
-          <Reveal className="mt-12 max-w-md">
+          <Reveal className="mt-8 max-w-md">
             <div className="brutal-card p-6">
               <p className="label-mono text-brass-deep">Quiet by design</p>
               <p className="mt-3 font-display text-2xl leading-tight">

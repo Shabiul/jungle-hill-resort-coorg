@@ -38,8 +38,8 @@ export default function AboutPage() {
         }
       />
 
-      <section aria-label="The resort" className="pb-24">
-        <div className="page-container grid gap-12 lg:grid-cols-12">
+      <section aria-label="The resort" className="pb-12">
+        <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="space-y-5 lg:col-span-5">
             <p>
               There are 13 well-maintained rooms across Standard Non-AC, Deluxe AC and
@@ -91,7 +91,7 @@ export default function AboutPage() {
       </section>
 
       <section aria-label="The people" className="section-space">
-        <div className="page-container grid gap-10 sm:grid-cols-2">
+        <div className="page-container grid gap-6 sm:grid-cols-2">
           <div className="border-t border-ink pt-5">
             <p className="label-mono text-emerald">Owners</p>
             <p className="mt-2 font-display text-3xl">{siteConfig.owners}</p>
@@ -102,7 +102,7 @@ export default function AboutPage() {
             <p className="mt-1 text-stone">{siteConfig.manager.phoneDisplay}</p>
           </div>
         </div>
-        <p className="page-container mt-10">
+        <p className="page-container mt-6">
           <Link href="/rooms" className="label-mono link-underline">
             See the stays
           </Link>

@@ -25,8 +25,8 @@ export default function PackagesOffersPage() {
         }
       />
       {/* TODO: list real packages and offers here once the resort supplies them */}
-      <section aria-label="How rates work" className="pb-24">
-        <div className="page-container grid gap-12 lg:grid-cols-12">
+      <section aria-label="How rates work" className="pb-12">
+        <div className="page-container grid gap-8 lg:grid-cols-12">
           <ol className="border-t border-ink lg:col-span-6">
             {[
               "Choose a stay: Standard Non-AC Room, Standard Non-AC Cottage, Deluxe AC Room or Family AC Room.",

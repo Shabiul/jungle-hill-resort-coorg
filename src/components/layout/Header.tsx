@@ -28,8 +28,17 @@ export function Header() {
         light && "dark-surface",
       )}
     >
-      <div className="page-container flex h-[4.5rem] items-center justify-between gap-6">
-        <Logo variant={light ? "light" : "dark"} showTagline={!scrolled} />
+      <div
+        className={cn(
+          "page-container flex items-center justify-between gap-6 transition-[height] duration-300",
+          scrolled ? "h-16" : "h-20",
+        )}
+      >
+        <Logo
+          variant={light ? "light" : "dark"}
+          priority
+          className={cn("transition-[height] duration-300", scrolled ? "h-12" : "h-14")}
+        />
 
         <nav aria-label="Main" className="hidden lg:block">
           <ul className="flex items-center gap-6 xl:gap-8">

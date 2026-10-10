@@ -27,7 +27,7 @@ export function HouseRules() {
           </div>
         </div>
 
-        <ol className="mt-14 grid border-t border-ink sm:grid-cols-2 lg:grid-cols-3">
+        <ol className="mt-8 grid border-t border-ink sm:grid-cols-2 lg:grid-cols-3">
           {houseRules.map((rule, index) => (
             <li
               key={rule.title}

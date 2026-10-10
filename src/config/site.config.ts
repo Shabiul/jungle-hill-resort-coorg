@@ -15,7 +15,7 @@ export const siteConfig: SiteConfig = {
     phoneTel: "+919611524368",
   },
   contact: {
-    email: "", // TODO: add when supplied
+    email: "reservations@junglehillresort.co.in",
     phoneDisplay: "+91 95916 90481",
     phoneTel: "+919591690481",
     whatsapp: "919591690481",

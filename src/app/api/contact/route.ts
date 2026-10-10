@@ -12,6 +12,6 @@ export async function POST(request: Request) {
     );
   }
 
-  // TODO: deliver the message (email / CRM) and add spam protection
+  // TODO: send to reservations@junglehillresort.co.in. Deliver the message (email / CRM) and add spam protection
   return NextResponse.json({ ok: true });
 }

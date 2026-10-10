@@ -2,7 +2,7 @@ import { Suspense } from "react";
 import { BookingForm } from "@/components/forms/BookingForm";
 import { PageHero } from "@/components/shared/PageHero";
 import { siteConfig } from "@/config/site.config";
-import { telLink } from "@/lib/contact";
+import { mailLink, telLink } from "@/lib/contact";
 import { buildMetadata } from "@/lib/metadata";
 
 export const metadata = buildMetadata({
@@ -25,8 +25,8 @@ export default function BookingPage() {
           </p>
         }
       />
-      <section aria-label="Enquiry form" className="pb-24">
-        <div className="page-container grid gap-14 lg:grid-cols-12">
+      <section aria-label="Enquiry form" className="pb-12">
+        <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-7">
             <Suspense fallback={<p className="text-stone">Loading the form…</p>}>
               <BookingForm />
@@ -42,7 +42,12 @@ export default function BookingPage() {
                 {siteConfig.contact.phoneDisplay}
               </a>
               <p className="mt-3 text-sm text-stone">
-                Same number on WhatsApp. Check-in 12 PM, check-out 11 AM.
+                Also on WhatsApp. Check-in 12 PM, check-out 11 AM.
+              </p>
+              <p className="mt-3 text-small">
+                <a href={mailLink} className="link-underline">
+                  {siteConfig.contact.email}
+                </a>
               </p>
             </div>
           </aside>

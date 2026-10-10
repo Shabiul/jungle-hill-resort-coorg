@@ -6,6 +6,8 @@ export const testimonials: Testimonial[] = [
   {
     id: "shivani-s",
     name: "Shivani S",
+    details: { rooms: 5, service: 5, location: 5 },
+    highlights: ["Great view", "Quiet"],
     rating: 5,
     timeAgo: "2 months ago",
     tripType: "Holiday | Friends",
@@ -127,3 +129,34 @@ export const testimonials: Testimonial[] = [
     source: "Google",
   },
 ];
+
+/** Short fragments for the drifting ribbon. Each is verbatim from the review it names. */
+export const pullQuotes: { reviewId: string; text: string }[] = [
+  { reviewId: "hasil-md", text: "Beautiful views, peaceful ambience" },
+  { reviewId: "nithinkumar-h-r", text: "Worth every penny" },
+  { reviewId: "nithinkumar-h-r", text: "Very quiet and beautiful place" },
+  {
+    reviewId: "bowya-rathanakumar",
+    text: "The sunrise view from my room is just awesome",
+  },
+  { reviewId: "bowya-rathanakumar", text: "Very well maintained swimming pool" },
+  { reviewId: "bowya-rathanakumar", text: "Kids park area also very neat" },
+  { reviewId: "shivani-s", text: "The staff were very polite and helped us a lot" },
+  { reviewId: "shivani-s", text: "Highly recommended place to stay" },
+  { reviewId: "arshiya-firdose", text: "The food was delicious and had a homely touch" },
+  {
+    reviewId: "arshiya-firdose",
+    text: "Perfect place to relax, unwind, and reconnect with nature",
+  },
+  { reviewId: "arun-kumar-subramaian", text: "Quiet place and service is fantastic" },
+  { reviewId: "suparna-das", text: "The resort is so peaceful" },
+  {
+    reviewId: "faqathfoodiehyd",
+    text: "Amazing resort, beautifully surrounded by jungle",
+  },
+  { reviewId: "sandhiya-r", text: "Entire resort was clean, especially the pool" },
+  { reviewId: "moorthy-l", text: "The caretaker, Thimmanna, was very friendly" },
+];
+
+/** Trip-type groups used for filtering, derived from the real tripType strings. */
+export const tripFilters = ["Family", "Couple", "Friends"] as const;

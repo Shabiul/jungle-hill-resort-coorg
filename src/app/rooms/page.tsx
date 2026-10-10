@@ -33,17 +33,17 @@ export default function RoomsPage() {
         }
       />
 
-      <section aria-label="All stays" className="pb-24">
+      <section aria-label="All stays" className="pb-12">
         <div className="page-container">
           <StaysList rooms={rooms} />
         </div>
       </section>
 
       <section aria-label="Good to know" className="section-space bg-linen">
-        <div className="page-container grid gap-12 lg:grid-cols-12">
+        <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <p className="label-mono text-emerald">Good to know</p>
-            <h2 className="mt-4 text-4xl sm:text-5xl">Before you choose</h2>
+            <h2 className="mt-4 text-h3">Before you choose</h2>
           </div>
           <ul className="grid gap-8 sm:grid-cols-2 lg:col-span-7">
             <li>

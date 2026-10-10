@@ -39,7 +39,7 @@ export default function DiningPage() {
         aria-label="Meal times"
         className="dark-surface section-space bg-ink text-ivory"
       >
-        <div className="page-container grid gap-14 lg:grid-cols-12">
+        <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <MealTimetable meals={dining.meals} hours={dining.hours} />
             <ul className="mt-8 flex flex-wrap gap-2" aria-label="Cuisines">
@@ -69,7 +69,7 @@ export default function DiningPage() {
         <section aria-label="Restaurant photographs" className="section-space">
           <div className="page-container">
             <p className="label-mono text-emerald">The restaurant</p>
-            <h2 className="mt-4 mb-10 text-4xl sm:text-5xl">Where you will eat</h2>
+            <h2 className="mt-4 mb-10 text-h3">Where you will eat</h2>
             <PhotoGrid images={photos} />
           </div>
         </section>

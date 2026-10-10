@@ -1,8 +1,8 @@
 "use client";
 
+import Image from "next/image";
 import { useEffect, useState, useSyncExternalStore } from "react";
 import { setIntroStatus } from "@/lib/intro-store";
-import { siteConfig } from "@/config/site.config";
 
 const SESSION_KEY = "jhr-intro-seen";
 const LIFT_AT = 2000; // ms: curtain starts lifting
@@ -116,29 +116,15 @@ export function Intro() {
         Skip
       </button>
 
-      <svg
-        viewBox="0 0 64 40"
-        className="intro-mark h-16 w-28 text-ivory"
-        aria-hidden="true"
-        fill="currentColor"
-        stroke="currentColor"
-        strokeWidth="0.9"
-        strokeLinejoin="round"
-      >
-        <path
-          d="M0 40 L22 5 L31 19 L38 10 L64 40 Z"
-          style={{ stroke: "var(--color-brass-soft)" }}
-        />
-      </svg>
-
-      <div className="mt-6 overflow-hidden pb-1">
-        <span className="intro-rise font-display text-4xl font-bold tracking-[0.1em] sm:text-6xl">
-          JUNGLE HILL
-        </span>
-      </div>
-      <p className="intro-fade label-mono mt-4 tracking-[0.3em] text-brass-soft">
-        {siteConfig.tagline}
-      </p>
+      <Image
+        src="/images/logo/jungle-hill-logo-light.png"
+        alt="Jungle Hill, Inspiring Cloudline"
+        width={982}
+        height={642}
+        priority
+        sizes="(min-width: 640px) 480px, 78vw"
+        className="intro-logo h-auto w-[min(78vw,30rem)]"
+      />
 
       <div className="absolute inset-x-5 bottom-8 sm:inset-x-8">
         <div className="flex items-end justify-between">

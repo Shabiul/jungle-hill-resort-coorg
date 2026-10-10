@@ -40,12 +40,12 @@ export function StaysList({ rooms }: { rooms: Room[] }) {
               onMouseEnter={() => setHovered(index)}
               onFocus={() => setHovered(index)}
               onBlur={() => setHovered(null)}
-              className="group grid grid-cols-12 items-baseline gap-x-4 gap-y-3 py-8 sm:py-10"
+              className="group grid grid-cols-12 items-baseline gap-x-4 gap-y-3 py-5 sm:py-6"
             >
               <span className="col-span-3 font-display text-5xl text-brass-deep sm:col-span-2 sm:text-7xl">
                 {room.number}
               </span>
-              <span className="col-span-9 font-display text-[clamp(2.25rem,6vw,5.5rem)] leading-[0.95] sm:col-span-10 lg:col-span-6">
+              <span className="col-span-9 font-display text-h2 sm:col-span-10 lg:col-span-6">
                 <span className="transition-colors group-hover:text-emerald">
                   {room.name}
                 </span>

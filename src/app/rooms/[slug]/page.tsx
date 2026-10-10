@@ -51,7 +51,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
 
   return (
     <>
-      <section aria-label={room.name} className="pt-36 sm:pt-44">
+      <section aria-label={room.name} className="pt-28 sm:pt-32">
         <div className="page-container">
           <p className="label-mono text-emerald">
             <Link href="/rooms" className="link-underline">
@@ -63,14 +63,14 @@ export default async function RoomPage({ params }: RoomPageProps) {
             as="h1"
             immediate
             lines={[{ text: room.name }]}
-            className="mt-5 text-[clamp(3rem,8vw,7rem)] leading-[0.95]"
+            className="mt-5 text-h1"
           />
           <p className="label-mono mt-4 text-stone">
             {room.category} · {room.sizeSqFt} sq ft
           </p>
         </div>
 
-        <div className="page-container mt-10">
+        <div className="page-container mt-6">
           <div className="dark-surface relative aspect-[4/3] overflow-hidden bg-ink sm:aspect-[16/8]">
             <Photo
               image={room.images[0]}
@@ -93,19 +93,17 @@ export default async function RoomPage({ params }: RoomPageProps) {
       </section>
 
       <section aria-label="About this stay" className="section-space">
-        <div className="page-container grid gap-12 lg:grid-cols-12">
+        <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-6">
             <p className="label-mono text-emerald">About this stay</p>
-            <p className="mt-4 font-display text-3xl leading-tight sm:text-4xl">
-              {room.summary}
-            </p>
-            <p className="mt-6 max-w-xl text-stone">{room.description}</p>
+            <p className="mt-4 font-display text-h3">{room.summary}</p>
+            <p className="mt-4 max-w-xl text-stone">{room.description}</p>
             {room.guestNotes.map((note) => (
               <p key={note} className="mt-4 max-w-xl border-l-2 border-brass pl-4">
                 {note}
               </p>
             ))}
-            <div className="mt-10 flex flex-wrap gap-3">
+            <div className="mt-6 flex flex-wrap gap-3">
               <Link href={`/booking?room=${room.slug}`} className="btn btn-primary">
                 Enquire about this room
               </Link>
@@ -129,7 +127,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
                 </li>
               ))}
             </ul>
-            <h2 className="label-mono mt-10 !font-mono text-xs text-emerald">
+            <h2 className="label-mono mt-6 !font-mono text-xs text-emerald">
               House policies
             </h2>
             <ul className="mt-4 space-y-2 text-sm text-stone">
@@ -147,7 +145,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
       <section aria-label="Photographs" className="section-space bg-linen">
         <div className="page-container">
           <p className="label-mono text-emerald">Photographs</p>
-          <h2 className="mt-4 mb-10 text-4xl sm:text-5xl">Every photograph</h2>
+          <h2 className="mt-4 mb-10 text-h3">Every photograph</h2>
           <PhotoCarousel images={room.images} />
         </div>
       </section>
