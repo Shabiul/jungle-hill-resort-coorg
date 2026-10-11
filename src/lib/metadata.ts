@@ -5,6 +5,7 @@ interface BuildMetadataOptions {
   title?: string;
   description?: string;
   path?: string;
+  /** Absolute or root-relative image. Omit to use the route's opengraph-image file. */
   image?: string;
   noIndex?: boolean;
 }
@@ -17,19 +18,29 @@ export function buildMetadata({
   image,
   noIndex = false,
 }: BuildMetadataOptions = {}): Metadata {
+  const images = image ? [{ url: image }] : undefined;
+  const shownTitle = title ?? siteConfig.name;
   return {
     title,
     description: description || undefined,
     alternates: { canonical: path },
     openGraph: {
-      title: title ?? siteConfig.name,
+      title: shownTitle,
       description: description || undefined,
       url: path,
       siteName: siteConfig.name,
       locale: siteConfig.locale,
       type: "website",
-      images: image ? [{ url: image }] : undefined, // TODO: default og image in public/images/og
+      ...(images ? { images } : {}),
     },
-    robots: noIndex ? { index: false, follow: false } : undefined,
+    twitter: {
+      card: "summary_large_image",
+      title: shownTitle,
+      description: description || undefined,
+      ...(images ? { images } : {}),
+    },
+    robots: noIndex
+      ? { index: false, follow: true }
+      : { index: true, follow: true, googleBot: { index: true, follow: true, "max-image-preview": "large" } },
   };
 }

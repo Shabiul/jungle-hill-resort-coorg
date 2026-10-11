@@ -6,17 +6,21 @@ import { Photo } from "@/components/shared/Photo";
 import { PhotoGrid } from "@/components/shared/PhotoGrid";
 import { experiences } from "@/data/experiences";
 import { buildMetadata } from "@/lib/metadata";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
+import { PageNote } from "@/components/shared/PageNote";
 
 export const metadata = buildMetadata({
   title: "Pool, kids park and games",
   description:
-    "A swimming pool with a kids pool, a play area for children under 10, indoor games and outdoor shuttle badminton.",
+    "A swimming pool with a kids pool, a play area for under-10s, indoor games and outdoor shuttle badminton at Jungle Hill Resort, a coffee estate retreat in Coorg.",
   path: "/experiences",
 });
 
 export default function ExperiencesPage() {
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd([{ name: "Experiences", path: "/experiences" }])} />
       <PageHero
         label="03 — On the property"
         lines={[
@@ -83,6 +87,9 @@ export default function ExperiencesPage() {
         </p>
       </section>
 
+      <PageNote>
+        The pool, kids play area and games are all on the estate, close to the <Link href="/rooms">rooms</Link> and the <Link href="/dining">restaurant</Link>. For directions from Madikeri and house rules, see <Link href="/plan-your-stay">plan your stay</Link>.
+      </PageNote>
       <CTA />
     </>
   );

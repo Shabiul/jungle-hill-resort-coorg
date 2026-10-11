@@ -20,6 +20,14 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
   const pathname = usePathname();
   const firstLink = useRef<HTMLAnchorElement>(null);
   const toggle = useRef<HTMLButtonElement>(null);
+  const panel = useRef<HTMLDivElement>(null);
+
+  // Close whenever the route changes (link taps, back/forward).
+  const [openedOn, setOpenedOn] = useState(pathname);
+  if (openedOn !== pathname) {
+    setOpenedOn(pathname);
+    setOpen(false);
+  }
 
   useEffect(() => {
     if (!open) return;
@@ -31,6 +39,23 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
       if (event.key === "Escape") {
         setOpen(false);
         toggle.current?.focus();
+        return;
+      }
+      if (event.key !== "Tab") return;
+      // Keep focus inside the menu: the panel's links plus the Close button.
+      const items = [
+        toggle.current,
+        ...(panel.current?.querySelectorAll<HTMLElement>("a[href], button") ?? []),
+      ].filter((el): el is HTMLElement => !!el);
+      const first = items[0];
+      const last = items[items.length - 1];
+      const active = document.activeElement;
+      if (event.shiftKey && active === first) {
+        event.preventDefault();
+        last.focus();
+      } else if (!event.shiftKey && active === last) {
+        event.preventDefault();
+        first.focus();
       }
     };
     window.addEventListener("keydown", onKey);
@@ -58,12 +83,13 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
 
       {open && (
         <div
+          ref={panel}
           id="mobile-menu"
           role="dialog"
           aria-modal="true"
           aria-label="Site menu"
           data-lenis-prevent
-          className="glass dark-surface fixed inset-0 z-[55] flex flex-col overflow-y-auto bg-night/85 px-[var(--spacing-gutter)] pt-24 pb-10"
+          className="glass dark-surface fixed inset-0 z-[55] flex flex-col overflow-y-auto bg-night/85 px-[var(--spacing-gutter)] pt-24 pb-[max(2.5rem,env(safe-area-inset-bottom))]"
         >
           <nav aria-label="Mobile">
             <ul className="flex flex-col">

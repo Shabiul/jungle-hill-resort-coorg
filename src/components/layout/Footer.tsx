@@ -17,7 +17,7 @@ export function Footer() {
             <Logo variant="light" asLink={false} className="h-24" />
             <p
               aria-hidden="true"
-              className="mt-6 font-display text-[clamp(3rem,8vw,6.5rem)] leading-[0.92] font-semibold tracking-[0.03em] text-transparent [-webkit-text-stroke:1.5px_var(--color-champagne-soft)]"
+              className="mt-6 font-display text-[clamp(3rem,8vw,6.5rem)] leading-[0.92] font-medium tracking-[0.03em] text-transparent [-webkit-text-stroke:1.5px_var(--color-champagne-soft)]"
             >
               JUNGLE
               <br />
@@ -40,7 +40,6 @@ export function Footer() {
                 <li>
                   <a
                     href={telLink}
-                    aria-label={`Call Jungle Hill Resort on ${contact.phoneDisplay}`}
                     className="inline-flex items-center gap-2 transition-colors hover:text-champagne-soft"
                   >
                     <Phone size={16} strokeWidth={1.5} aria-hidden="true" />
@@ -52,7 +51,6 @@ export function Footer() {
                     href={whatsappLink()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    aria-label={`Chat on WhatsApp on ${contact.phoneDisplay}`}
                     className="inline-flex items-center gap-2 transition-colors hover:text-champagne-soft"
                   >
                     <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" />

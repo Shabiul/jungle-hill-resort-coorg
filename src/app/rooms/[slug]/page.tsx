@@ -8,11 +8,27 @@ import { BentoGallery } from "@/components/shared/BentoGallery";
 import { GlassPanel } from "@/components/ui/GlassPanel";
 import { checkTimes } from "@/data/policies";
 import { getRoomBySlug, rooms } from "@/data/rooms";
+import type { Room } from "@/types";
 import { whatsappLink } from "@/lib/contact";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { breadcrumbJsonLd, roomJsonLd } from "@/lib/structured-data";
 import { buildMetadata } from "@/lib/metadata";
 
 interface RoomPageProps {
   params: Promise<{ slug: string }>;
+}
+
+function roomDescription(room: Room) {
+  // Aim for 140 to 160 characters: add amenities while they fit.
+  const head = `${room.name}, a ${room.category} at Jungle Hill Resort, Coorg: ${room.sizeSqFt} sq ft, ${room.bed.toLowerCase()}`;
+  const tail = ". Rates on enquiry.";
+  let out = head + tail;
+  for (const amenity of room.amenities) {
+    const next = `${head}, ${[...out.slice(head.length + 2, -tail.length).split(", ").filter(Boolean), amenity.toLowerCase()].join(", ")}${tail}`;
+    if (next.length > 160) break;
+    out = next;
+  }
+  return out;
 }
 
 export function generateStaticParams() {
@@ -24,9 +40,8 @@ export async function generateMetadata({ params }: RoomPageProps) {
   const room = getRoomBySlug(slug);
   return buildMetadata({
     title: room ? `${room.name}, ${room.category}` : "Stay",
-    description: room?.summary,
+    description: room ? roomDescription(room) : undefined,
     path: `/rooms/${slug}`,
-    image: room?.images[0]?.src,
   });
 }
 
@@ -52,6 +67,13 @@ export default async function RoomPage({ params }: RoomPageProps) {
 
   return (
     <>
+      <JsonLd data={roomJsonLd(room)} />
+      <JsonLd
+        data={breadcrumbJsonLd([
+          { name: "Stays", path: "/rooms" },
+          { name: room.name, path: `/rooms/${room.slug}` },
+        ])}
+      />
       <section aria-label={room.name} className="pt-28 sm:pt-32">
         <div className="page-container">
           <p className="label-mono text-steel">

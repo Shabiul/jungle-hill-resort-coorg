@@ -77,7 +77,7 @@ export function GuestNotes({ reviews }: { reviews: Testimonial[] }) {
               aria-pressed={activeFilter === value}
               onClick={() => setFilter(value)}
               className={cn(
-                "min-h-11 text-left text-[0.72rem] tracking-[0.22em] uppercase transition-colors lg:min-h-0",
+                "min-h-11 min-w-11 text-left text-[0.72rem] tracking-[0.22em] uppercase transition-colors lg:min-h-0",
                 activeFilter === value ? "text-champagne" : "text-mist hover:text-pearl",
               )}
             >

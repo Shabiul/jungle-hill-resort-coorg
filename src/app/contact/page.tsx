@@ -6,11 +6,15 @@ import { siteConfig } from "@/config/site.config";
 import { checkTimes } from "@/data/policies";
 import { mailLink, managerTelLink, mapsHref, telLink, whatsappLink } from "@/lib/contact";
 import { buildMetadata } from "@/lib/metadata";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { breadcrumbJsonLd, contactPageJsonLd } from "@/lib/structured-data";
+import { PageNote } from "@/components/shared/PageNote";
+import Link from "next/link";
 
 export const metadata = buildMetadata({
   title: "Contact and enquiries",
   description:
-    "Enquire about a stay at Jungle Hill Resort, Coorg: three short steps, or call, WhatsApp or email reservations@junglehillresort.co.in.",
+    "Enquire about a stay at Jungle Hill Resort, Coorg in three short steps, or call, WhatsApp or email reservations@junglehillresort.co.in. We reply with rates.",
   path: "/contact",
 });
 
@@ -19,6 +23,8 @@ export default function ContactPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd([{ name: "Contact", path: "/contact" }])} />
+      <JsonLd data={contactPageJsonLd()} />
       <PageHero
         label="Contact"
         lines={[{ text: "Tell us" }, { text: "your ", emphasis: "dates." }]}
@@ -36,7 +42,13 @@ export default function ContactPage() {
       >
         <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-8">
-            <Suspense fallback={<p className="text-steel">Loading the form…</p>}>
+            <Suspense
+              fallback={
+                <p className="min-h-[45rem] text-steel" role="status">
+                  Loading the form…
+                </p>
+              }
+            >
               <EnquiryWizard />
             </Suspense>
           </div>
@@ -117,6 +129,9 @@ export default function ContactPage() {
           </aside>
         </div>
       </section>
+      <PageNote>
+        Looking for somewhere to stay near Madikeri? See the <Link href="/rooms">rooms</Link>, the <Link href="/dining">restaurant</Link>, and <Link href="/plan-your-stay">directions and check-in times</Link>.
+      </PageNote>
     </>
   );
 }

@@ -2,7 +2,7 @@
 
 import { useState } from "react";
 import Link from "next/link";
-import { Lightbox } from "@/components/shared/Lightbox";
+import { Lightbox } from "@/components/shared/LazyLightbox";
 import { Photo } from "@/components/shared/Photo";
 import { BoxCard } from "@/components/ui/BoxCard";
 import { cn } from "@/lib/utils";
@@ -43,7 +43,7 @@ function StayCard({ room }: { room: Room }) {
                   onClick={() => (isMore ? setLightbox(3) : setActive(index))}
                   aria-label={
                     isMore
-                      ? `Show all ${total} photos`
+                      ? `+${hidden}: show all ${total} photos`
                       : `Show photo ${index + 1}: ${image.alt}`
                   }
                   aria-current={!isMore && index === active ? "true" : undefined}
@@ -86,7 +86,7 @@ function StayCard({ room }: { room: Room }) {
           <Link href={`/rooms/${room.slug}`} className="btn btn-outline">
             View stay
           </Link>
-          <Link href={`/booking?room=${room.slug}`} className="label-mono link-underline">
+          <Link href={`/booking?room=${room.slug}`} className="label-mono link-underline touch-target">
             Enquire
           </Link>
           <span className="label-mono ml-auto text-pearl/60">{room.rateNote}</span>

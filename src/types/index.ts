@@ -112,6 +112,8 @@ export interface SiteConfig {
   shortName: string;
   tagline: string;
   description: string;
+  /** Production origin, no trailing slash. */
+  siteUrl: string;
   url: string;
   locale: string;
   owners: string;

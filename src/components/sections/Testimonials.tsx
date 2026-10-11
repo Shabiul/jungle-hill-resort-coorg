@@ -1,10 +1,13 @@
 import Link from "next/link";
 import { ArrowRight } from "lucide-react";
 import { RevealText } from "@/components/animations/RevealText";
-import { NoteStage } from "@/components/sections/NoteStage";
+import dynamic from "next/dynamic";
 import { Photo } from "@/components/shared/Photo";
 import { testimonials } from "@/data/testimonials";
 import { photo } from "@/lib/images";
+
+// Split into its own chunk (still server-rendered) so the first load hydrates less.
+const NoteStage = dynamic(() => import("@/components/sections/NoteStage").then((m) => m.NoteStage));
 
 const backdrop = photo(
   "/images/gallery/grounds-misty-valley.jpg",

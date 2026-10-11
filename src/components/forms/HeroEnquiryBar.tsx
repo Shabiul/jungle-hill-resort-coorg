@@ -7,7 +7,7 @@ import { GlassPanel } from "@/components/ui/GlassPanel";
 import { rooms } from "@/data/rooms";
 
 const fieldClass =
-  "mt-1 block w-full min-h-11 border-0 border-b border-pearl/40 bg-transparent px-0 py-1 text-pearl [color-scheme:dark] focus:border-champagne-soft focus:outline-none";
+  "mt-1 block w-full min-h-11 text-base border-0 border-b border-pearl/40 bg-transparent px-0 py-1 text-pearl [color-scheme:dark] focus:border-champagne-soft focus:outline-none";
 
 /** Glass booking bar docked in the hero. Sends the values to /contact, prefilled. */
 export function HeroEnquiryBar() {

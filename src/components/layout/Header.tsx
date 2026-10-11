@@ -5,7 +5,7 @@ import { usePathname } from "next/navigation";
 import { MobileMenu } from "@/components/layout/MobileMenu";
 import { Logo } from "@/components/shared/Logo";
 import { bookingNav, headerNav, mainNav, xlOnlyHrefs } from "@/data/navigation";
-import { useScrollPosition } from "@/hooks/useScrollPosition";
+import { useScrolledPast } from "@/hooks/useScrollPosition";
 import { cn } from "@/lib/utils";
 
 /**
@@ -14,7 +14,7 @@ import { cn } from "@/lib/utils";
  */
 export function Header() {
   const pathname = usePathname();
-  const scrolled = useScrollPosition() > 24;
+  const scrolled = useScrolledPast(24);
   const overHero = pathname === "/" && !scrolled;
   // The home hero and the dark guest notes page both sit under a transparent header.
   const light = pathname === "/" || pathname === "/testimonials" || scrolled;
@@ -37,7 +37,6 @@ export function Header() {
       >
         <Logo
           variant={light ? "light" : "dark"}
-          priority
           className={cn(
             "transition-[height] duration-300",
             scrolled ? "h-14" : "h-[4.5rem]",

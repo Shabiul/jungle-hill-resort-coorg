@@ -9,7 +9,8 @@ export const metadata = buildMetadata({
   title: "Enquire about a stay",
   description:
     "Send an enquiry for your dates. There is no online booking yet: we reply with availability and rates, or you can send the same details on WhatsApp.",
-  path: "/booking",
+  path: "/contact",
+  noIndex: true,
 });
 
 export default function BookingPage() {
@@ -28,7 +29,13 @@ export default function BookingPage() {
       <section aria-label="Enquiry form" className="pb-[var(--space-section)]">
         <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-8">
-            <Suspense fallback={<p className="text-steel">Loading the form…</p>}>
+            <Suspense
+              fallback={
+                <p className="min-h-[45rem] text-steel" role="status">
+                  Loading the form…
+                </p>
+              }
+            >
               <EnquiryWizard />
             </Suspense>
           </div>

@@ -1,9 +1,12 @@
 import { MapPin } from "lucide-react";
-import { ResortPlan } from "@/components/sections/ResortPlan";
+import dynamic from "next/dynamic";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { siteConfig } from "@/config/site.config";
 import { gettingHere } from "@/data/resortPlan";
 import { mapsHref } from "@/lib/contact";
+
+// Split into its own chunk (still server-rendered) so the first load hydrates less.
+const ResortPlan = dynamic(() => import("@/components/sections/ResortPlan").then((m) => m.ResortPlan));
 
 /** Plan, "Getting here" strip, address and the narrow-road note. Used on the home page and /plan-your-stay. */
 export function ResortPlanSection({

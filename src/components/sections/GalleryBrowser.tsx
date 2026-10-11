@@ -1,7 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Lightbox } from "@/components/shared/Lightbox";
+import { Lightbox } from "@/components/shared/LazyLightbox";
 import { Photo } from "@/components/shared/Photo";
 import { cn } from "@/lib/utils";
 import type { GalleryCategory, GalleryImage } from "@/types";

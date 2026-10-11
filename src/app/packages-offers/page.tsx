@@ -3,17 +3,20 @@ import { CTA } from "@/components/sections/CTA";
 import { PageHero } from "@/components/shared/PageHero";
 import { rooms } from "@/data/rooms";
 import { buildMetadata } from "@/lib/metadata";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
   title: "Packages and offers",
   description:
-    "Rates and any current offers at Jungle Hill Resort are given on enquiry. Tell us your dates and we will reply.",
+    "Rates and any current offers at Jungle Hill Resort, Coorg are shared on enquiry. Tell us your dates and room preference and we will reply with availability.",
   path: "/packages-offers",
 });
 
 export default function PackagesOffersPage() {
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd([{ name: "Packages and offers", path: "/packages-offers" }])} />
       <PageHero
         label="06 — Packages and offers"
         lines={[{ text: "Rates," }, { text: "on ", emphasis: "request." }]}

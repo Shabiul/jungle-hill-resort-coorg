@@ -35,6 +35,7 @@ function videoAllowed() {
   if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) return false;
   const connection = (navigator as Navigator & NetworkInfo).connection;
   if (connection?.saveData) return false;
+  if (window.matchMedia("(prefers-reduced-data: reduce)").matches) return false;
   if (connection?.effectiveType && /(^|-)(2g|3g)$/.test(connection.effectiveType))
     return false;
   return true;

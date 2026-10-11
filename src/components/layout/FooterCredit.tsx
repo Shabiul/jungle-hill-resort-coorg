@@ -16,7 +16,7 @@ export function FooterCredit() {
           href={developer.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="group inline-flex items-center gap-1 font-medium tracking-[0.04em] whitespace-nowrap text-champagne transition-colors hover:text-champagne-soft focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne"
+          className="touch-target group inline-flex items-center gap-1 font-medium tracking-[0.04em] whitespace-nowrap text-champagne transition-colors hover:text-champagne-soft focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-champagne"
         >
           {developer.name}
           <ArrowUpRight

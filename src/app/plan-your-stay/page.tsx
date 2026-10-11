@@ -7,11 +7,15 @@ import { faqs } from "@/data/faqs";
 import { checkTimes } from "@/data/policies";
 import { mailLink, mapsHref, telLink } from "@/lib/contact";
 import { buildMetadata } from "@/lib/metadata";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { breadcrumbJsonLd, faqJsonLd } from "@/lib/structured-data";
+import { PageNote } from "@/components/shared/PageNote";
+import Link from "next/link";
 
 export const metadata = buildMetadata({
   title: "Plan your stay",
   description:
-    "How to reach Jungle Hill Resort, 5 km from Madikeri on the way to Virajpet, plus check-in times, house rules and answers to common questions.",
+    "How to reach Jungle Hill Resort, 5 km from Madikeri on the way to Virajpet, plus check-in and check-out times, house rules and answers to common questions.",
   path: "/plan-your-stay",
 });
 
@@ -27,6 +31,8 @@ export default function PlanYourStayPage() {
 
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd([{ name: "Plan your stay", path: "/plan-your-stay" }])} />
+      <JsonLd data={faqJsonLd(faqs)} />
       <PageHero
         label="08 — Plan your stay"
         lines={[{ text: "Getting here," }, { text: "and ", emphasis: "staying." }]}
@@ -153,6 +159,9 @@ export default function PlanYourStayPage() {
         </div>
       </section>
 
+      <PageNote>
+        Once you know the way, look at the four <Link href="/rooms">rooms</Link>, the <Link href="/dining">restaurant</Link> and the <Link href="/experiences">pool, play area and games</Link>, then <Link href="/contact">send us your dates</Link>.
+      </PageNote>
       <CTA />
     </>
   );

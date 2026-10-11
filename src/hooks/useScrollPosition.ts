@@ -15,3 +15,12 @@ export function useScrollPosition(): number {
     () => 0,
   );
 }
+
+/** True once the page has scrolled past `threshold` px. Re-renders only when that flips. */
+export function useScrolledPast(threshold: number): boolean {
+  return useSyncExternalStore(
+    subscribe,
+    () => window.scrollY > threshold,
+    () => false,
+  );
+}

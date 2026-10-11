@@ -6,11 +6,14 @@ import { Photo } from "@/components/shared/Photo";
 import { siteConfig } from "@/config/site.config";
 import { homeImages } from "@/data/site";
 import { buildMetadata } from "@/lib/metadata";
+import { JsonLd } from "@/components/shared/JsonLd";
+import { breadcrumbJsonLd } from "@/lib/structured-data";
+import { PageNote } from "@/components/shared/PageNote";
 
 export const metadata = buildMetadata({
   title: "About",
   description:
-    "Jungle Hill Resort is a nature retreat in the coffee and pepper plantations of Coorg, 5 km from Madikeri. Owned by T L Pavithra Kumar & Punith D.",
+    "Jungle Hill Resort is a nature retreat in the coffee and pepper plantations of Coorg, 5 km from Madikeri on the Virajpet road. Meet the estate and its owners.",
   path: "/about",
 });
 
@@ -27,6 +30,7 @@ const facts = [
 export default function AboutPage() {
   return (
     <>
+      <JsonLd data={breadcrumbJsonLd([{ name: "About", path: "/about" }])} />
       <PageHero
         label="01 — About"
         lines={[{ text: "Coffee, pepper" }, { text: "and ", emphasis: "quiet." }]}
@@ -109,6 +113,9 @@ export default function AboutPage() {
         </p>
       </section>
 
+      <PageNote>
+        See the <Link href="/rooms">rooms</Link>, the <Link href="/dining">restaurant</Link> and the <Link href="/experiences">experiences</Link> on the estate, or go straight to <Link href="/plan-your-stay">plan your stay</Link>.
+      </PageNote>
       <CTA />
     </>
   );

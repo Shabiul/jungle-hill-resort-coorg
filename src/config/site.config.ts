@@ -6,7 +6,9 @@ export const siteConfig: SiteConfig = {
   tagline: "Inspiring Cloudline",
   description:
     "A nature retreat in the coffee and pepper plantations of Coorg, 5 km from Madikeri on the way to Virajpet. 13 rooms, a swimming pool, a kids play area and an in-house restaurant.",
-  url: process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000",
+  // TODO: confirm the live domain. Used for canonical URLs, the sitemap, Open Graph and JSON-LD.
+  siteUrl: "https://www.junglehillresort.co.in",
+  url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.junglehillresort.co.in",
   locale: "en_IN",
   owners: "T L Pavithra Kumar & Punith D",
   manager: {

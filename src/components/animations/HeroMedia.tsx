@@ -19,6 +19,7 @@ const noopSubscribe = () => () => {};
 function videoAllowed() {
   const connection = (navigator as Navigator & NetworkInfo).connection;
   if (connection?.saveData) return false;
+  if (window.matchMedia("(prefers-reduced-data: reduce)").matches) return false;
   if (connection?.effectiveType && /(^|-)(2g|3g)$/.test(connection.effectiveType))
     return false;
   return true;
@@ -238,7 +239,7 @@ export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
                     onClick={() => goTo(i)}
                     aria-label={`Show slide ${i + 1} of ${total}: ${slide.type === "video" ? "video" : slide.alt}`}
                     aria-current={i === index ? "true" : undefined}
-                    className="grid h-6 w-6 place-items-center"
+                    className="-mx-[10px] grid h-11 w-11 place-items-center"
                   >
                     <span
                       className={cn(

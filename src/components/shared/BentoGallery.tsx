@@ -1,7 +1,7 @@
 "use client";
 
 import { useState, type ReactNode } from "react";
-import { Lightbox } from "@/components/shared/Lightbox";
+import { Lightbox } from "@/components/shared/LazyLightbox";
 import { Photo } from "@/components/shared/Photo";
 import { cn } from "@/lib/utils";
 import type { ImageAsset } from "@/types";
@@ -37,7 +37,7 @@ export function BentoGallery({ images, overlay }: BentoGalleryProps) {
                 type="button"
                 onClick={() => setOpen(index)}
                 aria-label={
-                  isLast ? `Show all ${images.length} photos` : `Open photo: ${image.alt}`
+                  isLast ? `+${more + 1} photos: show all ${images.length}` : `Open photo: ${image.alt}`
                 }
                 className="group absolute inset-0 block overflow-hidden"
               >

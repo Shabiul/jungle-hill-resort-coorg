@@ -69,7 +69,7 @@ export function Lightbox({ images, index, onClose, onIndexChange }: LightboxProp
       aria-modal="true"
       aria-label="Photo viewer"
       data-lenis-prevent
-      className="dark-surface fixed inset-0 z-[80] bg-night/95 text-pearl"
+      className="dark-surface fixed inset-0 z-[80] touch-pan-y touch-pinch-zoom overscroll-contain bg-night/95 text-pearl"
       onPointerDown={(event) => {
         swipeStart.current = event.clientX;
       }}
@@ -126,7 +126,7 @@ export function Lightbox({ images, index, onClose, onIndexChange }: LightboxProp
 
       <p
         aria-live="polite"
-        className="glass absolute inset-x-4 bottom-4 mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-3 text-sm sm:bottom-6"
+        className="glass absolute inset-x-4 bottom-4 mx-auto flex max-w-3xl items-center justify-between gap-4 px-4 py-3 text-sm sm:bottom-6 pb-[max(0.75rem,env(safe-area-inset-bottom))]"
       >
         <span>{image.alt}</span>
         <span className="label-mono shrink-0">
