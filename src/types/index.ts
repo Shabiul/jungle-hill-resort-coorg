@@ -20,6 +20,8 @@ export interface Room {
   name: string;
   /** Official category from the brochure, e.g. "Deluxe AC Room". */
   category: string;
+  /** Optional mono label that replaces "category · size" on cards and the detail page. */
+  label?: string;
   /** Short category for forms, e.g. "Deluxe AC". */
   categoryShort: string;
   /** Three short facts for the stay cards. */
@@ -68,7 +70,7 @@ export interface DiningInfo {
 }
 
 export type GalleryCategory =
-  "Rooms" | "Pool" | "Dining" | "Kids Park" | "Games" | "Grounds";
+  "Reception" | "Rooms" | "Pool" | "Dining" | "Kids Park" | "Games" | "Grounds";
 
 export interface GalleryImage extends ImageAsset {
   category: GalleryCategory;
@@ -116,8 +118,7 @@ export interface SiteConfig {
   siteUrl: string;
   url: string;
   locale: string;
-  owners: string;
-  manager: { name: string; phoneDisplay: string; phoneTel: string };
+  secondaryPhone: { phoneDisplay: string; phoneTel: string };
   contact: {
     email: string;
     phoneDisplay: string;

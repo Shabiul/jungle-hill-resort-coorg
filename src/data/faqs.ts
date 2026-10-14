@@ -21,7 +21,8 @@ export const faqs: Faq[] = [
   {
     id: "visitors",
     question: "Can friends or family visit me at the resort?",
-    answer: "Visitors are not allowed on the property.",
+    answer:
+      "Visitors are not allowed after 8:30 PM. Please also keep music and other loud sounds off after 10:00 PM.",
   },
   {
     id: "extra-guest",
@@ -42,9 +43,9 @@ export const faqs: Faq[] = [
   },
   {
     id: "music",
-    question: "Can we play music or hold a party?",
+    question: "Can we play music?",
     answer:
-      "No. Loud sounds, high-volume music and parties are strictly prohibited. The resort is meant for a peaceful stay in nature.",
+      "Quiet music is fine, but please no loud music or loud sounds after 10:00 PM. The resort is meant for a peaceful stay in nature.",
   },
   {
     id: "restaurant",

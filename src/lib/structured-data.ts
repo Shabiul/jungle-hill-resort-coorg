@@ -1,5 +1,7 @@
 import { siteConfig } from "@/config/site.config";
+import { destinations, mapsSearchUrl } from "@/data/destinations";
 import { dining } from "@/data/dining";
+import { roomTitle } from "@/data/rooms";
 import type { Faq, Room } from "@/types";
 
 const ORIGIN = siteConfig.siteUrl;
@@ -51,7 +53,7 @@ export function roomJsonLd(room: Room) {
   return {
     "@context": "https://schema.org",
     "@type": "HotelRoom",
-    name: `${room.name} (${room.category})`,
+    name: roomTitle(room),
     description: room.description,
     url: abs(`/rooms/${room.slug}`),
     image: room.images.slice(0, 3).map((img) => `${ORIGIN}${img.src}`),
@@ -126,5 +128,24 @@ export function contactPageJsonLd() {
     name: `Contact ${siteConfig.shortName}`,
     url: abs("/contact"),
     mainEntity: { "@id": `${ORIGIN}/#resort` },
+  };
+}
+
+/** ItemList of TouristAttraction entries. No ratings. */
+export function destinationsJsonLd() {
+  return {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    name: "Tourist destinations near Jungle Hill Resort, Coorg",
+    itemListElement: destinations.map((place, index) => ({
+      "@type": "ListItem",
+      position: index + 1,
+      item: {
+        "@type": "TouristAttraction",
+        name: place.name,
+        description: place.description,
+        url: mapsSearchUrl(place.name),
+      },
+    })),
   };
 }

@@ -10,9 +10,8 @@ export const siteConfig: SiteConfig = {
   siteUrl: "https://www.junglehillresort.co.in",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.junglehillresort.co.in",
   locale: "en_IN",
-  owners: "T L Pavithra Kumar & Punith D",
-  manager: {
-    name: "Sharath P S",
+  // Second contact number, shown as a plain number with no name or role.
+  secondaryPhone: {
     phoneDisplay: "+91 96115 24368",
     phoneTel: "+919611524368",
   },

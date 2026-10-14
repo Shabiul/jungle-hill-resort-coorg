@@ -184,7 +184,8 @@ export const rooms: Room[] = [
   {
     slug: "standard-non-ac-room",
     number: "04",
-    name: "The Coffee Leaf Nook",
+    name: "Standard Non-AC Room",
+    label: "Non-AC · 150 sq ft · A2, A3, A5, A6",
     highlights: ["Queen bed", "Rooms A2 A3 A5 A6", "2 adults + infant"],
     category: "Standard Non-AC Room",
     categoryShort: "Standard Non-AC",
@@ -230,14 +231,19 @@ export const rooms: Room[] = [
         ["balcony-09.jpg", "Stone-floored verandah with chairs and a bamboo blind"],
         ["bathroom-01.jpg", "Bathroom with tiled walls in a Standard Non-AC room"],
       ],
-      (file) => describeShot(file, "The Coffee Leaf Nook"),
+      (file) => describeShot(file, "Standard Non-AC Room"),
     ),
   },
 ];
 
-/** "The Cloudline Suite (Deluxe AC)" */
-export function roomLabel(room: Room) {
-  return `${room.name} (${room.categoryShort})`;
+/** "Name, Category", or just the name when the two are the same. */
+export function roomTitle(room: Pick<Room, "name" | "category">) {
+  return room.name === room.category ? room.name : `${room.name}, ${room.category}`;
+}
+
+/** Mono label under a stay's name. */
+export function roomLabel(room: Pick<Room, "label" | "categoryShort" | "sizeSqFt">) {
+  return room.label ?? `${room.categoryShort} · ${room.sizeSqFt} sq ft`;
 }
 
 export function getRoomBySlug(slug: string) {

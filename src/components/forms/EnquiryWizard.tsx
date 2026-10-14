@@ -10,7 +10,9 @@ import { BoxCard } from "@/components/ui/BoxCard";
 import { Input } from "@/components/ui/Input";
 import { Select } from "@/components/ui/Select";
 import { Textarea } from "@/components/ui/Textarea";
-import { rooms } from "@/data/rooms";
+import { activeOffers } from "@/data/offers";
+import { includedWithEveryStay } from "@/data/included";
+import { roomLabel, rooms } from "@/data/rooms";
 import { siteConfig } from "@/config/site.config";
 import { whatsappLink } from "@/lib/contact";
 import {
@@ -55,8 +57,15 @@ function formatDate(value: string) {
 
 function stayName(slug: string) {
   const room = rooms.find((item) => item.slug === slug);
-  return room ? `${room.name} (${room.categoryShort})` : "No preference, please suggest";
+  if (!room) return "No preference, please suggest";
+  return room.name === room.category ? room.name : `${room.name} (${room.categoryShort})`;
 }
+
+function offerName(id?: string) {
+  return activeOffers.find((offer) => offer.id === id)?.title ?? "";
+}
+
+const PAYMENT_LABEL = "Pay at the resort";
 
 function buildSummary(values: EnquiryValuesV2) {
   const nights = nightsBetween(values.checkIn, values.checkOut);
@@ -73,6 +82,13 @@ function buildSummary(values: EnquiryValuesV2) {
     `Phone: ${values.phone}`,
     `Email: ${values.email}`,
   ];
+  const offer = offerName(values.offerId);
+  if (offer) lines.push(`Offer: ${offer}`);
+  if (values.couponCode)
+    lines.push(
+      `Offer or coupon code: ${values.couponCode} (to be checked by the resort)`,
+    );
+  lines.push(`Payment: ${PAYMENT_LABEL}`);
   if (values.arrivalTime) lines.push(`Arrival: ${values.arrivalTime}`);
   if (values.occasion) lines.push(`Occasion: ${values.occasion}`);
   if (values.requests) lines.push(`Requests: ${values.requests}`);
@@ -89,7 +105,7 @@ function guestNotes(
   if (!room) {
     notes.push(
       guests <= 2
-        ? "For two guests we would suggest The Cloudline Suite or The Coffee Leaf Nook."
+        ? "For two guests we would suggest The Cloudline Suite or the Standard Non-AC Room."
         : guests <= 4
           ? "For three or four guests we would suggest The Estate House."
           : "For a bigger group we can suggest a combination of stays: tell us in the next step.",
@@ -159,6 +175,9 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
       infants: 0,
       rooms: 1,
       stay: initialStay,
+      offerId: "",
+      couponCode: "",
+      paymentPreference: "pay_at_resort",
       name: "",
       phone: "",
       email: "",
@@ -243,8 +262,9 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
         </p>
         <h2 className="mt-3 text-h3">Thank you. We will be in touch.</h2>
         <p className="mt-3 max-w-[52ch] text-pearl/80">
-          We reply with availability and rates. For a faster answer, send the same details
-          on WhatsApp or by email.
+          Your enquiry has been sent. We will confirm availability and rates shortly.
+          Payment is at the resort. For a faster answer, send the same details on WhatsApp
+          or by email.
         </p>
         <pre className="mt-5 max-w-full overflow-x-auto border border-champagne/25 p-4 text-small whitespace-pre-wrap text-pearl/85">
           {sent.summary}
@@ -419,9 +439,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                         {room ? room.name : "No preference"}
                       </span>
                       <span className="label-mono block text-[0.62rem] text-champagne-soft">
-                        {room
-                          ? `${room.categoryShort} · ${room.sizeSqFt} sq ft`
-                          : "We suggest"}
+                        {room ? roomLabel(room) : "We suggest"}
                       </span>
                       <span className="mt-0.5 block text-small text-pearl/75">
                         {room
@@ -453,6 +471,76 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                   {note}
                 </p>
               ))}
+            </div>
+
+            <div className="mt-8 border-t border-champagne/30 pt-6">
+              <p className="label-mono text-[0.68rem] text-champagne-soft">
+                Included with every stay
+              </p>
+              <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-small text-pearl/85">
+                {includedWithEveryStay.map((item) => (
+                  <li key={item} className="flex items-center gap-2">
+                    <Check
+                      size={14}
+                      strokeWidth={2}
+                      aria-hidden="true"
+                      className="text-champagne"
+                    />
+                    {item}
+                  </li>
+                ))}
+              </ul>
+            </div>
+
+            {activeOffers.length > 0 && (
+              <fieldset className="mt-8">
+                <legend className="label-mono field-label">Choose an offer</legend>
+                <div className="mt-2 grid gap-3">
+                  {[
+                    { id: "", title: "No offer", description: "", conditions: "" },
+                    ...activeOffers,
+                  ].map((offer) => (
+                    <label
+                      key={offer.id || "none"}
+                      className="relative block cursor-pointer"
+                    >
+                      <input
+                        type="radio"
+                        value={offer.id}
+                        className="peer sr-only"
+                        {...register("offerId")}
+                      />
+                      <span className="block rounded-[2px] border border-champagne/30 p-3 transition-colors peer-checked:border-champagne peer-checked:bg-pearl/10 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-champagne-soft">
+                        <span className="block font-display text-xl leading-tight">
+                          {offer.title}
+                        </span>
+                        {offer.description && (
+                          <span className="mt-1 block text-small text-pearl/80">
+                            {offer.description}
+                          </span>
+                        )}
+                        {offer.conditions && (
+                          <span className="mt-1 block text-small text-pearl/65">
+                            {offer.conditions}
+                          </span>
+                        )}
+                      </span>
+                    </label>
+                  ))}
+                </div>
+              </fieldset>
+            )}
+
+            <div className="mt-8 max-w-sm">
+              <Input
+                label="Offer or coupon code (optional)"
+                autoComplete="off"
+                autoCapitalize="characters"
+                maxLength={20}
+                hint="If you have one, we'll check it when we confirm."
+                error={errors.couponCode?.message}
+                {...register("couponCode")}
+              />
             </div>
           </fieldset>
         )}
@@ -511,6 +599,47 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
               {...register("requests")}
             />
 
+            <fieldset>
+              <legend className="label-mono field-label">
+                How would you like to pay?
+              </legend>
+              <div className="mt-2 grid gap-3 sm:grid-cols-2">
+                <label className="relative block cursor-pointer">
+                  <input
+                    type="radio"
+                    value="pay_at_resort"
+                    className="peer sr-only"
+                    {...register("paymentPreference")}
+                  />
+                  <span className="block rounded-[2px] border border-champagne/30 p-3 transition-colors peer-checked:border-champagne peer-checked:bg-pearl/10 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-champagne-soft">
+                    <span className="block font-display text-xl leading-tight">
+                      Pay at the resort
+                    </span>
+                  </span>
+                </label>
+                <label className="relative block cursor-not-allowed opacity-60">
+                  <input
+                    type="radio"
+                    value="pay_online"
+                    disabled
+                    className="peer sr-only"
+                  />
+                  <span className="flex items-center justify-between gap-3 rounded-[2px] border border-champagne/20 p-3">
+                    <span className="block font-display text-xl leading-tight">
+                      Pay online
+                    </span>
+                    <span className="label-mono text-[0.6rem] text-champagne-soft">
+                      Coming soon
+                    </span>
+                  </span>
+                </label>
+              </div>
+              <p className="mt-2 text-small text-pearl/80">
+                No payment is taken now. Your enquiry is confirmed by the resort, and you
+                pay on arrival.
+              </p>
+            </fieldset>
+
             <div className="space-y-3">
               <label className="flex items-start gap-3 text-small">
                 <input
@@ -520,7 +649,8 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                 />
                 <span>
                   I have read the house rules: ID proof is mandatory, visitors are not
-                  allowed, no loud music or parties, no outside food.
+                  allowed after 8:30 PM, no loud music or loud sounds after 10:00 PM, no
+                  outside food.
                 </span>
               </label>
               {errors.houseRules && (
@@ -563,6 +693,24 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
               <div className="sm:col-span-2">
                 <dt className="label-mono text-[0.62rem] text-champagne-soft">Stay</dt>
                 <dd>{stayName(values.stay)}</dd>
+              </div>
+              {(offerName(values.offerId) || values.couponCode) && (
+                <div className="sm:col-span-2">
+                  <dt className="label-mono text-[0.62rem] text-champagne-soft">Offer</dt>
+                  <dd>
+                    {[
+                      offerName(values.offerId),
+                      values.couponCode &&
+                        `Code ${values.couponCode} (checked by the resort)`,
+                    ]
+                      .filter(Boolean)
+                      .join(" · ")}
+                  </dd>
+                </div>
+              )}
+              <div className="sm:col-span-2">
+                <dt className="label-mono text-[0.62rem] text-champagne-soft">Payment</dt>
+                <dd>{PAYMENT_LABEL}</dd>
               </div>
             </dl>
           </div>

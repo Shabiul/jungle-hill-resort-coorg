@@ -4,7 +4,7 @@ import { EnquiryWizard } from "@/components/forms/EnquiryWizard";
 import { PageHero } from "@/components/shared/PageHero";
 import { siteConfig } from "@/config/site.config";
 import { checkTimes } from "@/data/policies";
-import { mailLink, managerTelLink, mapsHref, telLink, whatsappLink } from "@/lib/contact";
+import { mailLink, secondaryTelLink, mapsHref, telLink, whatsappLink } from "@/lib/contact";
 import { buildMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbJsonLd, contactPageJsonLd } from "@/lib/structured-data";
@@ -19,7 +19,7 @@ export const metadata = buildMetadata({
 });
 
 export default function ContactPage() {
-  const { contact, manager, owners } = siteConfig;
+  const { contact, secondaryPhone } = siteConfig;
 
   return (
     <>
@@ -87,12 +87,10 @@ export default function ContactPage() {
                   </a>
                 </li>
                 <li>
-                  Manager: {manager.name},{" "}
-                  <a href={managerTelLink} className="link-underline">
-                    {manager.phoneDisplay}
+                  <a href={secondaryTelLink} className="link-underline">
+                    {secondaryPhone.phoneDisplay}
                   </a>
                 </li>
-                <li>Owners: {owners}</li>
                 <li className="flex items-start gap-2">
                   <MapPin
                     size={16}

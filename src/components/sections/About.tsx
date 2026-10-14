@@ -31,7 +31,7 @@ export function About() {
             <div className="brutal-card p-6">
               <p className="label-mono text-steel">Quiet by design</p>
               <p className="mt-3 font-display text-2xl leading-tight">
-                Loud sounds, high-volume music and parties are strictly prohibited.
+                Quiet hours from 10:00 PM: no loud music or loud sounds.
               </p>
             </div>
           </Reveal>

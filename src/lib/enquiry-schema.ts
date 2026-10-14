@@ -33,6 +33,14 @@ export const enquirySchemaV2 = z
     rooms: count(1, 6, "Between 1 and 6 rooms"),
     // Step 2: stay (a room slug, or "any")
     stay: z.string().min(1, "Choose a stay or no preference"),
+    /** Chosen offer id, or "" for none. */
+    offerId: z.string().optional(),
+    /** Format check only: the resort confirms any code, nothing is applied here. */
+    couponCode: z
+      .string()
+      .trim()
+      .regex(/^[A-Za-z0-9-]{0,20}$/, "Use letters, numbers or a dash, up to 20 characters")
+      .optional(),
     // Step 3: you
     name: z.string().trim().min(2, "Please enter your name"),
     phone,
@@ -44,6 +52,8 @@ export const enquirySchemaV2 = z
       .trim()
       .max(1000, "Please keep this under 1000 characters")
       .optional(),
+    /** Payment is always at the resort: there is no online payment. */
+    paymentPreference: z.literal("pay_at_resort"),
     houseRules: z
       .boolean()
       .refine((value) => value, "Please confirm you have read the house rules"),
@@ -71,7 +81,7 @@ export type EnquiryValuesV2 = z.infer<typeof enquirySchemaV2>;
 /** Fields validated at each step, in order. */
 export const STEP_FIELDS: (keyof EnquiryValuesV2)[][] = [
   ["checkIn", "checkOut", "adults", "children", "childAges", "infants", "rooms"],
-  ["stay"],
+  ["stay", "offerId", "couponCode"],
   [
     "name",
     "phone",
@@ -79,6 +89,7 @@ export const STEP_FIELDS: (keyof EnquiryValuesV2)[][] = [
     "arrivalTime",
     "occasion",
     "requests",
+    "paymentPreference",
     "houseRules",
     "consent",
   ],

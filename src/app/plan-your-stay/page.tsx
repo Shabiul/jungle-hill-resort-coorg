@@ -124,7 +124,7 @@ export default function PlanYourStayPage() {
             <p className="mt-2 font-display text-5xl">{checkTimes.checkOut}</p>
           </div>
           <p className="text-steel">
-            {checkTimes.note} ID proof is mandatory, and visitors are not allowed.
+            {checkTimes.note} ID proof is mandatory, visitors are not allowed after 8:30 PM, and there is no loud music or loud sound after 10:00 PM.
           </p>
         </div>
       </section>

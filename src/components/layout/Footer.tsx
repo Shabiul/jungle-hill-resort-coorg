@@ -4,10 +4,10 @@ import { FooterCredit } from "@/components/layout/FooterCredit";
 import { Logo } from "@/components/shared/Logo";
 import { siteConfig } from "@/config/site.config";
 import { mainNav } from "@/data/navigation";
-import { mailLink, managerTelLink, telLink, whatsappLink } from "@/lib/contact";
+import { mailLink, secondaryTelLink, telLink, whatsappLink } from "@/lib/contact";
 
 export function Footer() {
-  const { contact, manager, owners } = siteConfig;
+  const { contact, secondaryPhone } = siteConfig;
 
   return (
     <footer className="dark-surface bg-night text-pearl">
@@ -69,15 +69,13 @@ export function Footer() {
               </ul>
 
               <p className="mt-5 text-pearl/80">
-                Manager: {manager.name},{" "}
                 <a
-                  href={managerTelLink}
+                  href={secondaryTelLink}
                   className="transition-colors hover:text-champagne-soft"
                 >
-                  {manager.phoneDisplay}
+                  {secondaryPhone.phoneDisplay}
                 </a>
               </p>
-              <p className="mt-1 text-pearl/80">Owners: {owners}</p>
             </div>
 
             <div>
@@ -106,7 +104,7 @@ export function Footer() {
                 Check-in 12 PM · Check-out 11 AM
               </p>
               <p className="mt-2 text-sm text-pearl/70">
-                ID proof mandatory. Visitors are not allowed. No loud music or parties.
+                ID proof mandatory. No visitors after 8:30 PM. No loud music or sounds after 10:00 PM.
               </p>
             </div>
           </div>

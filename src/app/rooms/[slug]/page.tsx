@@ -7,7 +7,7 @@ import { EnquiryWizard } from "@/components/forms/EnquiryWizard";
 import { BentoGallery } from "@/components/shared/BentoGallery";
 import { GlassPanel } from "@/components/ui/GlassPanel";
 import { checkTimes } from "@/data/policies";
-import { getRoomBySlug, rooms } from "@/data/rooms";
+import { getRoomBySlug, roomLabel, roomTitle, rooms } from "@/data/rooms";
 import type { Room } from "@/types";
 import { whatsappLink } from "@/lib/contact";
 import { JsonLd } from "@/components/shared/JsonLd";
@@ -20,7 +20,7 @@ interface RoomPageProps {
 
 function roomDescription(room: Room) {
   // Aim for 140 to 160 characters: add amenities while they fit.
-  const head = `${room.name}, a ${room.category} at Jungle Hill Resort, Coorg: ${room.sizeSqFt} sq ft, ${room.bed.toLowerCase()}`;
+  const head = `${roomTitle(room)} at Jungle Hill Resort, Coorg: ${room.sizeSqFt} sq ft, ${room.bed.toLowerCase()}`;
   const tail = ". Rates on enquiry.";
   let out = head + tail;
   for (const amenity of room.amenities) {
@@ -39,7 +39,7 @@ export async function generateMetadata({ params }: RoomPageProps) {
   const { slug } = await params;
   const room = getRoomBySlug(slug);
   return buildMetadata({
-    title: room ? `${room.name}, ${room.category}` : "Stay",
+    title: room ? roomTitle(room) : "Stay",
     description: room ? roomDescription(room) : undefined,
     path: `/rooms/${slug}`,
   });
@@ -53,7 +53,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
   const index = rooms.findIndex((item) => item.slug === slug);
   const previous = rooms[(index - 1 + rooms.length) % rooms.length];
   const next = rooms[(index + 1) % rooms.length];
-  const enquiry = `Hello Jungle Hill Resort, I would like to enquire about ${room.name} (${room.category}).`;
+  const enquiry = `Hello Jungle Hill Resort, I would like to enquire about ${roomTitle(room)}.`;
 
   const facts = [
     { label: "Size", value: `${room.sizeSqFt} sq ft` },
@@ -89,7 +89,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
             className="mt-4 text-h1"
           />
           <p className="label-mono mt-3 text-steel">
-            {room.category} · {room.sizeSqFt} sq ft
+            {roomLabel(room)}
           </p>
 
           <div className="mt-6">
@@ -145,8 +145,8 @@ export default async function RoomPage({ params }: RoomPageProps) {
                 Check-in {checkTimes.checkIn} · Check-out {checkTimes.checkOut}.{" "}
                 {checkTimes.note}
               </li>
-              <li>ID proof is mandatory. Visitors are not allowed.</li>
-              <li>No loud music or parties. Outside food is not permitted.</li>
+              <li>ID proof is mandatory. Visitors are not allowed after 8:30 PM.</li>
+              <li>No loud music or loud sounds after 10:00 PM. Outside food is not permitted.</li>
             </ul>
           </div>
 

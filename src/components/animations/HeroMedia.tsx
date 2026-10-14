@@ -26,7 +26,7 @@ function videoAllowed() {
 }
 
 /**
- * Hero background: a slow sequence of photo A, photo B and a video, with 0.8 s crossfades and a
+ * Hero background: a slow sequence of two photos and a video, with 0.8 s crossfades and a
  * gentle Ken Burns zoom on the photos. Reduced motion shows the first photo only.
  */
 export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
@@ -59,7 +59,7 @@ export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
     [total],
   );
 
-  // Photo B is preloaded once photo A has loaded (onLoad below), or when the browser is idle.
+  // The second photo is preloaded once the first has loaded (onLoad below), or when the browser is idle.
   const preloadNext = useCallback(() => setFurthest((value) => Math.max(value, 1)), []);
   useEffect(() => {
     if (reduced || total < 2) return;
@@ -73,7 +73,7 @@ export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
     };
   }, [reduced, total, preloadNext]);
 
-  // The video starts buffering when photo B becomes active, so it is ready for its own slide.
+  // The video starts buffering when the second photo becomes active, so it is ready for its own slide.
   useEffect(() => {
     playable.forEach((slide, i) => {
       if (slide.type === "video" && i === index + 1) {

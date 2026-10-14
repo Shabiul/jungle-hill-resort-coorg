@@ -73,6 +73,7 @@ const ALT: Record<string, string> = {
 };
 
 function categoryOf(stem: string): GalleryCategory {
+  if (stem.startsWith("reception")) return "Reception";
   if (stem.startsWith("pool")) return "Pool";
   if (stem.startsWith("dining") || stem.startsWith("restaurant")) return "Dining";
   if (stem.startsWith("kids-park")) return "Kids Park";
@@ -108,6 +109,7 @@ const roomShots: GalleryImage[] = rooms.flatMap((room) =>
 );
 
 const order: GalleryCategory[] = [
+  "Reception",
   "Rooms",
   "Pool",
   "Dining",
@@ -116,8 +118,13 @@ const order: GalleryCategory[] = [
   "Grounds",
 ];
 
+// Reception comes first, with the exterior shot as the very first photo.
+const FIRST = "/images/gallery/reception-exterior.jpg";
+
 export const gallery: GalleryImage[] = [...fromFolders, ...roomShots].sort(
-  (a, b) => order.indexOf(a.category) - order.indexOf(b.category),
+  (a, b) =>
+    order.indexOf(a.category) - order.indexOf(b.category) ||
+    Number(b.src === FIRST) - Number(a.src === FIRST),
 );
 
 export const galleryCategories: GalleryCategory[] = order.filter((category) =>

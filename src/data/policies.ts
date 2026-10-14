@@ -3,9 +3,12 @@ import type { PolicyItem } from "@/types";
 export const houseRules: PolicyItem[] = [
   {
     title: "A quiet place",
-    text: "Loud sounds, high-volume music and parties are not allowed. The resort is for rest.",
+    text: "Please keep the evenings calm: no loud music or loud sounds after 10:00 PM. The resort is for rest.",
   },
-  { title: "Guests only", text: "Visitors are not allowed on the property." },
+  {
+    title: "Visitors",
+    text: "Visitors are not allowed after 8:30 PM, so the evenings stay peaceful for our guests.",
+  },
   {
     title: "ID on arrival",
     text: "Valid ID proof is mandatory for every guest at check-in.",

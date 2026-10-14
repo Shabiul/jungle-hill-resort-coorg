@@ -13,14 +13,25 @@ const plantation = [
   "M470 40 C 540 20 700 30 740 70 C 700 100 540 110 470 90 Z",
 ];
 
-const buildings: { x: number; y: number; w: number; h: number }[] = [
-  { x: 535, y: 392, w: 52, h: 34 },
-  { x: 300, y: 282, w: 60, h: 36 },
-  { x: 188, y: 178, w: 52, h: 34 },
-  { x: 412, y: 178, w: 56, h: 34 },
-  { x: 566, y: 124, w: 58, h: 36 },
-  { x: 676, y: 318, w: 58, h: 34 },
-];
+/** Smooth route through the markers in id order (Catmull-Rom converted to Béziers). */
+function routePath(points: { x: number; y: number }[]) {
+  if (points.length < 2) return "";
+  let d = `M${points[0].x} ${points[0].y}`;
+  for (let i = 0; i < points.length - 1; i++) {
+    const p0 = points[i - 1] ?? points[i];
+    const p1 = points[i];
+    const p2 = points[i + 1];
+    const p3 = points[i + 2] ?? p2;
+    const c1x = p1.x + (p2.x - p0.x) / 6;
+    const c1y = p1.y + (p2.y - p0.y) / 6;
+    const c2x = p2.x - (p3.x - p1.x) / 6;
+    const c2y = p2.y - (p3.y - p1.y) / 6;
+    d += ` C${c1x.toFixed(1)} ${c1y.toFixed(1)} ${c2x.toFixed(1)} ${c2y.toFixed(1)} ${p2.x} ${p2.y}`;
+  }
+  return d;
+}
+
+const route = routePath(planMarkers);
 
 /** Keeps the tooltip inside the plan: flips to the left of the marker on the right-hand side. */
 function tooltipStyle(x: number, y: number): React.CSSProperties {
@@ -66,7 +77,7 @@ export function ResortPlan({ className }: { className?: string }) {
 
             {/* Winding access road and paths */}
             <path
-              d="M-10 600 C 120 600 200 560 300 540 C 400 520 440 540 500 500 C 560 460 540 440 560 410"
+              d="M-10 600 C 120 600 220 585 320 560 C 400 540 460 520 500 470"
               fill="none"
               stroke="#a9b8c4"
               strokeOpacity="0.7"
@@ -74,43 +85,74 @@ export function ResortPlan({ className }: { className?: string }) {
               strokeDasharray="1 7"
               strokeLinecap="round"
             />
-            <g fill="none" stroke="#c9b58e" strokeOpacity="0.55" strokeWidth="1">
-              <path d="M560 410 C 500 380 440 330 330 300" />
-              <path d="M330 300 C 280 260 250 230 215 195" />
-              <path d="M330 300 C 380 260 410 230 440 195" />
-              <path d="M440 195 C 500 170 550 150 595 140" />
-              <path d="M560 410 C 620 380 660 360 705 335" />
-              <path d="M705 335 C 740 300 780 250 810 205" />
-              <path d="M705 335 C 740 380 770 410 790 440" />
-              <path d="M810 205 C 850 240 880 270 905 300" />
-              <path d="M560 410 C 500 450 460 490 420 515" />
-            </g>
-
-            {buildings.map((b) => (
-              <rect
-                key={`${b.x}-${b.y}`}
-                x={b.x}
-                y={b.y}
-                width={b.w}
-                height={b.h}
-                rx="2"
-                fill="#f4f2ee"
-                fillOpacity="0.1"
-                stroke="#e1d3b4"
-                strokeOpacity="0.6"
-              />
-            ))}
-            {/* Pool */}
-            <rect
-              x="770"
-              y="170"
-              width="84"
-              height="44"
-              rx="3"
-              fill="#22303c"
-              stroke="#e1d3b4"
+            {/* Walking route, in the order of the numbers */}
+            <path
+              d={route}
+              fill="none"
+              stroke="#c9b58e"
               strokeOpacity="0.6"
+              strokeWidth="1.4"
+              strokeDasharray="6 5"
+              strokeLinecap="round"
             />
+
+            {planMarkers
+              .filter((m) => m.kind === "building")
+              .map((m) => ({ x: m.x - 26, y: m.y - 17, w: 52, h: 34 }))
+              .map((b) => (
+                <rect
+                  key={`${b.x}-${b.y}`}
+                  x={b.x}
+                  y={b.y}
+                  width={b.w}
+                  height={b.h}
+                  rx="2"
+                  fill="#f4f2ee"
+                  fillOpacity="0.1"
+                  stroke="#e1d3b4"
+                  strokeOpacity="0.6"
+                />
+              ))}
+            {/* Pool, drawn under its marker */}
+            {planMarkers
+              .filter((m) => m.kind === "pool")
+              .map((m) => (
+                <rect
+                  key={m.id}
+                  x={m.x - 46}
+                  y={m.y - 24}
+                  width="92"
+                  height="48"
+                  rx="3"
+                  fill="#22303c"
+                  stroke="#e1d3b4"
+                  strokeOpacity="0.6"
+                />
+              ))}
+            {/* Parking: an unnumbered, decorative shape beside the entrance road */}
+            <g aria-hidden="true" opacity="0.8">
+              <rect
+                x="330"
+                y="486"
+                width="60"
+                height="30"
+                rx="2"
+                fill="none"
+                stroke="#a9b8c4"
+                strokeOpacity="0.6"
+                strokeDasharray="3 3"
+              />
+              <text
+                x="360"
+                y="506"
+                textAnchor="middle"
+                fontSize="13"
+                fill="#a9b8c4"
+                fontFamily="var(--font-jost), sans-serif"
+              >
+                P
+              </text>
+            </g>
 
             {planMarkers.map((marker) => {
               const on = marker.id === active;

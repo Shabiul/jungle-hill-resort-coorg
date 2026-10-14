@@ -9,7 +9,7 @@ export function whatsappLink(
 }
 
 export const telLink = `tel:${siteConfig.contact.phoneTel}`;
-export const managerTelLink = `tel:${siteConfig.manager.phoneTel}`;
+export const secondaryTelLink = `tel:${siteConfig.secondaryPhone.phoneTel}`;
 
 export const defaultEnquiryMessage =
   "Hello Jungle Hill Resort, I would like to enquire about a stay.";

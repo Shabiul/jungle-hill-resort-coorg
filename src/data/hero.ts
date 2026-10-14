@@ -16,17 +16,10 @@ export interface HeroSlide {
 }
 
 /**
- * Hero sequence, in order: photo A, photo B, then the video, then back to A.
+ * Hero sequence, in order: photo B (coffee view, the first paint), photo A (dusk cottages), then the video, then back to B.
  * Reorder or add entries freely. A video whose file is missing is skipped.
  */
 export const heroSlides: HeroSlide[] = [
-  {
-    duration: 4000,
-    type: "image",
-    src: "/images/hero/hero-a-dusk-cottages.webp",
-    alt: "Cottages and the main house at dusk with a white staircase, warm lights and a red paver driveway",
-    objectPosition: "48% 62%",
-  },
   {
     duration: 4000,
     type: "image",
@@ -35,10 +28,17 @@ export const heroSlides: HeroSlide[] = [
     objectPosition: "50% 38%",
   },
   {
+    duration: 4000,
+    type: "image",
+    src: "/images/hero/hero-a-dusk-cottages.webp",
+    alt: "Cottages and the main house at dusk with a white staircase, warm lights and a red paver driveway",
+    objectPosition: "48% 62%",
+  },
+  {
     duration: 4000, // plays its first 4 seconds only
     type: "video",
     src: "/videos/hero-rain-cloud-forest.mp4",
-    poster: "/images/hero/hero-b-coffee-view.webp",
+    poster: "/images/hero/hero-a-dusk-cottages.webp",
     alt: "Rain falling in a cloud forest of tall trees",
     objectPosition: "50% 50%",
   },

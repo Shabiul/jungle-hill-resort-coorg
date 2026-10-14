@@ -3,7 +3,6 @@ import { RevealImage } from "@/components/animations/RevealImage";
 import { CTA } from "@/components/sections/CTA";
 import { PageHero } from "@/components/shared/PageHero";
 import { Photo } from "@/components/shared/Photo";
-import { siteConfig } from "@/config/site.config";
 import { homeImages } from "@/data/site";
 import { buildMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/shared/JsonLd";
@@ -13,7 +12,7 @@ import { PageNote } from "@/components/shared/PageNote";
 export const metadata = buildMetadata({
   title: "About",
   description:
-    "Jungle Hill Resort is a nature retreat in the coffee and pepper plantations of Coorg, 5 km from Madikeri on the Virajpet road. Meet the estate and its owners.",
+    "Jungle Hill Resort is a nature retreat in the coffee and pepper plantations of Coorg, 5 km from Madikeri on the Virajpet road. Read about the estate.",
   path: "/about",
 });
 
@@ -56,8 +55,8 @@ export default function AboutPage() {
               cuisine through the day.
             </p>
             <p>
-              It is designed for relaxation and a peaceful stay in nature. Loud sounds,
-              high-volume music and parties are strictly prohibited.
+              It is designed for relaxation and a peaceful stay in nature. Quiet hours
+              start at 10:00 PM: no loud music or loud sounds after that.
             </p>
           </div>
           <div className="grid grid-cols-12 items-start gap-4 lg:col-span-7">
@@ -96,15 +95,6 @@ export default function AboutPage() {
 
       <section aria-label="The people" className="section-space">
         <div className="page-container grid gap-6 sm:grid-cols-2">
-          <div className="border-t border-night pt-5">
-            <p className="label-mono text-steel">Owners</p>
-            <p className="mt-2 font-display text-3xl">{siteConfig.owners}</p>
-          </div>
-          <div className="border-t border-night pt-5">
-            <p className="label-mono text-steel">Manager</p>
-            <p className="mt-2 font-display text-3xl">{siteConfig.manager.name}</p>
-            <p className="mt-1 text-steel">{siteConfig.manager.phoneDisplay}</p>
-          </div>
         </div>
         <p className="page-container mt-6">
           <Link href="/rooms" className="label-mono link-underline">

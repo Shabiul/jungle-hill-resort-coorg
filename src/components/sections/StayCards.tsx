@@ -5,6 +5,7 @@ import Link from "next/link";
 import { Lightbox } from "@/components/shared/LazyLightbox";
 import { Photo } from "@/components/shared/Photo";
 import { BoxCard } from "@/components/ui/BoxCard";
+import { roomLabel } from "@/data/rooms";
 import { cn } from "@/lib/utils";
 import type { Room } from "@/types";
 
@@ -69,7 +70,7 @@ function StayCard({ room }: { room: Room }) {
 
       <div className="flex flex-1 flex-col pt-5">
         <p className="label-mono text-champagne-soft">
-          {room.categoryShort} · {room.sizeSqFt} sq ft
+          {roomLabel(room)}
         </p>
         <h3 className="mt-2 text-h3">{room.name}</h3>
         <p className="mt-2 max-w-[44ch] text-pearl/80">{room.summary}</p>
