@@ -2,7 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
-import { motion, useScroll, useTransform } from "motion/react";
+import { m, useScroll, useTransform } from "motion/react";
 import { GradeTint } from "@/components/shared/GradeTint";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import type { ResolvedHeroSlide } from "@/data/hero";
@@ -150,7 +150,7 @@ export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
 
   return (
     <>
-      <motion.div
+      <m.div
         className="pointer-events-none absolute inset-x-0 -top-10 -bottom-10 isolate z-0"
         style={reduced ? undefined : { y }}
       >
@@ -208,7 +208,7 @@ export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
             </div>
           );
         })}
-      </motion.div>
+      </m.div>
 
       {!reduced && total > 1 && (
         <div className="absolute inset-x-0 bottom-2.5 z-20">

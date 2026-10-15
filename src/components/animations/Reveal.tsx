@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { motion, type Variants } from "motion/react";
+import { m, type Variants } from "motion/react";
 import { fadeUp, pickVariants } from "@/lib/animations";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
@@ -15,7 +15,7 @@ export function Reveal({ children, variants = fadeUp, className }: RevealProps) 
   const reduced = useReducedMotion();
 
   return (
-    <motion.div
+    <m.div
       className={className}
       variants={pickVariants(variants, reduced)}
       initial="hidden"
@@ -23,6 +23,6 @@ export function Reveal({ children, variants = fadeUp, className }: RevealProps) 
       viewport={{ once: true, margin: "-10% 0px" }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

@@ -1,7 +1,7 @@
 "use client";
 
 import type { ReactNode } from "react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { easeOut } from "@/lib/animations";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
@@ -16,7 +16,7 @@ export function RevealImage({ children, className, delay = 0 }: RevealImageProps
   const reduced = useReducedMotion();
 
   return (
-    <motion.div
+    <m.div
       data-reveal-img
       className={className}
       initial={reduced ? false : { clipPath: "inset(14% 0% 0% 0%)", opacity: 0 }}
@@ -25,6 +25,6 @@ export function RevealImage({ children, className, delay = 0 }: RevealImageProps
       transition={{ duration: 0.8, ease: easeOut, delay }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

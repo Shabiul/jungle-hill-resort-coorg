@@ -331,11 +331,11 @@
 .intro-rise {
   display: block;
   transform: translateY(110%);
-  animation: intro-rise 0.7s var(--ease-out-expo) 0.8s forwards;
+  animation: intro-rise 0.5s var(--ease-out-expo) 0.5s forwards;
 }
 .intro-fade {
   opacity: 0;
-  animation: intro-fade 0.6s ease-out 1.35s forwards;
+  animation: intro-fade 0.4s ease-out 0.8s forwards;
 }
 .grain-layer::after {
   content: "";
@@ -356,7 +356,7 @@
 }
 .intro-logo {
   clip-path: inset(100% 0 0 0);
-  animation: intro-wipe 0.8s var(--ease-out-expo) 0.1s forwards;
+  animation: intro-wipe 0.55s var(--ease-out-expo) 0.05s forwards;
 }
 
 /* Form fields on dark panels (unlayered so they win over the utility classes on the fields) */

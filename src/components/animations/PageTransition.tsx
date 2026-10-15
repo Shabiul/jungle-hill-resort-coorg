@@ -1,7 +1,7 @@
 "use client";
 
 import { useEffect, useState, type ReactNode } from "react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { easeOut } from "@/lib/animations";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 
@@ -22,13 +22,13 @@ export function PageTransition({ children }: { children: ReactNode }) {
   }, []);
 
   return (
-    <motion.div
+    <m.div
       data-reveal
       initial={reduced || !fadeIn ? false : { opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.35, ease: easeOut }}
     >
       {children}
-    </motion.div>
+    </m.div>
   );
 }

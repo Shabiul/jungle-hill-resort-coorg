@@ -5,10 +5,10 @@ import { useEffect, useState, useSyncExternalStore } from "react";
 import { setIntroStatus } from "@/lib/intro-store";
 
 const SESSION_KEY = "jhr-intro-seen";
-const LIFT_AT = 1200; // ms: curtain starts lifting (total 1.8 s with the lift)
-const LIFT_FOR = 600; // ms: curtain duration
-const HERO_AT = LIFT_AT + 300; // ms: hero entrance starts as the curtain clears
-const MIN_SHOW = 900; // ms: shortest the logo stays (its reveal takes 0.8 s), even if the first photo is in
+const LIFT_AT = 1000; // ms: curtain starts lifting (1.4 s in total with the lift)
+const LIFT_FOR = 400; // ms: curtain duration
+const HERO_AT = LIFT_AT + 200; // ms: hero entrance starts as the curtain clears
+const MIN_SHOW = 750; // ms: shortest the logo stays (its reveal takes about 0.6 s), even if the first photo is in
 
 type Phase = "play" | "lift" | "done";
 

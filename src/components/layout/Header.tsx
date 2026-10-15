@@ -56,6 +56,7 @@ export function Header() {
                   }
                 >
                   <Link
+                    prefetch={false}
                     href={item.href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
@@ -76,7 +77,11 @@ export function Header() {
         </nav>
 
         <div className="col-start-3 flex items-center gap-3 justify-self-end">
-          <Link href={bookingNav.href} className="btn btn-primary hidden sm:inline-flex">
+          <Link
+            href={bookingNav.href}
+            prefetch={false}
+            className="btn btn-primary hidden sm:inline-flex"
+          >
             {bookingNav.label}
           </Link>
           <MobileMenu items={mainNav} light={light} />

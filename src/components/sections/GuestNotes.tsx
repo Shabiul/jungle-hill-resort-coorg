@@ -2,7 +2,7 @@
 
 import { useEffect, useState, useSyncExternalStore } from "react";
 import Link from "next/link";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { MessageCircle } from "lucide-react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { whatsappLink } from "@/lib/contact";
@@ -91,7 +91,7 @@ export function GuestNotes({ reviews }: { reviews: Testimonial[] }) {
         {visible.map((review) => {
           const highlighted = targetId === review.id && dismissedFor !== hash;
           return (
-            <motion.li
+            <m.li
               key={review.id}
               id={`note-${review.id}`}
               data-reveal
@@ -137,7 +137,7 @@ export function GuestNotes({ reviews }: { reviews: Testimonial[] }) {
                   {review.highlights?.join(", ")}
                 </p>
               )}
-            </motion.li>
+            </m.li>
           );
         })}
 

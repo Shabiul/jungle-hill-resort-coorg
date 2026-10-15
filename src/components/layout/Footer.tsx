@@ -84,6 +84,7 @@ export function Footer() {
                 {mainNav.map((item) => (
                   <li key={item.href}>
                     <Link
+                      prefetch={false}
                       href={item.href}
                       className="transition-colors hover:text-champagne-soft"
                     >
@@ -93,6 +94,7 @@ export function Footer() {
                 ))}
                 <li>
                   <Link
+                    prefetch={false}
                     href="/booking"
                     className="transition-colors hover:text-champagne-soft"
                   >
@@ -104,7 +106,8 @@ export function Footer() {
                 Check-in 12 PM · Check-out 11 AM
               </p>
               <p className="mt-2 text-sm text-pearl/70">
-                ID proof mandatory. No visitors after 8:30 PM. No loud music or sounds after 10:00 PM.
+                ID proof mandatory. No visitors after 8:30 PM. No loud music or sounds
+                after 10:00 PM.
               </p>
             </div>
           </div>

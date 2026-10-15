@@ -1,7 +1,7 @@
 "use client";
 
 import type { CSSProperties } from "react";
-import { motion } from "motion/react";
+import { m } from "motion/react";
 import { easeOut } from "@/lib/animations";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { cn } from "@/lib/utils";
@@ -80,7 +80,7 @@ export function RevealText({
     <Tag className={className}>
       {lines.map((line, index) => (
         <span key={index} className="-mb-[0.14em] block overflow-hidden pb-[0.14em]">
-          <motion.span
+          <m.span
             data-reveal
             className="block"
             initial={reduced ? false : { y: "110%" }}
@@ -99,7 +99,7 @@ export function RevealText({
               </em>
             )}
             {line.after}
-          </motion.span>
+          </m.span>
         </span>
       ))}
     </Tag>

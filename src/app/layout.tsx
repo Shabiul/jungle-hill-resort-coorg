@@ -1,5 +1,6 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Jost } from "next/font/google";
+import { MotionProvider } from "@/components/animations/MotionProvider";
 import { Intro } from "@/components/animations/Intro";
 import { SmoothScroll } from "@/components/animations/SmoothScroll";
 import { NavProgress } from "@/components/layout/NavProgress";
@@ -60,14 +61,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        <SmoothScroll>
-          <Intro />
-          <NavProgress />
-          <Header />
-          <main id="main">{children}</main>
-          <Footer />
-          <WhatsAppButton />
-        </SmoothScroll>
+        <MotionProvider>
+          <SmoothScroll>
+            <Intro />
+            <NavProgress />
+            <Header />
+            <main id="main">{children}</main>
+            <Footer />
+            <WhatsAppButton />
+          </SmoothScroll>
+        </MotionProvider>
       </body>
     </html>
   );
