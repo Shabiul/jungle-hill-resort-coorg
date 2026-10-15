@@ -35,13 +35,13 @@ export default function ExperiencesPage() {
         }
       />
 
-      <section aria-label="Things to do" className="pb-12">
+      <section aria-label="Things to do" className="pb-[var(--space-section)]">
         <ol className="page-container">
           {experiences.map((item, index) => (
             <li
               key={item.slug}
               id={item.slug}
-              className="grid scroll-mt-28 gap-8 border-t border-night/25 py-12 lg:grid-cols-12"
+              className="grid scroll-mt-28 gap-8 border-t border-night/25 py-8 lg:grid-cols-12"
             >
               <div className="lg:col-span-5">
                 <p className="label-mono text-steel">

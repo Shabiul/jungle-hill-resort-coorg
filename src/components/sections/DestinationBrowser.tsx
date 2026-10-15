@@ -1,9 +1,8 @@
 "use client";
 
-import { useState } from "react";
+import { useId, useState } from "react";
 import { ArrowUpRight } from "lucide-react";
 import { Photo } from "@/components/shared/Photo";
-import { BoxCard } from "@/components/ui/BoxCard";
 import {
   bandOf,
   distanceFilters,
@@ -21,43 +20,62 @@ const GROUP_TITLES = {
 
 function DestinationCard({ destination }: { destination: Destination }) {
   const { image } = destination;
+  const [expanded, setExpanded] = useState(false);
+  const textId = useId();
+
   return (
-    <BoxCard className="flex h-full flex-col p-5 sm:p-6">
+    <article className="group dark-surface flex h-full flex-col rounded-none border border-steel bg-slate text-pearl transition-colors hover:border-champagne">
       {image && (
-        <div className="relative mb-5 aspect-[4/3] overflow-hidden bg-night">
+        <div className="relative aspect-square w-full overflow-hidden bg-night">
           <Photo
             image={image}
             fill
             sizes="(min-width: 1024px) 28vw, (min-width: 640px) 45vw, 100vw"
+            objectPosition={image.objectPosition}
+            imgClassName="transition-transform duration-[400ms] ease-out group-hover:scale-[1.03]"
           />
         </div>
       )}
-      <p className="label-mono text-champagne-soft">{destination.distanceKm} km</p>
-      <h3 className="mt-2 text-h3">{destination.name}</h3>
-      <p className="mt-3 max-w-[48ch] text-pearl/85">{destination.description}</p>
-      <ul
-        className="mt-4 flex flex-wrap gap-2"
-        aria-label={`Facts about ${destination.name}`}
-      >
-        {destination.facts.map((fact) => (
-          <li
-            key={fact}
-            className="label-mono border border-champagne/25 px-2.5 py-1 text-[0.62rem] text-pearl/80"
-          >
-            {fact}
-          </li>
-        ))}
-      </ul>
-      <a
-        href={mapsSearchUrl(destination.name)}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={`Open ${destination.name} in Maps`}
-        className="label-mono link-underline touch-target mt-auto inline-flex items-center gap-1.5 self-start pt-5 text-champagne-soft"
-      >
-        Open in Maps <ArrowUpRight size={14} strokeWidth={1.5} aria-hidden="true" />
-      </a>
-    </BoxCard>
+      <div className="flex flex-1 flex-col p-5">
+        <p className="label-mono text-champagne-soft">{destination.distanceKm} km</p>
+        <h3 className="mt-2 text-h4">{destination.name}</h3>
+        <p id={textId} className={cn("mt-2 text-pearl/85", !expanded && "line-clamp-3")}>
+          {destination.description}
+        </p>
+        <button
+          type="button"
+          aria-expanded={expanded}
+          aria-controls={textId}
+          onClick={() => setExpanded((value) => !value)}
+          className="label-mono touch-target mt-1 inline-flex items-center self-start text-[0.68rem] text-pearl/70 hover:text-pearl"
+        >
+          {expanded ? "Show less" : "Read more"}
+          <span className="sr-only"> about {destination.name}</span>
+        </button>
+        <ul
+          className="mt-3 flex flex-wrap gap-2"
+          aria-label={`Facts about ${destination.name}`}
+        >
+          {destination.facts.map((fact) => (
+            <li
+              key={fact}
+              className="label-mono border border-steel px-2 py-1 text-[0.62rem] text-pearl/80"
+            >
+              {fact}
+            </li>
+          ))}
+        </ul>
+        <a
+          href={mapsSearchUrl(destination.name)}
+          target="_blank"
+          rel="noopener noreferrer"
+          aria-label={`Open ${destination.name} in Maps`}
+          className="label-mono link-underline touch-target mt-auto inline-flex items-center gap-1.5 self-start pt-4 text-champagne-soft"
+        >
+          Open in Maps <ArrowUpRight size={14} strokeWidth={1.5} aria-hidden="true" />
+        </a>
+      </div>
+    </article>
   );
 }
 
@@ -100,9 +118,9 @@ export function DestinationBrowser({ destinations }: { destinations: Destination
       </div>
 
       {bands.map((band) => (
-        <section key={band} aria-label={GROUP_TITLES[band]} className="mt-10">
+        <section key={band} aria-label={GROUP_TITLES[band]} className="mt-8">
           <h2 className="label-mono text-steel">{GROUP_TITLES[band]}</h2>
-          <ul className="mt-4 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          <ul className="mt-4 grid gap-4 sm:grid-cols-2 sm:gap-5 lg:grid-cols-3">
             {visible
               .filter((place) => bandOf(place.distanceKm) === band)
               .map((place) => (

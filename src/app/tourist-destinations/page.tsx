@@ -32,7 +32,7 @@ export default function TouristDestinationsPage() {
       <section aria-label="Places near the resort" className="pb-[var(--space-section)]">
         <div className="page-container">
           <DestinationBrowser destinations={destinations} />
-          <p className="mt-10 text-small text-steel">{destinationsNote}</p>
+          <p className="mt-8 text-small text-steel">{destinationsNote}</p>
         </div>
       </section>
 

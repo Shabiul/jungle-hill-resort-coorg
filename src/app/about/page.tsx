@@ -41,7 +41,7 @@ export default function AboutPage() {
         }
       />
 
-      <section aria-label="The resort" className="pb-12">
+      <section aria-label="The resort" className="pb-[var(--space-section)]">
         <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="space-y-5 lg:col-span-5">
             <p>
@@ -69,7 +69,7 @@ export default function AboutPage() {
                 />
               </div>
             </RevealImage>
-            <RevealImage className="col-span-5 mt-16" delay={0.1}>
+            <RevealImage className="col-span-5 mt-10" delay={0.1}>
               <div className="relative aspect-square overflow-hidden">
                 <Photo
                   image={homeImages.welcomeB}

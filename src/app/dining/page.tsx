@@ -75,7 +75,7 @@ export default function DiningPage() {
         <section aria-label="Restaurant photographs" className="section-space">
           <div className="page-container">
             <p className="label-mono text-steel">The restaurant</p>
-            <h2 className="mt-4 mb-10 text-h3">Where you will eat</h2>
+            <h2 className="mt-4 mb-6 text-h3">Where you will eat</h2>
             <PhotoGrid images={photos} />
           </div>
         </section>

@@ -46,7 +46,7 @@ export default function PlanYourStayPage() {
 
       <ResortPlanSection id="plan" heading={false} />
 
-      <section aria-label="Location and directions" className="pb-12">
+      <section aria-label="Location and directions" className="pb-[var(--space-section)]">
         <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <h2 className="label-mono !font-mono text-xs text-steel">Address</h2>

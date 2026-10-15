@@ -48,7 +48,7 @@
 
   --container-page: 80rem;
   --spacing-gutter: clamp(1.25rem, 4vw, 3rem);
-  --space-section: clamp(4rem, 8vw, 7rem);
+  --space-section: clamp(2.5rem, 5vw, 4.5rem);
 }
 
 @layer base {

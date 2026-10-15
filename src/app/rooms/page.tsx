@@ -38,7 +38,7 @@ export default function RoomsPage() {
         }
       />
 
-      <section aria-label="All stays" className="pb-12">
+      <section aria-label="All stays" className="pb-[var(--space-section)]">
         <div className="page-container">
           <StayCards rooms={rooms} />
         </div>

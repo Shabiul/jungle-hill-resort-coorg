@@ -1,3 +1,8 @@
+import { photo } from "@/lib/images";
+import type { ImageAsset } from "@/types";
+
+export type DestinationImage = ImageAsset & { objectPosition?: string };
+
 export interface Destination {
   id: string;
   name: string;
@@ -11,7 +16,7 @@ export interface Destination {
    * Optional photo. Add files to public/images/destinations/ and set this to show one on the card;
    * cards without it are typography only.
    */
-  image?: { src: string; alt: string; width: number; height: number };
+  image?: DestinationImage;
 }
 
 export type DistanceBand = "nearby" | "day-trips" | "far";
@@ -45,9 +50,20 @@ export function mapsSearchUrl(name: string) {
   return `https://www.google.com/maps/search/?api=1&query=${encodeURIComponent(`${name}, Coorg`)}`;
 }
 
+/** Photo from public/images/destinations/{slug}.webp, or undefined so the card stays typography-only. */
+function destinationImage(
+  slug: string,
+  alt: string,
+  objectPosition?: string,
+): DestinationImage | undefined {
+  const image = photo(`/images/destinations/${slug}.webp`, alt);
+  return image ? { ...image, objectPosition } : undefined;
+}
+
 export const destinations: Destination[] = [
   {
     id: "sunny-side",
+    image: destinationImage("sunny-side", "General Thimayya Museum entrance sign at Sunny Side, Madikeri, Coorg", "50% 40%"),
     name: "Sunny Side",
     distanceKm: 5,
     description:
@@ -56,6 +72,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "omkareshwara-temple",
+    image: destinationImage("omkareshwara-temple", "Omkareshwara Temple shrine in its pond, Madikeri, Coorg", "50% 45%"),
     name: "Omkareshwara Temple",
     distanceKm: 5,
     description:
@@ -64,6 +81,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "rajas-seat",
+    image: destinationImage("rajas-seat", "Sunset over misty mountains seen from Raja's Seat, Madikeri, Coorg", "50% 35%"),
     name: "Raja's Seat",
     distanceKm: 5,
     description:
@@ -72,6 +90,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "madikeri-fort",
+    image: destinationImage("madikeri-fort", "Madikeri Fort walls and palace buildings, Coorg", "50% 50%"),
     name: "Madikeri Fort",
     distanceKm: 5,
     description:
@@ -80,6 +99,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "abbey-falls",
+    image: destinationImage("abbey-falls", "Abbey Falls near Madikeri, Coorg", "50% 35%"),
     name: "Abbey Falls",
     distanceKm: 11,
     description:
@@ -88,6 +108,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "mandalpatti",
+    image: destinationImage("mandalpatti", "Green hills and drifting cloud at Mandalpatti, Coorg", "50% 50%"),
     name: "Mandalpatti",
     distanceKm: 26,
     description:
@@ -96,6 +117,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "chiklihole-dam",
+    image: destinationImage("chiklihole-dam", "Water spilling at Chiklihole Dam near Madikeri, Coorg", "50% 60%"),
     name: "Chiklihole Dam",
     distanceKm: 29,
     description:
@@ -104,6 +126,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "cauvery-nisargadhama",
+    image: destinationImage("cauvery-nisargadhama", "The Cauvery river under trees at Cauvery Nisargadhama, Coorg", "50% 50%"),
     name: "Cauvery Nisargadhama",
     distanceKm: 32,
     description:
@@ -112,6 +135,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "cheluvara-falls",
+    image: destinationImage("cheluvara-falls", "Cheluvara Falls pouring into a clear pool near Cheyyandane, Coorg", "35% 40%"),
     name: "Cheluvara Falls",
     distanceKm: 33,
     description:
@@ -120,6 +144,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "bagamandala",
+    image: destinationImage("bagamandala", "Temple beside the water at Bagamandala, Coorg", "50% 30%"),
     name: "Bagamandala",
     distanceKm: 36,
     description:
@@ -128,6 +153,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "golden-temple-bylakuppe",
+    image: destinationImage("golden-temple-bylakuppe", "Golden Temple (Namdroling Monastery) at Bylakuppe near Kushalnagar, Coorg", "50% 40%"),
     name: "Golden Temple (Bylakuppe)",
     distanceKm: 39,
     description:
@@ -136,6 +162,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "harangi-dam",
+    image: destinationImage("harangi-dam", "Harangi Dam with water released through its gates, Coorg", "50% 50%"),
     name: "Harangi Dam",
     distanceKm: 40,
     description:
@@ -144,6 +171,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "dubare-elephant-camp",
+    image: destinationImage("dubare-elephant-camp", "Elephant in the forest at Dubare Elephant Camp, Coorg", "75% 45%"),
     name: "Dubare Elephant Camp",
     distanceKm: 41,
     description:
@@ -152,6 +180,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "talacauvery",
+    image: destinationImage("talacauvery", "Holy tank and steps at Talacauvery, birthplace of the Cauvery, Coorg", "50% 70%"),
     name: "Talacauvery",
     distanceKm: 44,
     description:
@@ -160,6 +189,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "iruppu-falls",
+    image: destinationImage("iruppu-falls", "Iruppu Falls tumbling through forest in the Brahmagiri hills, Coorg", "50% 45%"),
     name: "Iruppu Falls",
     distanceKm: 72,
     description:
@@ -168,6 +198,7 @@ export const destinations: Destination[] = [
   },
   {
     id: "nagarahole",
+    image: destinationImage("nagarahole", "Spotted deer grazing beside a lake at Nagarahole, Coorg", "50% 60%"),
     name: "Nagarahole Wildlife Sanctuary",
     distanceKm: 80,
     description:

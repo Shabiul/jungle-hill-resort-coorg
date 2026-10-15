@@ -113,7 +113,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
       </section>
 
       <section aria-label="About this stay" className="section-space">
-        <div className="page-container grid gap-8 lg:grid-cols-12 lg:gap-10">
+        <div className="page-container grid gap-6 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-7">
             <p className="label-mono text-steel">About this stay</p>
             <p className="mt-3 font-display text-h3">{room.summary}</p>
@@ -151,7 +151,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
           </div>
 
           <aside className="lg:col-span-4 lg:col-start-9">
-            <div className="dark-surface rounded-[2px] border border-champagne/30 bg-slate p-5 text-pearl lg:sticky lg:top-24">
+            <div className="dark-surface rounded-none border border-steel bg-slate p-5 text-pearl lg:sticky lg:top-24">
               <p className="label-mono text-champagne-soft">{room.rateNote}</p>
               <p className="mt-2 font-display text-h4">{room.name}</p>
               <div className="mt-4 flex flex-col gap-3">

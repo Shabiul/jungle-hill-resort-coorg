@@ -11,6 +11,8 @@ interface PhotoProps {
   /** Fill the parent (parent must be positioned) instead of using intrinsic size. */
   fill?: boolean;
   priority?: boolean;
+  /** CSS object-position for the crop. */
+  objectPosition?: string;
 }
 
 /**
@@ -24,6 +26,7 @@ export function Photo({
   imgClassName,
   fill = false,
   priority = false,
+  objectPosition,
 }: PhotoProps) {
   if (!image) return null;
 
@@ -42,6 +45,7 @@ export function Photo({
           fill
           alt={image.alt}
           className={cn("grade-filter object-cover", imgClassName, className)}
+          style={objectPosition ? { objectPosition } : undefined}
           {...common}
         />
         <GradeTint />

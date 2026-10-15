@@ -30,7 +30,7 @@ export function SectionHeader({
         as={as}
         lines={lines}
         onDark={tone === "light"}
-        className="mt-5 text-h2"
+        className="mt-4 text-h2"
       />
       {description && (
         <div

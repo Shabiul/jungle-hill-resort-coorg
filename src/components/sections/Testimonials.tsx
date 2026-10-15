@@ -36,13 +36,13 @@ export function Testimonials() {
           className="mt-4 text-h3"
         />
 
-        <div className="mt-10 sm:mt-14">
+        <div className="mt-6 sm:mt-8">
           <NoteStage notes={testimonials} />
         </div>
 
         <Link
           href="/testimonials"
-          className="label-mono group mt-12 inline-flex items-center gap-2 text-champagne transition-colors hover:text-champagne-soft"
+          className="label-mono group mt-8 inline-flex items-center gap-2 text-champagne transition-colors hover:text-champagne-soft"
         >
           Read all guest notes
           <ArrowRight

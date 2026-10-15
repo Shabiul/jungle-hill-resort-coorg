@@ -54,7 +54,7 @@ export default function ContactPage() {
           </div>
 
           <aside aria-label="Contact details" className="lg:col-span-4">
-            <div className="dark-surface rounded-[2px] border border-champagne/30 bg-slate p-5 text-pearl lg:sticky lg:top-24">
+            <div className="dark-surface rounded-none border border-steel bg-slate p-5 text-pearl lg:sticky lg:top-24">
               <p className="label-mono text-champagne-soft">Reservations</p>
               <a
                 href={telLink}

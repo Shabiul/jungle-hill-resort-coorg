@@ -48,7 +48,7 @@ export function Retreat() {
           </p>
         </div>
 
-        <dl className="mt-10 grid grid-cols-2 border-t border-night/25 lg:grid-cols-4">
+        <dl className="mt-8 grid grid-cols-2 border-t border-night/25 lg:grid-cols-4">
           {stats.map((stat) => (
             <div
               key={stat.label}

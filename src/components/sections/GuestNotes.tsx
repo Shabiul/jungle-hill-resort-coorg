@@ -59,7 +59,7 @@ export function GuestNotes({ reviews }: { reviews: Testimonial[] }) {
   }, [targetId, hash, reduced]);
 
   return (
-    <div className="grid gap-12 lg:grid-cols-12 lg:gap-8">
+    <div className="grid gap-8 lg:grid-cols-12 lg:gap-8">
       <div className="lg:sticky lg:top-28 lg:col-span-4 lg:self-start">
         <p className="label-mono text-champagne">Guest Notes</p>
         <h1 className="mt-4 text-h2">What guests wrote</h1>
@@ -87,7 +87,7 @@ export function GuestNotes({ reviews }: { reviews: Testimonial[] }) {
         </div>
       </div>
 
-      <ol className="space-y-20 sm:space-y-24 lg:col-span-7 lg:col-start-6">
+      <ol className="space-y-12 sm:space-y-16 lg:col-span-7 lg:col-start-6">
         {visible.map((review) => {
           const highlighted = targetId === review.id && dismissedFor !== hash;
           return (
@@ -141,7 +141,7 @@ export function GuestNotes({ reviews }: { reviews: Testimonial[] }) {
           );
         })}
 
-        <li className="pt-8 sm:pt-12">
+        <li className="pt-6 sm:pt-8">
           <h2 className="font-display text-h4 font-light">Planning a stay?</h2>
           <div className="mt-6 flex flex-wrap gap-3">
             <Link href="/booking" className="btn btn-primary">

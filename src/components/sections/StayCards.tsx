@@ -17,7 +17,7 @@ function StayCard({ room }: { room: Room }) {
   const hidden = total - 3;
 
   return (
-    <BoxCard className="flex h-full flex-col p-3 sm:p-4">
+    <BoxCard className="flex h-full flex-col p-4 transition-colors hover:border-champagne sm:p-5">
       <button
         type="button"
         onClick={() => setLightbox(active)}

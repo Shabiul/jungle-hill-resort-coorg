@@ -145,6 +145,7 @@ export function destinationsJsonLd() {
         name: place.name,
         description: place.description,
         url: mapsSearchUrl(place.name),
+        ...(place.image ? { image: `${ORIGIN}${place.image.src}` } : {}),
       },
     })),
   };

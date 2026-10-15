@@ -28,7 +28,7 @@ export default function PackagesOffersPage() {
         }
       />
       {/* TODO: list real packages and offers here once the resort supplies them */}
-      <section aria-label="How rates work" className="pb-12">
+      <section aria-label="How rates work" className="pb-[var(--space-section)]">
         <div className="page-container grid gap-8 lg:grid-cols-12">
           <ol className="border-t border-night lg:col-span-6">
             {[

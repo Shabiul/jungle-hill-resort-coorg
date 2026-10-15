@@ -85,7 +85,7 @@ export function NoteStage({ notes }: { notes: Testimonial[] }) {
         {current.excerpt ?? current.text} {current.name}.
       </p>
 
-      <div className="relative grid max-w-[900px] pt-10 sm:pt-16">
+      <div className="relative grid max-w-[900px] pt-6 sm:pt-10">
         {notes.map((note, i) => {
           const active = i === index;
           const text = note.excerpt ?? note.text;
@@ -125,7 +125,7 @@ export function NoteStage({ notes }: { notes: Testimonial[] }) {
         })}
       </div>
 
-      <div className="mt-12 flex items-center gap-5">
+      <div className="mt-8 flex items-center gap-5">
         <p className="font-display text-2xl text-pearl tabular-nums" aria-hidden="true">
           <span className="text-champagne">{String(index + 1).padStart(2, "0")}</span>
           <span className="text-mist"> / {String(total).padStart(2, "0")}</span>

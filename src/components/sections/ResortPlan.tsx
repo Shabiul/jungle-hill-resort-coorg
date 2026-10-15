@@ -55,7 +55,7 @@ export function ResortPlan({ className }: { className?: string }) {
   return (
     <div className={cn("grid gap-6 lg:grid-cols-12 lg:gap-8", className)}>
       <div className="lg:col-span-8">
-        <div className="relative overflow-hidden rounded-[2px] border border-champagne/30 bg-night">
+        <div className="relative overflow-hidden rounded-none border border-steel bg-night">
           <svg
             viewBox={`0 0 ${PLAN_VIEWBOX.width} ${PLAN_VIEWBOX.height}`}
             role="group"
