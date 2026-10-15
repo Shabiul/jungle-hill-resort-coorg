@@ -103,9 +103,27 @@ const fromFolders: GalleryImage[] = compact(
     }),
 );
 
+/**
+ * Files that show (almost) the same picture as another one. They stay on their own pages but are left
+ * out of the gallery, so no scene appears twice.
+ */
+const DUPLICATES = new Set([
+  "/images/gallery/reception-entrance-path.jpg", // identical to reception-exterior
+  "/images/gallery/grounds-valley-green-roof.jpg", // same view as grounds-hill-view-green-roof
+  "/images/rooms/standard-non-ac-cottage/bathroom-02.jpg",
+  "/images/rooms/standard-non-ac-cottage/bathroom-03.jpg",
+  "/images/rooms/standard-non-ac-cottage/bedroom-03.jpg",
+  "/images/rooms/standard-non-ac-cottage/bedroom-04.jpg",
+  "/images/rooms/standard-non-ac-cottage/bedroom-06.jpg",
+  "/images/rooms/standard-non-ac-cottage/bedroom-07.jpg",
+]);
+
 // A taste of every room category (all room photos are on the room pages).
 const roomShots: GalleryImage[] = rooms.flatMap((room) =>
-  room.images.slice(0, 6).map((image): GalleryImage => ({ ...image, category: "Rooms" })),
+  room.images
+    .filter((image) => !DUPLICATES.has(image.src))
+    .slice(0, 6)
+    .map((image): GalleryImage => ({ ...image, category: "Rooms" })),
 );
 
 const order: GalleryCategory[] = [
@@ -121,7 +139,13 @@ const order: GalleryCategory[] = [
 // Reception comes first, with the exterior shot as the very first photo.
 const FIRST = "/images/gallery/reception-exterior.jpg";
 
-export const gallery: GalleryImage[] = [...fromFolders, ...roomShots].sort(
+const unique = [...fromFolders, ...roomShots].filter(
+  (image, index, all) =>
+    !DUPLICATES.has(image.src) &&
+    all.findIndex((other) => other.src === image.src) === index,
+);
+
+export const gallery: GalleryImage[] = unique.sort(
   (a, b) =>
     order.indexOf(a.category) - order.indexOf(b.category) ||
     Number(b.src === FIRST) - Number(a.src === FIRST),
