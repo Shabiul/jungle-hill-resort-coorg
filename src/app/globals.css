@@ -493,3 +493,25 @@ html[data-hero="hidden"] .hero-fade {
     min-width: 2.75rem;
   }
 }
+
+/* Deep-linked guest note: a brief champagne outline pulse. */
+@keyframes note-pulse {
+  0%,
+  100% {
+    outline-color: transparent;
+  }
+  25%,
+  65% {
+    outline-color: var(--color-champagne);
+  }
+}
+.note-pulse {
+  animation: note-pulse 1.6s ease-in-out 1;
+  outline-offset: 4px;
+}
+@media (prefers-reduced-motion: reduce) {
+  .note-pulse {
+    animation: none;
+    outline-color: var(--color-champagne);
+  }
+}

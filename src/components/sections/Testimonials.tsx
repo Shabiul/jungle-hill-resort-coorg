@@ -7,14 +7,16 @@ import { testimonials } from "@/data/testimonials";
 import { photo } from "@/lib/images";
 
 // Split into its own chunk (still server-rendered) so the first load hydrates less.
-const NoteStage = dynamic(() => import("@/components/sections/NoteStage").then((m) => m.NoteStage));
+const PostcardStage = dynamic(() =>
+  import("@/components/sections/PostcardStage").then((m) => m.PostcardStage),
+);
 
 const backdrop = photo(
   "/images/gallery/grounds-misty-valley.jpg",
   "Mist over the valley beyond the resort's tiled roofs",
 );
 
-/** Home page guest notes: one calm quote at a time over a faint, heavily veiled photograph. */
+/** Home page guest notes: a stack of postcards over a faint, heavily veiled photograph. */
 export function Testimonials() {
   return (
     <section
@@ -24,7 +26,7 @@ export function Testimonials() {
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <Photo image={backdrop} fill sizes="100vw" />
-        <div className="absolute inset-0 bg-slate/85" />
+        <div className="absolute inset-0 bg-slate/90" />
       </div>
 
       <div className="page-container">
@@ -32,12 +34,12 @@ export function Testimonials() {
         <RevealText
           as="h2"
           onDark
-          lines={[{ text: "Words from our guests." }]}
+          lines={[{ text: "Postcards from our guests" }]}
           className="mt-4 text-h3"
         />
 
         <div className="mt-6 sm:mt-8">
-          <NoteStage notes={testimonials} />
+          <PostcardStage notes={testimonials} />
         </div>
 
         <Link

@@ -1,7 +1,11 @@
-import { GuestNotes } from "@/components/sections/GuestNotes";
-import { testimonials } from "@/data/testimonials";
-import { buildMetadata } from "@/lib/metadata";
+import Link from "next/link";
+import { MessageCircle } from "lucide-react";
+import { RevealText } from "@/components/animations/RevealText";
+import { NotesBoard } from "@/components/sections/NotesBoard";
 import { JsonLd } from "@/components/shared/JsonLd";
+import { testimonials } from "@/data/testimonials";
+import { whatsappLink } from "@/lib/contact";
+import { buildMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 
 export const metadata = buildMetadata({
@@ -19,7 +23,36 @@ export default function TestimonialsPage() {
     >
       <JsonLd data={breadcrumbJsonLd([{ name: "Guest notes", path: "/testimonials" }])} />
       <div className="page-container">
-        <GuestNotes reviews={testimonials} />
+        <p className="label-mono text-champagne">Guest Notes</p>
+        <RevealText
+          as="h1"
+          immediate
+          onDark
+          lines={[{ text: "What guests wrote" }]}
+          className="mt-4 text-h1"
+        />
+        <p className="mt-4 text-pearl/85">Real reviews from Google</p>
+
+        <div className="mt-8 sm:mt-10">
+          <NotesBoard notes={testimonials} />
+        </div>
+
+        <div className="mt-10 sm:mt-12">
+          <h2 className="font-display text-h3">Planning a stay?</h2>
+          <div className="mt-5 flex flex-wrap gap-3">
+            <Link href="/contact" className="btn btn-primary">
+              Enquire Now
+            </Link>
+            <a
+              href={whatsappLink()}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="btn btn-outline gap-2"
+            >
+              <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" /> WhatsApp
+            </a>
+          </div>
+        </div>
       </div>
     </section>
   );
