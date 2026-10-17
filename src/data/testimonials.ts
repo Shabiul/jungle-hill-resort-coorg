@@ -13,7 +13,7 @@ export const testimonials: Testimonial[] = [
     tripType: "Holiday | Friends",
     text: "Stayed at Jungle Hill Resort for two days and one night. We were two women travellers and the place is really safe and secure. The staff were very polite and helped us a lot. The stay was in the middle of a coffee estate so we enjoyed a relaxing, scenic stay. They also have a few indoor games and a small kids play park. Highly recommended place to stay.",
     excerpt:
-      "We were two women travellers and the place is really safe and secure. The staff were very polite and helped us a lot.",
+      "Stayed at Jungle Hill Resort for two days and one night. We were two women travellers and the place is really safe and secure. The staff were very polite and helped us a lot.",
     source: "Google",
   },
   {
@@ -23,7 +23,7 @@ export const testimonials: Testimonial[] = [
     timeAgo: "a month ago",
     text: "The room price was a little high, but there was no shortage of hospitality and care. The caretaker, Thimmanna, was very friendly and took excellent care of us. No complaints about the food. Idli and dosa were not available, but the biryani was very good.",
     excerpt:
-      "The caretaker, Thimmanna, was very friendly and took excellent care of us. No complaints about the food. Idli and dosa were not available, but the biryani was very good.",
+      "The room price was a little high, but there was no shortage of hospitality and care. The caretaker, Thimmanna, was very friendly and took excellent care of us. No complaints about the food.",
     source: "Google",
   },
   {
@@ -34,7 +34,7 @@ export const testimonials: Testimonial[] = [
     tripType: "Holiday",
     text: "Had an amazing stay at Jungle Hill Resorts! The property is beautifully surrounded by nature, offering a peaceful and refreshing escape from city life. The rooms were clean, comfortable, and well-maintained. What truly stood out was the hospitality: staff were extremely courteous and attentive. The food was delicious and had a homely touch. Perfect place to relax, unwind, and reconnect with nature. Highly recommended!",
     excerpt:
-      "The property is beautifully surrounded by nature, offering a peaceful and refreshing escape from city life. The rooms were clean, comfortable, and well-maintained.",
+      "Had an amazing stay at Jungle Hill Resorts! The property is beautifully surrounded by nature, offering a peaceful and refreshing escape from city life. The rooms were clean, comfortable, and well-maintained.",
     source: "Google",
   },
   {
@@ -54,7 +54,7 @@ export const testimonials: Testimonial[] = [
     tripType: "Holiday | Couple",
     text: "Loved the room, location, services. Everything! Felt underrated honestly. Really liked the whole experience and was in a budget as well. Their restaurant food was okayish but stay was good. Enjoyed swimming pool as well. Games area can be improved by cleaning it frequently.",
     excerpt:
-      "Loved the room, location, services. Everything! Felt underrated honestly. Really liked the whole experience and was in a budget as well.",
+      "Loved the room, location, services. Everything! Felt underrated honestly. Really liked the whole experience and was in a budget as well. Their restaurant food was okayish but stay was good.",
     source: "Google",
   },
   {
@@ -65,7 +65,7 @@ export const testimonials: Testimonial[] = [
     tripType: "Holiday | Family",
     text: "We had an overall pleasant stay at this place. The staff were very friendly and welcoming. The rooms were neat, clean, and spacious. The food quality was good, and the dining area was comfortable. Facilities for kids are also available, making it a great choice for families as well as couples. I would definitely recommend this place.",
     excerpt:
-      "The staff were very friendly and welcoming. The rooms were neat, clean, and spacious. The food quality was good, and the dining area was comfortable.",
+      "We had an overall pleasant stay at this place. The staff were very friendly and welcoming. The rooms were neat, clean, and spacious. The food quality was good, and the dining area was comfortable.",
     source: "Google",
   },
   {
@@ -96,7 +96,7 @@ export const testimonials: Testimonial[] = [
     tripType: "Holiday | Family",
     text: "The place was really refreshing away from the hustle and bustle of the city. We enjoyed the pool and indoor games area. The food is tasty but the service has to be improved. The breakfast buffet is ok. Overall it's a good experience.",
     excerpt:
-      "The place was really refreshing away from the hustle and bustle of the city. We enjoyed the pool and indoor games area.",
+      "The place was really refreshing away from the hustle and bustle of the city. We enjoyed the pool and indoor games area. The food is tasty but the service has to be improved. The breakfast buffet is ok.",
     source: "Google",
   },
   {
@@ -124,7 +124,7 @@ export const testimonials: Testimonial[] = [
     timeAgo: "10 months ago",
     text: "Beautiful views, peaceful ambience. All staff were extremely friendly and hospitable throughout our stay, especially the manager at reception. The food quality and taste was awesome. I enjoyed the variety of breakfast. We even used the pool and it was neatly maintained. Everything else was really mesmerizing. Thank you Jungle Hill Team.",
     excerpt:
-      "Beautiful views, peaceful ambience. All staff were extremely friendly and hospitable throughout our stay, especially the manager at reception.",
+      "Beautiful views, peaceful ambience. All staff were extremely friendly and hospitable throughout our stay, especially the manager at reception. The food quality and taste was awesome.",
     source: "Google",
   },
   {
@@ -143,15 +143,18 @@ export const testimonials: Testimonial[] = [
     tripType: "Holiday | Friends",
     text: "Amazing resort, beautifully surrounded by jungle. Rooms are clean and tidy, service is good. Efficient parking, swimming pool, kids play area and indoor games. A suitable option for travellers who prioritise a tranquil, nature-filled location and friendly staff. A good place for a relaxing getaway, especially for families and couples.",
     excerpt:
-      "Amazing resort, beautifully surrounded by jungle. Rooms are clean and tidy, service is good.",
+      "Amazing resort, beautifully surrounded by jungle. Rooms are clean and tidy, service is good. Efficient parking, swimming pool, kids play area and indoor games.",
     source: "Google",
   },
 ];
 
-/** Only what the postcards show. Keeps the unused review meta out of the page payload. */
-export const postcardNotes = testimonials.map(({ id, name, text, profileUrl }) => ({
-  id,
-  name,
-  text,
-  profileUrl,
-}));
+/** Only what a bubble shows. Keeps the unused review meta out of the page payload. */
+export const spokenNotes = testimonials.map(
+  ({ id, name, text, excerpt, profileUrl }) => ({
+    id,
+    name,
+    text,
+    excerpt,
+    profileUrl,
+  }),
+);

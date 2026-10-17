@@ -14,6 +14,8 @@
   --color-graphite: #2b3640;
   --color-champagne: #c9b58e;
   --color-champagne-soft: #e1d3b4;
+  /* Speech-bubble fill: vapour at about 9% over slate, as a solid so the tail matches exactly. */
+  --color-bubble: #28313a;
 
   --font-display: var(--font-cormorant), "Iowan Old Style", Georgia, serif;
   --font-sans: var(--font-jost), "Segoe UI", system-ui, sans-serif;

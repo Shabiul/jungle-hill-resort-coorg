@@ -3,12 +3,12 @@ import { ArrowRight } from "lucide-react";
 import { RevealText } from "@/components/animations/RevealText";
 import dynamic from "next/dynamic";
 import { Photo } from "@/components/shared/Photo";
-import { postcardNotes } from "@/data/testimonials";
+import { spokenNotes } from "@/data/testimonials";
 import { photo } from "@/lib/images";
 
 // Split into its own chunk (still server-rendered) so the first load hydrates less.
-const PostcardStage = dynamic(() =>
-  import("@/components/sections/PostcardStage").then((m) => m.PostcardStage),
+const SpokenStage = dynamic(() =>
+  import("@/components/sections/SpokenStage").then((m) => m.SpokenStage),
 );
 
 const backdrop = photo(
@@ -16,7 +16,7 @@ const backdrop = photo(
   "Mist over the valley beyond the resort's tiled roofs",
 );
 
-/** Home page guest notes: a stack of postcards over a faint, heavily veiled photograph. */
+/** Home page guest notes: speech bubbles over a faint, heavily veiled photograph. */
 export function Testimonials() {
   return (
     <section
@@ -34,12 +34,12 @@ export function Testimonials() {
         <RevealText
           as="h2"
           onDark
-          lines={[{ text: "Postcards from our guests" }]}
+          lines={[{ text: "Words from our guests" }]}
           className="mt-4 text-h3"
         />
 
         <div className="mt-6 sm:mt-8">
-          <PostcardStage notes={postcardNotes} />
+          <SpokenStage notes={spokenNotes} />
         </div>
 
         <Link
