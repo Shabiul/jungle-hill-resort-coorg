@@ -48,7 +48,7 @@ export function RevealText({
         <em
           className={cn(
             "font-light italic",
-            onDark ? "text-champagne-soft" : "text-steel",
+            onDark ? "text-sage-soft" : "text-bronze",
           )}
         >
           {line.emphasis}
@@ -92,7 +92,7 @@ export function RevealText({
               <em
                 className={cn(
                   "font-light italic",
-                  onDark ? "text-champagne-soft" : "text-steel",
+                  onDark ? "text-sage-soft" : "text-bronze",
                 )}
               >
                 {line.emphasis}

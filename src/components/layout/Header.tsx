@@ -24,7 +24,7 @@ export function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,box-shadow] duration-300",
         scrolled
-          ? "glass border-0 bg-night/80 shadow-[0_10px_30px_-14px_rgba(13,19,25,0.55)]"
+          ? "glass border-0 bg-espresso/80 shadow-[0_10px_30px_-14px_rgba(44,35,24,0.55)]"
           : "shadow-none",
         light && "dark-surface",
       )}
@@ -62,9 +62,9 @@ export function Header() {
                     className={cn(
                       "label-mono py-2 transition-colors",
                       light
-                        ? "text-pearl/90 hover:text-champagne-soft"
-                        : "text-night/85 hover:text-steel",
-                      active && (light ? "text-champagne-soft" : "text-steel"),
+                        ? "text-taupe hover:text-sage-soft"
+                        : "text-espresso/85 hover:text-bronze",
+                      active && (light ? "text-sage-soft" : "text-bronze"),
                       overHero && "drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)]",
                     )}
                   >

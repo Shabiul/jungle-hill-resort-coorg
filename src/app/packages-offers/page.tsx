@@ -30,7 +30,7 @@ export default function PackagesOffersPage() {
       {/* TODO: list real packages and offers here once the resort supplies them */}
       <section aria-label="How rates work" className="pb-[var(--space-section)]">
         <div className="page-container grid gap-8 lg:grid-cols-12">
-          <ol className="border-t border-night lg:col-span-6">
+          <ol className="border-t border-espresso lg:col-span-6">
             {[
               "Choose a stay: Standard Non-AC Room, Standard Non-AC Cottage, Deluxe AC Room or Family AC Room.",
               "Send your dates and who is travelling, by the enquiry form, WhatsApp or phone.",
@@ -38,9 +38,9 @@ export default function PackagesOffersPage() {
             ].map((step, index) => (
               <li
                 key={step}
-                className="grid grid-cols-[2.5rem_1fr] gap-2 border-b border-night/20 py-5"
+                className="grid grid-cols-[2.5rem_1fr] gap-2 border-b border-espresso/20 py-5"
               >
-                <span className="label-mono pt-1 text-steel">
+                <span className="label-mono pt-1 text-bronze">
                   {String(index + 1).padStart(2, "0")}
                 </span>
                 <span>{step}</span>
@@ -49,7 +49,7 @@ export default function PackagesOffersPage() {
           </ol>
           <ul className="lg:col-span-5 lg:col-start-8">
             {rooms.map((room) => (
-              <li key={room.slug} className="border-t border-night/25 py-4 last:border-b">
+              <li key={room.slug} className="border-t border-espresso/25 py-4 last:border-b">
                 <Link
                   href={`/rooms/${room.slug}`}
                   className="group flex items-baseline justify-between gap-4"
@@ -57,7 +57,7 @@ export default function PackagesOffersPage() {
                   <span className="font-display text-2xl group-hover:underline">
                     {room.name}
                   </span>
-                  <span className="label-mono text-steel">{room.rateNote}</span>
+                  <span className="label-mono text-bronze">{room.rateNote}</span>
                 </Link>
               </li>
             ))}

@@ -6,7 +6,9 @@ import { gettingHere } from "@/data/resortPlan";
 import { mapsHref } from "@/lib/contact";
 
 // Split into its own chunk (still server-rendered) so the first load hydrates less.
-const ResortPlan = dynamic(() => import("@/components/sections/ResortPlan").then((m) => m.ResortPlan));
+const ResortPlan = dynamic(() =>
+  import("@/components/sections/ResortPlan").then((m) => m.ResortPlan),
+);
 
 /** Plan, "Getting here" strip, address and the narrow-road note. Used on the home page and /plan-your-stay. */
 export function ResortPlanSection({
@@ -20,7 +22,7 @@ export function ResortPlanSection({
     <section
       id={id}
       aria-label="Resort plan"
-      className="dark-surface section-space scroll-mt-20 bg-slate text-pearl"
+      className="dark-surface section-space scroll-mt-20 bg-umber text-cream"
     >
       <div className="page-container">
         {heading && (
@@ -38,29 +40,29 @@ export function ResortPlanSection({
 
         <ol
           aria-label="Getting here"
-          className="mt-8 grid gap-4 border-t border-champagne/30 pt-6 sm:grid-cols-4"
+          className="mt-8 grid gap-4 border-t border-sage/30 pt-6 sm:grid-cols-4"
         >
           {gettingHere.map((step, index) => (
             <li key={step.label}>
-              <span className="label-mono text-champagne-soft">
+              <span className="label-mono text-sage-soft">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <p className="mt-1 font-display text-h4">{step.label}</p>
-              <p className="text-small text-pearl/75">{step.detail}</p>
+              <p className="text-small text-taupe">{step.detail}</p>
             </li>
           ))}
         </ol>
 
         <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <address className="text-pearl/90 not-italic">
+            <address className="text-taupe not-italic">
               {siteConfig.contact.addressLines.map((line) => (
                 <span key={line} className="block">
                   {line}
                 </span>
               ))}
             </address>
-            <p className="mt-2 max-w-[56ch] text-small text-pearl/75">
+            <p className="mt-2 max-w-[56ch] text-small text-taupe">
               The access road is narrow for two vehicles to pass, so please drive slowly.
             </p>
           </div>

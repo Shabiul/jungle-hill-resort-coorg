@@ -251,22 +251,22 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
     const mail = `mailto:${siteConfig.contact.email}?subject=${encodeURIComponent("Stay enquiry")}&body=${encodeURIComponent(sent.summary)}`;
     return (
       <BoxCard className="p-6 sm:p-8" role="status">
-        <p className="label-mono flex items-center gap-2 text-cloud">
+        <p className="label-mono flex items-center gap-2 text-cream">
           <Check
             size={16}
             strokeWidth={2}
             aria-hidden="true"
-            className="text-champagne"
+            className="text-sage-soft"
           />{" "}
           Enquiry received
         </p>
         <h2 className="mt-3 text-h3">Thank you. We will be in touch.</h2>
-        <p className="mt-3 max-w-[52ch] text-pearl/80">
+        <p className="mt-3 max-w-[52ch] text-taupe">
           Your enquiry has been sent. We will confirm availability and rates shortly.
           Payment is at the resort. For a faster answer, send the same details on WhatsApp
           or by email.
         </p>
-        <pre className="mt-5 max-w-full overflow-x-auto border border-champagne/25 p-4 text-small whitespace-pre-wrap text-pearl/85">
+        <pre className="mt-5 max-w-full overflow-x-auto border border-sage/25 p-4 text-small whitespace-pre-wrap text-taupe">
           {sent.summary}
         </pre>
         <div className="mt-5 flex flex-wrap gap-3">
@@ -306,8 +306,8 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
             className={cn(
               "border-b pb-1.5",
               index === step
-                ? "border-champagne text-pearl"
-                : "border-transparent text-pearl/55",
+                ? "border-sage text-cream"
+                : "border-transparent text-taupe",
             )}
           >
             {String(index + 1).padStart(2, "0")} {label}
@@ -353,7 +353,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
               />
             </div>
             {nights > 0 && (
-              <p className="label-mono text-champagne-soft" aria-live="polite">
+              <p className="label-mono text-sage-soft" aria-live="polite">
                 {nights} {nights === 1 ? "night" : "nights"}
               </p>
             )}
@@ -430,18 +430,18 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                     className="peer sr-only"
                     {...register("stay")}
                   />
-                  <span className="grid h-full grid-cols-[5.5rem_1fr] gap-3 rounded-[2px] border border-champagne/30 p-2 transition-colors peer-checked:border-champagne peer-checked:bg-pearl/10 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-champagne-soft">
-                    <span className="relative block aspect-square overflow-hidden bg-slate">
+                  <span className="grid h-full grid-cols-[5.5rem_1fr] gap-3 rounded-[2px] border border-sage/30 p-2 transition-colors peer-checked:border-sage peer-checked:bg-cream/10 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-sage-soft">
+                    <span className="relative block aspect-square overflow-hidden bg-umber">
                       {room && <Photo image={room.images[0]} fill sizes="88px" />}
                     </span>
                     <span className="min-w-0 self-center">
                       <span className="block font-display text-xl leading-tight">
                         {room ? room.name : "No preference"}
                       </span>
-                      <span className="label-mono block text-[0.62rem] text-champagne-soft">
+                      <span className="label-mono block text-[0.62rem] text-sage-soft">
                         {room ? roomLabel(room) : "We suggest"}
                       </span>
-                      <span className="mt-0.5 block text-small text-pearl/75">
+                      <span className="mt-0.5 block text-small text-taupe">
                         {room
                           ? room.occupancy
                           : "Tell us who is coming; we will suggest a stay."}
@@ -450,7 +450,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                   </span>
                   <span
                     aria-hidden="true"
-                    className="absolute top-2 right-2 hidden h-5 w-5 place-items-center rounded-full bg-champagne text-night peer-checked:grid"
+                    className="absolute top-2 right-2 hidden h-5 w-5 place-items-center rounded-full bg-sage text-espresso peer-checked:grid"
                   >
                     <Check size={12} strokeWidth={2} />
                   </span>
@@ -466,25 +466,25 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
               {notes.map((note) => (
                 <p
                   key={note}
-                  className="border-l-2 border-champagne pl-3 text-small text-pearl/85"
+                  className="border-l-2 border-sage pl-3 text-small text-taupe"
                 >
                   {note}
                 </p>
               ))}
             </div>
 
-            <div className="mt-8 border-t border-champagne/30 pt-6">
-              <p className="label-mono text-[0.68rem] text-champagne-soft">
+            <div className="mt-8 border-t border-sage/30 pt-6">
+              <p className="label-mono text-[0.68rem] text-sage-soft">
                 Included with every stay
               </p>
-              <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-small text-pearl/85">
+              <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-small text-taupe">
                 {includedWithEveryStay.map((item) => (
                   <li key={item} className="flex items-center gap-2">
                     <Check
                       size={14}
                       strokeWidth={2}
                       aria-hidden="true"
-                      className="text-champagne"
+                      className="text-sage-soft"
                     />
                     {item}
                   </li>
@@ -510,17 +510,17 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                         className="peer sr-only"
                         {...register("offerId")}
                       />
-                      <span className="block rounded-[2px] border border-champagne/30 p-3 transition-colors peer-checked:border-champagne peer-checked:bg-pearl/10 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-champagne-soft">
+                      <span className="block rounded-[2px] border border-sage/30 p-3 transition-colors peer-checked:border-sage peer-checked:bg-cream/10 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-sage-soft">
                         <span className="block font-display text-xl leading-tight">
                           {offer.title}
                         </span>
                         {offer.description && (
-                          <span className="mt-1 block text-small text-pearl/80">
+                          <span className="mt-1 block text-small text-taupe">
                             {offer.description}
                           </span>
                         )}
                         {offer.conditions && (
-                          <span className="mt-1 block text-small text-pearl/65">
+                          <span className="mt-1 block text-small text-taupe">
                             {offer.conditions}
                           </span>
                         )}
@@ -611,7 +611,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                     className="peer sr-only"
                     {...register("paymentPreference")}
                   />
-                  <span className="block rounded-[2px] border border-champagne/30 p-3 transition-colors peer-checked:border-champagne peer-checked:bg-pearl/10 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-champagne-soft">
+                  <span className="block rounded-[2px] border border-sage/30 p-3 transition-colors peer-checked:border-sage peer-checked:bg-cream/10 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-sage-soft">
                     <span className="block font-display text-xl leading-tight">
                       Pay at the resort
                     </span>
@@ -624,17 +624,17 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                     disabled
                     className="peer sr-only"
                   />
-                  <span className="flex items-center justify-between gap-3 rounded-[2px] border border-champagne/20 p-3">
+                  <span className="flex items-center justify-between gap-3 rounded-[2px] border border-sage/20 p-3">
                     <span className="block font-display text-xl leading-tight">
                       Pay online
                     </span>
-                    <span className="label-mono text-[0.6rem] text-champagne-soft">
+                    <span className="label-mono text-[0.6rem] text-sage-soft">
                       Coming soon
                     </span>
                   </span>
                 </label>
               </div>
-              <p className="mt-2 text-small text-pearl/80">
+              <p className="mt-2 text-small text-taupe">
                 No payment is taken now. Your enquiry is confirmed by the resort, and you
                 pay on arrival.
               </p>
@@ -644,7 +644,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
               <label className="flex items-start gap-3 text-small">
                 <input
                   type="checkbox"
-                  className="mt-1 h-4 w-4 accent-[#c9b58e]"
+                  className="mt-1 h-4 w-4 accent-sage"
                   {...register("houseRules")}
                 />
                 <span>
@@ -661,7 +661,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
               <label className="flex items-start gap-3 text-small">
                 <input
                   type="checkbox"
-                  className="mt-1 h-4 w-4 accent-[#c9b58e]"
+                  className="mt-1 h-4 w-4 accent-sage"
                   {...register("consent")}
                 />
                 <span>
@@ -675,28 +675,28 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
               )}
             </div>
 
-            <dl className="grid gap-x-8 gap-y-2 border-t border-champagne/30 pt-5 text-small sm:grid-cols-2">
+            <dl className="grid gap-x-8 gap-y-2 border-t border-sage/30 pt-5 text-small sm:grid-cols-2">
               <div>
-                <dt className="label-mono text-[0.62rem] text-champagne-soft">Dates</dt>
+                <dt className="label-mono text-[0.62rem] text-sage-soft">Dates</dt>
                 <dd>
                   {formatDate(values.checkIn)} to {formatDate(values.checkOut)}
                   {nights > 0 ? ` · ${nights} nights` : ""}
                 </dd>
               </div>
               <div>
-                <dt className="label-mono text-[0.62rem] text-champagne-soft">Guests</dt>
+                <dt className="label-mono text-[0.62rem] text-sage-soft">Guests</dt>
                 <dd>
                   {values.adults} adults, {values.children} children, {values.infants}{" "}
                   infants · {values.rooms} {Number(values.rooms) === 1 ? "room" : "rooms"}
                 </dd>
               </div>
               <div className="sm:col-span-2">
-                <dt className="label-mono text-[0.62rem] text-champagne-soft">Stay</dt>
+                <dt className="label-mono text-[0.62rem] text-sage-soft">Stay</dt>
                 <dd>{stayName(values.stay)}</dd>
               </div>
               {(offerName(values.offerId) || values.couponCode) && (
                 <div className="sm:col-span-2">
-                  <dt className="label-mono text-[0.62rem] text-champagne-soft">Offer</dt>
+                  <dt className="label-mono text-[0.62rem] text-sage-soft">Offer</dt>
                   <dd>
                     {[
                       offerName(values.offerId),
@@ -709,7 +709,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                 </div>
               )}
               <div className="sm:col-span-2">
-                <dt className="label-mono text-[0.62rem] text-champagne-soft">Payment</dt>
+                <dt className="label-mono text-[0.62rem] text-sage-soft">Payment</dt>
                 <dd>{PAYMENT_LABEL}</dd>
               </div>
             </dl>
@@ -743,7 +743,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
               {isSubmitting ? "Sending" : "Send enquiry"}
             </button>
           )}
-          <span className="label-mono ml-auto text-[0.62rem] text-pearl/55">
+          <span className="label-mono ml-auto text-[0.62rem] text-taupe">
             {siteConfig.contact.phoneDisplay}
           </span>
         </div>
@@ -751,7 +751,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
         {failed && (
           <p
             role="alert"
-            className="mt-4 border-l-2 border-champagne-soft pl-3 text-small"
+            className="mt-4 border-l-2 border-sage-soft pl-3 text-small"
           >
             That did not go through. Please try again, or call or WhatsApp us.
           </p>

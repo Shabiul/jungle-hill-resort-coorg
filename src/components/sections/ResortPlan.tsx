@@ -55,7 +55,7 @@ export function ResortPlan({ className }: { className?: string }) {
   return (
     <div className={cn("grid gap-6 lg:grid-cols-12 lg:gap-8", className)}>
       <div className="lg:col-span-8">
-        <div className="relative overflow-hidden rounded-none border border-steel bg-night">
+        <div className="border-walnut bg-espresso relative overflow-hidden rounded-none border">
           <svg
             viewBox={`0 0 ${PLAN_VIEWBOX.width} ${PLAN_VIEWBOX.height}`}
             role="group"
@@ -64,13 +64,13 @@ export function ResortPlan({ className }: { className?: string }) {
           >
             <defs>
               <pattern id="vines" width="14" height="14" patternUnits="userSpaceOnUse">
-                <circle cx="3" cy="3" r="1.4" fill="#6f8294" fillOpacity="0.55" />
+                <circle cx="3" cy="3" r="1.4" fill="#798557" fillOpacity="0.5" />
               </pattern>
             </defs>
-            <rect width="1000" height="620" fill="#151e27" />
+            <rect width="1000" height="620" fill="#382d21" />
             {plantation.map((d) => (
               <g key={d}>
-                <path d={d} fill="#22303c" fillOpacity="0.55" />
+                <path d={d} fill="#798557" fillOpacity="0.16" />
                 <path d={d} fill="url(#vines)" />
               </g>
             ))}
@@ -79,7 +79,7 @@ export function ResortPlan({ className }: { className?: string }) {
             <path
               d="M-10 600 C 120 600 220 585 320 560 C 400 540 460 520 500 470"
               fill="none"
-              stroke="#a9b8c4"
+              stroke="#bfb3a0"
               strokeOpacity="0.7"
               strokeWidth="2.4"
               strokeDasharray="1 7"
@@ -89,8 +89,8 @@ export function ResortPlan({ className }: { className?: string }) {
             <path
               d={route}
               fill="none"
-              stroke="#c9b58e"
-              strokeOpacity="0.6"
+              stroke="#a9b58a"
+              strokeOpacity="0.7"
               strokeWidth="1.4"
               strokeDasharray="6 5"
               strokeLinecap="round"
@@ -107,9 +107,9 @@ export function ResortPlan({ className }: { className?: string }) {
                   width={b.w}
                   height={b.h}
                   rx="2"
-                  fill="#f4f2ee"
-                  fillOpacity="0.1"
-                  stroke="#e1d3b4"
+                  fill="#f0ddb9"
+                  fillOpacity="0.08"
+                  stroke="#6e665e"
                   strokeOpacity="0.6"
                 />
               ))}
@@ -124,9 +124,10 @@ export function ResortPlan({ className }: { className?: string }) {
                   width="92"
                   height="48"
                   rx="3"
-                  fill="#22303c"
-                  stroke="#e1d3b4"
-                  strokeOpacity="0.6"
+                  fill="#75a4e0"
+                  fillOpacity="0.22"
+                  stroke="#75a4e0"
+                  strokeOpacity="0.8"
                 />
               ))}
             {/* Parking: an unnumbered, decorative shape beside the entrance road */}
@@ -138,7 +139,7 @@ export function ResortPlan({ className }: { className?: string }) {
                 height="30"
                 rx="2"
                 fill="none"
-                stroke="#a9b8c4"
+                stroke="#bfb3a0"
                 strokeOpacity="0.6"
                 strokeDasharray="3 3"
               />
@@ -147,7 +148,7 @@ export function ResortPlan({ className }: { className?: string }) {
                 y="506"
                 textAnchor="middle"
                 fontSize="13"
-                fill="#a9b8c4"
+                fill="#bfb3a0"
                 fontFamily="var(--font-jost), sans-serif"
               >
                 P
@@ -174,14 +175,14 @@ export function ResortPlan({ className }: { className?: string }) {
                       setActive(on ? null : marker.id);
                     }
                   }}
-                  className="cursor-pointer outline-none [&:focus-visible>circle]:stroke-[#f4f2ee] [&:focus-visible>circle]:stroke-[2.5]"
+                  className="cursor-pointer outline-none [&:focus-visible>circle]:stroke-[#75a4e0] [&:focus-visible>circle]:stroke-[2.5]"
                 >
                   <circle
                     cx={marker.x}
                     cy={marker.y}
                     r={on ? 17 : 14}
-                    fill={on ? "#c9b58e" : "#0d1319"}
-                    stroke="#c9b58e"
+                    fill={on ? "#a9b58a" : "#2c2318"}
+                    stroke={marker.kind === "pool" ? "#75a4e0" : "#798557"}
                     strokeWidth="1.5"
                     style={{ transition: "r 0.2s, fill 0.2s" }}
                   />
@@ -191,7 +192,7 @@ export function ResortPlan({ className }: { className?: string }) {
                     textAnchor="middle"
                     fontSize="13"
                     fontFamily="var(--font-jost), sans-serif"
-                    fill={on ? "#0d1319" : "#f4f2ee"}
+                    fill={on ? "#2c2318" : "#f0ddb9"}
                     style={{ pointerEvents: "none" }}
                   >
                     {marker.id}
@@ -206,8 +207,8 @@ export function ResortPlan({ className }: { className?: string }) {
               textAnchor="end"
               fontSize="11"
               letterSpacing="2.2"
-              fill="#e1d3b4"
-              fillOpacity="0.8"
+              fill="#bfb3a0"
+              fillOpacity="0.9"
               fontFamily="var(--font-jost), sans-serif"
             >
               ILLUSTRATIVE PLAN, NOT TO SCALE
@@ -217,7 +218,7 @@ export function ResortPlan({ className }: { className?: string }) {
           {current && (
             <GlassPanel
               role="status"
-              className="pointer-events-none absolute z-10 flex w-52 gap-3 bg-night/70 p-2 text-pearl"
+              className="bg-espresso/70 text-cream pointer-events-none absolute z-10 flex w-52 gap-3 p-2"
               style={tooltipStyle(current.x, current.y)}
             >
               {current.image && (
@@ -229,7 +230,7 @@ export function ResortPlan({ className }: { className?: string }) {
                 <span className="block font-display text-lg leading-tight">
                   {current.label}
                 </span>
-                <span className="label-mono block text-[0.6rem] text-pearl/80">
+                <span className="label-mono text-taupe block text-[0.6rem]">
                   {current.note}
                 </span>
               </span>
@@ -250,14 +251,14 @@ export function ResortPlan({ className }: { className?: string }) {
               onClick={() => setActive(active === marker.id ? null : marker.id)}
               aria-pressed={active === marker.id}
               className={cn(
-                "grid min-h-11 w-full grid-cols-[2rem_1fr] items-center gap-2 border-b border-champagne/25 py-2 text-left transition-colors",
-                active === marker.id ? "bg-pearl/10" : "hover:bg-pearl/5",
+                "border-sage/25 grid min-h-11 w-full grid-cols-[2rem_1fr] items-center gap-2 border-b py-2 text-left transition-colors",
+                active === marker.id ? "bg-cream/10" : "hover:bg-cream/5",
               )}
             >
-              <span className="label-mono text-champagne-soft">
+              <span className="label-mono text-sage-soft">
                 {String(marker.id).padStart(2, "0")}
               </span>
-              <span className="text-pearl">{marker.label}</span>
+              <span className="text-cream">{marker.label}</span>
             </button>
           </li>
         ))}

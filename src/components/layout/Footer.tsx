@@ -10,7 +10,7 @@ export function Footer() {
   const { contact, secondaryPhone } = siteConfig;
 
   return (
-    <footer className="dark-surface bg-night text-pearl">
+    <footer className="dark-surface bg-espresso text-cream">
       <div className="page-container pt-[var(--space-section)] pb-6">
         <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5">
@@ -27,7 +27,7 @@ export function Footer() {
 
           <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7">
             <div>
-              <h2 className="label-mono text-pearl/70">Visit</h2>
+              <h2 className="label-mono text-taupe">Visit</h2>
               <address className="mt-3 not-italic">
                 {contact.addressLines.map((line) => (
                   <span key={line} className="block">
@@ -40,7 +40,7 @@ export function Footer() {
                 <li>
                   <a
                     href={telLink}
-                    className="inline-flex items-center gap-2 transition-colors hover:text-champagne-soft"
+                    className="inline-flex items-center gap-2 transition-colors hover:text-sage-soft"
                   >
                     <Phone size={16} strokeWidth={1.5} aria-hidden="true" />
                     Call {contact.phoneDisplay}
@@ -51,7 +51,7 @@ export function Footer() {
                     href={whatsappLink()}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 transition-colors hover:text-champagne-soft"
+                    className="inline-flex items-center gap-2 transition-colors hover:text-sage-soft"
                   >
                     <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" />
                     WhatsApp {contact.phoneDisplay}
@@ -60,7 +60,7 @@ export function Footer() {
                 <li>
                   <a
                     href={mailLink}
-                    className="inline-flex items-center gap-2 transition-colors hover:text-champagne-soft"
+                    className="inline-flex items-center gap-2 transition-colors hover:text-sage-soft"
                   >
                     <Mail size={16} strokeWidth={1.5} aria-hidden="true" />
                     {contact.email}
@@ -68,10 +68,10 @@ export function Footer() {
                 </li>
               </ul>
 
-              <p className="mt-5 text-pearl/80">
+              <p className="mt-5 text-taupe">
                 <a
                   href={secondaryTelLink}
-                  className="transition-colors hover:text-champagne-soft"
+                  className="transition-colors hover:text-sage-soft"
                 >
                   {secondaryPhone.phoneDisplay}
                 </a>
@@ -79,14 +79,14 @@ export function Footer() {
             </div>
 
             <div>
-              <h2 className="label-mono text-pearl/70">Explore</h2>
+              <h2 className="label-mono text-taupe">Explore</h2>
               <ul className="mt-3 grid gap-1.5">
                 {mainNav.map((item) => (
                   <li key={item.href}>
                     <Link
                       prefetch={false}
                       href={item.href}
-                      className="transition-colors hover:text-champagne-soft"
+                      className="transition-colors hover:text-sage-soft"
                     >
                       {item.label}
                     </Link>
@@ -96,16 +96,16 @@ export function Footer() {
                   <Link
                     prefetch={false}
                     href="/booking"
-                    className="transition-colors hover:text-champagne-soft"
+                    className="transition-colors hover:text-sage-soft"
                   >
                     Enquire / Book
                   </Link>
                 </li>
               </ul>
-              <p className="label-mono mt-6 text-pearl/70">
+              <p className="label-mono mt-6 text-taupe">
                 Check-in 12 PM · Check-out 11 AM
               </p>
-              <p className="mt-2 text-sm text-pearl/70">
+              <p className="mt-2 text-sm text-taupe">
                 ID proof mandatory. No visitors after 8:30 PM. No loud music or sounds
                 after 10:00 PM.
               </p>

@@ -14,10 +14,10 @@ const tileLayout = [
 ];
 
 const panelTone = [
-  "dark-surface bg-slate text-pearl",
-  "dark-surface bg-night text-pearl",
-  "dark-surface bg-storm text-pearl",
-  "bg-vapour text-night",
+  "dark-surface bg-umber text-cream",
+  "dark-surface bg-espresso text-cream",
+  "dark-surface bg-bronze text-cream",
+  "bg-sand text-espresso",
 ];
 
 export function Experiences() {
@@ -62,7 +62,7 @@ export function Experiences() {
                           sizes="(min-width: 1024px) 50vw, 100vw"
                         />
                       </div>
-                      <div className="absolute inset-x-0 bottom-0 border border-night bg-pearl p-4 text-night sm:inset-x-auto sm:bottom-4 sm:left-4 sm:max-w-sm">
+                      <div className="absolute inset-x-0 bottom-0 border border-espresso bg-ivory p-4 text-espresso sm:inset-x-auto sm:bottom-4 sm:left-4 sm:max-w-sm">
                         {caption}
                       </div>
                     </>

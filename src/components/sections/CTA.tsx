@@ -15,18 +15,18 @@ export function CTA() {
   return (
     <section
       aria-label="Enquire"
-      className="dark-surface section-space relative isolate overflow-hidden bg-slate text-pearl"
+      className="dark-surface section-space relative isolate overflow-hidden bg-umber text-cream"
     >
       <VideoBackground poster={poster} sources={estateVideoSources} />
-      <div aria-hidden="true" className="absolute inset-0 bg-night/70" />
+      <div aria-hidden="true" className="absolute inset-0 bg-espresso/70" />
       <div className="page-container relative">
-        <p className="label-mono text-champagne-soft">05 — Enquire</p>
+        <p className="label-mono text-sage-soft">05 — Enquire</p>
         <RevealText
           onDark
           lines={[{ text: "Ask us about" }, { text: "your ", emphasis: "dates." }]}
           className="mt-4 text-h1"
         />
-        <p className="mt-4 max-w-[46ch] text-pearl/85">
+        <p className="mt-4 max-w-[46ch] text-taupe">
           Tell us when you would like to come and who is coming. We reply with
           availability and rates.
         </p>

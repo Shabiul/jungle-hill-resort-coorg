@@ -16,7 +16,7 @@ const FALLBACK_MS = 3000;
 const STAGGER_MS = 100;
 
 const pill =
-  "floating-pill inline-flex items-center justify-center border border-champagne/70 bg-slate text-pearl transition-[border-color,background-color] hover:border-champagne-soft hover:bg-storm";
+  "floating-pill inline-flex items-center justify-center border border-sage/70 bg-umber text-cream transition-[border-color,background-color] hover:border-sage-soft hover:bg-bronze";
 const round = "h-12 w-12 rounded-full";
 
 /**
