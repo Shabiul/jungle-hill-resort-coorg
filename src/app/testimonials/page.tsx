@@ -3,7 +3,7 @@ import { MessageCircle } from "lucide-react";
 import { RevealText } from "@/components/animations/RevealText";
 import { NotesBoard } from "@/components/sections/NotesBoard";
 import { JsonLd } from "@/components/shared/JsonLd";
-import { testimonials } from "@/data/testimonials";
+import { postcardNotes } from "@/data/testimonials";
 import { whatsappLink } from "@/lib/contact";
 import { buildMetadata } from "@/lib/metadata";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
@@ -34,7 +34,7 @@ export default function TestimonialsPage() {
         <p className="mt-4 text-pearl/85">Real reviews from Google</p>
 
         <div className="mt-8 sm:mt-10">
-          <NotesBoard notes={testimonials} />
+          <NotesBoard notes={postcardNotes} />
         </div>
 
         <div className="mt-10 sm:mt-12">

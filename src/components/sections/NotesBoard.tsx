@@ -5,7 +5,7 @@ import { m } from "motion/react";
 import { PostcardName, Stamp } from "@/components/sections/Postcard";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { cn } from "@/lib/utils";
-import type { Testimonial } from "@/types";
+import type { PostcardNote } from "@/components/sections/Postcard";
 
 // Tiny alternating tilts (degrees) for the two-column board; straight on mobile.
 const TILTS = [-1.4, 1.1, 0.8, -1.2, 1.5, -0.7, 1.3, -1.5, 0.6, -1, 1.2, -0.8, 1.4, -1.1];
@@ -36,7 +36,7 @@ function usePulseOnTarget() {
 }
 
 /** All the notes as pinned postcards in a staggered two-column board. */
-export function NotesBoard({ notes }: { notes: Testimonial[] }) {
+export function NotesBoard({ notes }: { notes: PostcardNote[] }) {
   const reduced = useReducedMotion();
   usePulseOnTarget();
 

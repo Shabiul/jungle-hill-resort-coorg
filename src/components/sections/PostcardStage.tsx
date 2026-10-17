@@ -6,7 +6,7 @@ import { ArrowLeft, ArrowRight } from "lucide-react";
 import { PostcardName, Stamp } from "@/components/sections/Postcard";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { cn } from "@/lib/utils";
-import type { Testimonial } from "@/types";
+import type { PostcardNote } from "@/components/sections/Postcard";
 
 const AUTO_MS = 9000;
 const SPRING = { type: "spring", stiffness: 150, damping: 21, mass: 0.9 } as const;
@@ -25,7 +25,7 @@ const pad = (n: number) => String(n).padStart(2, "0");
  * Postcards from the guests: a stack where the front card goes to the back on click, swipe, arrow
  * keys or the chevrons. Cards have a fixed size, so nothing moves when the note changes.
  */
-export function PostcardStage({ notes }: { notes: Testimonial[] }) {
+export function PostcardStage({ notes }: { notes: PostcardNote[] }) {
   const reduced = useReducedMotion();
   const total = notes.length;
   const [front, setFront] = useState(0);

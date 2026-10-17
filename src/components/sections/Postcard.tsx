@@ -1,10 +1,16 @@
-import type { Testimonial } from "@/types";
+/** What a postcard needs: the quote and the reviewer, nothing else. */
+export interface PostcardNote {
+  id: string;
+  name: string;
+  text: string;
+  profileUrl?: string;
+}
 
 /** The reviewer's name in small tracked caps after a short champagne dash. Links only when a profile URL exists. */
 export function PostcardName({
   note,
 }: {
-  note: Pick<Testimonial, "name" | "profileUrl">;
+  note: Pick<PostcardNote, "name" | "profileUrl">;
 }) {
   const label = (
     <span className="label-mono tracking-[0.2em] text-graphite uppercase">

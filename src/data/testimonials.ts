@@ -147,3 +147,11 @@ export const testimonials: Testimonial[] = [
     source: "Google",
   },
 ];
+
+/** Only what the postcards show. Keeps the unused review meta out of the page payload. */
+export const postcardNotes = testimonials.map(({ id, name, text, profileUrl }) => ({
+  id,
+  name,
+  text,
+  profileUrl,
+}));

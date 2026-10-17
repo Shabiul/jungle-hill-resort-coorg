@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { RevealText } from "@/components/animations/RevealText";
 import dynamic from "next/dynamic";
 import { Photo } from "@/components/shared/Photo";
-import { testimonials } from "@/data/testimonials";
+import { postcardNotes } from "@/data/testimonials";
 import { photo } from "@/lib/images";
 
 // Split into its own chunk (still server-rendered) so the first load hydrates less.
@@ -39,7 +39,7 @@ export function Testimonials() {
         />
 
         <div className="mt-6 sm:mt-8">
-          <PostcardStage notes={testimonials} />
+          <PostcardStage notes={postcardNotes} />
         </div>
 
         <Link
