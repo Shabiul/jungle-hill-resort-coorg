@@ -43,26 +43,26 @@ export default function DiningPage() {
 
       <section
         aria-label="Meal times"
-        className="dark-surface section-space bg-espresso text-cream"
+        className="dark-surface section-space bg-abyss text-mist"
       >
         <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <MealTimetable meals={dining.meals} hours={dining.hours} />
             <ul className="mt-8 flex flex-wrap gap-2" aria-label="Cuisines">
               {dining.cuisines.map((cuisine) => (
-                <li key={cuisine} className="label-mono border border-cream/40 px-3 py-2">
+                <li key={cuisine} className="label-mono border border-mist/40 px-3 py-2">
                   {cuisine}
                 </li>
               ))}
             </ul>
           </div>
           <div className="lg:col-span-6 lg:col-start-7">
-            <h2 className="label-mono !font-mono text-xs text-sage-soft">
+            <h2 className="label-mono !font-mono text-xs text-aqua">
               Ordering guidelines
             </h2>
             <ul className="mt-4">
               {dining.guidelines.map((guideline) => (
-                <li key={guideline} className="border-t border-cream/20 py-4 text-lg">
+                <li key={guideline} className="border-t border-mist/20 py-4 text-lg">
                   {guideline}
                 </li>
               ))}
@@ -74,7 +74,7 @@ export default function DiningPage() {
       {photos.length > 0 && (
         <section aria-label="Restaurant photographs" className="section-space">
           <div className="page-container">
-            <p className="label-mono text-bronze">The restaurant</p>
+            <p className="label-mono text-teal-deep">The restaurant</p>
             <h2 className="mt-4 mb-6 text-h3">Where you will eat</h2>
             <PhotoGrid images={photos} />
           </div>

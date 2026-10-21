@@ -13,7 +13,7 @@ export function Dining() {
     <section
       id="dining"
       aria-label="Dining"
-      className="dark-surface section-space bg-espresso text-cream"
+      className="dark-surface section-space bg-abyss text-mist"
     >
       <div className="page-container grid gap-8 lg:grid-cols-12 lg:gap-6">
         <div className="lg:col-span-6">
@@ -31,7 +31,7 @@ export function Dining() {
 
           <ul className="mt-8 flex flex-wrap gap-2" aria-label="Cuisines">
             {dining.cuisines.map((cuisine) => (
-              <li key={cuisine} className="label-mono border border-cream/40 px-3 py-2">
+              <li key={cuisine} className="label-mono border border-mist/40 px-3 py-2">
                 {cuisine}
               </li>
             ))}
@@ -49,12 +49,12 @@ export function Dining() {
             </div>
           </RevealImage>
 
-          <h3 className="label-mono mt-6 !font-mono text-taupe">
+          <h3 className="label-mono mt-6 !font-mono text-mist/80">
             Ordering guidelines
           </h3>
           <ul className="mt-4 space-y-3">
             {dining.guidelines.map((guideline) => (
-              <li key={guideline} className="border-t border-cream/20 pt-3">
+              <li key={guideline} className="border-t border-mist/20 pt-3">
                 {guideline}
               </li>
             ))}

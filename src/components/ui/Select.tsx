@@ -14,7 +14,7 @@ export function Select({ label, error, className, id, children, ...props }: Sele
   return (
     <div>
       {label && (
-        <label htmlFor={fieldId} className="label-mono field-label block text-espresso">
+        <label htmlFor={fieldId} className="label-mono field-label block text-ink">
           {label}
         </label>
       )}
@@ -31,7 +31,7 @@ export function Select({ label, error, className, id, children, ...props }: Sele
         <p
           id={`${fieldId}-error`}
           role="alert"
-          className="field-error mt-1 text-sm font-medium text-espresso"
+          className="field-error mt-1 text-sm font-medium text-ink"
         >
           {error}
         </p>

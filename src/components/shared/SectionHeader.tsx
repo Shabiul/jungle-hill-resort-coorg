@@ -23,7 +23,7 @@ export function SectionHeader({
 }: SectionHeaderProps) {
   return (
     <div className={cn("max-w-3xl", className)}>
-      <p className={cn("label-mono", tone === "dark" ? "text-bronze" : "text-taupe")}>
+      <p className={cn("label-mono", tone === "dark" ? "text-teal-deep" : "text-mist/80")}>
         {label}
       </p>
       <RevealText
@@ -36,7 +36,7 @@ export function SectionHeader({
         <div
           className={cn(
             "mt-4 max-w-xl",
-            tone === "dark" ? "text-espresso/80" : "text-taupe",
+            tone === "dark" ? "text-ink/80" : "text-mist/80",
           )}
         >
           {description}

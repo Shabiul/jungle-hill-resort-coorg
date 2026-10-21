@@ -28,7 +28,7 @@ function DestinationCard({ destination }: { destination: Destination }) {
   const detailsId = useId();
 
   return (
-    <article className="group dark-surface relative isolate aspect-square overflow-hidden rounded-[14px] bg-umber text-cream shadow-[0_1px_0_rgba(255,255,255,0.04)_inset] ring-1 ring-espresso/20 transition-shadow hover:ring-2 hover:ring-sage">
+    <article className="group dark-surface relative isolate aspect-square overflow-hidden rounded-[14px] bg-deep text-mist shadow-[0_1px_0_rgba(255,255,255,0.04)_inset] ring-1 ring-abyss/20 transition-shadow hover:ring-2 hover:ring-teal">
       {image && (
         <Photo
           image={image}
@@ -44,9 +44,9 @@ function DestinationCard({ destination }: { destination: Destination }) {
         aria-expanded={open}
         aria-controls={detailsId}
         onClick={() => setOpen((value) => !value)}
-        className="absolute inset-0 z-10 flex flex-col justify-end bg-gradient-to-t from-espresso/90 via-espresso/30 to-transparent to-60% p-5 text-left sm:p-6"
+        className="absolute inset-0 z-10 flex flex-col justify-end bg-gradient-to-t from-abyss/90 via-abyss/30 to-transparent to-60% p-5 text-left sm:p-6"
       >
-        <span className="label-mono text-sage-soft">
+        <span className="label-mono text-aqua">
           {destination.distanceKm} km
         </span>
         <span className="mt-1 block font-display text-2xl leading-tight sm:text-3xl">
@@ -59,11 +59,11 @@ function DestinationCard({ destination }: { destination: Destination }) {
         id={detailsId}
         data-lenis-prevent
         hidden={!open}
-        className="absolute inset-0 z-20 flex flex-col overflow-y-auto bg-espresso/92 p-5 sm:p-6"
+        className="absolute inset-0 z-20 flex flex-col overflow-y-auto bg-abyss/92 p-5 sm:p-6"
       >
         <div className="flex items-start justify-between gap-3">
           <div>
-            <p className="label-mono text-sage-soft">{destination.distanceKm} km</p>
+            <p className="label-mono text-aqua">{destination.distanceKm} km</p>
             <h3 className="mt-1 font-display text-2xl leading-tight">
               {destination.name}
             </h3>
@@ -71,12 +71,12 @@ function DestinationCard({ destination }: { destination: Destination }) {
           <button
             type="button"
             onClick={() => setOpen(false)}
-            className="label-mono touch-target shrink-0 text-[0.68rem] text-taupe hover:text-cream"
+            className="label-mono touch-target shrink-0 text-[0.68rem] text-mist/80 hover:text-mist"
           >
             Close<span className="sr-only"> details for {destination.name}</span>
           </button>
         </div>
-        <p className="mt-3 text-small text-taupe">{destination.description}</p>
+        <p className="mt-3 text-small text-mist/80">{destination.description}</p>
         <ul
           className="mt-3 flex flex-wrap gap-1.5"
           aria-label={`Facts about ${destination.name}`}
@@ -84,7 +84,7 @@ function DestinationCard({ destination }: { destination: Destination }) {
           {destination.facts.map((fact) => (
             <li
               key={fact}
-              className="label-mono rounded-full border border-walnut px-2.5 py-1 text-[0.6rem] text-taupe"
+              className="label-mono rounded-full border border-walnut-teal px-2.5 py-1 text-[0.6rem] text-mist/80"
             >
               {fact}
             </li>
@@ -95,7 +95,7 @@ function DestinationCard({ destination }: { destination: Destination }) {
           target="_blank"
           rel="noopener noreferrer"
           aria-label={`Open ${destination.name} in Maps`}
-          className="label-mono link-underline touch-target mt-auto inline-flex items-center gap-1 self-start pt-3 text-[0.7rem] text-sage-soft"
+          className="label-mono link-underline touch-target mt-auto inline-flex items-center gap-1 self-start pt-3 text-[0.7rem] text-aqua"
         >
           Open in Maps <ArrowUpRight size={13} strokeWidth={1.5} aria-hidden="true" />
         </a>
@@ -130,21 +130,21 @@ export function DestinationBrowser({ destinations }: { destinations: Destination
             className={cn(
               "label-mono min-h-11 transition-colors",
               active === filter.id
-                ? "text-espresso underline decoration-sage underline-offset-8"
-                : "text-bronze hover:text-espresso",
+                ? "text-ink underline decoration-teal underline-offset-8"
+                : "text-teal-deep hover:text-ink",
             )}
           >
             {filter.label}
           </button>
         ))}
-        <p className="label-mono ml-auto self-center text-bronze" aria-live="polite">
+        <p className="label-mono ml-auto self-center text-teal-deep" aria-live="polite">
           {visible.length} places
         </p>
       </div>
 
       {bands.map((band) => (
         <section key={band} aria-label={GROUP_TITLES[band]} className="mt-8">
-          <h2 className="label-mono text-bronze">{GROUP_TITLES[band]}</h2>
+          <h2 className="label-mono text-teal-deep">{GROUP_TITLES[band]}</h2>
           <ul className="mt-4 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {visible
               .filter((place) => bandOf(place.distanceKm) === band)

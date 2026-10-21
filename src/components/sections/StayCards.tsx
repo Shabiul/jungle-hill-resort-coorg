@@ -17,7 +17,7 @@ function StayCard({ room }: { room: Room }) {
   const hidden = total - 3;
 
   return (
-    <BoxCard className="flex h-full flex-col p-4 transition-colors hover:border-sage sm:p-5">
+    <BoxCard className="flex h-full flex-col p-4 transition-colors hover:border-teal sm:p-5">
       <button
         type="button"
         onClick={() => setLightbox(active)}
@@ -51,13 +51,13 @@ function StayCard({ room }: { room: Room }) {
                   className={cn(
                     "relative block aspect-square w-full overflow-hidden border transition-opacity",
                     !isMore && index === active
-                      ? "border-sage"
-                      : "border-sage/20 opacity-75 hover:opacity-100",
+                      ? "border-teal"
+                      : "border-teal/20 opacity-75 hover:opacity-100",
                   )}
                 >
                   <Photo image={image} fill sizes="12vw" />
                   {isMore && (
-                    <span className="label-mono absolute inset-0 grid place-items-center bg-espresso/70 text-cream">
+                    <span className="label-mono absolute inset-0 grid place-items-center bg-abyss/70 text-mist">
                       +{hidden}
                     </span>
                   )}
@@ -69,13 +69,13 @@ function StayCard({ room }: { room: Room }) {
       )}
 
       <div className="flex flex-1 flex-col pt-5">
-        <p className="label-mono text-sage-soft">
+        <p className="label-mono text-aqua">
           {roomLabel(room)}
         </p>
         <h3 className="mt-2 text-h3">{room.name}</h3>
-        <p className="mt-2 max-w-[44ch] text-taupe">{room.summary}</p>
+        <p className="mt-2 max-w-[44ch] text-mist/80">{room.summary}</p>
 
-        <ul className="label-mono mt-4 grid grid-cols-3 divide-x divide-sage/25 border-y border-sage/25 text-[0.66rem] text-taupe">
+        <ul className="label-mono mt-4 grid grid-cols-3 divide-x divide-teal/25 border-y border-teal/25 text-[0.66rem] text-mist/80">
           {room.highlights.map((fact) => (
             <li key={fact} className="px-2 py-2.5 first:pl-0">
               {fact}
@@ -90,7 +90,7 @@ function StayCard({ room }: { room: Room }) {
           <Link href={`/booking?room=${room.slug}`} className="label-mono link-underline touch-target">
             Enquire
           </Link>
-          <span className="label-mono ml-auto text-taupe">{room.rateNote}</span>
+          <span className="label-mono ml-auto text-mist/80">{room.rateNote}</span>
         </div>
       </div>
 

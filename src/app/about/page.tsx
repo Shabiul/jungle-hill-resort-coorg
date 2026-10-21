@@ -82,12 +82,12 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section aria-label="At a glance" className="section-space bg-sand">
-        <dl className="page-container grid gap-px bg-espresso/20 sm:grid-cols-2 lg:grid-cols-4">
+      <section aria-label="At a glance" className="section-space bg-mist-deep">
+        <dl className="page-container grid gap-px bg-abyss/20 sm:grid-cols-2 lg:grid-cols-4">
           {facts.map(([value, label]) => (
-            <div key={value} className="bg-sand p-6 first:pl-0 lg:py-2">
+            <div key={value} className="bg-mist-deep p-6 first:pl-0 lg:py-2">
               <dt className="font-display text-3xl">{value}</dt>
-              <dd className="mt-2 text-sm text-bronze">{label}</dd>
+              <dd className="mt-2 text-sm text-teal-deep">{label}</dd>
             </div>
           ))}
         </dl>

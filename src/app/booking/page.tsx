@@ -31,7 +31,7 @@ export default function BookingPage() {
           <div className="lg:col-span-8">
             <Suspense
               fallback={
-                <p className="min-h-[45rem] text-bronze" role="status">
+                <p className="min-h-[45rem] text-teal-deep" role="status">
                   Loading the form…
                 </p>
               }
@@ -41,14 +41,14 @@ export default function BookingPage() {
           </div>
           <aside className="lg:col-span-4">
             <div className="brutal-card p-5">
-              <p className="label-mono text-bronze">Prefer to talk?</p>
+              <p className="label-mono text-teal-deep">Prefer to talk?</p>
               <a
                 href={telLink}
                 className="link-underline mt-2 block font-display text-h4"
               >
                 {siteConfig.contact.phoneDisplay}
               </a>
-              <p className="mt-2 text-small text-bronze">
+              <p className="mt-2 text-small text-teal-deep">
                 Also on WhatsApp. Check-in 12 PM, check-out 11 AM.
               </p>
               <p className="mt-3 text-small">

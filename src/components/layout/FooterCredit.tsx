@@ -7,16 +7,16 @@ export function FooterCredit() {
 
   return (
     <div className="mt-6 flex flex-col items-center gap-4 pt-6 text-center">
-      <p className="label-mono text-[0.6875rem] tracking-[0.22em] text-taupe">
+      <p className="label-mono text-[0.6875rem] tracking-[0.22em] text-mist/80">
         &copy; {new Date().getFullYear()} Jungle Hill Resort
       </p>
-      <p className="max-w-none font-display text-[clamp(1.1rem,2vw,1.5rem)] leading-snug font-light text-taupe">
+      <p className="max-w-none font-display text-[clamp(1.1rem,2vw,1.5rem)] leading-snug font-light text-mist/80">
         <em className="font-light">Designed and developed by</em>{" "}
         <a
           href={developer.url}
           target="_blank"
           rel="noopener noreferrer"
-          className="touch-target group inline-flex items-center gap-1 font-medium tracking-[0.04em] whitespace-nowrap text-sage-soft transition-colors hover:text-sage-soft focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-sage"
+          className="touch-target group inline-flex items-center gap-1 font-medium tracking-[0.04em] whitespace-nowrap text-aqua transition-colors hover:text-aqua focus-visible:outline-2 focus-visible:outline-offset-4 focus-visible:outline-teal"
         >
           {developer.name}
           <ArrowUpRight

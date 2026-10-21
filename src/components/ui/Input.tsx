@@ -2,7 +2,7 @@ import { useId, type ComponentProps } from "react";
 import { cn } from "@/lib/utils";
 
 export const fieldBase =
-  "mt-1 block w-full min-h-11 border-0 border-b border-espresso/40 bg-transparent px-0 py-2 text-espresso placeholder:text-bronze focus:border-walnut focus:outline-none aria-[invalid=true]:border-b-2 aria-[invalid=true]:border-espresso";
+  "mt-1 block w-full min-h-11 border-0 border-b border-abyss/40 bg-transparent px-0 py-2 text-ink placeholder:text-teal-deep focus:border-walnut-teal focus:outline-none aria-[invalid=true]:border-b-2 aria-[invalid=true]:border-abyss";
 
 export type InputProps = ComponentProps<"input"> & {
   label?: string;
@@ -20,7 +20,7 @@ export function Input({ label, error, hint, className, id, ...props }: InputProp
   return (
     <div>
       {label && (
-        <label htmlFor={inputId} className="label-mono field-label block text-espresso">
+        <label htmlFor={inputId} className="label-mono field-label block text-ink">
           {label}
         </label>
       )}
@@ -32,7 +32,7 @@ export function Input({ label, error, hint, className, id, ...props }: InputProp
         {...props}
       />
       {hint && !error && (
-        <p id={`${inputId}-hint`} className="mt-1 text-sm text-bronze">
+        <p id={`${inputId}-hint`} className="mt-1 text-sm text-teal-deep">
           {hint}
         </p>
       )}
@@ -40,7 +40,7 @@ export function Input({ label, error, hint, className, id, ...props }: InputProp
         <p
           id={`${inputId}-error`}
           role="alert"
-          className="field-error mt-1 text-sm font-medium text-espresso"
+          className="field-error mt-1 text-sm font-medium text-ink"
         >
           {error}
         </p>

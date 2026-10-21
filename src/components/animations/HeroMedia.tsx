@@ -226,7 +226,7 @@ export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
               }}
             >
               <span
-                className="label-mono text-[0.62rem] text-taupe"
+                className="label-mono text-[0.62rem] text-mist/80"
                 aria-hidden="true"
               >
                 {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
@@ -243,8 +243,8 @@ export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
                   >
                     <span
                       className={cn(
-                        "block h-2 w-2 border border-cream transition-colors",
-                        i === index ? "bg-ivory" : "bg-transparent",
+                        "block h-2 w-2 border border-mist transition-colors",
+                        i === index ? "bg-mist" : "bg-transparent",
                       )}
                     />
                   </button>
