@@ -29,7 +29,7 @@ function DestinationCard({ destination }: { destination: Destination }) {
   const detailsId = useId();
 
   return (
-    <article className="group dark-surface lift relative isolate aspect-square overflow-hidden rounded-[14px] bg-deep text-mist shadow-[0_1px_0_rgba(255,255,255,0.04)_inset] ring-1 ring-abyss/20 transition-shadow hover:ring-2 hover:ring-teal">
+    <article className="group dark-surface lift relative isolate aspect-square overflow-hidden rounded-[14px] bg-night-teal text-mist shadow-[0_1px_0_rgba(255,255,255,0.04)_inset] ring-1 ring-ink/20 transition-shadow hover:ring-2 hover:ring-teal">
       {image && (
         <Photo
           image={image}
@@ -45,7 +45,7 @@ function DestinationCard({ destination }: { destination: Destination }) {
         aria-expanded={open}
         aria-controls={detailsId}
         onClick={() => setOpen((value) => !value)}
-        className="absolute inset-0 z-10 flex flex-col justify-end bg-gradient-to-t from-abyss/90 via-abyss/30 to-transparent to-60% p-5 text-left sm:p-6"
+        className="absolute inset-0 z-10 flex flex-col justify-end bg-gradient-to-t from-night-teal/90 via-night-teal/30 to-transparent to-60% p-5 text-left sm:p-6"
       >
         <span className="label-mono text-aqua">{destination.distanceKm} km</span>
         <span className="mt-1 block font-display text-2xl leading-tight sm:text-3xl">
@@ -58,7 +58,7 @@ function DestinationCard({ destination }: { destination: Destination }) {
         id={detailsId}
         data-lenis-prevent
         hidden={!open}
-        className="absolute inset-0 z-20 flex flex-col overflow-y-auto bg-abyss/92 p-5 sm:p-6"
+        className="absolute inset-0 z-20 flex flex-col overflow-y-auto bg-night-teal/92 p-5 sm:p-6"
       >
         <div className="flex items-start justify-between gap-3">
           <div>

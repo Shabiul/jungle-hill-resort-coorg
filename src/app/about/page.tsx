@@ -88,7 +88,7 @@ export default function AboutPage() {
         className="section-space relative isolate overflow-hidden bg-mist-deep"
       >
         <LightAmbient />
-        <dl className="page-container grid gap-px bg-abyss/20 sm:grid-cols-2 lg:grid-cols-4">
+        <dl className="page-container grid gap-px bg-night-teal/20 sm:grid-cols-2 lg:grid-cols-4">
           {facts.map(([value, label]) => (
             <div key={value} className="bg-mist-deep p-6 first:pl-0 lg:py-2">
               <dt className="font-display text-3xl">{value}</dt>

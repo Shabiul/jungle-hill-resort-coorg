@@ -44,14 +44,14 @@ export default function TouristDestinationsPage() {
 
       <section
         aria-label="Plan your stay"
-        className="dark-surface section-space bg-abyss text-mist"
+        className="section-space bg-sand-light text-ink"
       >
         <div className="page-container">
-          <p className="label-mono text-aqua">Plan your stay</p>
+          <p className="label-mono text-teal-deep">Plan your stay</p>
           <h2 className="mt-4 max-w-[18ch] text-h2">
-            Stay close to <em className="font-light text-aqua">all of it.</em>
+            Stay close to <em className="font-light text-teal-deep">all of it.</em>
           </h2>
-          <p className="mt-4 max-w-[46ch] text-mist/80">
+          <p className="mt-4 max-w-[46ch] text-ink/80">
             Tell us your dates and who is coming. We reply with availability and rates.
           </p>
           <div className="mt-6 flex flex-wrap gap-3">

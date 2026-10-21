@@ -10,7 +10,7 @@ export function Footer() {
   const { contact, secondaryPhone } = siteConfig;
 
   return (
-    <footer className="dark-surface bg-abyss text-mist">
+    <footer className="dark-surface bg-teal-deep text-mist">
       <div className="page-container pt-[var(--space-section)] pb-6">
         <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-5">
@@ -69,10 +69,7 @@ export function Footer() {
               </ul>
 
               <p className="mt-5 text-mist/80">
-                <a
-                  href={secondaryTelLink}
-                  className="transition-colors hover:text-aqua"
-                >
+                <a href={secondaryTelLink} className="transition-colors hover:text-aqua">
                   {secondaryPhone.phoneDisplay}
                 </a>
               </p>

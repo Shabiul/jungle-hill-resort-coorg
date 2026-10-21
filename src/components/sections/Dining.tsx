@@ -13,7 +13,7 @@ export function Dining() {
     <section
       id="dining"
       aria-label="Dining"
-      className="dark-surface section-space bg-abyss text-mist"
+      className="dark-surface section-space bg-night-teal text-mist"
     >
       <div className="page-container grid gap-8 lg:grid-cols-12 lg:gap-6">
         <div className="lg:col-span-6">
@@ -49,9 +49,7 @@ export function Dining() {
             </div>
           </RevealImage>
 
-          <h3 className="label-mono mt-6 !font-mono text-mist/80">
-            Ordering guidelines
-          </h3>
+          <h3 className="label-mono mt-6 !font-mono text-mist/80">Ordering guidelines</h3>
           <ul className="mt-4 space-y-3">
             {dining.guidelines.map((guideline) => (
               <li key={guideline} className="border-t border-mist/20 pt-3">

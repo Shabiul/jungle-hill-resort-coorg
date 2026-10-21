@@ -256,7 +256,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
             size={16}
             strokeWidth={2}
             aria-hidden="true"
-            className="text-aqua"
+            className="text-sand-light"
           />{" "}
           Enquiry received
         </p>
@@ -353,7 +353,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
               />
             </div>
             {nights > 0 && (
-              <p className="label-mono text-aqua" aria-live="polite">
+              <p className="label-mono text-sand-light" aria-live="polite">
                 {nights} {nights === 1 ? "night" : "nights"}
               </p>
             )}
@@ -431,14 +431,14 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                     {...register("stay")}
                   />
                   <span className="grid h-full grid-cols-[5.5rem_1fr] gap-3 rounded-[2px] border border-teal/30 p-2 transition-colors peer-checked:border-teal peer-checked:bg-mist/10 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-aqua">
-                    <span className="relative block aspect-square overflow-hidden bg-deep">
+                    <span className="relative block aspect-square overflow-hidden bg-night-teal">
                       {room && <Photo image={room.images[0]} fill sizes="88px" />}
                     </span>
                     <span className="min-w-0 self-center">
                       <span className="block font-display text-xl leading-tight">
                         {room ? room.name : "No preference"}
                       </span>
-                      <span className="label-mono block text-[0.62rem] text-aqua">
+                      <span className="label-mono block text-[0.62rem] text-sand-light">
                         {room ? roomLabel(room) : "We suggest"}
                       </span>
                       <span className="mt-0.5 block text-small text-mist/80">
@@ -474,7 +474,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
             </div>
 
             <div className="mt-8 border-t border-teal/30 pt-6">
-              <p className="label-mono text-[0.68rem] text-aqua">
+              <p className="label-mono text-[0.68rem] text-sand-light">
                 Included with every stay
               </p>
               <ul className="mt-3 flex flex-wrap gap-x-5 gap-y-2 text-small text-mist/80">
@@ -484,7 +484,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                       size={14}
                       strokeWidth={2}
                       aria-hidden="true"
-                      className="text-aqua"
+                      className="text-sand-light"
                     />
                     {item}
                   </li>
@@ -628,7 +628,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                     <span className="block font-display text-xl leading-tight">
                       Pay online
                     </span>
-                    <span className="label-mono text-[0.6rem] text-aqua">
+                    <span className="label-mono text-[0.6rem] text-sand-light">
                       Coming soon
                     </span>
                   </span>
@@ -677,26 +677,26 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
 
             <dl className="grid gap-x-8 gap-y-2 border-t border-teal/30 pt-5 text-small sm:grid-cols-2">
               <div>
-                <dt className="label-mono text-[0.62rem] text-aqua">Dates</dt>
+                <dt className="label-mono text-[0.62rem] text-sand-light">Dates</dt>
                 <dd>
                   {formatDate(values.checkIn)} to {formatDate(values.checkOut)}
                   {nights > 0 ? ` · ${nights} nights` : ""}
                 </dd>
               </div>
               <div>
-                <dt className="label-mono text-[0.62rem] text-aqua">Guests</dt>
+                <dt className="label-mono text-[0.62rem] text-sand-light">Guests</dt>
                 <dd>
                   {values.adults} adults, {values.children} children, {values.infants}{" "}
                   infants · {values.rooms} {Number(values.rooms) === 1 ? "room" : "rooms"}
                 </dd>
               </div>
               <div className="sm:col-span-2">
-                <dt className="label-mono text-[0.62rem] text-aqua">Stay</dt>
+                <dt className="label-mono text-[0.62rem] text-sand-light">Stay</dt>
                 <dd>{stayName(values.stay)}</dd>
               </div>
               {(offerName(values.offerId) || values.couponCode) && (
                 <div className="sm:col-span-2">
-                  <dt className="label-mono text-[0.62rem] text-aqua">Offer</dt>
+                  <dt className="label-mono text-[0.62rem] text-sand-light">Offer</dt>
                   <dd>
                     {[
                       offerName(values.offerId),
@@ -709,7 +709,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                 </div>
               )}
               <div className="sm:col-span-2">
-                <dt className="label-mono text-[0.62rem] text-aqua">Payment</dt>
+                <dt className="label-mono text-[0.62rem] text-sand-light">Payment</dt>
                 <dd>{PAYMENT_LABEL}</dd>
               </div>
             </dl>

@@ -13,27 +13,27 @@ export function Hero() {
   return (
     <section
       aria-label="Welcome"
-      className="dark-surface relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-abyss text-mist"
+      className="dark-surface relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-night-teal text-mist"
     >
       <HeroMedia slides={resolveHeroSlides()} />
       <FloatingParticles />
       {/* Plain vertical scrim for legibility: no colour, no blobs */}
-      <div aria-hidden="true" className="absolute inset-0 bg-abyss/35" />
+      <div aria-hidden="true" className="absolute inset-0 bg-teal-deep/15" />
       <div
         aria-hidden="true"
-        className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-abyss/85 via-abyss/40 to-transparent"
+        className="absolute inset-x-0 bottom-0 h-3/4 bg-gradient-to-t from-teal-deep/45 via-teal-deep/20 to-transparent"
       />
 
       {/* Faint fog haze near the bottom edge */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-mist/10 to-transparent"
+        className="pointer-events-none absolute inset-x-0 bottom-0 h-1/3 bg-gradient-to-t from-mist/20 to-transparent"
       />
 
       {/* Soft top scrim so the navigation stays legible over bright photos */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-abyss/60 to-transparent"
+        className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-teal-deep/25 to-transparent"
       />
 
       {/* Optional side label, wide screens only */}

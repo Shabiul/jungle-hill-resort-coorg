@@ -1,18 +1,19 @@
 @import "tailwindcss";
 
 @theme {
-  /* Teal Mist: deep teal darks, mist-blue lights, an aqua and teal accent, and one warm sand. */
-  --color-abyss: #0f1f22; /* deepest background, footer, preloader */
-  --color-deep: #162e32; /* main dark sections */
-  --color-teal-deep: #2e5156; /* boxes and raised surfaces on dark, text and borders on light */
-  --color-teal: #389c9c; /* accent: display emphasis, icons, markers, thin borders (never small text on light) */
-  --color-aqua: #7ab3b8; /* accent text on dark, hovers, quote marks */
-  --color-sand: #d0b89d; /* warm detail: tiny labels on dark, hairlines, focus ring */
-  --color-mist: #e0e7f8; /* main light background, headings on dark */
-  --color-mist-deep: #cbd5ec; /* alternate light sections, light cards */
-  --color-ink: #12282b; /* text on light backgrounds */
-  --color-walnut-teal: #4b6b70; /* borders and hairlines on dark */
-  --color-error-dark: #e3a5a0; /* form errors on dark */
+  /* Morning Mist: light first. Deep teal appears only as a few feature bands and the footer. */
+  --color-mist: #e0e7f8; /* main light background, text on deep bands */
+  --color-pearl: #f6f8fd; /* lightest surface, cards on mist (never pure white) */
+  --color-mist-deep: #cbd5ec; /* alternate light sections */
+  --color-sand: #d0b89d; /* warm accent: hairlines, labels, one warm detail per section */
+  --color-sand-light: #eadfcf; /* warm light sections and soft panels */
+  --color-aqua: #7ab3b8; /* secondary accent, hovers, highlights */
+  --color-teal: #389c9c; /* main accent: display emphasis, icons, markers, button borders */
+  --color-teal-deep: #2e5156; /* dark accent: footer, buttons, headings on light */
+  --color-ink: #12282b; /* body text on light */
+  --color-night-teal: #1b3a3f; /* darkest allowed background: 1 or 2 feature bands per page */
+  --color-walnut-teal: #4b6b70; /* borders and hairlines on deep bands */
+  --color-error-dark: #e3a5a0; /* form errors on deep bands */
   --color-error-light: #8a3b3b; /* form errors on light */
 
   --font-display: var(--font-cormorant), "Iowan Old Style", Georgia, serif;
@@ -58,7 +59,7 @@
     scroll-behavior: auto;
     -webkit-text-size-adjust: 100%;
     scrollbar-width: thin;
-    scrollbar-color: var(--color-walnut-teal) var(--color-abyss);
+    scrollbar-color: var(--color-teal-deep) var(--color-mist);
   }
 
   html.lenis,
@@ -75,11 +76,11 @@
     height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--color-abyss);
+    background: var(--color-mist);
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-walnut-teal);
-    border: 2px solid var(--color-abyss);
+    background: var(--color-teal-deep);
+    border: 2px solid var(--color-mist);
   }
 
   body {
@@ -125,18 +126,20 @@
   }
 
   :focus-visible {
-    /* One 2px sand ring on every surface */
-    outline: 2px solid var(--color-sand);
-    outline-offset: 3px;
+    /* 2px teal-deep ring with a 2px mist offset */
+    outline: 2px solid var(--color-teal-deep);
+    outline-offset: 2px;
+    box-shadow: 0 0 0 2px var(--color-mist);
   }
 
   .dark-surface :focus-visible {
-    outline-color: var(--color-sand);
+    outline-color: var(--color-mist);
+    box-shadow: 0 0 0 2px var(--color-night-teal);
   }
 
   ::selection {
     background: var(--color-aqua);
-    color: var(--color-abyss);
+    color: var(--color-ink);
   }
 }
 
@@ -178,16 +181,16 @@
 
   /* Hard-edged card with an offset shadow. At most two on the whole site. */
   .brutal-card {
-    border: 1px solid var(--color-abyss);
-    background: var(--color-mist-deep);
-    box-shadow: 8px 8px 0 0 color-mix(in oklab, var(--color-abyss) 85%, transparent);
+    border: 1px solid var(--color-ink);
+    background: var(--color-pearl);
+    box-shadow: 8px 8px 0 0 color-mix(in oklab, var(--color-ink) 85%, transparent);
   }
 
   /* Buttons: thin teal border, fill slides in on hover */
   .btn {
     --b-bg: var(--color-teal-deep);
     --b-fg: var(--color-mist);
-    --b-fill: var(--color-deep);
+    --b-fill: var(--color-night-teal);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -232,7 +235,7 @@
   .btn-outline-light {
     --b-bg: transparent;
     --b-fg: currentColor;
-    --b-fill: var(--color-deep);
+    --b-fill: var(--color-teal-deep);
     background-color: transparent;
     color: inherit;
   }
@@ -249,7 +252,7 @@
   }
   .dark-surface .btn-outline:hover,
   .dark-surface .btn-outline-light:hover {
-    color: var(--color-abyss);
+    color: var(--color-night-teal);
   }
 
   /* Text link with an animated sage underline (deep on light, soft on dark) */
@@ -384,7 +387,7 @@
   border-color: var(--color-error-dark);
 }
 .dark-surface .field-control option {
-  color: var(--color-abyss);
+  color: var(--color-ink);
 }
 .dark-surface .field-error {
   color: var(--color-error-dark);
@@ -407,15 +410,15 @@
   will-change: transform;
 }
 
-/* One shared warm photo grade (the warm overlay is added by GradeTint). */
+/* One shared fresh photo grade (the warm overlay is added by GradeTint). */
 .grade-filter {
-  filter: saturate(0.92) contrast(1.04) brightness(0.97);
+  filter: saturate(1) contrast(1.03) brightness(1.02);
 }
 .grade-tint {
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: rgba(15, 31, 34, 0.14);
+  background: rgba(208, 184, 157, 0.08);
   mix-blend-mode: soft-light;
 }
 
@@ -431,7 +434,7 @@
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    color-mix(in oklab, var(--color-abyss) 16%, transparent),
+    color-mix(in oklab, var(--color-teal-deep) 10%, transparent),
     transparent
   );
 }

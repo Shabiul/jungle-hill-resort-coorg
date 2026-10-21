@@ -43,7 +43,7 @@ export default function DiningPage() {
 
       <section
         aria-label="Meal times"
-        className="dark-surface section-space bg-abyss text-mist"
+        className="dark-surface section-space bg-night-teal text-mist"
       >
         <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">

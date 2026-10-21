@@ -82,11 +82,11 @@ export default function PlanYourStayPage() {
             <h2 className="label-mono mt-8 !font-mono text-xs text-teal-deep">
               How to reach
             </h2>
-            <ol className="mt-4 border-t border-abyss">
+            <ol className="mt-4 border-t border-ink">
               {steps.map((step, index) => (
                 <li
                   key={step}
-                  className="grid grid-cols-[2.5rem_1fr] gap-2 border-b border-abyss/20 py-4"
+                  className="grid grid-cols-[2.5rem_1fr] gap-2 border-b border-ink/20 py-4"
                 >
                   <span className="label-mono pt-1 text-teal-deep">
                     {String(index + 1).padStart(2, "0")}
@@ -99,7 +99,7 @@ export default function PlanYourStayPage() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="aspect-[4/3] w-full overflow-hidden border border-abyss/20 bg-mist-deep">
+            <div className="aspect-[4/3] w-full overflow-hidden border border-ink/20 bg-mist-deep">
               <iframe
                 title="Map showing Jungle Hill Resort"
                 src={embed}
@@ -153,7 +153,7 @@ export default function PlanYourStayPage() {
             {faqs.map((faq) => (
               <details
                 key={faq.id}
-                className="group border-t border-abyss/25 py-5 last:border-b"
+                className="group border-t border-ink/25 py-5 last:border-b"
               >
                 <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-6 font-display text-2xl">
                   {faq.question}

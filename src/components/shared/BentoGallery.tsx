@@ -53,7 +53,7 @@ export function BentoGallery({ images, overlay }: BentoGalleryProps) {
                   imgClassName="transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-105"
                 />
                 {isLast && (
-                  <span className="label-mono absolute inset-0 grid place-items-center bg-abyss/65 text-mist">
+                  <span className="label-mono absolute inset-0 grid place-items-center bg-night-teal/65 text-mist">
                     +{more + 1} photos
                   </span>
                 )}

@@ -16,15 +16,15 @@ export function Header() {
   const pathname = usePathname();
   const scrolled = useScrolledPast(24);
   const overHero = pathname === "/" && !scrolled;
-  // The home hero and the dark guest notes page both sit under a transparent header.
-  const light = pathname === "/" || pathname === "/testimonials" || scrolled;
+  // Only the home hero photo sits under a transparent header with light text; every other state is light glass with ink text.
+  const light = overHero;
 
   return (
     <header
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,box-shadow] duration-300",
         scrolled
-          ? "glass border-0 bg-abyss/80 shadow-[0_10px_30px_-14px_rgba(15,31,34,0.55)]"
+          ? "glass border-0 bg-mist/70 text-ink shadow-[0_8px_24px_-18px_rgba(46,81,86,0.35)] backdrop-blur-xl"
           : "shadow-none",
         light && "dark-surface",
       )}

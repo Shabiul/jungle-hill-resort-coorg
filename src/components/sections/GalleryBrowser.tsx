@@ -34,8 +34,8 @@ export function GalleryBrowser({ images, categories }: GalleryBrowserProps) {
             className={cn(
               "label-mono min-h-11 border px-4 transition-colors",
               active === category
-                ? "border-deep bg-deep text-mist"
-                : "border-abyss/30 hover:border-walnut-teal",
+                ? "border-night-teal bg-night-teal text-mist"
+                : "border-ink/30 hover:border-walnut-teal",
             )}
           >
             {category}

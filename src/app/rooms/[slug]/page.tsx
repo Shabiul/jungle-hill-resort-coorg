@@ -96,7 +96,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
             <BentoGallery
               images={room.images}
               overlay={
-                <GlassPanel className="dark-surface pointer-events-auto grid max-w-md gap-x-6 gap-y-2 bg-abyss/55 p-4 sm:grid-cols-2">
+                <GlassPanel className="dark-surface pointer-events-auto grid max-w-md gap-x-6 gap-y-2 bg-night-teal/55 p-4 sm:grid-cols-2">
                   {facts.map((fact) => (
                     <div key={fact.label}>
                       <p className="label-mono text-[0.6rem] text-mist/80">
@@ -132,7 +132,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
               {room.amenities.map((amenity) => (
                 <li
                   key={amenity}
-                  className="rounded-[2px] border border-abyss/20 px-3 py-3 text-small"
+                  className="rounded-[2px] border border-ink/20 px-3 py-3 text-small"
                 >
                   {amenity}
                 </li>
@@ -151,7 +151,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
           </div>
 
           <aside className="lg:col-span-4 lg:col-start-9">
-            <div className="dark-surface rounded-none border border-walnut-teal bg-deep p-5 text-mist lg:sticky lg:top-24">
+            <div className="dark-surface rounded-none border border-walnut-teal bg-night-teal p-5 text-mist lg:sticky lg:top-24">
               <p className="label-mono text-aqua">{room.rateNote}</p>
               <p className="mt-2 font-display text-h4">{room.name}</p>
               <div className="mt-4 flex flex-col gap-3">
@@ -195,7 +195,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
       >
         <Link
           href={`/rooms/${previous.slug}`}
-          className="group border-t border-abyss/25 pt-5"
+          className="group border-t border-ink/25 pt-5"
         >
           <span className="label-mono flex items-center gap-2 text-teal-deep">
             <ArrowLeft size={14} strokeWidth={1.5} aria-hidden="true" /> Previous
@@ -206,7 +206,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
         </Link>
         <Link
           href={`/rooms/${next.slug}`}
-          className="group border-t border-abyss/25 pt-5 sm:text-right"
+          className="group border-t border-ink/25 pt-5 sm:text-right"
         >
           <span className="label-mono flex items-center gap-2 text-teal-deep sm:justify-end">
             Next <ArrowRight size={14} strokeWidth={1.5} aria-hidden="true" />

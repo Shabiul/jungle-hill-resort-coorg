@@ -27,7 +27,7 @@ export async function ogImage(
         height: "100%",
         display: "flex",
         position: "relative",
-        background: "#0F1F22",
+        background: "#1B3A3F",
       }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -50,7 +50,7 @@ export async function ogImage(
           inset: 0,
           display: "flex",
           background:
-            "linear-gradient(180deg, rgba(15,31,34,0.25) 0%, rgba(15,31,34,0.9) 100%)",
+            "linear-gradient(180deg, rgba(46,81,86,0.15) 0%, rgba(27,58,63,0.85) 100%)",
         }}
       />
       <div

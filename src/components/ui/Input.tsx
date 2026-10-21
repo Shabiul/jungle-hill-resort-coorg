@@ -2,7 +2,7 @@ import { useId, type ComponentProps } from "react";
 import { cn } from "@/lib/utils";
 
 export const fieldBase =
-  "mt-1 block w-full min-h-11 border-0 border-b border-abyss/40 bg-transparent px-0 py-2 text-ink placeholder:text-teal-deep focus:border-walnut-teal focus:outline-none aria-[invalid=true]:border-b-2 aria-[invalid=true]:border-abyss";
+  "mt-1 block w-full min-h-11 border-0 border-b border-ink/40 bg-transparent px-0 py-2 text-ink placeholder:text-teal-deep focus:border-walnut-teal focus:outline-none aria-[invalid=true]:border-b-2 aria-[invalid=true]:border-ink";
 
 export type InputProps = ComponentProps<"input"> & {
   label?: string;

@@ -58,7 +58,7 @@ function StayCard({ room }: { room: Room }) {
                 >
                   <Photo image={image} fill sizes="12vw" />
                   {isMore && (
-                    <span className="label-mono absolute inset-0 grid place-items-center bg-abyss/70 text-mist">
+                    <span className="label-mono absolute inset-0 grid place-items-center bg-night-teal/70 text-mist">
                       +{hidden}
                     </span>
                   )}
@@ -70,7 +70,7 @@ function StayCard({ room }: { room: Room }) {
       )}
 
       <div className="flex flex-1 flex-col pt-5">
-        <p className="label-mono text-aqua">{roomLabel(room)}</p>
+        <p className="label-mono text-sand-light">{roomLabel(room)}</p>
         <h3 className="mt-2 text-h3">{room.name}</h3>
         <p className="mt-2 max-w-[44ch] text-mist/80">{room.summary}</p>
 

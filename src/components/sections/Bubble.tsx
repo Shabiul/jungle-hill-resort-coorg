@@ -51,20 +51,20 @@ export function Bubble({
   const useExcerpt = short && note.excerpt && note.excerpt !== note.text;
   const quote = useExcerpt ? note.excerpt : note.text;
   const name = (
-    <span className="label-mono tracking-[0.2em] text-mist uppercase">{note.name}</span>
+    <span className="label-mono tracking-[0.2em] text-ink uppercase">{note.name}</span>
   );
 
   return (
     <figure id={id} className={cn("m-0", className)}>
       <div
         className={cn(
-          "relative flex flex-col rounded-[20px] border border-walnut-teal bg-teal-deep p-6 text-mist sm:p-7",
+          "relative flex flex-col rounded-[20px] border border-sand bg-pearl p-6 text-ink sm:p-7",
           heightClass,
         )}
       >
         <blockquote className="m-0 min-h-0 flex-1">
-          <p className="font-display text-[1.3rem] leading-snug text-mist italic sm:text-[1.4rem]">
-            <span aria-hidden="true" className="mr-1 text-aqua not-italic">
+          <p className="font-display text-[1.3rem] leading-snug text-ink italic sm:text-[1.4rem]">
+            <span aria-hidden="true" className="mr-1 text-teal not-italic">
               &ldquo;
             </span>
             {quote}
@@ -73,7 +73,7 @@ export function Bubble({
         {useExcerpt && (
           <Link
             href={`/testimonials#note-${note.id}`}
-            className="label-mono touch-target mt-2 self-start text-[0.7rem] text-mist underline decoration-aqua underline-offset-4 hover:text-aqua"
+            className="label-mono touch-target mt-2 self-start text-[0.7rem] text-teal-deep underline decoration-sand underline-offset-4 hover:text-teal"
           >
             Read the full note<span className="sr-only"> by {note.name}</span>
           </Link>
@@ -82,7 +82,7 @@ export function Bubble({
         <span
           aria-hidden="true"
           className={cn(
-            "pointer-events-none absolute -bottom-[9px] block h-[17px] w-[17px] rotate-45 border-r border-b border-walnut-teal bg-teal-deep",
+            "pointer-events-none absolute -bottom-[9px] block h-[17px] w-[17px] rotate-45 border-r border-b border-sand bg-pearl",
             TAIL_POSITION[tail],
           )}
         />
