@@ -6,6 +6,8 @@ import { homeImages, rainVideoSources } from "@/data/site";
 import { AccentMark } from "@/components/animations/AccentMark";
 import { CountUp } from "@/components/animations/CountUp";
 import { LightAmbient } from "@/components/animations/LightAmbient";
+import { RevealImage } from "@/components/animations/RevealImage";
+import { Photo } from "@/components/shared/Photo";
 
 const stats: { value: string; count?: number; suffix?: string; label: string }[] = [
   { value: "13", count: 13, label: "Rooms" },
@@ -40,16 +42,32 @@ export function Retreat() {
         </div>
       )}
       <div className="page-container">
-        <div className="grid gap-8 lg:grid-cols-12 lg:items-end">
-          <SectionHeader
-            className="lg:col-span-7"
-            label="01 — The retreat"
-            lines={[{ text: "Coffee, pepper" }, { text: "and ", emphasis: "quiet." }]}
-          />
-          <p className="max-w-[44ch] text-body-lg lg:col-span-5 lg:pb-2">
-            Thirteen rooms among coffee and pepper plantations, five kilometres from
-            Madikeri. Quiet by design, with a pool, a restaurant and room to breathe.
-          </p>
+        <div className="grid gap-8 lg:grid-cols-12 lg:items-center">
+          <div className="lg:col-span-8">
+            <SectionHeader
+              label="01 — The retreat"
+              lines={[{ text: "Coffee, pepper" }, { text: "and ", emphasis: "quiet." }]}
+            />
+            <p className="mt-5 max-w-[48ch] text-body-lg">
+              Thirteen rooms among coffee and pepper plantations, five kilometres from
+              Madikeri. Quiet by design, with a pool, a restaurant and room to breathe.
+            </p>
+          </div>
+          <div className="relative mx-auto w-full max-w-[16rem] lg:col-span-4 lg:max-w-none">
+            <RevealImage className="arch-frame relative aspect-[3/4] overflow-hidden bg-mist-deep">
+              <Photo
+                image={homeImages.welcomeA}
+                fill
+                sizes="(min-width: 1024px) 28vw, 70vw"
+              />
+            </RevealImage>
+            <div
+              aria-hidden="true"
+              className="absolute -bottom-3 -left-3 border border-sand bg-sand-light px-4 py-2 font-display text-4xl leading-none text-teal-deep"
+            >
+              01
+            </div>
+          </div>
         </div>
 
         <dl className="mt-8 grid grid-cols-2 border-t border-ink/25 lg:grid-cols-4">

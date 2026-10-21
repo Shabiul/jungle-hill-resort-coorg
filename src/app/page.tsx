@@ -1,4 +1,6 @@
 import { CTA } from "@/components/sections/CTA";
+import { CloudlineMotif } from "@/components/animations/CloudlineMotif";
+import { FactsMarquee } from "@/components/sections/FactsMarquee";
 import { Hero } from "@/components/sections/Hero";
 import { ResortPlanSection } from "@/components/sections/ResortPlanSection";
 import { Retreat } from "@/components/sections/Retreat";
@@ -23,8 +25,10 @@ export default function HomePage() {
   return (
     <>
       <JsonLd data={resortJsonLd()} />
+      <CloudlineMotif />
       <Hero />
       <Retreat />
+      <FactsMarquee />
       <StaysSection />
       <ResortPlanSection />
       <Testimonials />

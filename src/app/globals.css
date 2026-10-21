@@ -101,7 +101,7 @@
     inset: 0;
     z-index: 90;
     pointer-events: none;
-    opacity: 0.05;
+    opacity: 0.035;
     background-image: var(--grain);
   }
 
@@ -608,5 +608,45 @@ html[data-hero="hidden"] .hero-fade {
   .plan-pulse {
     animation: none;
     opacity: 0.5;
+  }
+}
+
+/* Signature details */
+.arch-frame {
+  border-radius: 999px 999px 0 0;
+}
+@keyframes mist-slide-slow {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(300%);
+  }
+}
+.mist-band-slow {
+  animation: mist-slide-slow 60s linear infinite;
+}
+[data-paused="true"] .mist-band-slow {
+  animation-play-state: paused;
+}
+@keyframes facts-marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+.facts-marquee-track {
+  animation: facts-marquee 50s linear infinite;
+}
+.facts-marquee:hover .facts-marquee-track,
+[data-paused="true"] .facts-marquee-track {
+  animation-play-state: paused;
+}
+@media (prefers-reduced-motion: reduce) {
+  .facts-marquee-track,
+  .mist-band-slow {
+    animation: none;
   }
 }

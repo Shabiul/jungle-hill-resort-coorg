@@ -22,12 +22,26 @@ export function SectionHeader({
   as = "h2",
   className,
 }: SectionHeaderProps) {
+  const numeral = /^\d{2}/.exec(label)?.[0];
   return (
-    <div className={cn("max-w-3xl", className)}>
-      <p className={cn("label-mono", tone === "dark" ? "text-teal-deep" : "text-mist/80")}>
+    <div className={cn("relative max-w-3xl", className)}>
+      {numeral && (
+        <span
+          aria-hidden="true"
+          className="pointer-events-none absolute -top-8 -left-3 -z-10 font-display text-[7.5rem] leading-none text-teal/12 select-none"
+        >
+          {numeral}
+        </span>
+      )}
+      <p
+        className={cn("label-mono", tone === "dark" ? "text-teal-deep" : "text-mist/80")}
+      >
         {label}
       </p>
-      <AccentMark className="mt-2" />
+      <div className="mt-2 flex items-center gap-2">
+        <AccentMark />
+        <span aria-hidden="true" className="block h-1.5 w-1.5 bg-sand" />
+      </div>
       <RevealText
         as={as}
         lines={lines}
