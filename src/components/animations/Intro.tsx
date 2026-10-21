@@ -135,10 +135,10 @@ export function Intro() {
       </button>
 
       <Image
-        src="/images/logo/jungle-hill-logo-dark.png"
+        src="/images/logo/logo.png"
         alt="Jungle Hill, Inspiring Cloudline"
-        width={982}
-        height={642}
+        width={971}
+        height={631}
         priority
         sizes="(min-width: 640px) 480px, 78vw"
         className="intro-logo h-auto w-[min(78vw,30rem)]"

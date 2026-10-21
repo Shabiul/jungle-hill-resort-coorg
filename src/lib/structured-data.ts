@@ -25,7 +25,7 @@ export function resortJsonLd() {
     name: siteConfig.name,
     description: siteConfig.description,
     url: ORIGIN,
-    logo: `${ORIGIN}/images/logo/jungle-hill-logo-dark.png`,
+    logo: `${ORIGIN}/images/logo/logo.png`,
     image: [
       `${ORIGIN}/images/hero/hero-a-dusk-cottages.jpg`,
       `${ORIGIN}/images/hero/hero-b-coffee-view.jpg`,

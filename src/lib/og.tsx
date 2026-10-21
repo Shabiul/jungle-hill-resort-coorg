@@ -18,7 +18,7 @@ export async function ogImage(
 ) {
   const [bg, logo] = await Promise.all([
     dataUri(photo, "image/jpeg"),
-    dataUri("/images/logo/jungle-hill-logo-light.png", "image/png"),
+    dataUri("/images/logo/logo.png", "image/png"),
   ]);
   return new ImageResponse(
     <div
@@ -69,7 +69,14 @@ export async function ogImage(
           src={logo}
           alt=""
           height={96}
-          style={{ height: 96, width: "auto", alignSelf: "flex-start" }}
+          style={{
+            height: 96,
+            width: "auto",
+            alignSelf: "flex-start",
+            background: "#F7F4EC",
+            padding: 10,
+            borderRadius: 6,
+          }}
         />
         <div style={{ display: "flex", flexDirection: "column" }}>
           <div
