@@ -148,7 +148,7 @@ export function DestinationBrowser({ destinations }: { destinations: Destination
             {visible
               .filter((place) => bandOf(place.distanceKm) === band)
               .map((place, index) => (
-                <li key={place.id} className="min-w-0">
+                <li key={place.id} id={place.id} className="min-w-0 scroll-mt-28">
                   <FadeUp index={index}>
                     <DestinationCard destination={place} />
                   </FadeUp>

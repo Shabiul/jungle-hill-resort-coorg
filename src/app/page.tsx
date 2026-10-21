@@ -1,10 +1,9 @@
-import { CTA } from "@/components/sections/CTA";
-import { CloudlineMotif } from "@/components/animations/CloudlineMotif";
-import { FactsMarquee } from "@/components/sections/FactsMarquee";
+import { BookingBand } from "@/components/sections/BookingBand";
+import { ExploreBand } from "@/components/sections/ExploreBand";
+import { HomeExperiences } from "@/components/sections/HomeExperiences";
+import { HomeFeatures } from "@/components/sections/HomeFeatures";
+import { HomeStays } from "@/components/sections/HomeStays";
 import { Hero } from "@/components/sections/Hero";
-import { ResortPlanSection } from "@/components/sections/ResortPlanSection";
-import { Retreat } from "@/components/sections/Retreat";
-import { StaysSection } from "@/components/sections/StaysSection";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { resortJsonLd } from "@/lib/structured-data";
@@ -20,19 +19,18 @@ export const metadata = {
   title: { absolute: "Jungle Hill Resort, Coorg | Inspiring Cloudline" },
 };
 
-/** Seven parts at most: preloader (layout), hero, retreat, stays, plan, guest notes, closing call to action. */
+/** Hero, feature strip, stays, experiences, explore band, guest notes and the booking band. */
 export default function HomePage() {
   return (
     <>
       <JsonLd data={resortJsonLd()} />
-      <CloudlineMotif />
       <Hero />
-      <Retreat />
-      <StaysSection />
-      <ResortPlanSection />
+      <HomeFeatures />
+      <HomeStays />
+      <HomeExperiences />
+      <ExploreBand />
       <Testimonials />
-      <FactsMarquee />
-      <CTA />
+      <BookingBand />
     </>
   );
 }

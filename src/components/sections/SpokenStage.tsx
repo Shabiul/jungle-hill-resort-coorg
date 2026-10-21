@@ -129,6 +129,29 @@ export function SpokenStage({ notes }: { notes: SpokenNote[] }) {
         {visible.map((n) => `${n.name}: ${n.excerpt ?? n.text}`).join(". ")}
       </p>
 
+      <div
+        className="mt-5 flex justify-center gap-2"
+        role="group"
+        aria-label="Choose notes"
+      >
+        {Array.from({ length: Math.ceil(total / perView) }, (_, page) => (
+          <button
+            key={page}
+            type="button"
+            onClick={() => setStart(page * perView)}
+            aria-label={`Show notes ${page * perView + 1} onwards`}
+            aria-current={Math.floor(start / perView) === page ? "true" : undefined}
+            className="grid h-6 w-6 place-items-center"
+          >
+            <span
+              className={`block h-2 w-2 rounded-full border border-burgundy ${
+                Math.floor(start / perView) === page ? "bg-burgundy" : "bg-transparent"
+              }`}
+            />
+          </button>
+        ))}
+      </div>
+
       <div className="mt-6 flex items-center justify-between sm:mt-8">
         <p className="font-display text-2xl text-body tabular-nums" aria-hidden="true">
           <span className="text-body">{counter}</span>

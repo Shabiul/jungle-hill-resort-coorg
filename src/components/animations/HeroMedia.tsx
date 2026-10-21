@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState, useSyncExternalStore } from "react";
 import Image from "next/image";
+import { ChevronLeft, ChevronRight } from "lucide-react";
 import { m, useScroll, useTransform } from "motion/react";
 import { GradeTint } from "@/components/shared/GradeTint";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
@@ -211,12 +212,12 @@ export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
       </m.div>
 
       {!reduced && total > 1 && (
-        <div className="absolute inset-x-0 bottom-2.5 z-20">
+        <div className="absolute inset-x-0 bottom-5 z-20">
           <div className="page-container">
             <div
               role="group"
               aria-label="Hero slides"
-              className="flex w-fit items-center gap-3"
+              className="flex w-full items-center justify-end gap-3"
               onMouseEnter={() => setPaused(true)}
               onMouseLeave={() => setPaused(false)}
               onFocus={() => setPaused(true)}
@@ -226,30 +227,26 @@ export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
               }}
             >
               <span
-                className="label-mono text-[0.62rem] text-ivory/80"
+                className="label-mono mr-1 text-[0.7rem] text-ivory"
                 aria-hidden="true"
               >
-                {String(index + 1).padStart(2, "0")} / {String(total).padStart(2, "0")}
+                {String(index + 1).padStart(2, "0")} — {String(total).padStart(2, "0")}
               </span>
-              <span className="flex items-center">
-                {playable.map((slide, i) => (
-                  <button
-                    key={slide.src + i}
-                    type="button"
-                    onClick={() => goTo(i)}
-                    aria-label={`Show slide ${i + 1} of ${total}: ${slide.type === "video" ? "video" : slide.alt}`}
-                    aria-current={i === index ? "true" : undefined}
-                    className="-mx-[10px] grid h-11 w-11 place-items-center"
-                  >
-                    <span
-                      className={cn(
-                        "block h-2 w-2 border border-line transition-colors",
-                        i === index ? "bg-surface" : "bg-transparent",
-                      )}
-                    />
-                  </button>
-                ))}
-              </span>
+              {(["prev", "next"] as const).map((dir) => (
+                <button
+                  key={dir}
+                  type="button"
+                  onClick={() => goTo(index + (dir === "next" ? 1 : -1))}
+                  aria-label={dir === "next" ? "Next slide" : "Previous slide"}
+                  className="grid h-11 w-11 place-items-center rounded-full border border-ivory/70 text-ivory transition-colors hover:bg-ivory hover:text-ink"
+                >
+                  {dir === "next" ? (
+                    <ChevronRight size={18} strokeWidth={1.5} aria-hidden="true" />
+                  ) : (
+                    <ChevronLeft size={18} strokeWidth={1.5} aria-hidden="true" />
+                  )}
+                </button>
+              ))}
             </div>
           </div>
         </div>

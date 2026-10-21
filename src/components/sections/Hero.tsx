@@ -1,11 +1,9 @@
 import Link from "next/link";
-import { MessageCircle } from "lucide-react";
+import { ArrowRight } from "lucide-react";
 import { HeroFade } from "@/components/animations/HeroFade";
 import { HeroMedia } from "@/components/animations/HeroMedia";
 import { RevealText } from "@/components/animations/RevealText";
-import { HeroEnquiryBar } from "@/components/forms/HeroEnquiryBar";
 import { resolveHeroSlides } from "@/data/hero";
-import { whatsappLink } from "@/lib/contact";
 import { FloatingParticles } from "@/components/animations/FloatingParticles";
 import { Magnetic } from "@/components/animations/Magnetic";
 
@@ -36,18 +34,10 @@ export function Hero() {
         className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-ink/25 to-transparent"
       />
 
-      {/* Optional side label, wide screens only */}
-      <p
-        aria-hidden="true"
-        className="hero-side-label label-mono absolute top-1/2 right-6 origin-center -translate-y-1/2 text-ivory/80 [writing-mode:vertical-rl]"
-      >
-        Est. in the coffee estate · Madikeri
-      </p>
-
-      <div className="page-container relative flex flex-1 flex-col justify-end pt-28 pb-44 min-[1400px]:pb-8">
+      <div className="page-container relative flex flex-1 flex-col justify-end pt-28 pb-24">
         <HeroFade>
           <p className="label-mono text-ivory [text-shadow:0_1px_14px_rgba(36,37,31,0.7)]">
-            Madikeri, Coorg · 5 km towards Virajpet
+            Coffee estate · Madikeri, Coorg
           </p>
         </HeroFade>
 
@@ -67,26 +57,12 @@ export function Hero() {
         </HeroFade>
 
         <HeroFade delay={0.45} className="mt-8">
-          <div className="flex flex-wrap gap-3">
-            <Magnetic>
-              <a
-                href={whatsappLink()}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="btn btn-primary gap-2"
-              >
-                <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" />
-                Enquire on WhatsApp
-              </a>
-            </Magnetic>
-            <Link href="/rooms" className="btn btn-outline">
-              Explore stays
+          <Magnetic>
+            <Link href="/rooms" className="btn btn-primary gap-2">
+              Explore Our Resort
+              <ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" />
             </Link>
-          </div>
-        </HeroFade>
-
-        <HeroFade delay={0.6} className="mt-6 max-w-5xl">
-          <HeroEnquiryBar />
+          </Magnetic>
         </HeroFade>
       </div>
     </section>
