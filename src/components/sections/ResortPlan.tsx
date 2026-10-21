@@ -70,7 +70,7 @@ export function ResortPlan({ className }: { className?: string }) {
                 <circle cx="3" cy="3" r="1.4" fill="#687451" fillOpacity="0.45" />
               </pattern>
             </defs>
-            <rect width="1000" height="620" fill="#e8e9dd" />
+            <rect width="1000" height="620" fill="#f7f4ec" />
             {plantation.map((d) => (
               <g key={d}>
                 <path d={d} fill="#687451" fillOpacity="0.14" />
@@ -82,7 +82,7 @@ export function ResortPlan({ className }: { className?: string }) {
             <path
               d="M-10 600 C 120 600 220 585 320 560 C 400 540 460 520 500 470"
               fill="none"
-              stroke="#a3947e"
+              stroke="#687451"
               strokeOpacity="0.7"
               strokeWidth="2.4"
               strokeDasharray="1 7"
@@ -130,9 +130,9 @@ export function ResortPlan({ className }: { className?: string }) {
                   width={b.w}
                   height={b.h}
                   rx="2"
-                  fill="#f4f3eb"
+                  fill="#f7f4ec"
                   fillOpacity="0.95"
-                  stroke="#a3947e"
+                  stroke="#687451"
                   strokeOpacity="0.6"
                 />
               ))}
@@ -162,7 +162,7 @@ export function ResortPlan({ className }: { className?: string }) {
                 height="30"
                 rx="2"
                 fill="none"
-                stroke="#a3947e"
+                stroke="#687451"
                 strokeOpacity="0.6"
                 strokeDasharray="3 3"
               />
@@ -171,7 +171,7 @@ export function ResortPlan({ className }: { className?: string }) {
                 y="506"
                 textAnchor="middle"
                 fontSize="13"
-                fill="#30372c"
+                fill="#641c2b"
                 fontFamily="var(--font-jost), sans-serif"
               >
                 P
@@ -198,7 +198,7 @@ export function ResortPlan({ className }: { className?: string }) {
                       setActive(on ? null : marker.id);
                     }
                   }}
-                  className="cursor-pointer outline-none [&:focus-visible>circle]:stroke-[#24251f] [&:focus-visible>circle]:stroke-[2.5]"
+                  className="cursor-pointer outline-none [&:focus-visible>circle]:stroke-[#641c2b] [&:focus-visible>circle]:stroke-[2.5]"
                 >
                   <m.g
                     initial={reduced ? false : { scale: 0, opacity: 0 }}
@@ -253,7 +253,7 @@ export function ResortPlan({ className }: { className?: string }) {
               textAnchor="end"
               fontSize="11"
               letterSpacing="2.2"
-              fill="#30372c"
+              fill="#641c2b"
               fillOpacity="0.9"
               fontFamily="var(--font-jost), sans-serif"
             >

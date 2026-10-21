@@ -28,7 +28,7 @@ export function SectionHeader({
       {numeral && (
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -top-8 -left-3 -z-10 font-display text-[7.5rem] leading-none text-taupe/30 select-none"
+          className="pointer-events-none absolute -top-8 -left-3 -z-10 font-display text-[7.5rem] leading-none text-olive/30 select-none"
         >
           {numeral}
         </span>
@@ -40,7 +40,7 @@ export function SectionHeader({
       </p>
       <div className="mt-2 flex items-center gap-2">
         <AccentMark />
-        <span aria-hidden="true" className="block h-1.5 w-1.5 bg-taupe" />
+        <span aria-hidden="true" className="block h-1.5 w-1.5 bg-olive" />
       </div>
       <RevealText
         as={as}

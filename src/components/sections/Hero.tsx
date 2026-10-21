@@ -36,7 +36,7 @@ export function Hero() {
 
       <div className="page-container relative flex flex-1 flex-col justify-end pt-28 pb-24">
         <HeroFade>
-          <p className="label-mono text-ivory [text-shadow:0_1px_14px_rgba(36,37,31,0.7)]">
+          <p className="label-mono text-ivory [text-shadow:0_1px_14px_rgba(100,28,43,0.7)]">
             Coffee estate · Madikeri, Coorg
           </p>
         </HeroFade>
@@ -51,7 +51,7 @@ export function Hero() {
         />
 
         <HeroFade delay={0.35}>
-          <p className="mt-8 max-w-lg text-lg text-ivory [text-shadow:0_1px_14px_rgba(36,37,31,0.6)]">
+          <p className="mt-8 max-w-lg text-lg text-ivory [text-shadow:0_1px_14px_rgba(100,28,43,0.6)]">
             Thirteen rooms in a coffee and pepper estate, five kilometres from Madikeri.
           </p>
         </HeroFade>

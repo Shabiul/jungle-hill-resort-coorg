@@ -88,7 +88,7 @@ export function Bubble({
         />
       </div>
       <figcaption className={cn("mt-5 flex items-center gap-3", NAME_ALIGN[tail])}>
-        <span aria-hidden="true" className="block h-px w-6 shrink-0 bg-taupe" />
+        <span aria-hidden="true" className="block h-px w-6 shrink-0 bg-olive" />
         {note.profileUrl ? (
           <a
             href={note.profileUrl}

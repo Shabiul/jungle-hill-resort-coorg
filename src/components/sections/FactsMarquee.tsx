@@ -34,7 +34,7 @@ export function FactsMarquee() {
         className="flex shrink-0 items-center gap-6"
       >
         <span className="label-mono whitespace-nowrap text-body">{fact}</span>
-        <span aria-hidden="true" className="block h-1.5 w-1.5 shrink-0 bg-taupe" />
+        <span aria-hidden="true" className="block h-1.5 w-1.5 shrink-0 bg-olive" />
       </li>
     ));
 

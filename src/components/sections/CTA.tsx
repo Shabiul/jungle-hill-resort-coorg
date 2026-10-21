@@ -20,7 +20,7 @@ export function CTA() {
       className="section-space relative isolate overflow-hidden bg-surface theme-sand text-body"
     >
       <VideoBackground poster={poster} sources={estateVideoSources} />
-      <div aria-hidden="true" className="absolute inset-0 bg-sand/90" />
+      <div aria-hidden="true" className="absolute inset-0 bg-ivory/90" />
       <FloatingParticles />
       <div className="page-container relative grid gap-8 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-7">

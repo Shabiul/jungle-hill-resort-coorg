@@ -431,7 +431,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                     {...register("stay")}
                   />
                   <span className="grid h-full grid-cols-[5.5rem_1fr] gap-3 rounded-[6px] border border-line p-2 transition-colors peer-checked:border-line peer-checked:bg-ivory/10 peer-focus-visible:outline peer-focus-visible:outline-2 peer-focus-visible:outline-burgundy">
-                    <span className="relative block aspect-square overflow-hidden bg-sage">
+                    <span className="relative block aspect-square overflow-hidden bg-surface">
                       {room && <Photo image={room.images[0]} fill sizes="88px" />}
                     </span>
                     <span className="min-w-0 self-center">
@@ -450,7 +450,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                   </span>
                   <span
                     aria-hidden="true"
-                    className="absolute top-2 right-2 hidden h-5 w-5 place-items-center rounded-full bg-taupe text-body peer-checked:grid"
+                    className="absolute top-2 right-2 hidden h-5 w-5 place-items-center rounded-full bg-olive text-body peer-checked:grid"
                   >
                     <Check size={12} strokeWidth={2} />
                   </span>

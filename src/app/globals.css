@@ -1,23 +1,14 @@
 @import "tailwindcss";
 
 @theme {
-  /* Warm Ivory (primary), Soft Sage (secondary), Warm Sand Beige (tertiary), and three accents. */
+  /* Three colours only: ivory background, burgundy text, dark sage green accent. */
   --color-ivory: #f7f4ec;
-  --color-ivory-card: #fffcf6;
-  --color-ivory-ink: #24251f;
-  --color-ivory-line: #ded8ca;
-  --color-sage: #e8e9dd;
-  --color-sage-card: #f4f3eb;
-  --color-sage-ink: #30372c;
-  --color-sage-line: #d1d4c4;
-  --color-sand: #ede3d3;
-  --color-sand-card: #f8f1e7;
-  --color-sand-ink: #352c25;
-  --color-sand-line: #d9c9b5;
-  --color-burgundy: #641c2b; /* primary buttons, active nav dot, badges, links, key highlights */
-  --color-olive: #687451; /* nature icons, secondary accents, success tick */
-  --color-taupe: #a3947e; /* tertiary details and thin decorative marks */
-  --color-ink: #24251f; /* scrims over photos and the photo viewer */
+  --color-burgundy: #641c2b;
+  --color-olive: #687451; /* dark sage green */
+  --color-ink: #641c2b; /* scrims over photos use burgundy */
+  --color-ivory-card: #f7f4ec;
+  --color-ivory-ink: #641c2b;
+  --color-ivory-line: rgb(104 116 81 / 0.45);
 
   --font-display: var(--font-cormorant), "Iowan Old Style", Georgia, serif;
   --font-sans: var(--font-jost), "Segoe UI", system-ui, sans-serif;
@@ -63,26 +54,16 @@
   --color-line: var(--line);
 }
 :root,
-.theme-ivory {
+.theme-ivory,
+.theme-sage,
+.theme-sand {
   --surface: var(--color-ivory);
   --card: var(--color-ivory-card);
   --body: var(--color-ivory-ink);
   --line: var(--color-ivory-line);
 }
-.theme-sage {
-  --surface: var(--color-sage);
-  --card: var(--color-sage-card);
-  --body: var(--color-sage-ink);
-  --line: var(--color-sage-line);
-}
-.theme-sand {
-  --surface: var(--color-sand);
-  --card: var(--color-sand-card);
-  --body: var(--color-sand-ink);
-  --line: var(--color-sand-line);
-}
 .shadow-soft {
-  box-shadow: 0 6px 20px rgba(36, 37, 31, 0.06);
+  box-shadow: 0 6px 20px rgba(100, 28, 43, 0.08);
 }
 
 @layer base {
@@ -92,7 +73,7 @@
     scroll-behavior: auto;
     -webkit-text-size-adjust: 100%;
     scrollbar-width: thin;
-    scrollbar-color: var(--color-taupe) var(--color-ivory);
+    scrollbar-color: var(--color-olive) var(--color-ivory);
   }
 
   html.lenis,
@@ -112,7 +93,7 @@
     background: var(--color-ivory);
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-taupe);
+    background: var(--color-olive);
     border: 2px solid var(--color-ivory);
   }
 
@@ -170,8 +151,8 @@
   }
 
   ::selection {
-    background: var(--color-sand);
-    color: var(--color-burgundy);
+    background: var(--color-olive);
+    color: var(--color-ivory);
   }
 }
 
@@ -215,14 +196,14 @@
     border: 1px solid var(--line);
     border-radius: 6px;
     background: var(--card);
-    box-shadow: 0 6px 20px rgba(36, 37, 31, 0.06);
+    box-shadow: 0 6px 20px rgba(100, 28, 43, 0.08);
   }
 
   /* Buttons: thin teal border, fill slides in on hover */
   .btn {
     --b-bg: var(--color-burgundy);
     --b-fg: var(--color-ivory);
-    --b-fill: var(--color-ink);
+    --b-fill: var(--color-olive);
     display: inline-flex;
     align-items: center;
     justify-content: center;
@@ -256,7 +237,7 @@
   .dark-surface .btn {
     --b-bg: var(--color-burgundy);
     --b-fg: var(--color-ivory);
-    --b-fill: var(--color-ink);
+    --b-fill: var(--color-olive);
   }
 
   .btn-primary,
