@@ -28,7 +28,7 @@ export function BentoGallery({ images, overlay }: BentoGalleryProps) {
 
   return (
     <>
-      <ul className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:grid-rows-2 sm:gap-3 lg:h-[34rem]">
+      <ul className="grid grid-cols-2 gap-2 sm:grid-cols-4 sm:grid-rows-2 sm:gap-3 lg:h-[26rem]">
         {shown.map((image, index) => {
           const isLast = index === shown.length - 1 && more > 0;
           return (
