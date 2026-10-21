@@ -5,6 +5,7 @@ import { Lightbox } from "@/components/shared/LazyLightbox";
 import { Photo } from "@/components/shared/Photo";
 import { cn } from "@/lib/utils";
 import type { GalleryCategory, GalleryImage } from "@/types";
+import { FadeUp } from "@/components/animations/FadeUp";
 
 interface GalleryBrowserProps {
   images: GalleryImage[];
@@ -48,21 +49,23 @@ export function GalleryBrowser({ images, categories }: GalleryBrowserProps) {
       <ul className="mt-6 columns-1 gap-4 sm:columns-2 lg:columns-3">
         {visible.map((image, index) => (
           <li key={image.src} className="mb-4 break-inside-avoid">
-            <button
-              type="button"
-              onClick={() => setOpen(index)}
-              aria-label={`Open photo: ${image.alt}`}
-              className="group relative block w-full overflow-hidden"
-            >
-              <Photo
-                image={image}
-                sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
-                imgClassName="transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.03]"
-              />
-              <span className="label-mono absolute bottom-0 left-0 bg-mist px-3 py-2 text-[0.65rem] text-ink">
-                {image.category}
-              </span>
-            </button>
+            <FadeUp index={index % 6}>
+              <button
+                type="button"
+                onClick={() => setOpen(index)}
+                aria-label={`Open photo: ${image.alt}`}
+                className="group relative block w-full overflow-hidden"
+              >
+                <Photo
+                  image={image}
+                  sizes="(min-width: 1024px) 33vw, (min-width: 640px) 50vw, 100vw"
+                  imgClassName="transition-transform duration-700 ease-[var(--ease-out-expo)] group-hover:scale-[1.03]"
+                />
+                <span className="label-mono absolute bottom-0 left-0 bg-mist px-3 py-2 text-[0.65rem] text-ink">
+                  {image.category}
+                </span>
+              </button>
+            </FadeUp>
           </li>
         ))}
       </ul>

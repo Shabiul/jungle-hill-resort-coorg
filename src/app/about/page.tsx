@@ -8,6 +8,7 @@ import { buildMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 import { PageNote } from "@/components/shared/PageNote";
+import { LightAmbient } from "@/components/animations/LightAmbient";
 
 export const metadata = buildMetadata({
   title: "About",
@@ -60,7 +61,7 @@ export default function AboutPage() {
             </p>
           </div>
           <div className="grid grid-cols-12 items-start gap-4 lg:col-span-7">
-            <RevealImage className="col-span-7">
+            <RevealImage parallax className="col-span-7">
               <div className="relative aspect-[4/5] overflow-hidden">
                 <Photo
                   image={homeImages.welcomeA}
@@ -82,7 +83,11 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <section aria-label="At a glance" className="section-space bg-mist-deep">
+      <section
+        aria-label="At a glance"
+        className="section-space relative isolate overflow-hidden bg-mist-deep"
+      >
+        <LightAmbient />
         <dl className="page-container grid gap-px bg-abyss/20 sm:grid-cols-2 lg:grid-cols-4">
           {facts.map(([value, label]) => (
             <div key={value} className="bg-mist-deep p-6 first:pl-0 lg:py-2">
@@ -93,10 +98,8 @@ export default function AboutPage() {
         </dl>
       </section>
 
-      <section aria-label="The people" className="section-space">
-        <div className="page-container grid gap-6 sm:grid-cols-2">
-        </div>
-        <p className="page-container mt-6">
+      <section aria-label="The stays" className="py-4">
+        <p className="page-container">
           <Link href="/rooms" className="label-mono link-underline">
             See the stays
           </Link>
@@ -104,7 +107,10 @@ export default function AboutPage() {
       </section>
 
       <PageNote>
-        See the <Link href="/rooms">rooms</Link>, the <Link href="/dining">restaurant</Link> and the <Link href="/experiences">experiences</Link> on the estate, or go straight to <Link href="/plan-your-stay">plan your stay</Link>.
+        See the <Link href="/rooms">rooms</Link>, the{" "}
+        <Link href="/dining">restaurant</Link> and the{" "}
+        <Link href="/experiences">experiences</Link> on the estate, or go straight to{" "}
+        <Link href="/plan-your-stay">plan your stay</Link>.
       </PageNote>
       <CTA />
     </>

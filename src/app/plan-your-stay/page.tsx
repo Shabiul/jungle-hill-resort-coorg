@@ -11,6 +11,7 @@ import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbJsonLd, faqJsonLd } from "@/lib/structured-data";
 import { PageNote } from "@/components/shared/PageNote";
 import Link from "next/link";
+import { LightAmbient } from "@/components/animations/LightAmbient";
 
 export const metadata = buildMetadata({
   title: "Plan your stay",
@@ -31,7 +32,9 @@ export default function PlanYourStayPage() {
 
   return (
     <>
-      <JsonLd data={breadcrumbJsonLd([{ name: "Plan your stay", path: "/plan-your-stay" }])} />
+      <JsonLd
+        data={breadcrumbJsonLd([{ name: "Plan your stay", path: "/plan-your-stay" }])}
+      />
       <JsonLd data={faqJsonLd(faqs)} />
       <PageHero
         label="08 — Plan your stay"
@@ -113,7 +116,11 @@ export default function PlanYourStayPage() {
         </div>
       </section>
 
-      <section aria-label="Check-in and check-out" className="section-space bg-mist-deep">
+      <section
+        aria-label="Check-in and check-out"
+        className="section-space relative isolate overflow-hidden bg-mist-deep"
+      >
+        <LightAmbient />
         <div className="page-container grid gap-6 sm:grid-cols-3">
           <div>
             <p className="label-mono text-teal-deep">Check-in</p>
@@ -124,12 +131,17 @@ export default function PlanYourStayPage() {
             <p className="mt-2 font-display text-5xl">{checkTimes.checkOut}</p>
           </div>
           <p className="text-teal-deep">
-            {checkTimes.note} ID proof is mandatory, visitors are not allowed after 8:30 PM, and there is no loud music or loud sound after 10:00 PM.
+            {checkTimes.note} ID proof is mandatory, visitors are not allowed after 8:30
+            PM, and there is no loud music or loud sound after 10:00 PM.
           </p>
         </div>
       </section>
 
-      <section aria-label="Frequently asked questions" className="section-space">
+      <section
+        aria-label="Frequently asked questions"
+        className="section-space relative isolate overflow-hidden"
+      >
+        <LightAmbient />
         <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p className="label-mono text-teal-deep">Questions</p>
@@ -160,7 +172,10 @@ export default function PlanYourStayPage() {
       </section>
 
       <PageNote>
-        Once you know the way, look at the four <Link href="/rooms">rooms</Link>, the <Link href="/dining">restaurant</Link> and the <Link href="/experiences">pool, play area and games</Link>, then <Link href="/contact">send us your dates</Link>.
+        Once you know the way, look at the four <Link href="/rooms">rooms</Link>, the{" "}
+        <Link href="/dining">restaurant</Link> and the{" "}
+        <Link href="/experiences">pool, play area and games</Link>, then{" "}
+        <Link href="/contact">send us your dates</Link>.
       </PageNote>
       <CTA />
     </>

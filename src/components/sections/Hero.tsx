@@ -6,6 +6,8 @@ import { RevealText } from "@/components/animations/RevealText";
 import { HeroEnquiryBar } from "@/components/forms/HeroEnquiryBar";
 import { resolveHeroSlides } from "@/data/hero";
 import { whatsappLink } from "@/lib/contact";
+import { FloatingParticles } from "@/components/animations/FloatingParticles";
+import { Magnetic } from "@/components/animations/Magnetic";
 
 export function Hero() {
   return (
@@ -14,6 +16,7 @@ export function Hero() {
       className="dark-surface relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-abyss text-mist"
     >
       <HeroMedia slides={resolveHeroSlides()} />
+      <FloatingParticles />
       {/* Plain vertical scrim for legibility: no colour, no blobs */}
       <div aria-hidden="true" className="absolute inset-0 bg-abyss/35" />
       <div
@@ -65,15 +68,17 @@ export function Hero() {
 
         <HeroFade delay={0.45} className="mt-8">
           <div className="flex flex-wrap gap-3">
-            <a
-              href={whatsappLink()}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn btn-primary gap-2"
-            >
-              <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" />
-              Enquire on WhatsApp
-            </a>
+            <Magnetic>
+              <a
+                href={whatsappLink()}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="btn btn-primary gap-2"
+              >
+                <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" />
+                Enquire on WhatsApp
+              </a>
+            </Magnetic>
             <Link href="/rooms" className="btn btn-outline">
               Explore stays
             </Link>

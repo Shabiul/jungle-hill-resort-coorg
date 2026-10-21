@@ -8,6 +8,7 @@ import { BoxCard } from "@/components/ui/BoxCard";
 import { roomLabel } from "@/data/rooms";
 import { cn } from "@/lib/utils";
 import type { Room } from "@/types";
+import { FadeUp } from "@/components/animations/FadeUp";
 
 function StayCard({ room }: { room: Room }) {
   const [active, setActive] = useState(0);
@@ -17,7 +18,7 @@ function StayCard({ room }: { room: Room }) {
   const hidden = total - 3;
 
   return (
-    <BoxCard className="flex h-full flex-col p-4 transition-colors hover:border-teal sm:p-5">
+    <BoxCard className="lift flex h-full flex-col p-4 sm:p-5">
       <button
         type="button"
         onClick={() => setLightbox(active)}
@@ -69,9 +70,7 @@ function StayCard({ room }: { room: Room }) {
       )}
 
       <div className="flex flex-1 flex-col pt-5">
-        <p className="label-mono text-aqua">
-          {roomLabel(room)}
-        </p>
+        <p className="label-mono text-aqua">{roomLabel(room)}</p>
         <h3 className="mt-2 text-h3">{room.name}</h3>
         <p className="mt-2 max-w-[44ch] text-mist/80">{room.summary}</p>
 
@@ -87,7 +86,10 @@ function StayCard({ room }: { room: Room }) {
           <Link href={`/rooms/${room.slug}`} className="btn btn-outline">
             View stay
           </Link>
-          <Link href={`/booking?room=${room.slug}`} className="label-mono link-underline touch-target">
+          <Link
+            href={`/booking?room=${room.slug}`}
+            className="label-mono link-underline touch-target"
+          >
             Enquire
           </Link>
           <span className="label-mono ml-auto text-mist/80">{room.rateNote}</span>
@@ -108,9 +110,11 @@ function StayCard({ room }: { room: Room }) {
 export function StayCards({ rooms }: { rooms: Room[] }) {
   return (
     <ul className="grid gap-5 md:grid-cols-2">
-      {rooms.map((room) => (
+      {rooms.map((room, index) => (
         <li key={room.slug}>
-          <StayCard room={room} />
+          <FadeUp index={index}>
+            <StayCard room={room} />
+          </FadeUp>
         </li>
       ))}
     </ul>

@@ -34,7 +34,7 @@ export function FloatingParticles() {
       ref={root}
       data-paused="true"
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 hidden overflow-hidden md:block motion-reduce:hidden"
+      className="pointer-events-none absolute inset-0 overflow-hidden max-md:hidden motion-reduce:hidden"
     >
       {SHAPES.map(([left, top, size, duration, delay], i) => (
         <span

@@ -11,6 +11,7 @@ import {
   type DistanceFilter,
 } from "@/data/destinations";
 import { cn } from "@/lib/utils";
+import { FadeUp } from "@/components/animations/FadeUp";
 
 const GROUP_TITLES = {
   nearby: "Nearby, up to 11 km",
@@ -28,7 +29,7 @@ function DestinationCard({ destination }: { destination: Destination }) {
   const detailsId = useId();
 
   return (
-    <article className="group dark-surface relative isolate aspect-square overflow-hidden rounded-[14px] bg-deep text-mist shadow-[0_1px_0_rgba(255,255,255,0.04)_inset] ring-1 ring-abyss/20 transition-shadow hover:ring-2 hover:ring-teal">
+    <article className="group dark-surface lift relative isolate aspect-square overflow-hidden rounded-[14px] bg-deep text-mist shadow-[0_1px_0_rgba(255,255,255,0.04)_inset] ring-1 ring-abyss/20 transition-shadow hover:ring-2 hover:ring-teal">
       {image && (
         <Photo
           image={image}
@@ -46,9 +47,7 @@ function DestinationCard({ destination }: { destination: Destination }) {
         onClick={() => setOpen((value) => !value)}
         className="absolute inset-0 z-10 flex flex-col justify-end bg-gradient-to-t from-abyss/90 via-abyss/30 to-transparent to-60% p-5 text-left sm:p-6"
       >
-        <span className="label-mono text-aqua">
-          {destination.distanceKm} km
-        </span>
+        <span className="label-mono text-aqua">{destination.distanceKm} km</span>
         <span className="mt-1 block font-display text-2xl leading-tight sm:text-3xl">
           {destination.name}
         </span>
@@ -148,9 +147,11 @@ export function DestinationBrowser({ destinations }: { destinations: Destination
           <ul className="mt-4 grid gap-4 sm:grid-cols-2 sm:gap-6 lg:grid-cols-3">
             {visible
               .filter((place) => bandOf(place.distanceKm) === band)
-              .map((place) => (
+              .map((place, index) => (
                 <li key={place.id} className="min-w-0">
-                  <DestinationCard destination={place} />
+                  <FadeUp index={index}>
+                    <DestinationCard destination={place} />
+                  </FadeUp>
                 </li>
               ))}
           </ul>

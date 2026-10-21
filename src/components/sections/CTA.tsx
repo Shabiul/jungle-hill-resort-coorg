@@ -5,6 +5,7 @@ import { RevealText } from "@/components/animations/RevealText";
 import { estateVideoSources } from "@/data/site";
 import { photo } from "@/lib/images";
 import { whatsappLink } from "@/lib/contact";
+import { FloatingParticles } from "@/components/animations/FloatingParticles";
 
 const poster = photo(
   "/images/gallery/grounds-valley-path.jpg",
@@ -19,6 +20,7 @@ export function CTA() {
     >
       <VideoBackground poster={poster} sources={estateVideoSources} />
       <div aria-hidden="true" className="absolute inset-0 bg-abyss/70" />
+      <FloatingParticles />
       <div className="page-container relative">
         <p className="label-mono text-aqua">05 — Enquire</p>
         <RevealText

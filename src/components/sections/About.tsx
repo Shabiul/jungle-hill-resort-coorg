@@ -40,7 +40,7 @@ export function About() {
         <div className="relative lg:col-span-6">
           <p className="label-mono mb-4 text-teal-deep lg:text-right">13 rooms · 4 stays</p>
           <div className="grid grid-cols-12 items-start gap-4">
-            <RevealImage className="col-span-8">
+            <RevealImage parallax className="col-span-8">
               <div className="relative aspect-[4/5] overflow-hidden">
                 <Photo
                   image={homeImages.welcomeA}

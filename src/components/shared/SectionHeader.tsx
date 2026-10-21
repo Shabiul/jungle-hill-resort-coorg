@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { RevealText, type HeadingLine } from "@/components/animations/RevealText";
 import { cn } from "@/lib/utils";
+import { AccentMark } from "@/components/animations/AccentMark";
 
 interface SectionHeaderProps {
   /** e.g. "01 / Rooms" */
@@ -26,6 +27,7 @@ export function SectionHeader({
       <p className={cn("label-mono", tone === "dark" ? "text-teal-deep" : "text-mist/80")}>
         {label}
       </p>
+      <AccentMark className="mt-2" />
       <RevealText
         as={as}
         lines={lines}

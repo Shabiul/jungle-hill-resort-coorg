@@ -1,6 +1,8 @@
 "use client";
 
 import { useState } from "react";
+import { m } from "motion/react";
+import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { Photo } from "@/components/shared/Photo";
 import { GlassPanel } from "@/components/ui/GlassPanel";
 import { PLAN_VIEWBOX, planMarkers } from "@/data/resortPlan";
@@ -49,6 +51,7 @@ function tooltipStyle(x: number, y: number): React.CSSProperties {
  * one to highlight the other and see a photo. Marker data lives in src/data/resortPlan.ts.
  */
 export function ResortPlan({ className }: { className?: string }) {
+  const reduced = useReducedMotion();
   const [active, setActive] = useState<number | null>(null);
   const current = planMarkers.find((marker) => marker.id === active) ?? null;
 
@@ -85,8 +88,28 @@ export function ResortPlan({ className }: { className?: string }) {
               strokeDasharray="1 7"
               strokeLinecap="round"
             />
-            {/* Walking route, in the order of the numbers */}
+            {/* Walking route, in the order of the numbers: a mask draws it on first view */}
+            <mask
+              id="route-reveal"
+              maskUnits="userSpaceOnUse"
+              x="0"
+              y="0"
+              width="1000"
+              height="620"
+            >
+              <m.path
+                d={route}
+                fill="none"
+                stroke="white"
+                strokeWidth="8"
+                initial={reduced ? false : { pathLength: 0 }}
+                whileInView={{ pathLength: 1 }}
+                viewport={{ once: true, margin: "-10% 0px" }}
+                transition={{ duration: 0.8, ease: "easeInOut" }}
+              />
+            </mask>
             <path
+              mask="url(#route-reveal)"
               d={route}
               fill="none"
               stroke="#7ab3b8"
@@ -177,26 +200,49 @@ export function ResortPlan({ className }: { className?: string }) {
                   }}
                   className="cursor-pointer outline-none [&:focus-visible>circle]:stroke-[#d0b89d] [&:focus-visible>circle]:stroke-[2.5]"
                 >
-                  <circle
-                    cx={marker.x}
-                    cy={marker.y}
-                    r={on ? 17 : 14}
-                    fill={on ? "#7ab3b8" : "#0f1f22"}
-                    stroke={marker.kind === "pool" ? "#7ab3b8" : "#389c9c"}
-                    strokeWidth="1.5"
-                    style={{ transition: "r 0.2s, fill 0.2s" }}
-                  />
-                  <text
-                    x={marker.x}
-                    y={marker.y + 4.5}
-                    textAnchor="middle"
-                    fontSize="13"
-                    fontFamily="var(--font-jost), sans-serif"
-                    fill={on ? "#0f1f22" : "#e0e7f8"}
-                    style={{ pointerEvents: "none" }}
+                  <m.g
+                    initial={reduced ? false : { scale: 0, opacity: 0 }}
+                    whileInView={{ scale: 1, opacity: 1 }}
+                    viewport={{ once: true, margin: "-10% 0px" }}
+                    transition={{
+                      duration: 0.4,
+                      delay: 0.5 + marker.id * 0.07,
+                      ease: "easeOut",
+                    }}
+                    style={{ transformBox: "fill-box", transformOrigin: "center" }}
                   >
-                    {marker.id}
-                  </text>
+                    {on && (
+                      <circle
+                        className="plan-pulse"
+                        cx={marker.x}
+                        cy={marker.y}
+                        r={14}
+                        fill="none"
+                        stroke={marker.kind === "pool" ? "#7ab3b8" : "#389c9c"}
+                        strokeWidth="1.5"
+                      />
+                    )}
+                    <circle
+                      cx={marker.x}
+                      cy={marker.y}
+                      r={on ? 17 : 14}
+                      fill={on ? "#7ab3b8" : "#0f1f22"}
+                      stroke={marker.kind === "pool" ? "#7ab3b8" : "#389c9c"}
+                      strokeWidth="1.5"
+                      style={{ transition: "r 0.2s, fill 0.2s" }}
+                    />
+                    <text
+                      x={marker.x}
+                      y={marker.y + 4.5}
+                      textAnchor="middle"
+                      fontSize="13"
+                      fontFamily="var(--font-jost), sans-serif"
+                      fill={on ? "#0f1f22" : "#e0e7f8"}
+                      style={{ pointerEvents: "none" }}
+                    >
+                      {marker.id}
+                    </text>
+                  </m.g>
                 </g>
               );
             })}

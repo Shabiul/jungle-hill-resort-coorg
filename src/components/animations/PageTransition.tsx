@@ -24,8 +24,8 @@ export function PageTransition({ children }: { children: ReactNode }) {
   return (
     <m.div
       data-reveal
-      initial={reduced || !fadeIn ? false : { opacity: 0 }}
-      animate={{ opacity: 1 }}
+      initial={reduced || !fadeIn ? false : { opacity: 0, y: 8 }}
+      animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.35, ease: easeOut }}
     >
       {children}

@@ -8,6 +8,7 @@ import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 import { PageNote } from "@/components/shared/PageNote";
 import Link from "next/link";
+import { LightAmbient } from "@/components/animations/LightAmbient";
 
 export const metadata = buildMetadata({
   title: "Stays: rooms and cottages",
@@ -44,7 +45,11 @@ export default function RoomsPage() {
         </div>
       </section>
 
-      <section aria-label="Good to know" className="section-space bg-mist-deep">
+      <section
+        aria-label="Good to know"
+        className="section-space relative isolate overflow-hidden bg-mist-deep"
+      >
+        <LightAmbient />
         <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <p className="label-mono text-teal-deep">Good to know</p>
@@ -85,7 +90,12 @@ export default function RoomsPage() {
       </section>
 
       <PageNote>
-        The four room types at Jungle Hill Resort sit inside a coffee and pepper estate, 5 km from Madikeri on the way to Virajpet. Meals are served in the <Link href="/dining">restaurant</Link>, the pool and play area are described under <Link href="/experiences">experiences</Link>, and <Link href="/plan-your-stay">plan your stay</Link> has directions from Madikeri and check-in times.
+        The four room types at Jungle Hill Resort sit inside a coffee and pepper estate, 5
+        km from Madikeri on the way to Virajpet. Meals are served in the{" "}
+        <Link href="/dining">restaurant</Link>, the pool and play area are described under{" "}
+        <Link href="/experiences">experiences</Link>, and{" "}
+        <Link href="/plan-your-stay">plan your stay</Link> has directions from Madikeri
+        and check-in times.
       </PageNote>
       <CTA />
     </>
