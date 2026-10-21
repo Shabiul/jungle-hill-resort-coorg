@@ -14,7 +14,7 @@ export function Textarea({ label, error, className, id, ...props }: TextareaProp
   return (
     <div>
       {label && (
-        <label htmlFor={fieldId} className="label-mono field-label block text-ink">
+        <label htmlFor={fieldId} className="label-mono field-label block text-body">
           {label}
         </label>
       )}
@@ -30,7 +30,7 @@ export function Textarea({ label, error, className, id, ...props }: TextareaProp
         <p
           id={`${fieldId}-error`}
           role="alert"
-          className="field-error mt-1 text-sm font-medium text-ink"
+          className="field-error mt-1 text-sm font-medium text-body"
         >
           {error}
         </p>

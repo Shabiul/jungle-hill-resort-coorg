@@ -120,7 +120,7 @@ export function Intro() {
     <div
       role="dialog"
       aria-label="Welcome to Jungle Hill Resort"
-      className="grain-layer fixed inset-0 z-[100] flex flex-col items-center justify-center bg-mist text-teal-deep"
+      className="grain-layer fixed inset-0 z-[100] flex flex-col items-center justify-center bg-surface text-body"
       style={{
         transform: phase === "lift" ? "translateY(-100%)" : "translateY(0)",
         transition: `transform ${LIFT_FOR}ms var(--ease-out-expo)`,
@@ -129,7 +129,7 @@ export function Intro() {
       <button
         type="button"
         onClick={() => window.dispatchEvent(new Event("jhr-intro-skip"))}
-        className="label-mono absolute top-5 right-5 min-h-11 px-3 text-teal-deep/80 hover:text-teal-deep sm:top-8 sm:right-8"
+        className="label-mono absolute top-5 right-5 min-h-11 px-3 text-body/80 hover:text-body sm:top-8 sm:right-8"
       >
         Skip
       </button>
@@ -146,14 +146,14 @@ export function Intro() {
 
       <div className="absolute inset-x-5 bottom-8 sm:inset-x-8">
         <div className="flex items-end justify-between">
-          <span className="label-mono text-teal-deep/80">Madikeri, Coorg</span>
-          <span className="label-mono text-teal-deep tabular-nums" aria-hidden="true">
+          <span className="label-mono text-body/80">Madikeri, Coorg</span>
+          <span className="label-mono text-body tabular-nums" aria-hidden="true">
             {String(count).padStart(2, "0")}
           </span>
         </div>
-        <div className="mt-3 h-px w-full bg-teal-deep/15">
+        <div className="mt-3 h-px w-full bg-line">
           <div
-            className="h-px origin-left bg-teal"
+            className="h-px origin-left bg-burgundy"
             style={{ transform: `scaleX(${count / 100})` }}
           />
         </div>

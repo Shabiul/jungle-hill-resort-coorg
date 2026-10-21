@@ -23,7 +23,7 @@ export function AccentMark({
       transition={{ duration: 0.7, ease: easeOut }}
       className={cn(
         "pointer-events-none block h-px origin-left",
-        tone === "teal" ? "w-12 bg-teal" : "w-full bg-current opacity-20",
+        tone === "teal" ? "w-12 bg-taupe" : "w-full bg-current opacity-20",
         className,
       )}
     />

@@ -22,7 +22,7 @@ export function ResortPlanSection({
     <section
       id={id}
       aria-label="Resort plan"
-      className="section-space scroll-mt-20 bg-mist-deep text-ink"
+      className="section-space scroll-mt-20 bg-surface theme-sand text-body"
     >
       <div className="page-container">
         {heading && (
@@ -40,29 +40,29 @@ export function ResortPlanSection({
 
         <ol
           aria-label="Getting here"
-          className="mt-8 grid gap-4 border-t border-teal-deep/25 pt-6 sm:grid-cols-4"
+          className="mt-8 grid gap-4 border-t border-line pt-6 sm:grid-cols-4"
         >
           {gettingHere.map((step, index) => (
             <li key={step.label}>
-              <span className="label-mono text-teal-deep">
+              <span className="label-mono text-body">
                 {String(index + 1).padStart(2, "0")}
               </span>
               <p className="mt-1 font-display text-h4">{step.label}</p>
-              <p className="text-small text-ink/80">{step.detail}</p>
+              <p className="text-small text-body/80">{step.detail}</p>
             </li>
           ))}
         </ol>
 
         <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between">
           <div>
-            <address className="text-ink/80 not-italic">
+            <address className="text-body/80 not-italic">
               {siteConfig.contact.addressLines.map((line) => (
                 <span key={line} className="block">
                   {line}
                 </span>
               ))}
             </address>
-            <p className="mt-2 max-w-[56ch] text-small text-ink/80">
+            <p className="mt-2 max-w-[56ch] text-small text-body/80">
               The access road is narrow for two vehicles to pass, so please drive slowly.
             </p>
           </div>

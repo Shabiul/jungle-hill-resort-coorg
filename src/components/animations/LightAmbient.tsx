@@ -47,7 +47,7 @@ export function LightAmbient() {
       className="pointer-events-none absolute inset-0 -z-10 overflow-hidden motion-reduce:hidden"
     >
       <svg
-        className="ambient-drift absolute top-0 left-0 h-full w-[200%] text-teal opacity-[0.07]"
+        className="ambient-drift absolute top-0 left-0 h-full w-[200%] text-olive opacity-[0.14]"
         viewBox="0 0 2000 600"
         preserveAspectRatio="none"
       >

@@ -42,7 +42,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  themeColor: "#E0E7F8",
+  themeColor: "#F7F4EC",
   viewportFit: "cover",
   width: "device-width",
   initialScale: 1,
@@ -57,7 +57,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         </noscript>
         <a
           href="#main"
-          className="label-mono fixed top-2 left-2 z-[100] -translate-y-20 bg-mist px-4 py-3 text-ink focus:translate-y-0"
+          className="label-mono fixed top-2 left-2 z-[100] -translate-y-20 bg-surface px-4 py-3 text-body focus:translate-y-0"
         >
           Skip to content
         </a>

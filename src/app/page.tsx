@@ -28,10 +28,10 @@ export default function HomePage() {
       <CloudlineMotif />
       <Hero />
       <Retreat />
-      <FactsMarquee />
       <StaysSection />
       <ResortPlanSection />
       <Testimonials />
+      <FactsMarquee />
       <CTA />
     </>
   );

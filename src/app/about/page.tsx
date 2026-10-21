@@ -85,14 +85,14 @@ export default function AboutPage() {
 
       <section
         aria-label="At a glance"
-        className="section-space relative isolate overflow-hidden bg-mist-deep"
+        className="section-space relative isolate overflow-hidden bg-surface theme-sage"
       >
         <LightAmbient />
-        <dl className="page-container grid gap-px bg-night-teal/20 sm:grid-cols-2 lg:grid-cols-4">
+        <dl className="page-container grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
           {facts.map(([value, label]) => (
-            <div key={value} className="bg-mist-deep p-6 first:pl-0 lg:py-2">
+            <div key={value} className="bg-surface theme-sage p-6 first:pl-0 lg:py-2">
               <dt className="font-display text-3xl">{value}</dt>
-              <dd className="mt-2 text-sm text-teal-deep">{label}</dd>
+              <dd className="mt-2 text-sm text-body">{label}</dd>
             </div>
           ))}
         </dl>

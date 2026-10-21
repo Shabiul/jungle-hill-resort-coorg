@@ -37,12 +37,12 @@ export function FloatingParticles() {
       className="pointer-events-none absolute inset-0 overflow-hidden max-md:hidden motion-reduce:hidden"
     >
       <div className="absolute inset-x-0 bottom-[18%] h-24 overflow-hidden">
-        <div className="mist-band-slow absolute inset-y-0 -left-1/3 w-1/3 bg-gradient-to-r from-transparent via-mist/15 to-transparent" />
+        <div className="mist-band-slow absolute inset-y-0 -left-1/3 w-1/3 bg-gradient-to-r from-transparent via-ivory/15 to-transparent" />
       </div>
       {SHAPES.map(([left, top, size, duration, delay], i) => (
         <span
           key={i}
-          className="particle absolute block rounded-[60%_40%_55%_45%] bg-aqua/10"
+          className="particle absolute block rounded-[60%_40%_55%_45%] bg-olive/10"
           style={{
             left: `${left}%`,
             top: `${top}%`,

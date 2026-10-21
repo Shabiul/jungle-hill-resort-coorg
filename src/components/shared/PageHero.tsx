@@ -22,11 +22,11 @@ export function PageHero({ label, lines, description, aside }: PageHeroProps) {
       <LightAmbient />
       <div className="page-container grid gap-6 lg:grid-cols-12">
         <div className="lg:col-span-8">
-          <p className="label-mono text-teal-deep">{label}</p>
+          <p className="label-mono text-body">{label}</p>
           <AccentMark className="mt-2" />
           <RevealText as="h1" immediate lines={lines} className="mt-4 text-h1" />
           {description && (
-            <div className="mt-5 max-w-xl text-lg text-teal-deep">{description}</div>
+            <div className="mt-5 max-w-xl text-lg text-body">{description}</div>
           )}
         </div>
         {aside && <div className="lg:col-span-4 lg:self-end">{aside}</div>}

@@ -75,7 +75,7 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
         onClick={() => setOpen((value) => !value)}
         className={cn(
           "label-mono relative z-[60] min-h-11 px-2",
-          open ? "text-ink" : light ? "text-mist" : "text-ink",
+          open ? "text-body" : light ? "text-body" : "text-body",
         )}
       >
         {open ? "Close" : "Menu"}
@@ -89,7 +89,7 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
           aria-modal="true"
           aria-label="Site menu"
           data-lenis-prevent
-          className="glass fixed inset-0 z-[55] flex flex-col overflow-y-auto bg-mist/90 text-ink backdrop-blur-xl px-[var(--spacing-gutter)] pt-24 pb-[max(2.5rem,env(safe-area-inset-bottom))]"
+          className="glass fixed inset-0 z-[55] flex flex-col overflow-y-auto bg-ivory/90 px-[var(--spacing-gutter)] pt-24 pb-[max(2.5rem,env(safe-area-inset-bottom))] text-body backdrop-blur-xl"
         >
           <nav aria-label="Mobile">
             <ul className="flex flex-col">
@@ -100,9 +100,9 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
                     href={item.href}
                     onClick={() => setOpen(false)}
                     aria-current={pathname === item.href ? "page" : undefined}
-                    className="flex items-baseline gap-4 py-4 font-display text-3xl text-ink"
+                    className="flex items-baseline gap-4 py-4 font-display text-3xl text-body"
                   >
-                    <span className="label-mono w-6 text-teal-deep">
+                    <span className="label-mono w-6 text-body">
                       {String(index + 1).padStart(2, "0")}
                     </span>
                     {item.label}
@@ -132,7 +132,7 @@ export function MobileMenu({ items, light = true }: MobileMenuProps) {
                 <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" /> WhatsApp
               </a>
             </div>
-            <a href={telLink} className="label-mono pt-4 text-teal-deep">
+            <a href={telLink} className="label-mono pt-4 text-body">
               {siteConfig.contact.phoneDisplay}
             </a>
           </div>

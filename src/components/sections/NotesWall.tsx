@@ -69,7 +69,7 @@ export function NotesWall({ notes }: { notes: SpokenNote[] }) {
               <Bubble
                 note={note}
                 tail={TAIL_SIDES[index % 3]}
-                className="scroll-mt-28 rounded-[20px] outline-2 outline-transparent"
+                className="scroll-mt-28 rounded-[6px] outline-2 outline-transparent"
                 id={`note-${note.id}`}
               />
             </m.div>

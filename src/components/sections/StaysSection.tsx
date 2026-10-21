@@ -9,12 +9,12 @@ export function StaysSection() {
     <section
       id="stays"
       aria-label="The stays"
-      className="dark-surface section-space scroll-mt-20 bg-night-teal text-mist"
+      className="section-space scroll-mt-20 bg-surface theme-sage text-body"
     >
       <div className="page-container">
         <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-end">
           <SectionHeader
-            tone="light"
+            tone="dark"
             label="02 — The stays"
             lines={[{ text: "Four ways" }, { text: "to ", emphasis: "stay." }]}
             description={<p>Rates are on enquiry, for your dates.</p>}

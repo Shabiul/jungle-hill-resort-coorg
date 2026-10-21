@@ -19,18 +19,18 @@ export default function TestimonialsPage() {
   return (
     <section
       aria-label="Guest notes"
-      className="bg-mist pt-28 pb-[var(--space-section)] text-ink sm:pt-32"
+      className="bg-surface pt-28 pb-[var(--space-section)] text-body sm:pt-32"
     >
       <JsonLd data={breadcrumbJsonLd([{ name: "Guest notes", path: "/testimonials" }])} />
       <div className="page-container">
-        <p className="label-mono text-teal-deep">Guest Notes</p>
+        <p className="label-mono text-body">Guest Notes</p>
         <RevealText
           as="h1"
           immediate
           lines={[{ text: "What guests wrote" }]}
           className="mt-4 text-h1"
         />
-        <p className="mt-4 text-ink/80">Real reviews from Google</p>
+        <p className="mt-4 text-body/80">Real reviews from Google</p>
 
         <div className="mt-8 sm:mt-10">
           <NotesWall notes={spokenNotes} />

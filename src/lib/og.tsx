@@ -27,7 +27,7 @@ export async function ogImage(
         height: "100%",
         display: "flex",
         position: "relative",
-        background: "#1B3A3F",
+        background: "#24251F",
       }}
     >
       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -50,7 +50,7 @@ export async function ogImage(
           inset: 0,
           display: "flex",
           background:
-            "linear-gradient(180deg, rgba(46,81,86,0.15) 0%, rgba(27,58,63,0.85) 100%)",
+            "linear-gradient(180deg, rgba(36,37,31,0.1) 0%, rgba(36,37,31,0.7) 100%)",
         }}
       />
       <div
@@ -77,7 +77,7 @@ export async function ogImage(
               display: "flex",
               fontSize: 76,
               lineHeight: 1.05,
-              color: "#E0E7F8",
+              color: "#F7F4EC",
               fontWeight: 400,
             }}
           >
@@ -90,7 +90,7 @@ export async function ogImage(
               fontSize: 28,
               letterSpacing: 6,
               textTransform: "uppercase",
-              color: "#D0B89D",
+              color: "#EDE3D3",
             }}
           >
             {siteConfig.tagline} · Coorg

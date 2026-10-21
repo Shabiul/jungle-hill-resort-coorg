@@ -76,7 +76,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
       />
       <section aria-label={room.name} className="pt-28 sm:pt-32">
         <div className="page-container">
-          <p className="label-mono text-teal-deep">
+          <p className="label-mono text-body">
             <Link href="/rooms" className="link-underline">
               Stays
             </Link>{" "}
@@ -88,7 +88,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
             lines={[{ text: room.name }]}
             className="mt-4 text-h1"
           />
-          <p className="label-mono mt-3 text-teal-deep">
+          <p className="label-mono mt-3 text-body">
             {roomLabel(room)}
           </p>
 
@@ -96,10 +96,10 @@ export default async function RoomPage({ params }: RoomPageProps) {
             <BentoGallery
               images={room.images}
               overlay={
-                <GlassPanel className="dark-surface pointer-events-auto grid max-w-md gap-x-6 gap-y-2 bg-night-teal/55 p-4 sm:grid-cols-2">
+                <GlassPanel className="pointer-events-auto grid max-w-md gap-x-6 gap-y-2 bg-ink/55 p-4 sm:grid-cols-2">
                   {facts.map((fact) => (
                     <div key={fact.label}>
-                      <p className="label-mono text-[0.6rem] text-mist/80">
+                      <p className="label-mono text-[0.6rem] text-body/80">
                         {fact.label}
                       </p>
                       <p className="font-display text-lg leading-tight">{fact.value}</p>
@@ -115,32 +115,32 @@ export default async function RoomPage({ params }: RoomPageProps) {
       <section aria-label="About this stay" className="section-space">
         <div className="page-container grid gap-6 lg:grid-cols-12 lg:gap-8">
           <div className="lg:col-span-7">
-            <p className="label-mono text-teal-deep">About this stay</p>
+            <p className="label-mono text-body">About this stay</p>
             <p className="mt-3 font-display text-h3">{room.summary}</p>
-            <p className="mt-4 max-w-[58ch] text-teal-deep">{room.description}</p>
+            <p className="mt-4 max-w-[58ch] text-body">{room.description}</p>
             {room.guestNotes.map((note) => (
               <p
                 key={note}
-                className="mt-3 max-w-[58ch] border-l-2 border-teal pl-4"
+                className="mt-3 max-w-[58ch] border-l-2 border-line pl-4"
               >
                 {note}
               </p>
             ))}
 
-            <h2 className="label-mono mt-8 text-teal-deep">In the stay</h2>
+            <h2 className="label-mono mt-8 text-body">In the stay</h2>
             <ul className="mt-3 grid grid-cols-2 gap-2 sm:grid-cols-3">
               {room.amenities.map((amenity) => (
                 <li
                   key={amenity}
-                  className="rounded-[2px] border border-ink/20 px-3 py-3 text-small"
+                  className="rounded-[6px] border border-line px-3 py-3 text-small"
                 >
                   {amenity}
                 </li>
               ))}
             </ul>
 
-            <h2 className="label-mono mt-8 text-teal-deep">House policies</h2>
-            <ul className="mt-3 space-y-2 text-small text-teal-deep">
+            <h2 className="label-mono mt-8 text-body">House policies</h2>
+            <ul className="mt-3 space-y-2 text-small text-body">
               <li>
                 Check-in {checkTimes.checkIn} · Check-out {checkTimes.checkOut}.{" "}
                 {checkTimes.note}
@@ -151,8 +151,8 @@ export default async function RoomPage({ params }: RoomPageProps) {
           </div>
 
           <aside className="lg:col-span-4 lg:col-start-9">
-            <div className="dark-surface rounded-none border border-walnut-teal bg-night-teal p-5 text-mist lg:sticky lg:top-24">
-              <p className="label-mono text-aqua">{room.rateNote}</p>
+            <div className="rounded-[6px] border border-line bg-card p-5 text-body shadow-soft lg:sticky lg:top-24">
+              <p className="label-mono text-body">{room.rateNote}</p>
               <p className="mt-2 font-display text-h4">{room.name}</p>
               <div className="mt-4 flex flex-col gap-3">
                 <a href="#enquire" className="btn btn-primary">
@@ -176,14 +176,14 @@ export default async function RoomPage({ params }: RoomPageProps) {
       <section
         id="enquire"
         aria-label={`Enquire about ${room.name}`}
-        className="section-space scroll-mt-20 bg-mist-deep"
+        className="section-space scroll-mt-20 bg-surface theme-sage"
       >
         <div className="page-container">
-          <p className="label-mono text-teal-deep">Enquire</p>
+          <p className="label-mono text-body">Enquire</p>
           <h2 className="mt-3 mb-6 text-h2">
-            Ask about <em className="font-light text-teal-deep">{room.name}.</em>
+            Ask about <em className="font-light text-body">{room.name}.</em>
           </h2>
-          <Suspense fallback={<p className="text-teal-deep">Loading the form…</p>}>
+          <Suspense fallback={<p className="text-body">Loading the form…</p>}>
             <EnquiryWizard defaultStay={room.slug} />
           </Suspense>
         </div>
@@ -195,9 +195,9 @@ export default async function RoomPage({ params }: RoomPageProps) {
       >
         <Link
           href={`/rooms/${previous.slug}`}
-          className="group border-t border-ink/25 pt-5"
+          className="group border-t border-line pt-5"
         >
-          <span className="label-mono flex items-center gap-2 text-teal-deep">
+          <span className="label-mono flex items-center gap-2 text-body">
             <ArrowLeft size={14} strokeWidth={1.5} aria-hidden="true" /> Previous
           </span>
           <span className="mt-2 block font-display text-h4 group-hover:underline">
@@ -206,9 +206,9 @@ export default async function RoomPage({ params }: RoomPageProps) {
         </Link>
         <Link
           href={`/rooms/${next.slug}`}
-          className="group border-t border-ink/25 pt-5 sm:text-right"
+          className="group border-t border-line pt-5 sm:text-right"
         >
-          <span className="label-mono flex items-center gap-2 text-teal-deep sm:justify-end">
+          <span className="label-mono flex items-center gap-2 text-body sm:justify-end">
             Next <ArrowRight size={14} strokeWidth={1.5} aria-hidden="true" />
           </span>
           <span className="mt-2 block font-display text-h4 group-hover:underline">

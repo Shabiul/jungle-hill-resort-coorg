@@ -29,7 +29,7 @@ export function Retreat() {
     <section
       id="retreat"
       aria-label="The retreat"
-      className="section-space mist-top relative isolate overflow-hidden bg-mist text-ink"
+      className="section-space mist-top relative isolate overflow-hidden bg-surface text-body"
     >
       <LightAmbient />
       {rainVideoSources.length > 0 && (
@@ -54,7 +54,7 @@ export function Retreat() {
             </p>
           </div>
           <div className="relative mx-auto w-full max-w-[16rem] lg:col-span-4 lg:max-w-none">
-            <RevealImage className="arch-frame relative aspect-[3/4] overflow-hidden bg-mist-deep">
+            <RevealImage className="arch-frame relative aspect-[3/4] overflow-hidden bg-surface theme-sage">
               <Photo
                 image={homeImages.welcomeA}
                 fill
@@ -63,18 +63,18 @@ export function Retreat() {
             </RevealImage>
             <div
               aria-hidden="true"
-              className="absolute -bottom-3 -left-3 border border-sand bg-sand-light px-4 py-2 font-display text-4xl leading-none text-teal-deep"
+              className="absolute -bottom-3 -left-3 border border-line bg-surface theme-sand px-4 py-2 font-display text-4xl leading-none text-body"
             >
               01
             </div>
           </div>
         </div>
 
-        <dl className="mt-8 grid grid-cols-2 border-t border-ink/25 lg:grid-cols-4">
+        <dl className="mt-8 grid grid-cols-2 border-t border-line lg:grid-cols-4">
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="border-b border-ink/20 py-5 pr-4 odd:border-r odd:border-ink/20 lg:border-r lg:border-b-0 lg:px-6 lg:first:pl-0 lg:last:border-r-0"
+              className="border-b border-line py-5 pr-4 odd:border-r odd:border-line lg:border-r lg:border-b-0 lg:px-6 lg:first:pl-0 lg:last:border-r-0"
             >
               <AccentMark className="mb-3 w-8" />
               <dd className="font-display text-h3 leading-none">
@@ -84,23 +84,23 @@ export function Retreat() {
                   stat.value
                 )}
               </dd>
-              <dt className="label-mono mt-2 text-teal-deep">{stat.label}</dt>
+              <dt className="label-mono mt-2 text-body">{stat.label}</dt>
             </div>
           ))}
         </dl>
 
         <ul
           aria-label="On the property"
-          className="mt-8 grid grid-cols-2 border-y border-ink/25 sm:grid-cols-4"
+          className="mt-8 grid grid-cols-2 border-y border-line sm:grid-cols-4"
         >
           {strip.map((item) => (
             <li
               key={item.label}
-              className="border-ink/20 [&:not(:last-child)]:sm:border-r"
+              className="border-line [&:not(:last-child)]:sm:border-r"
             >
               <Link
                 href={item.href}
-                className="label-mono group flex min-h-14 items-center justify-between gap-3 px-4 first:pl-0 hover:text-teal-deep"
+                className="label-mono group flex min-h-14 items-center justify-between gap-3 px-4 first:pl-0 hover:text-body"
               >
                 {item.label}
                 <ArrowUpRight

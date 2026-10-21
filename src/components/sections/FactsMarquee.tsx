@@ -33,8 +33,8 @@ export function FactsMarquee() {
         aria-hidden={copy === 1 ? true : undefined}
         className="flex shrink-0 items-center gap-6"
       >
-        <span className="label-mono whitespace-nowrap text-teal-deep">{fact}</span>
-        <span aria-hidden="true" className="block h-1.5 w-1.5 shrink-0 bg-sand" />
+        <span className="label-mono whitespace-nowrap text-body">{fact}</span>
+        <span aria-hidden="true" className="block h-1.5 w-1.5 shrink-0 bg-taupe" />
       </li>
     ));
 
@@ -44,7 +44,7 @@ export function FactsMarquee() {
       data-paused="true"
       aria-label="Jungle Hill at a glance"
       role="region"
-      className="facts-marquee overflow-hidden bg-sand-light py-4"
+      className="facts-marquee overflow-hidden bg-surface theme-sage py-4"
     >
       <ul className="facts-marquee-track flex w-max gap-6">
         {row(0)}

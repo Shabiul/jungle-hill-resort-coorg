@@ -6,7 +6,7 @@ export function BoxCard({ className, ...props }: ComponentProps<"div">) {
   return (
     <div
       className={cn(
-        "dark-surface rounded-none border border-walnut-teal bg-teal-deep text-mist",
+        "shadow-soft rounded-[6px] border border-line bg-card text-body",
         className,
       )}
       {...props}

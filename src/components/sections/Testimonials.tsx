@@ -22,15 +22,15 @@ export function Testimonials() {
     <section
       id="reviews"
       aria-label="Guest notes"
-      className="section-space relative isolate overflow-hidden bg-mist text-ink"
+      className="section-space relative isolate overflow-hidden bg-surface text-body"
     >
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
         <Photo image={backdrop} fill sizes="100vw" />
-        <div className="absolute inset-0 bg-mist/93" />
+        <div className="absolute inset-0 bg-ivory/93" />
       </div>
 
       <div className="page-container">
-        <p className="label-mono text-teal-deep">Guest Notes</p>
+        <p className="label-mono text-body">Guest Notes</p>
         <RevealText
           as="h2"
           lines={[{ text: "Words from our guests" }]}
@@ -43,7 +43,7 @@ export function Testimonials() {
 
         <Link
           href="/testimonials"
-          className="label-mono group mt-8 inline-flex items-center gap-2 text-teal-deep transition-colors hover:text-teal"
+          className="label-mono group mt-8 inline-flex items-center gap-2 text-body transition-colors hover:text-burgundy"
         >
           Read all guest notes
           <ArrowRight

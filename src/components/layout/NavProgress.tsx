@@ -35,7 +35,7 @@ export function NavProgress() {
       className="pointer-events-none fixed inset-x-0 top-0 z-[110] h-0.5"
     >
       <div
-        className="h-full origin-left bg-teal"
+        className="h-full origin-left bg-taupe"
         style={{
           transform: active ? "scaleX(0.85)" : "scaleX(0)",
           opacity: active ? 1 : 0,

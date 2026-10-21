@@ -28,19 +28,19 @@ export function SectionHeader({
       {numeral && (
         <span
           aria-hidden="true"
-          className="pointer-events-none absolute -top-8 -left-3 -z-10 font-display text-[7.5rem] leading-none text-teal/12 select-none"
+          className="pointer-events-none absolute -top-8 -left-3 -z-10 font-display text-[7.5rem] leading-none text-taupe/30 select-none"
         >
           {numeral}
         </span>
       )}
       <p
-        className={cn("label-mono", tone === "dark" ? "text-teal-deep" : "text-mist/80")}
+        className={cn("label-mono", tone === "dark" ? "text-body" : "text-body/80")}
       >
         {label}
       </p>
       <div className="mt-2 flex items-center gap-2">
         <AccentMark />
-        <span aria-hidden="true" className="block h-1.5 w-1.5 bg-sand" />
+        <span aria-hidden="true" className="block h-1.5 w-1.5 bg-taupe" />
       </div>
       <RevealText
         as={as}
@@ -52,7 +52,7 @@ export function SectionHeader({
         <div
           className={cn(
             "mt-4 max-w-xl",
-            tone === "dark" ? "text-ink/80" : "text-mist/80",
+            tone === "dark" ? "text-body/80" : "text-body/80",
           )}
         >
           {description}

@@ -100,7 +100,7 @@ export function SpokenStage({ notes }: { notes: SpokenNote[] }) {
         swipeStart.current = null;
         if (Math.abs(delta) > 60) go(delta < 0 ? 1 : -1);
       }}
-      className="touch-pan-y outline-offset-8 focus-visible:outline-2 focus-visible:outline-teal"
+      className="touch-pan-y outline-offset-8 focus-visible:outline-2 focus-visible:outline-burgundy"
     >
       <div className="grid gap-6 lg:min-h-[29rem] lg:grid-cols-3 lg:gap-8">
         {visible.map((note, k) => (
@@ -130,9 +130,9 @@ export function SpokenStage({ notes }: { notes: SpokenNote[] }) {
       </p>
 
       <div className="mt-6 flex items-center justify-between sm:mt-8">
-        <p className="font-display text-2xl text-ink tabular-nums" aria-hidden="true">
-          <span className="text-teal-deep">{counter}</span>
-          <span className="text-ink/60"> / {pad(total)}</span>
+        <p className="font-display text-2xl text-body tabular-nums" aria-hidden="true">
+          <span className="text-body">{counter}</span>
+          <span className="text-body/60"> / {pad(total)}</span>
         </p>
         <div className="flex gap-3">
           {(["prev", "next"] as const).map((dir) => (
@@ -141,7 +141,7 @@ export function SpokenStage({ notes }: { notes: SpokenNote[] }) {
               type="button"
               onClick={() => go(dir === "next" ? 1 : -1)}
               aria-label={dir === "next" ? "Next guest notes" : "Previous guest notes"}
-              className="grid h-11 w-11 place-items-center rounded-full border border-teal-deep/50 text-teal-deep transition-colors hover:border-teal-deep hover:text-ink focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-teal"
+              className="grid h-11 w-11 place-items-center rounded-full border border-line text-body transition-colors hover:border-line hover:text-body focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-burgundy"
             >
               {dir === "next" ? (
                 <ArrowRight size={18} strokeWidth={1.5} aria-hidden="true" />

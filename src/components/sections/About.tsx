@@ -29,7 +29,7 @@ export function About() {
 
           <Reveal className="mt-8 max-w-md">
             <div className="brutal-card p-6">
-              <p className="label-mono text-teal-deep">Quiet by design</p>
+              <p className="label-mono text-body">Quiet by design</p>
               <p className="mt-3 font-display text-2xl leading-tight">
                 Quiet hours from 10:00 PM: no loud music or loud sounds.
               </p>
@@ -38,7 +38,7 @@ export function About() {
         </div>
 
         <div className="relative lg:col-span-6">
-          <p className="label-mono mb-4 text-teal-deep lg:text-right">
+          <p className="label-mono mb-4 text-body lg:text-right">
             13 rooms · 4 stays
           </p>
           <div className="grid grid-cols-12 items-start gap-4">
@@ -52,7 +52,7 @@ export function About() {
               </div>
             </RevealImage>
             <RevealImage className="col-span-5 col-start-8 -mt-8 sm:-mt-16" delay={0.12}>
-              <div className="relative aspect-square overflow-hidden border-8 border-mist">
+              <div className="relative aspect-square overflow-hidden border-8 border-line">
                 <Photo
                   image={homeImages.welcomeB}
                   fill

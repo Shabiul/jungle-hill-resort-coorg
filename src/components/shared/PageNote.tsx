@@ -9,7 +9,7 @@ export function PageNote({ children }: PageNoteProps) {
   return (
     <section aria-label="Related pages" className="pb-[var(--space-section)]">
       <div className="page-container">
-        <p className="max-w-[62ch] text-teal-deep [&_a]:text-ink [&_a]:underline [&_a]:decoration-teal [&_a]:underline-offset-4 [&_a:hover]:decoration-ink">
+        <p className="max-w-[62ch] text-body [&_a]:text-body [&_a]:underline [&_a]:decoration-burgundy [&_a]:underline-offset-4 [&_a:hover]:decoration-burgundy">
           {children}
         </p>
       </div>

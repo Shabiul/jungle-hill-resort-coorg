@@ -1,20 +1,23 @@
 @import "tailwindcss";
 
 @theme {
-  /* Morning Mist: light first. Deep teal appears only as a few feature bands and the footer. */
-  --color-mist: #e0e7f8; /* main light background, text on deep bands */
-  --color-pearl: #f6f8fd; /* lightest surface, cards on mist (never pure white) */
-  --color-mist-deep: #cbd5ec; /* alternate light sections */
-  --color-sand: #d0b89d; /* warm accent: hairlines, labels, one warm detail per section */
-  --color-sand-light: #eadfcf; /* warm light sections and soft panels */
-  --color-aqua: #7ab3b8; /* secondary accent, hovers, highlights */
-  --color-teal: #389c9c; /* main accent: display emphasis, icons, markers, button borders */
-  --color-teal-deep: #2e5156; /* dark accent: footer, buttons, headings on light */
-  --color-ink: #12282b; /* body text on light */
-  --color-night-teal: #1b3a3f; /* darkest allowed background: 1 or 2 feature bands per page */
-  --color-walnut-teal: #4b6b70; /* borders and hairlines on deep bands */
-  --color-error-dark: #e3a5a0; /* form errors on deep bands */
-  --color-error-light: #8a3b3b; /* form errors on light */
+  /* Warm Ivory (primary), Soft Sage (secondary), Warm Sand Beige (tertiary), and three accents. */
+  --color-ivory: #f7f4ec;
+  --color-ivory-card: #fffcf6;
+  --color-ivory-ink: #24251f;
+  --color-ivory-line: #ded8ca;
+  --color-sage: #e8e9dd;
+  --color-sage-card: #f4f3eb;
+  --color-sage-ink: #30372c;
+  --color-sage-line: #d1d4c4;
+  --color-sand: #ede3d3;
+  --color-sand-card: #f8f1e7;
+  --color-sand-ink: #352c25;
+  --color-sand-line: #d9c9b5;
+  --color-burgundy: #641c2b; /* primary buttons, active nav dot, badges, links, key highlights */
+  --color-olive: #687451; /* nature icons, secondary accents, success tick */
+  --color-taupe: #a3947e; /* tertiary details and thin decorative marks */
+  --color-ink: #24251f; /* scrims over photos and the photo viewer */
 
   --font-display: var(--font-cormorant), "Iowan Old Style", Georgia, serif;
   --font-sans: var(--font-jost), "Segoe UI", system-ui, sans-serif;
@@ -52,14 +55,44 @@
   --space-section: clamp(2.5rem, 5vw, 4.5rem);
 }
 
+/* Section themes: each major section sets its own background, card, text and line colours. */
+@theme inline {
+  --color-surface: var(--surface);
+  --color-card: var(--card);
+  --color-body: var(--body);
+  --color-line: var(--line);
+}
+:root,
+.theme-ivory {
+  --surface: var(--color-ivory);
+  --card: var(--color-ivory-card);
+  --body: var(--color-ivory-ink);
+  --line: var(--color-ivory-line);
+}
+.theme-sage {
+  --surface: var(--color-sage);
+  --card: var(--color-sage-card);
+  --body: var(--color-sage-ink);
+  --line: var(--color-sage-line);
+}
+.theme-sand {
+  --surface: var(--color-sand);
+  --card: var(--color-sand-card);
+  --body: var(--color-sand-ink);
+  --line: var(--color-sand-line);
+}
+.shadow-soft {
+  box-shadow: 0 6px 20px rgba(36, 37, 31, 0.06);
+}
+
 @layer base {
   html {
-    background: var(--color-mist);
-    color: var(--color-ink);
+    background: var(--color-ivory);
+    color: var(--color-ivory-ink);
     scroll-behavior: auto;
     -webkit-text-size-adjust: 100%;
     scrollbar-width: thin;
-    scrollbar-color: var(--color-teal-deep) var(--color-mist);
+    scrollbar-color: var(--color-taupe) var(--color-ivory);
   }
 
   html.lenis,
@@ -76,16 +109,17 @@
     height: 10px;
   }
   ::-webkit-scrollbar-track {
-    background: var(--color-mist);
+    background: var(--color-ivory);
   }
   ::-webkit-scrollbar-thumb {
-    background: var(--color-teal-deep);
-    border: 2px solid var(--color-mist);
+    background: var(--color-taupe);
+    border: 2px solid var(--color-ivory);
   }
 
   body {
     min-height: 100dvh;
-    background: var(--color-mist);
+    background: var(--surface);
+    color: var(--body);
     font-family: var(--font-sans);
     font-size: 1.0625rem;
     font-weight: 350;
@@ -127,19 +161,17 @@
 
   :focus-visible {
     /* 2px teal-deep ring with a 2px mist offset */
-    outline: 2px solid var(--color-teal-deep);
+    outline: 2px solid var(--color-burgundy);
     outline-offset: 2px;
-    box-shadow: 0 0 0 2px var(--color-mist);
   }
 
   .dark-surface :focus-visible {
-    outline-color: var(--color-mist);
-    box-shadow: 0 0 0 2px var(--color-night-teal);
+    outline-color: var(--color-ivory);
   }
 
   ::selection {
-    background: var(--color-aqua);
-    color: var(--color-ink);
+    background: var(--color-sand);
+    color: var(--color-burgundy);
   }
 }
 
@@ -171,33 +203,34 @@
 
   /* Glass: scrolled header, hero enquiry bar, room facts panel, mobile menu and lightbox caption only */
   .glass {
-    background: color-mix(in oklab, var(--color-mist) 10%, transparent);
+    background: rgba(247, 244, 236, 0.12);
     -webkit-backdrop-filter: blur(24px) saturate(120%);
     backdrop-filter: blur(24px) saturate(120%);
-    border: 1px solid color-mix(in oklab, var(--color-mist) 20%, transparent);
-    box-shadow: inset 0 1px 0 0 color-mix(in oklab, var(--color-mist) 16%, transparent);
-    color: var(--color-mist);
+    border: 1px solid rgba(247, 244, 236, 0.25);
+    color: var(--color-ivory);
   }
 
   /* Hard-edged card with an offset shadow. At most two on the whole site. */
   .brutal-card {
-    border: 1px solid var(--color-ink);
-    background: var(--color-pearl);
-    box-shadow: 8px 8px 0 0 color-mix(in oklab, var(--color-ink) 85%, transparent);
+    border: 1px solid var(--line);
+    border-radius: 6px;
+    background: var(--card);
+    box-shadow: 0 6px 20px rgba(36, 37, 31, 0.06);
   }
 
   /* Buttons: thin teal border, fill slides in on hover */
   .btn {
-    --b-bg: var(--color-teal-deep);
-    --b-fg: var(--color-mist);
-    --b-fill: var(--color-night-teal);
+    --b-bg: var(--color-burgundy);
+    --b-fg: var(--color-ivory);
+    --b-fill: var(--color-ink);
     display: inline-flex;
     align-items: center;
     justify-content: center;
     gap: 0.6rem;
     min-height: 2.75rem;
     padding: 0.75rem 1.5rem;
-    border: 1px solid var(--color-teal);
+    border: 1px solid var(--color-burgundy);
+    border-radius: 6px;
     background-color: var(--b-bg);
     background-image: linear-gradient(var(--b-fill), var(--b-fill));
     background-repeat: no-repeat;
@@ -221,9 +254,9 @@
   }
 
   .dark-surface .btn {
-    --b-bg: var(--color-mist);
-    --b-fg: var(--color-ink);
-    --b-fill: var(--color-mist-deep);
+    --b-bg: var(--color-burgundy);
+    --b-fg: var(--color-ivory);
+    --b-fill: var(--color-ink);
   }
 
   .btn-primary,
@@ -234,30 +267,31 @@
   .btn-outline,
   .btn-outline-light {
     --b-bg: transparent;
-    --b-fg: currentColor;
-    --b-fill: var(--color-teal-deep);
+    --b-fg: var(--color-burgundy);
+    --b-fill: var(--color-burgundy);
     background-color: transparent;
-    color: inherit;
+    color: var(--color-burgundy);
   }
   .btn-outline:hover,
   .btn-outline-light:hover {
-    color: var(--color-mist);
+    color: var(--color-ivory);
   }
   .dark-surface .btn-outline,
   .dark-surface .btn-outline-light {
     --b-bg: transparent;
-    --b-fg: currentColor;
-    --b-fill: var(--color-mist);
-    color: var(--color-mist);
+    --b-fg: var(--color-ivory);
+    --b-fill: var(--color-ivory);
+    border-color: var(--color-ivory);
+    color: var(--color-ivory);
   }
   .dark-surface .btn-outline:hover,
   .dark-surface .btn-outline-light:hover {
-    color: var(--color-night-teal);
+    color: var(--color-ink);
   }
 
-  /* Text link with an animated sage underline (deep on light, soft on dark) */
+  /* Text link with an animated sage underline (burgundy on light, ivory on photos) */
   .link-underline {
-    background-image: linear-gradient(var(--color-teal-deep), var(--color-teal-deep));
+    background-image: linear-gradient(var(--color-burgundy), var(--color-burgundy));
     background-size: 100% 1px;
     background-position: 0 100%;
     background-repeat: no-repeat;
@@ -265,10 +299,10 @@
     transition: background-size 0.4s var(--ease-out-expo);
   }
   .dark-surface .link-underline {
-    background-image: linear-gradient(var(--color-aqua), var(--color-aqua));
+    background-image: linear-gradient(var(--color-ivory), var(--color-ivory));
   }
   .dark-surface .link-underline {
-    background-image: linear-gradient(var(--color-aqua), var(--color-aqua));
+    background-image: linear-gradient(var(--color-ivory), var(--color-ivory));
   }
   .link-underline:hover {
     background-size: 0 1px;
@@ -370,30 +404,46 @@
 
 /* Form fields on dark panels (unlayered so they win over the utility classes on the fields) */
 .field-error {
-  color: var(--color-error-light);
+  color: var(--color-burgundy);
+  display: flex;
+  align-items: center;
+  gap: 0.4rem;
+}
+.field-error::before {
+  content: "!";
+  display: inline-grid;
+  place-items: center;
+  flex: none;
+  width: 1rem;
+  height: 1rem;
+  border: 1px solid currentColor;
+  border-radius: 999px;
+  font-size: 0.7rem;
+  font-weight: 600;
+  line-height: 1;
 }
 .dark-surface .field-label {
-  color: var(--color-mist);
+  color: var(--color-ivory);
 }
 .dark-surface .field-control {
-  color: var(--color-mist);
-  border-color: color-mix(in oklab, var(--color-mist) 45%, transparent);
+  color: var(--color-ivory);
+  border-color: color-mix(in oklab, var(--color-ivory) 45%, transparent);
   color-scheme: dark;
 }
 .dark-surface .field-control:focus {
-  border-color: var(--color-aqua);
+  border-color: var(--color-burgundy);
 }
 .dark-surface .field-control[aria-invalid="true"] {
-  border-color: var(--color-error-dark);
+  border-color: var(--color-burgundy);
 }
 .dark-surface .field-control option {
   color: var(--color-ink);
 }
 .dark-surface .field-error {
-  color: var(--color-error-dark);
+  color: var(--color-burgundy);
 }
 .dark-surface .field-hint {
-  color: color-mix(in oklab, var(--color-mist) 70%, transparent);
+  color: color-mix(in oklab, var(--color-ivory) 70%, transparent);
 }
 
 /* Hero photo slides: slow Ken Burns zoom, scale 1 to 1.04 */
@@ -418,7 +468,7 @@
   position: absolute;
   inset: 0;
   pointer-events: none;
-  background: rgba(208, 184, 157, 0.08);
+  display: none;
   mix-blend-mode: soft-light;
 }
 
@@ -434,7 +484,7 @@
   pointer-events: none;
   background: linear-gradient(
     to bottom,
-    color-mix(in oklab, var(--color-teal-deep) 10%, transparent),
+    transparent,
     transparent
   );
 }
@@ -511,7 +561,7 @@ html[data-hero="hidden"] .hero-fade {
   }
   25%,
   65% {
-    outline-color: var(--color-teal);
+    outline-color: var(--color-burgundy);
   }
 }
 .note-pulse {
@@ -521,7 +571,7 @@ html[data-hero="hidden"] .hero-fade {
 @media (prefers-reduced-motion: reduce) {
   .note-pulse {
     animation: none;
-    outline-color: var(--color-teal);
+    outline-color: var(--color-burgundy);
   }
 }
 
@@ -583,7 +633,7 @@ html[data-hero="hidden"] .hero-fade {
   }
   .lift:hover {
     transform: translateY(-4px);
-    border-color: var(--color-teal);
+    border-color: var(--color-burgundy);
   }
 }
 
@@ -649,4 +699,9 @@ html[data-hero="hidden"] .hero-fade {
   .mist-band-slow {
     animation: none;
   }
+}
+
+/* No gradient fade between sections in the ivory palette. */
+.mist-top::before {
+  display: none;
 }

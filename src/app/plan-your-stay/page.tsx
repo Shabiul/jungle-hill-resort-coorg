@@ -52,7 +52,7 @@ export default function PlanYourStayPage() {
       <section aria-label="Location and directions" className="pb-[var(--space-section)]">
         <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
-            <h2 className="label-mono !font-mono text-xs text-teal-deep">Address</h2>
+            <h2 className="label-mono !font-mono text-xs text-body">Address</h2>
             <address className="mt-3 font-display text-3xl not-italic">
               {siteConfig.contact.addressLines.map((line) => (
                 <span key={line} className="block">
@@ -79,16 +79,16 @@ export default function PlanYourStayPage() {
               </a>
             </div>
 
-            <h2 className="label-mono mt-8 !font-mono text-xs text-teal-deep">
+            <h2 className="label-mono mt-8 !font-mono text-xs text-body">
               How to reach
             </h2>
-            <ol className="mt-4 border-t border-ink">
+            <ol className="mt-4 border-t border-line">
               {steps.map((step, index) => (
                 <li
                   key={step}
-                  className="grid grid-cols-[2.5rem_1fr] gap-2 border-b border-ink/20 py-4"
+                  className="grid grid-cols-[2.5rem_1fr] gap-2 border-b border-line py-4"
                 >
-                  <span className="label-mono pt-1 text-teal-deep">
+                  <span className="label-mono pt-1 text-body">
                     {String(index + 1).padStart(2, "0")}
                   </span>
                   <span>{step}</span>
@@ -99,7 +99,7 @@ export default function PlanYourStayPage() {
           </div>
 
           <div className="lg:col-span-7">
-            <div className="aspect-[4/3] w-full overflow-hidden border border-ink/20 bg-mist-deep">
+            <div className="aspect-[4/3] w-full overflow-hidden border border-line bg-surface theme-sage">
               <iframe
                 title="Map showing Jungle Hill Resort"
                 src={embed}
@@ -108,7 +108,7 @@ export default function PlanYourStayPage() {
                 className="h-full w-full border-0"
               />
             </div>
-            <p className="mt-3 text-sm text-teal-deep">
+            <p className="mt-3 text-sm text-body">
               The map searches for the address. If the pin looks off, use the Google Maps
               button or call us.
             </p>
@@ -118,19 +118,19 @@ export default function PlanYourStayPage() {
 
       <section
         aria-label="Check-in and check-out"
-        className="section-space relative isolate overflow-hidden bg-mist-deep"
+        className="section-space relative isolate overflow-hidden bg-surface theme-sage"
       >
         <LightAmbient />
         <div className="page-container grid gap-6 sm:grid-cols-3">
           <div>
-            <p className="label-mono text-teal-deep">Check-in</p>
+            <p className="label-mono text-body">Check-in</p>
             <p className="mt-2 font-display text-5xl">{checkTimes.checkIn}</p>
           </div>
           <div>
-            <p className="label-mono text-teal-deep">Check-out</p>
+            <p className="label-mono text-body">Check-out</p>
             <p className="mt-2 font-display text-5xl">{checkTimes.checkOut}</p>
           </div>
-          <p className="text-teal-deep">
+          <p className="text-body">
             {checkTimes.note} ID proof is mandatory, visitors are not allowed after 8:30
             PM, and there is no loud music or loud sound after 10:00 PM.
           </p>
@@ -144,27 +144,27 @@ export default function PlanYourStayPage() {
         <LightAmbient />
         <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
-            <p className="label-mono text-teal-deep">Questions</p>
+            <p className="label-mono text-body">Questions</p>
             <h2 className="mt-4 text-h3">
-              Things people <em className="font-light text-teal-deep">ask.</em>
+              Things people <em className="font-light text-body">ask.</em>
             </h2>
           </div>
           <div className="lg:col-span-8">
             {faqs.map((faq) => (
               <details
                 key={faq.id}
-                className="group border-t border-ink/25 py-5 last:border-b"
+                className="group border-t border-line py-5 last:border-b"
               >
                 <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-6 font-display text-2xl">
                   {faq.question}
                   <span
                     aria-hidden="true"
-                    className="label-mono text-teal-deep transition-transform group-open:rotate-45"
+                    className="label-mono text-body transition-transform group-open:rotate-45"
                   >
                     +
                   </span>
                 </summary>
-                <p className="mt-3 max-w-2xl text-teal-deep">{faq.answer}</p>
+                <p className="mt-3 max-w-2xl text-body">{faq.answer}</p>
               </details>
             ))}
           </div>

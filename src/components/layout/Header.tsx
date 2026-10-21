@@ -24,9 +24,9 @@ export function Header() {
       className={cn(
         "fixed inset-x-0 top-0 z-50 transition-[background-color,backdrop-filter,box-shadow] duration-300",
         scrolled
-          ? "glass border-0 bg-mist/70 text-ink shadow-[0_8px_24px_-18px_rgba(46,81,86,0.35)] backdrop-blur-xl"
+          ? "glass border-0 bg-ivory/80 text-body shadow-[0_6px_20px_rgba(36,37,31,0.08)] backdrop-blur-xl"
           : "shadow-none",
-        light && "dark-surface",
+        light && "",
       )}
     >
       <div
@@ -60,15 +60,20 @@ export function Header() {
                     href={item.href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "label-mono py-2 transition-colors",
+                      "label-mono relative py-2 transition-colors",
                       light
-                        ? "text-mist/80 hover:text-aqua"
-                        : "text-ink/85 hover:text-teal-deep",
-                      active && (light ? "text-aqua" : "text-teal-deep"),
+                        ? "text-ivory hover:text-ivory"
+                        : "text-body hover:text-burgundy",
                       overHero && "drop-shadow-[0_1px_8px_rgba(0,0,0,0.45)]",
                     )}
                   >
                     {item.label}
+                    {active && (
+                      <span
+                        aria-hidden="true"
+                        className="absolute -bottom-1 left-1/2 h-1 w-1 -translate-x-1/2 rounded-full bg-burgundy"
+                      />
+                    )}
                   </Link>
                 </li>
               );

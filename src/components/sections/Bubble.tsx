@@ -51,20 +51,20 @@ export function Bubble({
   const useExcerpt = short && note.excerpt && note.excerpt !== note.text;
   const quote = useExcerpt ? note.excerpt : note.text;
   const name = (
-    <span className="label-mono tracking-[0.2em] text-ink uppercase">{note.name}</span>
+    <span className="label-mono tracking-[0.2em] text-body uppercase">{note.name}</span>
   );
 
   return (
     <figure id={id} className={cn("m-0", className)}>
       <div
         className={cn(
-          "relative flex flex-col rounded-[20px] border border-sand bg-pearl p-6 text-ink sm:p-7",
+          "relative flex flex-col rounded-[6px] border border-line bg-card p-6 text-body sm:p-7",
           heightClass,
         )}
       >
         <blockquote className="m-0 min-h-0 flex-1">
-          <p className="font-display text-[1.3rem] leading-snug text-ink italic sm:text-[1.4rem]">
-            <span aria-hidden="true" className="mr-1 text-teal not-italic">
+          <p className="font-display text-[1.3rem] leading-snug text-body italic sm:text-[1.4rem]">
+            <span aria-hidden="true" className="mr-1 text-burgundy not-italic">
               &ldquo;
             </span>
             {quote}
@@ -73,7 +73,7 @@ export function Bubble({
         {useExcerpt && (
           <Link
             href={`/testimonials#note-${note.id}`}
-            className="label-mono touch-target mt-2 self-start text-[0.7rem] text-teal-deep underline decoration-sand underline-offset-4 hover:text-teal"
+            className="label-mono touch-target mt-2 self-start text-[0.7rem] text-body underline decoration-burgundy underline-offset-4 hover:text-burgundy"
           >
             Read the full note<span className="sr-only"> by {note.name}</span>
           </Link>
@@ -82,19 +82,19 @@ export function Bubble({
         <span
           aria-hidden="true"
           className={cn(
-            "pointer-events-none absolute -bottom-[9px] block h-[17px] w-[17px] rotate-45 border-r border-b border-sand bg-pearl",
+            "pointer-events-none absolute -bottom-[9px] block h-[17px] w-[17px] rotate-45 border-r border-b border-line bg-card",
             TAIL_POSITION[tail],
           )}
         />
       </div>
       <figcaption className={cn("mt-5 flex items-center gap-3", NAME_ALIGN[tail])}>
-        <span aria-hidden="true" className="block h-px w-6 shrink-0 bg-sand" />
+        <span aria-hidden="true" className="block h-px w-6 shrink-0 bg-taupe" />
         {note.profileUrl ? (
           <a
             href={note.profileUrl}
             target="_blank"
             rel="noopener noreferrer"
-            className="underline decoration-sand underline-offset-4"
+            className="underline decoration-burgundy underline-offset-4"
           >
             {name}
           </a>
