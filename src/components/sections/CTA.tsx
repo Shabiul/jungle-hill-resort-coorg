@@ -17,7 +17,7 @@ export function CTA() {
   return (
     <section
       aria-label="Enquire"
-      className="section-space relative isolate overflow-hidden bg-surface theme-sand text-body"
+      className="section-space theme-sand relative isolate overflow-hidden bg-surface text-body"
     >
       <VideoBackground poster={poster} sources={estateVideoSources} />
       <div aria-hidden="true" className="absolute inset-0 bg-ivory/90" />
@@ -48,7 +48,7 @@ export function CTA() {
           </div>
         </div>
         <div className="relative mx-auto hidden w-full max-w-xs overflow-hidden lg:col-span-5 lg:mx-0 lg:ml-auto lg:block">
-          <div className="arch-frame relative aspect-[4/5] overflow-hidden bg-surface theme-sage">
+          <div className="arch-frame theme-sage relative aspect-[4/5] overflow-hidden bg-surface">
             <Photo image={poster} fill sizes="28vw" />
           </div>
         </div>

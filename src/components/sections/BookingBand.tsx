@@ -50,16 +50,18 @@ export function BookingBand() {
         />
       </svg>
 
-      <div className="page-container relative">
-        <p className="label-mono text-ivory">Your escape awaits</p>
-        <h2 className="mt-3 text-h2 text-ivory">
-          Ask us about <em className="font-light italic">your dates.</em>
-        </h2>
+      <div className="page-container relative grid items-center gap-6 lg:grid-cols-[0.8fr_1.5fr] lg:gap-10">
+        <div>
+          <p className="label-mono text-ivory">Your escape awaits</p>
+          <h2 className="mt-3 text-h3 text-ivory">
+            Ask us about <em className="font-light italic">your dates.</em>
+          </h2>
+        </div>
 
         <form
           onSubmit={submit}
           aria-label="Check availability"
-          className="shadow-soft mt-6 grid gap-4 rounded-[6px] bg-ivory-card p-4 text-ivory-ink sm:grid-cols-2 lg:grid-cols-[1fr_1fr_0.6fr_auto] lg:items-end"
+          className="shadow-soft grid gap-4 rounded-[6px] bg-ivory-card p-4 text-ivory-ink sm:grid-cols-2 lg:grid-cols-[1fr_1fr_0.6fr_auto] lg:items-end"
         >
           <label className="label-mono block">
             Check-in

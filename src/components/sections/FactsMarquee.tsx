@@ -44,7 +44,7 @@ export function FactsMarquee() {
       data-paused="true"
       aria-label="Jungle Hill at a glance"
       role="region"
-      className="facts-marquee overflow-hidden bg-surface theme-sage py-4"
+      className="facts-marquee theme-sage overflow-hidden bg-surface py-4"
     >
       <ul className="facts-marquee-track flex w-max gap-6">
         {row(0)}

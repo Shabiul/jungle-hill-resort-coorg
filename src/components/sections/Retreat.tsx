@@ -54,7 +54,7 @@ export function Retreat() {
             </p>
           </div>
           <div className="relative mx-auto w-full max-w-[16rem] lg:col-span-4 lg:max-w-none">
-            <RevealImage className="arch-frame relative aspect-[3/4] overflow-hidden bg-surface theme-sage">
+            <RevealImage className="arch-frame theme-sage relative aspect-[3/4] overflow-hidden bg-surface">
               <Photo
                 image={homeImages.welcomeA}
                 fill
@@ -63,7 +63,7 @@ export function Retreat() {
             </RevealImage>
             <div
               aria-hidden="true"
-              className="absolute -bottom-3 -left-3 border border-line bg-surface theme-sand px-4 py-2 font-display text-4xl leading-none text-body"
+              className="theme-sand absolute -bottom-3 -left-3 border border-line bg-surface px-4 py-2 font-display text-4xl leading-none text-body"
             >
               01
             </div>
@@ -94,10 +94,7 @@ export function Retreat() {
           className="mt-8 grid grid-cols-2 border-y border-line sm:grid-cols-4"
         >
           {strip.map((item) => (
-            <li
-              key={item.label}
-              className="border-line [&:not(:last-child)]:sm:border-r"
-            >
+            <li key={item.label} className="border-line [&:not(:last-child)]:sm:border-r">
               <Link
                 href={item.href}
                 className="label-mono group flex min-h-14 items-center justify-between gap-3 px-4 first:pl-0 hover:text-body"

@@ -11,7 +11,7 @@ export function Hero() {
   return (
     <section
       aria-label="Welcome"
-      className="dark-surface relative isolate flex min-h-[100svh] flex-col overflow-hidden bg-ink text-ivory"
+      className="dark-surface relative isolate flex min-h-[78svh] flex-col overflow-hidden bg-ink text-ivory md:min-h-[clamp(30rem,38vw,36rem)]"
     >
       <HeroMedia slides={resolveHeroSlides()} />
       <FloatingParticles />
@@ -34,7 +34,7 @@ export function Hero() {
         className="pointer-events-none absolute inset-x-0 top-0 h-44 bg-gradient-to-b from-ink/25 to-transparent"
       />
 
-      <div className="page-container relative flex flex-1 flex-col justify-end pt-28 pb-24">
+      <div className="page-container relative flex flex-1 flex-col justify-end pt-24 pb-20">
         <HeroFade>
           <p className="label-mono text-ivory [text-shadow:0_1px_14px_rgba(100,28,43,0.7)]">
             Coffee estate · Madikeri, Coorg
@@ -47,7 +47,7 @@ export function Hero() {
           onDark
           delay={0.1}
           lines={[{ text: "Rest above" }, { text: "the ", emphasis: "cloudline." }]}
-          className="mt-6 max-w-5xl text-display"
+          className="mt-5 max-w-3xl text-h1"
         />
 
         <HeroFade delay={0.35}>

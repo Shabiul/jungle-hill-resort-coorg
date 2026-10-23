@@ -63,7 +63,7 @@ export function ExploreBand() {
               <FadeUp index={index}>
                 <Link
                   href={`/tourist-destinations#${place.id}`}
-                  className="group relative block aspect-[4/5] overflow-hidden rounded-[6px] border border-ivory/40"
+                  className="group relative block aspect-[5/4] overflow-hidden rounded-[6px] border border-ivory/40"
                 >
                   <Photo
                     image={place.image}

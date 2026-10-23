@@ -19,7 +19,7 @@ function StayCard({ room }: { room: Room }) {
   const hidden = total - THUMBS;
 
   return (
-    <article className="lift flex h-full flex-col rounded-[6px] border border-line bg-card p-3.5 text-body shadow-soft">
+    <article className="lift shadow-soft flex h-full flex-col rounded-[6px] border border-line bg-card p-3.5 text-body">
       <button
         type="button"
         onClick={() => setLightbox(active)}

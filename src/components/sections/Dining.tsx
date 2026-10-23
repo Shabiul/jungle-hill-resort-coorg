@@ -13,7 +13,7 @@ export function Dining() {
     <section
       id="dining"
       aria-label="Dining"
-      className="section-space bg-surface theme-sage text-body"
+      className="section-space theme-sage bg-surface text-body"
     >
       <div className="page-container grid gap-8 lg:grid-cols-12 lg:gap-6">
         <div className="lg:col-span-6">

@@ -22,7 +22,7 @@ export function ResortPlanSection({
     <section
       id={id}
       aria-label="Resort plan"
-      className="section-space scroll-mt-20 bg-surface theme-sand text-body"
+      className="section-space theme-sand scroll-mt-20 bg-surface text-body"
     >
       <div className="page-container">
         {heading && (

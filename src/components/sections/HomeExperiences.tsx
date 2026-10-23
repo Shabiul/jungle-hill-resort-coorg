@@ -27,7 +27,7 @@ const rows = [
     ),
   },
   {
-    name: "Indoor and Outdoor Games",
+    name: "Games",
     image: photo(
       "/images/gallery/games-table-tennis.jpg",
       "Table-tennis table under a roof among trees",
@@ -42,7 +42,7 @@ const rows = [
   },
 ];
 
-/** The pool photo in the one arch frame, with a short note and four rows. */
+/** Photo on the left, a short note in the middle and four rows on the right, as in the reference. */
 export function HomeExperiences() {
   return (
     <section
@@ -50,25 +50,25 @@ export function HomeExperiences() {
       aria-label="Experiences"
       className="section-space theme-sand bg-surface text-body"
     >
-      <div className="page-container grid items-center gap-8 lg:grid-cols-12 lg:gap-12">
-        <div className="mx-auto w-full max-w-md lg:col-span-5 lg:mx-0">
-          <RevealImage className="arch-frame relative aspect-[4/5] overflow-hidden bg-card">
+      <div className="page-container grid items-center gap-8 lg:grid-cols-12 lg:gap-10">
+        <div className="lg:col-span-5">
+          <RevealImage className="relative aspect-[16/10] overflow-hidden rounded-[6px] bg-card">
             <Photo
               image={poolPhoto}
               fill
-              sizes="(min-width: 1024px) 38vw, 90vw"
+              sizes="(min-width: 1024px) 40vw, 92vw"
               imgClassName="transition-transform duration-500 hover:scale-[1.03]"
             />
           </RevealImage>
         </div>
 
-        <div className="lg:col-span-7">
+        <div className="lg:col-span-4">
           <SectionHeader
             tone="dark"
             label="Experiences"
             lines={[{ text: "Slow days," }, { text: "easy ", emphasis: "evenings." }]}
           />
-          <p className="mt-4 max-w-[54ch] text-body-lg">
+          <p className="mt-4 max-w-[46ch]">
             A swimming pool with a shallow kids pool, a play area for children under 10,
             indoor games, outdoor shuttle badminton, and a restaurant serving South
             Indian, North Indian and Chinese food.
@@ -80,31 +80,31 @@ export function HomeExperiences() {
             Explore Experiences{" "}
             <ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" />
           </Link>
-
-          <ul className="mt-6 grid gap-3 sm:grid-cols-2">
-            {rows.map((row) => (
-              <li key={row.name}>
-                <Link
-                  href="/experiences"
-                  className="group shadow-soft flex items-center gap-3 rounded-[6px] border border-line bg-card p-2.5"
-                >
-                  <span className="relative block h-12 w-12 shrink-0 overflow-hidden rounded-[6px]">
-                    <Photo image={row.image} fill sizes="48px" />
-                  </span>
-                  <span className="flex-1 font-display text-lg leading-tight">
-                    {row.name}
-                  </span>
-                  <ArrowRight
-                    size={16}
-                    strokeWidth={1.5}
-                    aria-hidden="true"
-                    className="text-burgundy transition-transform group-hover:translate-x-0.5"
-                  />
-                </Link>
-              </li>
-            ))}
-          </ul>
         </div>
+
+        <ul className="grid gap-3 lg:col-span-3">
+          {rows.map((row) => (
+            <li key={row.name}>
+              <Link
+                href="/experiences"
+                className="group shadow-soft flex items-center gap-3 rounded-[6px] border border-line bg-card p-2"
+              >
+                <span className="relative block h-12 w-12 shrink-0 overflow-hidden rounded-[6px]">
+                  <Photo image={row.image} fill sizes="48px" />
+                </span>
+                <span className="flex-1 font-display text-lg leading-tight">
+                  {row.name}
+                </span>
+                <ArrowRight
+                  size={16}
+                  strokeWidth={1.5}
+                  aria-hidden="true"
+                  className="text-burgundy transition-transform group-hover:translate-x-[3px]"
+                />
+              </Link>
+            </li>
+          ))}
+        </ul>
       </div>
     </section>
   );

@@ -20,7 +20,10 @@ export function HomeFeatures() {
     <section aria-label="At the resort" className="bg-surface py-8 text-body sm:py-10">
       <ul className="page-container grid grid-cols-2 gap-x-4 gap-y-8 lg:grid-cols-5">
         {features.map(({ icon: Icon, title, detail }, index) => (
-          <li key={title} className="text-center last:col-span-2 lg:last:col-span-1">
+          <li
+            key={title}
+            className="px-2 text-center last:col-span-2 lg:border-l lg:border-line lg:first:border-l-0 lg:last:col-span-1"
+          >
             <FadeUp index={index} rise={8}>
               <Icon
                 size={30}
