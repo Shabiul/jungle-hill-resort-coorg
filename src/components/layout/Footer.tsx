@@ -4,10 +4,10 @@ import { FooterCredit } from "@/components/layout/FooterCredit";
 import { Logo } from "@/components/shared/Logo";
 import { siteConfig } from "@/config/site.config";
 import { mainNav } from "@/data/navigation";
-import { mailLink, secondaryTelLink, telLink, whatsappLink } from "@/lib/contact";
+import { mailLink, telLink, whatsappLink } from "@/lib/contact";
 
 export function Footer() {
-  const { contact, secondaryPhone } = siteConfig;
+  const { contact } = siteConfig;
 
   return (
     <footer className="theme-sand bg-surface text-body">
@@ -68,11 +68,6 @@ export function Footer() {
                 </li>
               </ul>
 
-              <p className="mt-5 text-body/80">
-                <a href={secondaryTelLink} className="transition-colors hover:text-body">
-                  {secondaryPhone.phoneDisplay}
-                </a>
-              </p>
             </div>
 
             <div>

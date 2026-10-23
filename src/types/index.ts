@@ -118,7 +118,6 @@ export interface SiteConfig {
   siteUrl: string;
   url: string;
   locale: string;
-  secondaryPhone: { phoneDisplay: string; phoneTel: string };
   contact: {
     email: string;
     phoneDisplay: string;

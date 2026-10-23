@@ -10,11 +10,6 @@ export const siteConfig: SiteConfig = {
   siteUrl: "https://www.junglehillresort.co.in",
   url: process.env.NEXT_PUBLIC_SITE_URL ?? "https://www.junglehillresort.co.in",
   locale: "en_IN",
-  // Second contact number, shown as a plain number with no name or role.
-  secondaryPhone: {
-    phoneDisplay: "+91 96115 24368",
-    phoneTel: "+919611524368",
-  },
   contact: {
     email: "reservations@junglehillresort.co.in",
     phoneDisplay: "+91 95916 90481",
@@ -25,9 +20,9 @@ export const siteConfig: SiteConfig = {
     mapsUrl: "", // TODO: Google Maps link for the property
   },
   floatingContact: {
-    phoneDisplay: "+91 96115 24368",
-    phoneTel: "+919611524368",
-    whatsapp: "919611524368",
+    phoneDisplay: "+91 95916 90481",
+    phoneTel: "+919591690481",
+    whatsapp: "919591690481",
   },
   stay: { checkIn: "12:00 PM", checkOut: "11:00 AM" },
   socials: [], // TODO: Instagram, Facebook, etc.
