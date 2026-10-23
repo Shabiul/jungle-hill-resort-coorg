@@ -686,3 +686,24 @@ html[data-hero="hidden"] .hero-fade {
 .mist-top::before {
   display: none;
 }
+
+/* One shared reveal: FadeUp adds is-in once, from a single IntersectionObserver. */
+.reveal {
+  opacity: 0;
+  transform: translateY(var(--rise, 16px));
+  transition:
+    opacity 0.5s var(--ease-out-expo),
+    transform 0.5s var(--ease-out-expo);
+  transition-delay: var(--reveal-delay, 0ms);
+}
+.reveal.is-in {
+  opacity: 1;
+  transform: none;
+}
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+    transition: none;
+  }
+}

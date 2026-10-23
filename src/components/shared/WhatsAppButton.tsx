@@ -17,7 +17,7 @@ const STAGGER_MS = 100;
 
 const pill =
   "floating-pill inline-flex items-center justify-center border border-burgundy bg-burgundy text-ivory transition-[border-color,background-color] hover:border-ink hover:bg-ink";
-const round = "h-12 w-12 rounded-full";
+const round = "h-11 w-11 rounded-full";
 
 /**
  * Floating Call and WhatsApp icon buttons, stacked bottom right. They pop up in sequence as soon

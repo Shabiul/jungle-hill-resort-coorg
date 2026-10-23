@@ -1,6 +1,7 @@
 import type { ReactNode } from "react";
 import { RevealText, type HeadingLine } from "@/components/animations/RevealText";
 import { cn } from "@/lib/utils";
+import { FadeUp } from "@/components/animations/FadeUp";
 import { AccentMark } from "@/components/animations/AccentMark";
 
 interface SectionHeaderProps {
@@ -33,11 +34,11 @@ export function SectionHeader({
           {numeral}
         </span>
       )}
-      <p
-        className={cn("label-mono", tone === "dark" ? "text-body" : "text-body/80")}
-      >
-        {label}
-      </p>
+      <FadeUp rise={6}>
+        <p className={cn("label-mono", tone === "dark" ? "text-body" : "text-body/80")}>
+          {label}
+        </p>
+      </FadeUp>
       <div className="mt-2 flex items-center gap-2">
         <AccentMark />
         <span aria-hidden="true" className="block h-1.5 w-1.5 bg-olive" />

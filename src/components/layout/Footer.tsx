@@ -17,7 +17,7 @@ export function Footer() {
             <Logo variant="dark" asLink={false} className="h-24" />
             <p
               aria-hidden="true"
-              className="mt-6 font-display text-[clamp(3rem,8vw,6.5rem)] leading-[0.92] font-medium tracking-[0.03em] text-transparent [-webkit-text-stroke:1.5px_var(--color-olive)]"
+              className="mt-6 font-display text-[clamp(3rem,8vw,6.5rem)] leading-[0.92] font-normal tracking-[0.03em] text-transparent [-webkit-text-stroke:1.5px_var(--color-olive)]"
             >
               JUNGLE
               <br />

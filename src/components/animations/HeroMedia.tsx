@@ -23,6 +23,8 @@ function videoAllowed() {
   if (window.matchMedia("(prefers-reduced-data: reduce)").matches) return false;
   if (connection?.effectiveType && /(^|-)(2g|3g)$/.test(connection.effectiveType))
     return false;
+  // The video is a desktop nicety: phones and small tablets keep the photos only.
+  if (window.matchMedia("(max-width: 767px)").matches) return false;
   return true;
 }
 
@@ -176,7 +178,7 @@ export function HeroMedia({ slides }: { slides: ResolvedHeroSlide[] }) {
                   alt={slide.alt}
                   fill
                   sizes="100vw"
-                  quality={75}
+                  quality={70}
                   priority={i === 0}
                   onLoad={i === 0 ? onFirstPhotoLoaded : undefined}
                   placeholder={slide.blurDataURL ? "blur" : "empty"}

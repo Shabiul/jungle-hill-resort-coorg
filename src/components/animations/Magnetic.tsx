@@ -3,7 +3,13 @@
 import { useRef, type PointerEvent, type ReactNode } from "react";
 
 /** Nudges its child toward the pointer by at most 6px. Mouse only; does nothing on touch. */
-export function Magnetic({ children, className }: { children: ReactNode; className?: string }) {
+export function Magnetic({
+  children,
+  className,
+}: {
+  children: ReactNode;
+  className?: string;
+}) {
   const ref = useRef<HTMLDivElement>(null);
   const frame = useRef(0);
 

@@ -14,7 +14,7 @@ import "./globals.css";
 // Type: Cormorant Garamond (display, light, one italic emphasis) and Jost (body and small uppercase labels).
 const cormorant = Cormorant_Garamond({
   subsets: ["latin"],
-  weight: ["300", "400", "500"],
+  weight: ["300", "400"],
   style: ["normal", "italic"],
   variable: "--font-cormorant",
   display: "swap",

@@ -22,7 +22,8 @@ export function FloatingParticles() {
     const el = root.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => el.setAttribute("data-paused", entry.isIntersecting ? "false" : "true"),
+      ([entry]) =>
+        el.setAttribute("data-paused", entry.isIntersecting ? "false" : "true"),
       { rootMargin: "50px" },
     );
     observer.observe(el);
@@ -34,7 +35,7 @@ export function FloatingParticles() {
       ref={root}
       data-paused="true"
       aria-hidden="true"
-      className="pointer-events-none absolute inset-0 overflow-hidden max-md:hidden motion-reduce:hidden"
+      className="pointer-events-none absolute inset-0 overflow-hidden motion-reduce:hidden max-md:hidden"
     >
       <div className="absolute inset-x-0 bottom-[18%] h-24 overflow-hidden">
         <div className="mist-band-slow absolute inset-y-0 -left-1/3 w-1/3 bg-gradient-to-r from-transparent via-ivory/15 to-transparent" />

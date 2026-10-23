@@ -45,12 +45,7 @@ export function RevealText({
     <>
       {line.text}
       {line.emphasis && (
-        <em
-          className={cn(
-            "font-light italic",
-            onDark ? "text-ivory" : "text-olive",
-          )}
-        >
+        <em className={cn("font-light italic", onDark ? "text-ivory" : "text-olive")}>
           {line.emphasis}
         </em>
       )}
@@ -90,10 +85,7 @@ export function RevealText({
             {line.text}
             {line.emphasis && (
               <em
-                className={cn(
-                  "font-light italic",
-                  onDark ? "text-ivory" : "text-olive",
-                )}
+                className={cn("font-light italic", onDark ? "text-ivory" : "text-olive")}
               >
                 {line.emphasis}
               </em>

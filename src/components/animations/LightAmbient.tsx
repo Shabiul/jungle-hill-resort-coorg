@@ -32,7 +32,8 @@ export function LightAmbient() {
     const el = root.current;
     if (!el) return;
     const observer = new IntersectionObserver(
-      ([entry]) => el.setAttribute("data-paused", entry.isIntersecting ? "false" : "true"),
+      ([entry]) =>
+        el.setAttribute("data-paused", entry.isIntersecting ? "false" : "true"),
       { rootMargin: "100px" },
     );
     observer.observe(el);

@@ -1,31 +1,60 @@
 "use client";
 
-import type { ReactNode } from "react";
-import { m } from "motion/react";
-import { easeOut } from "@/lib/animations";
-import { useReducedMotion } from "@/hooks/useReducedMotion";
+import { useEffect, useRef, type CSSProperties, type ReactNode } from "react";
 
-/** Fades up once on first view. Give each sibling its `index` for a 60 ms stagger. */
-export function FadeUp({
-  children,
-  index = 0,
-  className,
-}: {
+/**
+ * One IntersectionObserver for every reveal on the page. Elements get `is-in` the first time they
+ * are seen (CSS does the fade and rise), then they are no longer watched.
+ */
+let observer: IntersectionObserver | null = null;
+function watch(el: Element) {
+  if (typeof IntersectionObserver === "undefined") {
+    el.classList.add("is-in");
+    return;
+  }
+  observer ??= new IntersectionObserver(
+    (entries) => {
+      for (const entry of entries) {
+        if (!entry.isIntersecting) continue;
+        entry.target.classList.add("is-in");
+        observer?.unobserve(entry.target);
+      }
+    },
+    { rootMargin: "0px 0px -6% 0px" },
+  );
+  observer.observe(el);
+}
+
+interface FadeUpProps {
   children: ReactNode;
+  /** Position among siblings: each step adds 60 ms. */
   index?: number;
+  /** Rise distance in px. */
+  rise?: number;
   className?: string;
-}) {
-  const reduced = useReducedMotion();
+}
+
+/** Fades up once on first view. Transform and opacity only; static for reduced motion. */
+export function FadeUp({ children, index = 0, rise = 16, className }: FadeUpProps) {
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    if (ref.current) watch(ref.current);
+  }, []);
+
   return (
-    <m.div
+    <div
+      ref={ref}
       data-reveal
-      className={className}
-      initial={reduced ? false : { opacity: 0, y: 16 }}
-      whileInView={{ opacity: 1, y: 0 }}
-      viewport={{ once: true, margin: "0px 0px -6% 0px" }}
-      transition={{ duration: 0.5, ease: easeOut, delay: Math.min(index, 8) * 0.06 }}
+      className={`reveal${className ? ` ${className}` : ""}`}
+      style={
+        {
+          "--reveal-delay": `${Math.min(index, 8) * 60}ms`,
+          "--rise": `${rise}px`,
+        } as CSSProperties
+      }
     >
       {children}
-    </m.div>
+    </div>
   );
 }
