@@ -23,8 +23,8 @@ export function HomeStays() {
       aria-label="Our stays"
       className="section-space theme-sage scroll-mt-20 bg-surface text-body"
     >
-      <div className="page-container grid gap-8 lg:grid-cols-12 lg:gap-10">
-        <div className="lg:col-span-3 lg:pt-4">
+      <div className="page-container grid gap-8 lg:grid-cols-12 lg:gap-10 pr-[4.25rem] lg:pr-20">
+        <div className="lg:col-span-4 lg:pt-4">
           <SectionHeader
             tone="dark"
             label="Our Stays"
@@ -41,24 +41,24 @@ export function HomeStays() {
           </Link>
         </div>
 
-        <ul className="grid gap-4 sm:grid-cols-2 lg:col-span-9 lg:grid-cols-4">
+        <ul className="grid gap-5 sm:grid-cols-2 lg:col-span-8">
           {rooms.map((room, index) => (
             <li key={room.slug} className="min-w-0">
               <FadeUp index={index} className="h-full">
                 <Link
                   href={`/rooms/${room.slug}`}
-                  className="group shadow-soft block overflow-hidden rounded-[6px] border border-line bg-card focus-visible:outline-2"
+                  className="group shadow-soft block h-full overflow-hidden rounded-none border border-line bg-card focus-visible:outline-2"
                 >
-                  <span className="relative block aspect-[4/3] overflow-hidden lg:aspect-auto lg:h-[160px]">
+                  <span className="relative block aspect-[4/3] overflow-hidden lg:aspect-auto lg:h-[220px]">
                     <Photo
                       image={room.images[0]}
                       fill
-                      sizes="(min-width: 1024px) 20vw, (min-width: 640px) 45vw, 100vw"
+                      sizes="(min-width: 1024px) 34vw, (min-width: 640px) 45vw, 100vw"
                       imgClassName="transition-transform duration-500 ease-out group-hover:scale-[1.03]"
                     />
                   </span>
-                  <span className="flex items-center justify-between gap-3 px-3 py-3">
-                    <span className="font-display text-[1.25rem] leading-tight">
+                  <span className="flex items-center justify-between gap-3 px-4 py-3.5">
+                    <span className="font-display text-[1.45rem] leading-tight">
                       {room.name}
                     </span>
                     <span
