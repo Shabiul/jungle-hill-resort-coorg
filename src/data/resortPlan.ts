@@ -9,6 +9,8 @@ export interface PlanMarker {
   x: number;
   y: number;
   kind: "building" | "amenity" | "pool";
+  /** Stays link to their page from the legend. */
+  href?: string;
   image: ImageAsset | null;
 }
 
@@ -72,6 +74,7 @@ export const planMarkers: PlanMarker[] = [
   {
     id: 6,
     label: "Family Rooms (The Estate House)",
+    href: "/rooms/family-ac-room",
     note: "Family AC, ground and first floor",
     x: 540,
     y: 170,
@@ -84,6 +87,7 @@ export const planMarkers: PlanMarker[] = [
   {
     id: 7,
     label: "Standard Non-AC Rooms",
+    href: "/rooms/standard-non-ac-room",
     note: "Rooms A2, A3, A5 upstairs, A6 on the ground floor",
     x: 380,
     y: 240,
@@ -96,6 +100,7 @@ export const planMarkers: PlanMarker[] = [
   {
     id: 8,
     label: "Deluxe AC Rooms (The Cloudline Suite)",
+    href: "/rooms/deluxe-ac-rooms",
     note: "Deluxe AC rooms with private balconies",
     x: 250,
     y: 320,
@@ -110,6 +115,7 @@ export const planMarkers: PlanMarker[] = [
   {
     id: 9,
     label: "Standard Non-AC Cottage (The Pepper Vine Cottage)",
+    href: "/rooms/standard-non-ac-cottage",
     note: "Standard Non-AC Cottage",
     x: 150,
     y: 430,

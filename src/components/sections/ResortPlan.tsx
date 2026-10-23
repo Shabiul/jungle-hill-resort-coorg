@@ -1,6 +1,7 @@
 "use client";
 
 import { useState } from "react";
+import Link from "next/link";
 import { m } from "motion/react";
 import { useReducedMotion } from "@/hooks/useReducedMotion";
 import { Photo } from "@/components/shared/Photo";
@@ -50,14 +51,20 @@ function tooltipStyle(x: number, y: number): React.CSSProperties {
  * Original illustrative site plan. Markers and the legend are linked: hover, focus or tap either
  * one to highlight the other and see a photo. Marker data lives in src/data/resortPlan.ts.
  */
-export function ResortPlan({ className }: { className?: string }) {
+export function ResortPlan({
+  className,
+  compact = false,
+}: {
+  className?: string;
+  compact?: boolean;
+}) {
   const reduced = useReducedMotion();
   const [active, setActive] = useState<number | null>(null);
   const current = planMarkers.find((marker) => marker.id === active) ?? null;
 
   return (
     <div className={cn("grid gap-6 lg:grid-cols-12 lg:gap-8", className)}>
-      <div className="lg:col-span-8">
+      <div className={compact ? "lg:col-span-7" : "lg:col-span-8"}>
         <div className="theme-sage relative overflow-hidden rounded-[6px] border border-line bg-surface">
           <svg
             viewBox={`0 0 ${PLAN_VIEWBOX.width} ${PLAN_VIEWBOX.height}`}
@@ -211,6 +218,8 @@ export function ResortPlan({ className }: { className?: string }) {
                     }}
                     style={{ transformBox: "fill-box", transformOrigin: "center" }}
                   >
+                    {/* Invisible, larger hit area so markers are easy to tap on phones */}
+                    <circle cx={marker.x} cy={marker.y} r={60} fill="transparent" />
                     {on && (
                       <circle
                         className="plan-pulse"
@@ -285,29 +294,49 @@ export function ResortPlan({ className }: { className?: string }) {
         </div>
       </div>
 
-      <ol className="lg:col-span-4" aria-label="Plan legend">
-        {planMarkers.map((marker) => (
-          <li key={marker.id}>
-            <button
-              type="button"
-              onMouseEnter={() => setActive(marker.id)}
-              onMouseLeave={() => setActive(null)}
-              onFocus={() => setActive(marker.id)}
-              onBlur={() => setActive(null)}
-              onClick={() => setActive(active === marker.id ? null : marker.id)}
-              aria-pressed={active === marker.id}
-              className={cn(
-                "grid min-h-11 w-full grid-cols-[2rem_1fr] items-center gap-2 border-b border-line py-2 text-left transition-colors",
-                active === marker.id ? "bg-card" : "hover:bg-card/60",
-              )}
-            >
+      <ol
+        className={compact ? "lg:col-span-5" : "lg:col-span-4"}
+        aria-label="Plan legend"
+      >
+        {planMarkers.map((marker) => {
+          const handlers = {
+            onMouseEnter: () => setActive(marker.id),
+            onMouseLeave: () => setActive(null),
+            onFocus: () => setActive(marker.id),
+            onBlur: () => setActive(null),
+          };
+          const row = (
+            <>
               <span className="label-mono text-body">
                 {String(marker.id).padStart(2, "0")}
               </span>
               <span className="text-body">{marker.label}</span>
-            </button>
-          </li>
-        ))}
+            </>
+          );
+          const rowClass = cn(
+            "grid min-h-11 w-full grid-cols-[2rem_1fr] items-center gap-2 border-b border-line py-2 text-left transition-colors",
+            active === marker.id ? "bg-card" : "hover:bg-card/60",
+          );
+          return (
+            <li key={marker.id}>
+              {marker.href ? (
+                <Link href={marker.href} {...handlers} className={rowClass}>
+                  {row}
+                </Link>
+              ) : (
+                <button
+                  type="button"
+                  {...handlers}
+                  onClick={() => setActive(active === marker.id ? null : marker.id)}
+                  aria-pressed={active === marker.id}
+                  className={rowClass}
+                >
+                  {row}
+                </button>
+              )}
+            </li>
+          );
+        })}
       </ol>
     </div>
   );

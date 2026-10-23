@@ -36,7 +36,7 @@ export function ResortPlanSection({
             description={<p>Tap a number to see what is there.</p>}
           />
         )}
-        <ResortPlan className={heading ? "mt-8" : undefined} />
+        <ResortPlan className={heading ? "mt-8" : undefined} compact={heading} />
 
         <ol
           aria-label="Getting here"

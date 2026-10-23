@@ -4,6 +4,7 @@ import { HomeExperiences } from "@/components/sections/HomeExperiences";
 import { HomeFeatures } from "@/components/sections/HomeFeatures";
 import { HomeStays } from "@/components/sections/HomeStays";
 import { Hero } from "@/components/sections/Hero";
+import { ResortPlanSection } from "@/components/sections/ResortPlanSection";
 import { Testimonials } from "@/components/sections/Testimonials";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { resortJsonLd } from "@/lib/structured-data";
@@ -28,6 +29,7 @@ export default function HomePage() {
       <HomeFeatures />
       <HomeStays />
       <HomeExperiences />
+      <ResortPlanSection />
       <ExploreBand />
       <Testimonials />
       <BookingBand />
