@@ -4,8 +4,6 @@ import { HeroFade } from "@/components/animations/HeroFade";
 import { HeroMedia } from "@/components/animations/HeroMedia";
 import { RevealText } from "@/components/animations/RevealText";
 import { resolveHeroSlides } from "@/data/hero";
-import { FloatingParticles } from "@/components/animations/FloatingParticles";
-import { Magnetic } from "@/components/animations/Magnetic";
 
 export function Hero() {
   return (
@@ -14,7 +12,6 @@ export function Hero() {
       className="dark-surface relative isolate flex min-h-[78svh] flex-col overflow-hidden bg-ink text-ivory md:min-h-[clamp(30rem,38vw,36rem)]"
     >
       <HeroMedia slides={resolveHeroSlides()} />
-      <FloatingParticles />
       {/* Plain vertical scrim for legibility: no colour, no blobs */}
       <div aria-hidden="true" className="absolute inset-0 bg-ink/10" />
       <div
@@ -57,12 +54,10 @@ export function Hero() {
         </HeroFade>
 
         <HeroFade delay={0.45} className="mt-8">
-          <Magnetic>
             <Link href="/rooms" className="btn btn-primary gap-2">
               Explore Our Resort
               <ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" />
             </Link>
-          </Magnetic>
         </HeroFade>
       </div>
     </section>

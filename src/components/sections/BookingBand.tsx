@@ -29,38 +29,16 @@ export function BookingBand() {
       aria-label="Ask about your dates"
       className="section-space relative isolate overflow-hidden bg-burgundy text-ivory"
     >
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 120 120"
-        className="pointer-events-none absolute -top-4 -left-4 -z-0 h-32 w-32 text-olive opacity-40"
-      >
-        <path
-          d="M10 110 C 20 60 60 20 110 10 C 100 60 60 100 10 110 Z"
-          fill="currentColor"
-        />
-      </svg>
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 120 120"
-        className="pointer-events-none absolute -right-4 -bottom-4 h-32 w-32 rotate-180 text-olive opacity-40"
-      >
-        <path
-          d="M10 110 C 20 60 60 20 110 10 C 100 60 60 100 10 110 Z"
-          fill="currentColor"
-        />
-      </svg>
-
       <div className="page-container relative grid items-center gap-6 lg:grid-cols-[0.8fr_1.5fr] lg:gap-10">
         <div>
-          <p className="label-mono text-ivory">Your escape awaits</p>
-          <h2 className="mt-3 text-h3 text-ivory">
-            Ask us about <em className="font-light italic">your dates.</em>
+          <h2 className="text-h3 text-ivory">
+            Dates in mind?
           </h2>
         </div>
 
         <form
           onSubmit={submit}
-          aria-label="Check availability"
+          aria-label="Send an enquiry"
           className="shadow-soft grid gap-4 rounded-[6px] bg-ivory-card p-4 text-ivory-ink sm:grid-cols-2 lg:grid-cols-[1fr_1fr_0.6fr_auto] lg:items-end"
         >
           <label className="label-mono block">
@@ -97,7 +75,7 @@ export function BookingBand() {
             </select>
           </label>
           <button type="submit" className="btn btn-primary gap-2">
-            Check Availability{" "}
+            Send Enquiry{" "}
             <ArrowRight size={16} strokeWidth={1.5} aria-hidden="true" />
           </button>
         </form>

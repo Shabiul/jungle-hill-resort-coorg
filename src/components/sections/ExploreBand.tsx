@@ -33,15 +33,11 @@ export function ExploreBand() {
 
       <div className="page-container grid gap-8 lg:grid-cols-12 lg:items-center">
         <div className="lg:col-span-5">
-          <FadeUp rise={6}>
-            <p className="label-mono text-ivory">Explore Madikeri</p>
-          </FadeUp>
           <RevealText
             as="h2"
             onDark
             lines={[
-              { text: "Nature, culture and" },
-              { text: "untouched ", emphasis: "beauty." },
+              { text: "Around Madikeri" },
             ]}
             className="mt-4 pb-1 text-h2"
           />

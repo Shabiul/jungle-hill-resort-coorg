@@ -24,26 +24,11 @@ export function Footer() {
   return (
     <footer className="theme-sand relative isolate overflow-hidden bg-surface text-body">
       <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
-        <div className="footer-kb absolute -inset-2">
+        <div className="absolute -inset-2">
           <Photo image={backdrop} fill sizes="100vw" />
         </div>
         <div className="bg-surface/[0.9] absolute inset-0" />
       </div>
-      {/* A thin mountain-contour line in one corner */}
-      <svg
-        aria-hidden="true"
-        viewBox="0 0 300 120"
-        className="pointer-events-none absolute right-0 bottom-0 h-24 w-60 text-olive opacity-20 sm:h-28 sm:w-72"
-      >
-        <path
-          d="M0 118 L40 80 L62 92 L110 34 L128 52 L150 12 L186 62 L206 46 L248 84 L276 70 L300 96"
-          fill="none"
-          stroke="currentColor"
-          strokeWidth="1.4"
-          strokeLinejoin="round"
-          strokeLinecap="round"
-        />
-      </svg>
 
       <div className="page-container relative py-[clamp(2rem,4vw,3rem)] pr-[4.25rem] lg:pr-20">
         <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-[1.1fr_1.1fr_1.3fr_1fr] lg:gap-10">

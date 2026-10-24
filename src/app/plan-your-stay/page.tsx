@@ -11,7 +11,6 @@ import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbJsonLd, faqJsonLd } from "@/lib/structured-data";
 import { PageNote } from "@/components/shared/PageNote";
 import Link from "next/link";
-import { LightAmbient } from "@/components/animations/LightAmbient";
 
 export const metadata = buildMetadata({
   title: "Plan your stay",
@@ -120,7 +119,6 @@ export default function PlanYourStayPage() {
         aria-label="Check-in and check-out"
         className="section-space relative isolate overflow-hidden bg-surface theme-sage"
       >
-        <LightAmbient />
         <div className="page-container grid gap-6 sm:grid-cols-3">
           <div>
             <p className="label-mono text-body">Check-in</p>
@@ -141,7 +139,6 @@ export default function PlanYourStayPage() {
         aria-label="Frequently asked questions"
         className="section-space relative isolate overflow-hidden"
       >
-        <LightAmbient />
         <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-4">
             <p className="label-mono text-body">Questions</p>

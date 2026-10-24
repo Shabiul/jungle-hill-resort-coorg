@@ -8,7 +8,6 @@ import { buildMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 import { PageNote } from "@/components/shared/PageNote";
-import { LightAmbient } from "@/components/animations/LightAmbient";
 
 export const metadata = buildMetadata({
   title: "About",
@@ -87,7 +86,6 @@ export default function AboutPage() {
         aria-label="At a glance"
         className="section-space relative isolate overflow-hidden bg-surface theme-sage"
       >
-        <LightAmbient />
         <dl className="page-container grid gap-px bg-line sm:grid-cols-2 lg:grid-cols-4">
           {facts.map(([value, label]) => (
             <div key={value} className="bg-surface theme-sage p-6 first:pl-0 lg:py-2">

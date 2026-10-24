@@ -68,8 +68,7 @@ export function HomeExperiences() {
         <div className="lg:col-span-4">
           <SectionHeader
             tone="dark"
-            label="Experiences"
-            lines={[{ text: "Slow days," }, { text: "easy ", emphasis: "evenings." }]}
+            lines={[{ text: "Pool, play" }, { text: "and food" }]}
           />
           <p className="mt-4 max-w-[46ch]">
             A swimming pool with a shallow kids pool, a play area for children under 10,

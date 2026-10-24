@@ -8,7 +8,6 @@ import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
 import { PageNote } from "@/components/shared/PageNote";
 import Link from "next/link";
-import { LightAmbient } from "@/components/animations/LightAmbient";
 
 export const metadata = buildMetadata({
   title: "Stays: rooms and cottages",
@@ -49,7 +48,6 @@ export default function RoomsPage() {
         aria-label="Good to know"
         className="section-space relative isolate overflow-hidden bg-surface theme-sage"
       >
-        <LightAmbient />
         <div className="page-container grid gap-8 lg:grid-cols-12">
           <div className="lg:col-span-5">
             <p className="label-mono text-body">Good to know</p>

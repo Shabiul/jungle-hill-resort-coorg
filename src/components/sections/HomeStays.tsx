@@ -27,8 +27,7 @@ export function HomeStays() {
         <div className="lg:col-span-4 lg:pt-4">
           <SectionHeader
             tone="dark"
-            label="Our Stays"
-            lines={[{ text: "Four ways" }, { text: "to ", emphasis: "stay." }]}
+            lines={[{ text: "Where you'll stay" }]}
             description={
               <p>
                 Rooms and cottages among the coffee and pepper plants. Rates are shared on
@@ -47,7 +46,7 @@ export function HomeStays() {
               <FadeUp index={index} className="h-full">
                 <Link
                   href={`/rooms/${room.slug}`}
-                  className="group shadow-soft block h-full overflow-hidden rounded-none border border-line bg-card focus-visible:outline-2"
+                  className="group shadow-soft block h-full overflow-hidden rounded-[6px] border border-line bg-card focus-visible:outline-2"
                 >
                   <span className="relative block aspect-[4/3] overflow-hidden lg:aspect-auto lg:h-[220px]">
                     <Photo

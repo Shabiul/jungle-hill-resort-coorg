@@ -44,11 +44,7 @@ export function RevealText({
   const content = (line: HeadingLine) => (
     <>
       {line.text}
-      {line.emphasis && (
-        <em className={cn("font-light italic", onDark ? "text-ivory" : "text-olive")}>
-          {line.emphasis}
-        </em>
-      )}
+      {line.emphasis}
       {line.after}
     </>
   );

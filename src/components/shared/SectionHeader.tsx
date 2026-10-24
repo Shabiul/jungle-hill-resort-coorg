@@ -2,11 +2,10 @@ import type { ReactNode } from "react";
 import { RevealText, type HeadingLine } from "@/components/animations/RevealText";
 import { cn } from "@/lib/utils";
 import { FadeUp } from "@/components/animations/FadeUp";
-import { AccentMark } from "@/components/animations/AccentMark";
 
 interface SectionHeaderProps {
   /** e.g. "01 / Rooms" */
-  label: string;
+  label?: string;
   /** Headline lines, masked in one by one. Use `emphasis` for the italic brass word. */
   lines: HeadingLine[];
   description?: ReactNode;
@@ -23,7 +22,7 @@ export function SectionHeader({
   as = "h2",
   className,
 }: SectionHeaderProps) {
-  const numeral = /^\d{2}/.exec(label)?.[0];
+  const numeral = label ? /^\d{2}/.exec(label)?.[0] : undefined;
   return (
     <div className={cn("relative max-w-3xl", className)}>
       {numeral && (
@@ -34,20 +33,18 @@ export function SectionHeader({
           {numeral}
         </span>
       )}
-      <FadeUp rise={6}>
-        <p className={cn("label-mono", tone === "dark" ? "text-body" : "text-body/80")}>
-          {label}
-        </p>
-      </FadeUp>
-      <div className="mt-2 flex items-center gap-2">
-        <AccentMark />
-        <span aria-hidden="true" className="block h-1.5 w-1.5 bg-olive" />
-      </div>
+      {label && (
+        <FadeUp rise={6}>
+          <p className={cn("label-mono", tone === "dark" ? "text-body" : "text-body/80")}>
+            {label}
+          </p>
+        </FadeUp>
+      )}
       <RevealText
         as={as}
         lines={lines}
         onDark={tone === "light"}
-        className="mt-4 text-h2"
+        className="mt-3 text-h2"
       />
       {description && (
         <div
