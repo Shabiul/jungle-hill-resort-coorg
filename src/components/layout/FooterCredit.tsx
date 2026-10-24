@@ -10,7 +10,7 @@ export function FooterCredit() {
       <p className="label-mono text-[0.6875rem] tracking-[0.22em] text-body/80">
         &copy; {new Date().getFullYear()} Jungle Hill Resort
       </p>
-      <p className="max-w-none font-display text-[clamp(1.1rem,2vw,1.5rem)] leading-snug font-light text-body/80">
+      <p className="max-w-none font-display text-[clamp(0.95rem,1.7vw,1.275rem)] leading-snug font-light text-body/80">
         <em className="font-light">Designed and developed by</em>{" "}
         <a
           href={developer.url}

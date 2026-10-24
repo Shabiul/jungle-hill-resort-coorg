@@ -28,7 +28,7 @@ export const siteConfig: SiteConfig = {
   socials: [], // TODO: Instagram, Facebook, etc.
   developer: {
     name: "Naaz Ai Labs",
-    url: "https://naazailabs.com", // TODO: replace with the real Naaz Ai Labs website URL
+    url: "https://naazailabs.com/", // TODO: replace with the real Naaz Ai Labs website URL
   },
 };
 

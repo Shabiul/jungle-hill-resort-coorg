@@ -1,83 +1,125 @@
 import Link from "next/link";
-import { Mail, MessageCircle, Phone } from "lucide-react";
+import { Mail, MapPin, MessageCircle, Phone } from "lucide-react";
 import { FooterCredit } from "@/components/layout/FooterCredit";
-import { Logo } from "@/components/shared/Logo";
+import { Photo } from "@/components/shared/Photo";
 import { siteConfig } from "@/config/site.config";
 import { mainNav } from "@/data/navigation";
 import { mailLink, telLink, whatsappLink } from "@/lib/contact";
+import { photo } from "@/lib/images";
 
+const backdrop = photo(
+  "/images/gallery/grounds-misty-valley.jpg",
+  "Mist over the valley beyond the resort's tiled roofs",
+);
+
+const nudge =
+  "inline-flex items-center transition-[color,transform] duration-300 hover:translate-x-[3px] hover:text-burgundy";
+
+/** Compact footer: small text wordmark, four columns, a soft real photo behind, a quiet credit. No rules. */
 export function Footer() {
   const { contact } = siteConfig;
+  const first = mainNav.slice(0, 6);
+  const second = mainNav.slice(6);
 
   return (
-    <footer className="theme-sand bg-surface text-body">
-      <div className="page-container pt-[var(--space-section)] pb-6 pr-[4.25rem] lg:pr-20">
-        <div className="grid gap-6 lg:grid-cols-12 lg:gap-8">
-          <div className="lg:col-span-5">
-            <Logo variant="dark" asLink={false} className="h-24" />
-            <p
-              aria-hidden="true"
-              className="mt-6 font-display text-[clamp(3rem,8vw,6.5rem)] leading-[0.92] font-normal tracking-[0.03em] text-transparent [-webkit-text-stroke:1.5px_var(--color-olive)]"
-            >
-              JUNGLE
-              <br />
-              HILL
+    <footer className="theme-sand relative isolate overflow-hidden bg-surface text-body">
+      <div aria-hidden="true" className="pointer-events-none absolute inset-0 -z-10">
+        <div className="footer-kb absolute -inset-2">
+          <Photo image={backdrop} fill sizes="100vw" />
+        </div>
+        <div className="bg-surface/[0.9] absolute inset-0" />
+      </div>
+      {/* A thin mountain-contour line in one corner */}
+      <svg
+        aria-hidden="true"
+        viewBox="0 0 300 120"
+        className="pointer-events-none absolute right-0 bottom-0 h-24 w-60 text-olive opacity-20 sm:h-28 sm:w-72"
+      >
+        <path
+          d="M0 118 L40 80 L62 92 L110 34 L128 52 L150 12 L186 62 L206 46 L248 84 L276 70 L300 96"
+          fill="none"
+          stroke="currentColor"
+          strokeWidth="1.4"
+          strokeLinejoin="round"
+          strokeLinecap="round"
+        />
+      </svg>
+
+      <div className="page-container relative py-[clamp(2rem,4vw,3rem)] pr-[4.25rem] lg:pr-20">
+        <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-[1.1fr_1.1fr_1.3fr_1fr] lg:gap-10">
+          <div>
+            <p className="font-display text-[1.7rem] leading-none font-normal">
+              Jungle Hill
+            </p>
+            <p className="label-mono mt-2">Inspiring Cloudline</p>
+            <p className="mt-3 max-w-[30ch] text-small">
+              A coffee and pepper estate retreat, 5 km from Madikeri.
             </p>
           </div>
 
-          <div className="grid gap-6 sm:grid-cols-2 lg:col-span-7">
-            <div>
-              <h2 className="label-mono text-body/80">Visit</h2>
-              <address className="mt-3 not-italic">
-                {contact.addressLines.map((line) => (
-                  <span key={line} className="block">
-                    {line}
-                  </span>
-                ))}
-              </address>
+          <div>
+            <h2 className="label-mono">Visit</h2>
+            <address className="mt-3 text-small not-italic">
+              <MapPin
+                size={16}
+                strokeWidth={1.5}
+                aria-hidden="true"
+                className="mr-2 inline-block align-[-3px]"
+              />
+              Mekeri Village, Madikeri
+              <br />
+              <span className="pl-6">Coorg, Karnataka 571201</span>
+            </address>
+            <ul className="mt-3 space-y-1 text-small">
+              <li>
+                <a href={telLink} className={`touch-target ${nudge} gap-2`}>
+                  <Phone size={16} strokeWidth={1.5} aria-hidden="true" />
+                  Call {contact.phoneDisplay}
+                </a>
+              </li>
+              <li>
+                <a
+                  href={whatsappLink()}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className={`touch-target ${nudge} gap-2`}
+                >
+                  <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" />
+                  WhatsApp {contact.phoneDisplay}
+                </a>
+              </li>
+              <li>
+                <a href={mailLink} className={`touch-target ${nudge} gap-2 break-all`}>
+                  <Mail size={16} strokeWidth={1.5} aria-hidden="true" />
+                  {contact.email}
+                </a>
+              </li>
+            </ul>
+          </div>
 
-              <ul className="mt-5 space-y-3">
-                <li>
-                  <a
-                    href={telLink}
-                    className="inline-flex items-center gap-2 transition-colors hover:text-body"
-                  >
-                    <Phone size={16} strokeWidth={1.5} aria-hidden="true" />
-                    Call {contact.phoneDisplay}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={whatsappLink()}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="inline-flex items-center gap-2 transition-colors hover:text-body"
-                  >
-                    <MessageCircle size={16} strokeWidth={1.5} aria-hidden="true" />
-                    WhatsApp {contact.phoneDisplay}
-                  </a>
-                </li>
-                <li>
-                  <a
-                    href={mailLink}
-                    className="inline-flex items-center gap-2 transition-colors hover:text-body"
-                  >
-                    <Mail size={16} strokeWidth={1.5} aria-hidden="true" />
-                    {contact.email}
-                  </a>
-                </li>
-              </ul>
-            </div>
-
-            <div>
-              <h2 className="label-mono text-body/80">Explore</h2>
-              <ul className="mt-3 grid gap-1.5">
-                {mainNav.map((item) => (
+          <div>
+            <h2 className="label-mono">Explore</h2>
+            <div className="mt-3 grid grid-cols-2 gap-x-6 text-small">
+              <ul className="space-y-1">
+                {first.map((item) => (
                   <li key={item.href}>
                     <Link
                       prefetch={false}
                       href={item.href}
-                      className="transition-colors hover:text-body"
+                      className={`touch-target ${nudge}`}
+                    >
+                      {item.label}
+                    </Link>
+                  </li>
+                ))}
+              </ul>
+              <ul className="space-y-1">
+                {second.map((item) => (
+                  <li key={item.href}>
+                    <Link
+                      prefetch={false}
+                      href={item.href}
+                      className={`touch-target ${nudge}`}
                     >
                       {item.label}
                     </Link>
@@ -87,20 +129,23 @@ export function Footer() {
                   <Link
                     prefetch={false}
                     href="/booking"
-                    className="transition-colors hover:text-body"
+                    className={`touch-target ${nudge}`}
                   >
                     Enquire / Book
                   </Link>
                 </li>
               </ul>
-              <p className="label-mono mt-6 text-body/80">
-                Check-in 12 PM · Check-out 11 AM
-              </p>
-              <p className="mt-2 text-sm text-body/80">
-                ID proof mandatory. No visitors after 8:30 PM. No loud music or sounds
-                after 10:00 PM.
-              </p>
             </div>
+          </div>
+
+          <div>
+            <h2 className="label-mono">Stay notes</h2>
+            <ul className="mt-3 space-y-1 text-small">
+              <li>Check-in 12 PM · Check-out 11 AM</li>
+              <li>ID proof mandatory</li>
+              <li>No visitors after 8:30 PM</li>
+              <li>No loud music or sounds after 10:00 PM</li>
+            </ul>
           </div>
         </div>
 

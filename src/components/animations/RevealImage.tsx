@@ -36,8 +36,10 @@ export function RevealImage({
       ref={frame}
       data-reveal-img
       className={cn(className, moving && "overflow-hidden")}
-      initial={reduced ? false : { clipPath: "inset(14% 0% 0% 0%)", opacity: 0 }}
-      whileInView={{ clipPath: "inset(0% 0% 0% 0%)", opacity: 1 }}
+      initial={
+        reduced ? false : { clipPath: "inset(14% 0% 0% 0%)", opacity: 0, scale: 1.04 }
+      }
+      whileInView={{ clipPath: "inset(0% 0% 0% 0%)", opacity: 1, scale: 1 }}
       viewport={{ once: true, margin: "-8% 0px" }}
       transition={{ duration: 0.8, ease: easeOut, delay }}
     >

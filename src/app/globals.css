@@ -707,3 +707,18 @@ html[data-hero="hidden"] .hero-fade {
     transition: none;
   }
 }
+
+/* Footer photo: a very slow settle, desktop only. */
+@keyframes footer-kb {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.04);
+  }
+}
+@media (min-width: 1024px) and (prefers-reduced-motion: no-preference) {
+  .footer-kb {
+    animation: footer-kb 45s ease-in-out infinite alternate;
+  }
+}

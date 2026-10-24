@@ -52,7 +52,10 @@ export function HomeExperiences() {
     >
       <div className="page-container grid items-center gap-8 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-5">
-          <RevealImage className="relative aspect-[16/10] overflow-hidden rounded-[6px] bg-card">
+          <RevealImage
+            parallax
+            className="relative aspect-[16/10] overflow-hidden rounded-[6px] bg-card"
+          >
             <Photo
               image={poolPhoto}
               fill

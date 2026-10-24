@@ -37,7 +37,7 @@ export function Header() {
       >
         <Logo
           priority
-        backed={overHero}
+          backed={overHero}
           className={cn(
             "transition-[height] duration-300",
             scrolled ? "h-14" : "h-[4.5rem]",

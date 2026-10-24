@@ -99,7 +99,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
                 <GlassPanel className="pointer-events-auto grid max-w-md gap-x-6 gap-y-2 bg-ink/55 p-4 sm:grid-cols-2">
                   {facts.map((fact) => (
                     <div key={fact.label}>
-                      <p className="label-mono text-[0.6rem] text-body/80">
+                      <p className="label-mono text-[0.6rem] text-ivory/90">
                         {fact.label}
                       </p>
                       <p className="font-display text-lg leading-tight">{fact.value}</p>

@@ -4,6 +4,8 @@ import type { Room } from "@/types";
 const RATE_NOTE = "Enquire for rates";
 const base = "/images/rooms";
 
+// The brochure says 13 rooms in total.
+// TODO: confirm how many rooms of each type; no per-category count is stated, so none is shown.
 export const rooms: Room[] = [
   {
     slug: "deluxe-ac-rooms",
@@ -29,6 +31,7 @@ export const rooms: Room[] = [
       "Coffee kettle with supplies",
       "Cupboard",
     ],
+    // TODO: ask client for room numbers (the brochure gives none for the Deluxe AC rooms).
     locations: [],
     rateNote: RATE_NOTE,
     price: null,
@@ -95,26 +98,38 @@ export const rooms: Room[] = [
       [
         [
           "bedroom-02.jpg",
-          "Family AC room with two double beds and a wood-panelled headboard wall",
+          "Family AC Room, first floor: two double beds and a wood-panelled headboard wall",
         ],
-        ["bedroom-01.jpg", "Two double beds with teal runners in a Family AC room"],
+        [
+          "bedroom-01.jpg",
+          "Family AC Room, first floor: two double beds with teal runners",
+        ],
+        ["bedroom-03.jpg", "Family AC Room, first floor: two beds beyond a long sofa"],
+        [
+          "bedroom-08.jpg",
+          "Family AC Room, first floor: beds under a wood-panelled ceiling",
+        ],
+        ["bathroom-03.jpg", "Family AC Room, first floor: tiled bathroom with washbasin"],
+        [
+          "bedroom-04.jpg",
+          "Family AC Room, ground floor: two double beds in a spacious room",
+        ],
         [
           "seating-01.jpg",
-          "Seating area with cushioned wooden sofas in a Family AC room",
+          "Family AC Room, ground floor: seating area with cushioned wooden sofas",
         ],
-        ["bedroom-03.jpg", "Two beds beyond a long sofa in a Family AC room"],
-        ["seating-02.jpg", "Wide seating area in a Family AC room"],
+        ["seating-02.jpg", "Family AC Room, ground floor: wide seating area"],
         [
           "bedroom-05.jpg",
-          "Family AC room with beds and TV unit on a stone-textured wall",
+          "Family AC Room, ground floor: beds and TV unit on a stone-textured wall",
         ],
-        ["bedroom-04.jpg", "Spacious Family AC room with two double beds"],
-        ["bedroom-06.jpg", "Family AC room seen from the doorway"],
-        ["bedroom-07.jpg", "Two double beds facing a TV and seating"],
-        ["bedroom-08.jpg", "Twin beds under a wood-panelled ceiling"],
-        ["bathroom-01.jpg", "Bathroom attached to a Family AC room"],
-        ["bathroom-02.jpg", "Second bathroom of a Family AC room"],
-        ["bathroom-03.jpg", "Tiled bathroom with washbasin in a Family AC room"],
+        ["bedroom-06.jpg", "Family AC Room, ground floor: room seen from the doorway"],
+        [
+          "bedroom-07.jpg",
+          "Family AC Room, ground floor: two double beds facing a TV and seating",
+        ],
+        ["bathroom-01.jpg", "Family AC Room, ground floor: attached bathroom"],
+        ["bathroom-02.jpg", "Family AC Room, ground floor: second bathroom"],
       ],
       (file) => describeShot(file, "The Estate House"),
     ),
@@ -142,6 +157,7 @@ export const rooms: Room[] = [
       "Coffee kettle",
       "Cupboard",
     ],
+    // TODO: ask client for room numbers (the brochure gives none for the cottage).
     locations: [],
     rateNote: RATE_NOTE,
     price: null,
@@ -150,33 +166,39 @@ export const rooms: Room[] = [
       `${base}/standard-non-ac-cottage`,
       [
         [
+          "exterior-02.jpg",
+          "The Pepper Vine Cottage: the cottage with a red tiled roof among bamboo and coffee plants",
+        ],
+        [
           "bedroom-01.jpg",
-          "Queen bed with teal runner and grey curtains in a Standard Non-AC cottage",
+          "The Pepper Vine Cottage: queen bed with a teal runner and grey curtains",
+        ],
+        [
+          "bathroom-01.jpg",
+          "The Pepper Vine Cottage: attached bathroom with washbasin and wall tiles",
         ],
         [
           "balcony-01.jpg",
-          "Wooden balcony of a cottage with two chairs, facing the plantation",
+          "The Pepper Vine Cottage: separate wooden balcony with two chairs facing the plantation",
         ],
-        ["balcony-02.jpg", "Cottage balcony with timber railing and a tiled roof beyond"],
+        [
+          "balcony-02.jpg",
+          "The Pepper Vine Cottage: balcony with timber railing and a tiled roof beyond",
+        ],
         [
           "exterior-01.jpg",
-          "Cottage on stilts with a timber balcony and staircase among bamboo",
+          "The Pepper Vine Cottage: timber balcony and staircase among bamboo",
         ],
         [
           "bedroom-02.jpg",
-          "Cottage bedroom with a queen bed under a wood-panelled ceiling",
+          "The Pepper Vine Cottage: queen bed under a wood-panelled ceiling",
         ],
-        ["bedroom-03.jpg", "Queen bed in a cottage with curtains drawn"],
-        ["bedroom-05.jpg", "Cottage bedroom with wardrobe and TV"],
-        ["bedroom-07.jpg", "Cottage room showing TV and wardrobe wall"],
-        ["bedroom-09.jpg", "Cottage bedroom seen from the foot of the bed"],
-        ["bedroom-10.jpg", "Cottage bed with teal runner and cushions"],
+        ["bedroom-05.jpg", "The Pepper Vine Cottage: wardrobe, TV and bed"],
         [
-          "exterior-02.jpg",
-          "Cottage with a red tiled roof among bamboo and coffee plants",
+          "bedroom-09.jpg",
+          "The Pepper Vine Cottage: bedroom seen from the foot of the bed",
         ],
-        ["bathroom-01.jpg", "Cottage bathroom with washbasin and wall tiles"],
-        ["bathroom-02.jpg", "Second view of the cottage bathroom"],
+        ["bedroom-10.jpg", "The Pepper Vine Cottage: bed with teal runner and cushions"],
       ],
       (file) => describeShot(file, "The Pepper Vine Cottage"),
     ),
@@ -205,31 +227,77 @@ export const rooms: Room[] = [
     images: photosFromFolder(
       `${base}/standard-non-ac-room`,
       [
-        ["bedroom-02.jpg", "Standard Non-AC room with a queen bed and cream curtains"],
-        ["bedroom-01.jpg", "Queen bed and TV unit in a Standard Non-AC room"],
-        ["bedroom-03.jpg", "Standard room bed under a wooden ceiling"],
-        ["bedroom-04.jpg", "Queen bed with blue cushions facing the TV"],
-        ["bedroom-05.jpg", "Standard room with wardrobe and bed"],
-        ["bedroom-06.jpg", "Standard room bed beside the TV unit"],
-        ["bedroom-07.jpg", "Standard room with kettle and desk by the window"],
-        ["bedroom-08.jpg", "Standard room in a ground-floor block"],
-        ["view-01.jpg", "Coffee plants and misty hills seen over a balcony railing"],
-        ["balcony-01.jpg", "Balcony with two chairs and a low table"],
-        ["balcony-02.jpg", "Balcony with timber floor looking into the trees"],
+        [
+          "bedroom-02.jpg",
+          "Standard Non-AC Room A3, first floor: queen bed with cream curtains",
+        ],
+        [
+          "bedroom-03.jpg",
+          "Standard Non-AC Room A3, first floor: queen bed under a wooden ceiling",
+        ],
+        [
+          "balcony-03.jpg",
+          "Standard Non-AC Room A3, first floor: balcony with a blue parapet and seating",
+        ],
         [
           "view-02.jpg",
-          "View from a first-floor balcony over tiled roofs and the valley",
+          "Standard Non-AC Room A3, first floor: view over tiled roofs and the valley",
         ],
-        ["balcony-03.jpg", "First-floor balcony with a blue parapet and seating"],
-        ["entrance-a2.jpg", "Entrance to room A-2 with a chair outside the door"],
-        ["balcony-04.jpg", "Balcony with two chairs and a table beside the room door"],
-        ["balcony-05.jpg", "Balcony seating with a view of the hills"],
+        ["bedroom-01.jpg", "Standard Non-AC Room A2, first floor: queen bed and TV unit"],
+        [
+          "entrance-a2.jpg",
+          "Standard Non-AC Room A2, first floor: entrance with a chair outside the door",
+        ],
+        [
+          "balcony-07.jpg",
+          "Standard Non-AC Room A2, first floor: balcony outside the door",
+        ],
+        [
+          "bedroom-04.jpg",
+          "Standard Non-AC Room A5, first floor: queen bed with blue cushions facing the TV",
+        ],
+        ["bedroom-05.jpg", "Standard Non-AC Room A5, first floor: bed and wardrobe"],
+        [
+          "bedroom-06.jpg",
+          "Standard Non-AC Room A5, first floor: bed beside the TV unit",
+        ],
+        [
+          "balcony-04.jpg",
+          "Standard Non-AC Room A5, first floor: balcony with chairs beside the room door",
+        ],
+        [
+          "view-01.jpg",
+          "Standard Non-AC Room A5, first floor: coffee plants and misty hills over the balcony rail",
+        ],
+        [
+          "bedroom-07.jpg",
+          "Standard Non-AC Room A6, ground floor: queen bed with a teal runner",
+        ],
+        ["bedroom-08.jpg", "Standard Non-AC Room A6, ground floor: bed, desk and kettle"],
         [
           "entrance-a6.jpg",
-          "Ground-floor entrance to room A-6 with two chairs on a stone floor",
+          "Standard Non-AC Room A6, ground floor: entrance with two chairs on a stone floor",
         ],
-        ["balcony-09.jpg", "Stone-floored verandah with chairs and a bamboo blind"],
-        ["bathroom-01.jpg", "Bathroom with tiled walls in a Standard Non-AC room"],
+        [
+          "balcony-09.jpg",
+          "Standard Non-AC Room A6, ground floor: stone verandah with chairs and a bamboo blind",
+        ],
+        [
+          "bathroom-01.jpg",
+          "Standard Non-AC Room A6, ground floor: bathroom with patterned tiles",
+        ],
+        [
+          "balcony-01.jpg",
+          "Standard Non-AC Room, first floor: balcony with two chairs and a low table",
+        ],
+        [
+          "balcony-02.jpg",
+          "Standard Non-AC Room, first floor: timber balcony looking into the trees",
+        ],
+        [
+          "balcony-05.jpg",
+          "Standard Non-AC Room, first floor: balcony seating with a view of the hills",
+        ],
       ],
       (file) => describeShot(file, "Standard Non-AC Room"),
     ),
