@@ -62,7 +62,7 @@ export default function DiningPage() {
             </h2>
             <ul className="mt-4">
               {dining.guidelines.map((guideline) => (
-                <li key={guideline} className="border-t border-line py-4 text-lg">
+                <li key={guideline} className=" py-4 text-lg">
                   {guideline}
                 </li>
               ))}

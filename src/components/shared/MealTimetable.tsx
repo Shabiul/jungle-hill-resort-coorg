@@ -14,12 +14,12 @@ export function MealTimetable({ meals, hours, tone = "light" }: MealTimetablePro
     <div>
       <p className="label-mono opacity-75">Open daily</p>
       <p className="mt-1 font-display text-4xl">{hours}</p>
-      <dl className={cn("mt-6 border-t", line)}>
+      <dl className={cn("mt-6", line)}>
         {meals.map((meal) => (
           <div
             key={meal.name}
             className={cn(
-              "flex items-baseline justify-between gap-6 border-b py-3",
+              "flex items-baseline justify-between gap-6 py-3",
               line,
             )}
           >

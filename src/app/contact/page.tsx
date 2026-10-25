@@ -74,7 +74,7 @@ export default function ContactPage() {
                   WhatsApp
                 </a>
               </p>
-              <ul className="mt-5 space-y-3 border-t border-line pt-4 text-small">
+              <ul className="mt-5 space-y-3 pt-4 text-small">
                 <li className="flex items-start gap-2">
                   <Mail
                     size={16}

@@ -67,11 +67,11 @@ export function Retreat() {
           </div>
         </div>
 
-        <dl className="mt-8 grid grid-cols-2 border-t border-line lg:grid-cols-4">
+        <dl className="mt-8 grid grid-cols-2 lg:grid-cols-4">
           {stats.map((stat) => (
             <div
               key={stat.label}
-              className="border-b border-line py-5 pr-4 odd:border-r odd:border-line lg:border-r lg:border-b-0 lg:px-6 lg:first:pl-0 lg:last:border-r-0"
+              className=" py-5 pr-4 odd:border-r odd:border-line lg:border-r lg:px-6 lg:first:pl-0 lg:last:border-r-0"
             >
               <dd className="font-display text-h3 leading-none">
                 {stat.count !== undefined ? (
@@ -87,7 +87,7 @@ export function Retreat() {
 
         <ul
           aria-label="On the property"
-          className="mt-8 grid grid-cols-2 border-y border-line sm:grid-cols-4"
+          className="mt-8 grid grid-cols-2 sm:grid-cols-4"
         >
           {strip.map((item) => (
             <li key={item.label} className="border-line [&:not(:last-child)]:sm:border-r">

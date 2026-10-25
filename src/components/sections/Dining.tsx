@@ -52,7 +52,7 @@ export function Dining() {
           <h3 className="label-mono mt-6 !font-mono text-body/80">Ordering guidelines</h3>
           <ul className="mt-4 space-y-3">
             {dining.guidelines.map((guideline) => (
-              <li key={guideline} className="border-t border-line pt-3">
+              <li key={guideline} className=" pt-3">
                 {guideline}
               </li>
             ))}

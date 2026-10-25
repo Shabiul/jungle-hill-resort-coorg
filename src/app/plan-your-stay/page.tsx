@@ -81,11 +81,11 @@ export default function PlanYourStayPage() {
             <h2 className="label-mono mt-8 !font-mono text-xs text-body">
               How to reach
             </h2>
-            <ol className="mt-4 border-t border-line">
+            <ol className="mt-4">
               {steps.map((step, index) => (
                 <li
                   key={step}
-                  className="grid grid-cols-[2.5rem_1fr] gap-2 border-b border-line py-4"
+                  className="grid grid-cols-[2.5rem_1fr] gap-2 py-4"
                 >
                   <span className="label-mono pt-1 text-body">
                     {String(index + 1).padStart(2, "0")}
@@ -150,7 +150,7 @@ export default function PlanYourStayPage() {
             {faqs.map((faq) => (
               <details
                 key={faq.id}
-                className="group border-t border-line py-5 last:border-b"
+                className="group py-5"
               >
                 <summary className="flex min-h-11 cursor-pointer list-none items-center justify-between gap-6 font-display text-2xl">
                   {faq.question}

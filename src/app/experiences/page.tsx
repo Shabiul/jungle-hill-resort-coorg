@@ -41,7 +41,7 @@ export default function ExperiencesPage() {
             <li
               key={item.slug}
               id={item.slug}
-              className="grid scroll-mt-28 gap-8 border-t border-line py-8 lg:grid-cols-12"
+              className="grid scroll-mt-28 gap-8 py-8 lg:grid-cols-12"
             >
               <div className="lg:col-span-5">
                 <p className="label-mono text-body">
@@ -49,9 +49,9 @@ export default function ExperiencesPage() {
                 </p>
                 <h2 className="mt-3 text-h2">{item.title}</h2>
                 <p className="mt-5 max-w-md text-body">{item.summary}</p>
-                <ul className="mt-6 border-t border-line">
+                <ul className="mt-6">
                   {item.facts.map((fact) => (
-                    <li key={fact} className="label-mono border-b border-line py-3">
+                    <li key={fact} className="label-mono py-3">
                       {fact}
                     </li>
                   ))}

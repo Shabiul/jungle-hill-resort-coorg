@@ -195,7 +195,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
       >
         <Link
           href={`/rooms/${previous.slug}`}
-          className="group border-t border-line pt-5"
+          className="group pt-5"
         >
           <span className="label-mono flex items-center gap-2 text-body">
             <ArrowLeft size={14} strokeWidth={1.5} aria-hidden="true" /> Previous
@@ -206,7 +206,7 @@ export default async function RoomPage({ params }: RoomPageProps) {
         </Link>
         <Link
           href={`/rooms/${next.slug}`}
-          className="group border-t border-line pt-5 sm:text-right"
+          className="group pt-5 sm:text-right"
         >
           <span className="label-mono flex items-center gap-2 text-body sm:justify-end">
             Next <ArrowRight size={14} strokeWidth={1.5} aria-hidden="true" />

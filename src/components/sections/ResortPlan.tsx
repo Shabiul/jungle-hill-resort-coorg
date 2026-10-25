@@ -253,7 +253,7 @@ export function ResortPlan({
             </>
           );
           const rowClass = cn(
-            "grid min-h-11 w-full grid-cols-[2rem_1fr] items-center gap-2 border-b border-line py-2 text-left transition-colors",
+            "grid min-h-11 w-full grid-cols-[2rem_1fr] items-center gap-2 py-2 text-left transition-colors",
             active === marker.id ? "bg-card" : "hover:bg-card/60",
           );
           return (

@@ -40,7 +40,7 @@ export function ResortPlanSection({
 
         <ol
           aria-label="Getting here"
-          className="mt-8 grid gap-4 border-t border-line pt-6 sm:grid-cols-4"
+          className="mt-8 grid gap-4 pt-6 sm:grid-cols-4"
         >
           {gettingHere.map((step, index) => (
             <li key={step.label}>

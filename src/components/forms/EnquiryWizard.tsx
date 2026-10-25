@@ -304,7 +304,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
             key={label}
             aria-current={index === step ? "step" : undefined}
             className={cn(
-              "border-b pb-1.5",
+              " pb-1.5",
               index === step
                 ? "border-line text-body"
                 : "border-transparent text-body/80",
@@ -473,7 +473,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
               ))}
             </div>
 
-            <div className="mt-8 border-t border-line pt-6">
+            <div className="mt-8 pt-6">
               <p className="label-mono text-[0.68rem] text-body">
                 Included with every stay
               </p>
@@ -675,7 +675,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
               )}
             </div>
 
-            <dl className="grid gap-x-8 gap-y-2 border-t border-line pt-5 text-small sm:grid-cols-2">
+            <dl className="grid gap-x-8 gap-y-2 pt-5 text-small sm:grid-cols-2">
               <div>
                 <dt className="label-mono text-[0.62rem] text-body">Dates</dt>
                 <dd>
