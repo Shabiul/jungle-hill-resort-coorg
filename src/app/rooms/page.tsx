@@ -2,7 +2,7 @@ import { CTA } from "@/components/sections/CTA";
 import { StayCards } from "@/components/sections/StayCards";
 import { PageHero } from "@/components/shared/PageHero";
 import { checkTimes } from "@/data/policies";
-import { rooms } from "@/data/rooms";
+import { getRooms } from "@/lib/site-content";
 import { buildMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
@@ -16,7 +16,11 @@ export const metadata = buildMetadata({
   path: "/rooms",
 });
 
-export default function RoomsPage() {
+export const revalidate = 3600;
+
+export default async function RoomsPage() {
+  const rooms = await getRooms();
+  const priced = rooms.some((room) => room.price);
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Stays", path: "/rooms" }])} />
@@ -25,8 +29,9 @@ export default function RoomsPage() {
         lines={[{ text: "Four ways" }, { text: "to ", emphasis: "stay." }]}
         description={
           <p>
-            13 rooms across four categories. No prices are published, so rates are given
-            on enquiry, for your dates.
+            {priced
+              ? "13 rooms across four categories. Starting rates are shown for each stay; we confirm availability and the exact rate for your dates."
+              : "13 rooms across four categories. No prices are published, so rates are given on enquiry, for your dates."}
           </p>
         }
         aside={
@@ -79,8 +84,9 @@ export default function RoomsPage() {
             <li>
               <h3 className="text-2xl">Rates</h3>
               <p className="mt-2 text-body">
-                Enquire for rates. Tell us your dates and who is travelling and we will
-                reply with what is available.
+                {priced
+                  ? "Starting rates are per night. Tell us your dates and who is travelling and we will confirm what is available and the exact rate."
+                  : "Enquire for rates. Tell us your dates and who is travelling and we will reply with what is available."}
               </p>
             </li>
           </ul>

@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { siteConfig } from "@/config/site.config";
 
@@ -10,6 +11,25 @@ export function FooterCredit() {
       <p className="label-mono text-[0.6875rem] tracking-[0.22em] text-body/80">
         &copy; {new Date().getFullYear()} Jungle Hill Resort
       </p>
+      <nav aria-label="Legal">
+        <ul className="flex flex-wrap items-center justify-center gap-x-5 gap-y-1 text-small">
+          {[
+            ["Privacy policy", "/privacy-policy"],
+            ["Terms and conditions", "/terms-and-conditions"],
+            ["Cookie policy", "/cookie-policy"],
+          ].map(([label, href]) => (
+            <li key={href}>
+              <Link
+                prefetch={false}
+                href={href!}
+                className="touch-target inline-flex items-center transition-colors hover:text-burgundy"
+              >
+                {label}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </nav>
       <p className="max-w-none font-display text-[clamp(0.95rem,1.7vw,1.275rem)] leading-snug font-light text-body/80">
         <em className="font-light">Designed and developed by</em>{" "}
         <a

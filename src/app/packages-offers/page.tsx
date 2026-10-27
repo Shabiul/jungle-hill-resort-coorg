@@ -1,7 +1,7 @@
 import Link from "next/link";
 import { CTA } from "@/components/sections/CTA";
 import { PageHero } from "@/components/shared/PageHero";
-import { rooms } from "@/data/rooms";
+import { getRooms } from "@/lib/site-content";
 import { buildMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
@@ -13,7 +13,10 @@ export const metadata = buildMetadata({
   path: "/packages-offers",
 });
 
-export default function PackagesOffersPage() {
+export const revalidate = 3600;
+
+export default async function PackagesOffersPage() {
+  const rooms = await getRooms();
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Packages and offers", path: "/packages-offers" }])} />

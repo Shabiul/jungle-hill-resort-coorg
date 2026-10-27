@@ -5,9 +5,9 @@ import { Photo } from "@/components/shared/Photo";
 import { SectionHeader } from "@/components/shared/SectionHeader";
 import { photo } from "@/lib/images";
 
-const poolPhoto = photo(
-  "/images/gallery/pool-with-kids-pool.jpg",
-  "Swimming pool and shallow kids pool on a tiled deck with chairs",
+const leadPhoto = photo(
+  "/images/experiences/paver-path-cottages.jpg",
+  "Red paver path curving past tiled-roof cottages among palms and tall trees under a cloudy sky",
 );
 
 // Four real things to do. No services the resort did not list.
@@ -52,16 +52,15 @@ export function HomeExperiences() {
     >
       <div className="page-container grid items-center gap-8 lg:grid-cols-12 lg:gap-10">
         <div className="lg:col-span-5">
-          <RevealImage
-            parallax
-            className="relative aspect-[16/10] overflow-hidden rounded-[6px] bg-card"
-          >
-            <Photo
-              image={poolPhoto}
-              fill
-              sizes="(min-width: 1024px) 40vw, 92vw"
-              imgClassName="transition-transform duration-500 hover:scale-[1.03]"
-            />
+          <RevealImage parallax className="overflow-hidden rounded-[6px]">
+            <div className="relative aspect-[16/10] overflow-hidden bg-card">
+              <Photo
+                image={leadPhoto}
+                fill
+                sizes="(min-width: 1024px) 40vw, 92vw"
+                imgClassName="transition-transform duration-500 hover:scale-[1.03]"
+              />
+            </div>
           </RevealImage>
         </div>
 

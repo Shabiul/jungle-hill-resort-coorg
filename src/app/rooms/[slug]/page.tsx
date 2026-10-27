@@ -8,6 +8,7 @@ import { BentoGallery } from "@/components/shared/BentoGallery";
 import { GlassPanel } from "@/components/ui/GlassPanel";
 import { checkTimes } from "@/data/policies";
 import { getRoomBySlug, roomLabel, roomTitle, rooms } from "@/data/rooms";
+import { getRoom } from "@/lib/site-content";
 import type { Room } from "@/types";
 import { whatsappLink } from "@/lib/contact";
 import { JsonLd } from "@/components/shared/JsonLd";
@@ -31,6 +32,8 @@ function roomDescription(room: Room) {
   return out;
 }
 
+export const revalidate = 3600;
+
 export function generateStaticParams() {
   return rooms.map((room) => ({ slug: room.slug }));
 }
@@ -47,7 +50,7 @@ export async function generateMetadata({ params }: RoomPageProps) {
 
 export default async function RoomPage({ params }: RoomPageProps) {
   const { slug } = await params;
-  const room = getRoomBySlug(slug);
+  const room = await getRoom(slug);
   if (!room) notFound();
 
   const index = rooms.findIndex((item) => item.slug === slug);

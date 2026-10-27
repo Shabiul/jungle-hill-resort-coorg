@@ -1,0 +1,19 @@
+# Pings the live site every 3 days so the free Supabase and Upstash projects never go idle.
+# Add two repository secrets: SITE_URL (for example https://www.junglehillresort.co.in, no trailing slash)
+# and KEEPALIVE_SECRET (the same value as the KEEPALIVE_SECRET env var on the host).
+name: Keep free-tier services awake
+
+on:
+  schedule:
+    - cron: "17 3 */3 * *"
+  workflow_dispatch:
+
+jobs:
+  ping:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Call /api/keepalive
+        run: |
+          curl --fail --silent --show-error --max-time 30 \
+            -H "x-keepalive: ${{ secrets.KEEPALIVE_SECRET }}" \
+            "${{ secrets.SITE_URL }}/api/keepalive"
