@@ -1,11 +1,11 @@
 import type { Metadata, Viewport } from "next";
 import { Cormorant_Garamond, Jost } from "next/font/google";
-import { MotionProvider } from "@/components/animations/MotionProvider";
 import { Intro } from "@/components/animations/Intro";
-import { SmoothScroll } from "@/components/animations/SmoothScroll";
+import { SiteChrome } from "@/components/layout/SiteChrome";
 import { NavProgress } from "@/components/layout/NavProgress";
 import { Footer } from "@/components/layout/Footer";
 import { Header } from "@/components/layout/Header";
+import { CookieNotice } from "@/components/shared/CookieNotice";
 import { WhatsAppButton } from "@/components/shared/WhatsAppButton";
 import { siteConfig } from "@/config/site.config";
 import { SITE_DEFAULT_TITLE, SITE_TITLE_TEMPLATE } from "@/lib/constants";
@@ -61,16 +61,24 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
         >
           Skip to content
         </a>
-        <MotionProvider>
-          <SmoothScroll>
-            <Intro />
-            <NavProgress />
-            <Header />
-            <main id="main">{children}</main>
-            <Footer />
-            <WhatsAppButton />
-          </SmoothScroll>
-        </MotionProvider>
+        <SiteChrome
+          intro={
+            <>
+              <Intro />
+              <NavProgress />
+            </>
+          }
+          header={<Header />}
+          footer={<Footer />}
+          floating={
+            <>
+              <WhatsAppButton />
+              <CookieNotice />
+            </>
+          }
+        >
+          {children}
+        </SiteChrome>
       </body>
     </html>
   );

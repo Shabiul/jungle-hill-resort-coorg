@@ -14,6 +14,9 @@ export const STATIC_ROUTES = [
   "/plan-your-stay",
   "/contact",
   "/booking",
+  "/privacy-policy",
+  "/terms-and-conditions",
+  "/cookie-policy",
 ] as const;
 
 export const BREAKPOINTS = {

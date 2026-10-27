@@ -3,7 +3,7 @@ import { ArrowRight } from "lucide-react";
 import { FadeUp } from "@/components/animations/FadeUp";
 import { Photo } from "@/components/shared/Photo";
 import { SectionHeader } from "@/components/shared/SectionHeader";
-import { getRoomBySlug } from "@/data/rooms";
+import { getRooms } from "@/lib/site-content";
 import { compact } from "@/lib/images";
 
 const ORDER = [
@@ -14,8 +14,9 @@ const ORDER = [
 ];
 
 /** Home page stays: only the photo and the name. The whole card opens the stay page. */
-export function HomeStays() {
-  const rooms = compact(ORDER.map((slug) => getRoomBySlug(slug)));
+export async function HomeStays() {
+  const all = await getRooms();
+  const rooms = compact(ORDER.map((slug) => all.find((room) => room.slug === slug)));
 
   return (
     <section

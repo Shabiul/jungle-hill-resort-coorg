@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { useRef, useState, useSyncExternalStore } from "react";
 import { useSearchParams } from "next/navigation";
 import { useForm, useWatch } from "react-hook-form";
@@ -149,6 +150,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
   const [step, setStep] = useState(0);
   const [sent, setSent] = useState<null | { summary: string }>(null);
   const [failed, setFailed] = useState(false);
+  const honeypot = useRef<HTMLInputElement>(null);
   const heading = useRef<HTMLHeadingElement>(null);
 
   const guestsParam = Number(params.get("guests"));
@@ -237,7 +239,7 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
       const response = await fetch("/api/enquiry", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(payload),
+        body: JSON.stringify({ ...payload, website: honeypot.current?.value ?? "" }),
       });
       if (!response.ok) throw new Error("failed");
       setSent({ summary: buildSummary(payload) });
@@ -328,6 +330,15 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
           void handleSubmit(onSubmit)(event);
         }}
       >
+        <input
+          ref={honeypot}
+          type="text"
+          name="website"
+          tabIndex={-1}
+          autoComplete="off"
+          aria-hidden="true"
+          className="absolute left-[-9999px] h-0 w-0 opacity-0"
+        />
         <h2 ref={heading} tabIndex={-1} className="text-h4 outline-none">
           {step === 0 && "When are you coming?"}
           {step === 1 && "Which stay?"}
@@ -665,7 +676,16 @@ export function EnquiryWizard({ defaultStay }: { defaultStay?: string }) {
                   {...register("consent")}
                 />
                 <span>
-                  I agree that Jungle Hill Resort may contact me about this enquiry.
+                  I agree that Jungle Hill Resort may contact me about this enquiry and
+                  keep these details for that purpose, as described in the{" "}
+                  <Link
+                    href="/privacy-policy"
+                    target="_blank"
+                    className="underline decoration-burgundy underline-offset-4"
+                  >
+                    Privacy policy
+                  </Link>
+                  .
                 </span>
               </label>
               {errors.consent && (

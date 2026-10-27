@@ -5,6 +5,7 @@ import { roomTitle } from "@/data/rooms";
 import type { Faq, Room } from "@/types";
 
 const ORIGIN = siteConfig.siteUrl;
+const absUrl = (src: string) => (/^https?:\/\//.test(src) ? src : `${ORIGIN}${src}`);
 const abs = (path: string) => `${ORIGIN}${path === "/" ? "" : path}`;
 
 const address = {
@@ -56,7 +57,7 @@ export function roomJsonLd(room: Room) {
     name: roomTitle(room),
     description: room.description,
     url: abs(`/rooms/${room.slug}`),
-    image: room.images.slice(0, 3).map((img) => `${ORIGIN}${img.src}`),
+    image: room.images.slice(0, 3).map((img) => absUrl(img.src)),
     bed: { "@type": "BedDetails", typeOfBed: room.bed },
     floorSize: { "@type": "QuantitativeValue", value: room.sizeSqFt, unitCode: "FTK" },
     occupancy: { "@type": "QuantitativeValue", description: room.occupancy },

@@ -21,6 +21,8 @@ export const metadata = {
 };
 
 /** Hero, feature strip, stays, experiences, explore band, guest notes and the booking band. */
+export const revalidate = 3600;
+
 export default function HomePage() {
   return (
     <>

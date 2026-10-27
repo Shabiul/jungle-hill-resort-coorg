@@ -1,6 +1,7 @@
 import { GalleryBrowser } from "@/components/sections/GalleryBrowser";
 import { PageHero } from "@/components/shared/PageHero";
-import { gallery, galleryCategories } from "@/data/gallery";
+import { galleryCategories as allCategories } from "@/data/gallery";
+import { getGallery } from "@/lib/site-content";
 import { buildMetadata } from "@/lib/metadata";
 import { JsonLd } from "@/components/shared/JsonLd";
 import { breadcrumbJsonLd } from "@/lib/structured-data";
@@ -14,7 +15,13 @@ export const metadata = buildMetadata({
   path: "/gallery",
 });
 
-export default function GalleryPage() {
+export const revalidate = 3600;
+
+export default async function GalleryPage() {
+  const gallery = await getGallery();
+  const galleryCategories = allCategories.filter((category) =>
+    gallery.some((image) => image.category === category),
+  );
   return (
     <>
       <JsonLd data={breadcrumbJsonLd([{ name: "Gallery", path: "/gallery" }])} />
